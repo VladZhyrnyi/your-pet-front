@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/your-pets-front/static/css/main.b5320759.css",
+    "main.js": "/your-pets-front/static/js/main.dc4322cb.js",
+    "index.html": "/your-pets-front/index.html",
+    "main.b5320759.css.map": "/your-pets-front/static/css/main.b5320759.css.map",
+    "main.dc4322cb.js.map": "/your-pets-front/static/js/main.dc4322cb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b5320759.css",
+    "static/js/main.dc4322cb.js"
+  ]
+}
