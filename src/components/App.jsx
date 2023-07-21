@@ -4,7 +4,7 @@
 // import { refreshUser } from 'redux/Auth/operations';
 // import { selectIsRefreshing } from 'redux/Auth/selectors';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import MainPage from '../pages/MainPage';
 import RegisterPage from '../pages/RegisterPage';
@@ -44,6 +44,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/notices" element={<Navigate to="/notices/cell" />} />
         <Route path="/notices/:categoryName" element={<NoticesPage />} />
         <Route
           path="/user"
