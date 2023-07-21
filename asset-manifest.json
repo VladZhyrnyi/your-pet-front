@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/your-pet-front/static/css/main.b5320759.css",
-    "main.js": "/your-pet-front/static/js/main.cfd7b8c1.js",
+    "main.js": "/your-pet-front/static/js/main.5b8cbec2.js",
     "index.html": "/your-pet-front/index.html",
     "main.b5320759.css.map": "/your-pet-front/static/css/main.b5320759.css.map",
-    "main.cfd7b8c1.js.map": "/your-pet-front/static/js/main.cfd7b8c1.js.map"
+    "main.5b8cbec2.js.map": "/your-pet-front/static/js/main.5b8cbec2.js.map"
   },
   "entrypoints": [
     "static/css/main.b5320759.css",
-    "static/js/main.cfd7b8c1.js"
+    "static/js/main.5b8cbec2.js"
   ]
 }
