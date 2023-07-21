@@ -1,13 +1,20 @@
 {
   "files": {
-    "main.css": "/your-pet-front/static/css/main.b5320759.css",
-    "main.js": "/your-pet-front/static/js/main.5b8cbec2.js",
+    "main.css": "/your-pet-front/static/css/main.ecbe4711.css",
+    "main.js": "/your-pet-front/static/js/main.173e9779.js",
+    "static/media/Inter-Medium.ttf": "/your-pet-front/static/media/Inter-Medium.6dcbc9bed1ec438907ee.ttf",
+    "static/media/Inter-Regular.ttf": "/your-pet-front/static/media/Inter-Regular.e89cb19905e7db5591b0.ttf",
+    "static/media/Manrope-ExtraBold.ttf": "/your-pet-front/static/media/Manrope-ExtraBold.5b0ae7100ad1d12e53c9.ttf",
+    "static/media/Manrope-SemiBold.ttf": "/your-pet-front/static/media/Manrope-SemiBold.310f108cc524df0e5ffc.ttf",
+    "static/media/Manrope-Medium.ttf": "/your-pet-front/static/media/Manrope-Medium.08894ccb04665d1a9d53.ttf",
+    "static/media/Manrope-Regular.ttf": "/your-pet-front/static/media/Manrope-Regular.a9b9e09fe6b69741f316.ttf",
+    "static/media/Manrope-Bold.ttf": "/your-pet-front/static/media/Manrope-Bold.47f6d7143da9d8c0e480.ttf",
     "index.html": "/your-pet-front/index.html",
-    "main.b5320759.css.map": "/your-pet-front/static/css/main.b5320759.css.map",
-    "main.5b8cbec2.js.map": "/your-pet-front/static/js/main.5b8cbec2.js.map"
+    "main.ecbe4711.css.map": "/your-pet-front/static/css/main.ecbe4711.css.map",
+    "main.173e9779.js.map": "/your-pet-front/static/js/main.173e9779.js.map"
   },
   "entrypoints": [
-    "static/css/main.b5320759.css",
-    "static/js/main.5b8cbec2.js"
+    "static/css/main.ecbe4711.css",
+    "static/js/main.173e9779.js"
   ]
 }
