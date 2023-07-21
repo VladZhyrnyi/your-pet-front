@@ -1,0 +1,34 @@
+@font-face {
+  font-family: Inter400;
+  src: url('./fonts/Inter/Inter-Regular.ttf');
+}
+
+@font-face {
+  font-family: Inter500;
+  src: url('./fonts/Inter/Inter-Medium.ttf');
+}
+
+@font-face {
+  font-family: Manrope400;
+  src: url('./fonts/Manrope/Manrope-Regular.ttf');
+}
+
+@font-face {
+  font-family: Manrope500;
+  src: url('./fonts/Manrope/Manrope-Medium.ttf');
+}
+
+@font-face {
+  font-family: Manrope600;
+  src: url('./fonts/Manrope/Manrope-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: Manrope700;
+  src: url('./fonts/Manrope/Manrope-Bold.ttf');
+}
+
+@font-face {
+  font-family: Manrope800;
+  src: url('./fonts/Manrope/Manrope-ExtraBold.ttf');
+}
