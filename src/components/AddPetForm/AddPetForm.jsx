@@ -4,6 +4,9 @@ import { useState } from 'react';
 import PersDetails from './YourPetForm/PersDetails';
 import PersonalDetails from './SellPetForm/PersonalDetails';
 import MoreInfo from './SellPetForm/MoreInfo';
+import MoreInfoPet from './YourPetForm/MoreInfoPet';
+import PersDetailsLost from './LostOrFound/PersDetails';
+import MoreInfoLost from './LostOrFound/MoreInfo';
 
 const obj = {
   category: '',
@@ -14,7 +17,7 @@ const obj = {
   file: '',
   sex: '',
   location: '',
-  price: '',
+  price: 0,
   comments: '',
 };
 
@@ -37,7 +40,7 @@ const AddPetForm = () => {
       }));
   };
 
-  const onChangeDetails = ({ target: { name, value } }) => {
+  const onChangeDetails = ({ target: { name, value, file } }) => {
     name === 'name' &&
       setData(prev => ({
         ...prev,
@@ -105,11 +108,20 @@ const AddPetForm = () => {
         {page === 1 && data.category === 'sell' && (
           <PersonalDetails onChangeDetails={onChangeDetails} />
         )}
+        {page === 1 && data.category === 'lost/found' && (
+          <PersDetailsLost onChangeDetails={onChangeDetails} />
+        )}
+        {page === 2 && data.category === 'your pet' && (
+          <MoreInfoPet onChangeDetails={onChangeDetails} />
+        )}
         {page === 2 && data.category === 'sell' && (
           <MoreInfo
             onChangeDetails={onChangeDetails}
             onChangeOption={onChangeOption}
           />
+        )}
+        {page === 2 && data.category === 'lost/found' && (
+          <MoreInfoLost onChangeDetails={onChangeOption} />
         )}
         <button type="button" onClick={() => setPage(prev => prev - 1)}>
           {page === 0 ? 'Cancel' : 'Back'}
