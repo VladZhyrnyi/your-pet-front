@@ -1,6 +1,15 @@
-const PersDetails = ({ onChangeDetails }) => {
+const PersDetailsLost = ({ onChangeDetails }) => {
   return (
     <>
+      <label>
+        Title of add
+        <input
+          onChange={onChangeDetails}
+          type="text"
+          name="title"
+          placeholder="Title of add"
+        />
+      </label>
       <label>
         Pet’s name
         <input
@@ -32,4 +41,4 @@ const PersDetails = ({ onChangeDetails }) => {
   );
 };
 
-export default PersDetails;
+export default PersDetailsLost;

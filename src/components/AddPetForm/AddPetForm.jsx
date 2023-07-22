@@ -2,16 +2,20 @@ import AddPetContent from './AddPetContent';
 import { Container } from './AddPerForm.styled';
 import { useState } from 'react';
 import PersDetails from './YourPetForm/PersDetails';
+import MoreInfo from './YourPetForm/MoreInfo';
+import PersDetailsLost from './LostOrFound/PersDetails';
+import MoreInfoLost from './LostOrFound/MoreInfo';
 
 const obj = {
   category: '',
+  title: '',
   name: '',
   date: '',
   type: '',
   file: '',
   sex: '',
   location: '',
-  price: '',
+  price: 0,
   comments: '',
 };
 
@@ -19,14 +23,21 @@ const AddPetForm = () => {
   const [page, setPage] = useState(0);
   const [data, setData] = useState(obj);
 
-  const onChangeOption = ({ target: { value } }) => {
-    setData(prev => ({
-      ...prev,
-      category: value,
-    }));
+  const onChangeOption = ({ target: { name, value } }) => {
+    name === 'category' &&
+      setData(prev => ({
+        ...prev,
+        category: value,
+      }));
+
+    name === 'sex' &&
+      setData(prev => ({
+        ...prev,
+        sex: value,
+      }));
   };
 
-  const onChangeDetails = ({ target: { name, value } }) => {
+  const onChangeDetails = ({ target: { name, value, file } }) => {
     name === 'name' &&
       setData(prev => ({
         ...prev,
@@ -41,6 +52,11 @@ const AddPetForm = () => {
       setData(prev => ({
         ...prev,
         type: value,
+      }));
+    name === 'title' &&
+      setData(prev => ({
+        ...prev,
+        title: value,
       }));
   };
 
@@ -65,6 +81,15 @@ const AddPetForm = () => {
         {page === 0 && <AddPetContent onChangeOption={onChangeOption} />}
         {page === 1 && data.category === 'your pet' && (
           <PersDetails onChangeDetails={onChangeDetails} />
+        )}
+        {page === 2 && data.category === 'your pet' && (
+          <MoreInfo onChangeDetails={onChangeDetails} />
+        )}
+        {page === 1 && data.category === 'lost/found' && (
+          <PersDetailsLost onChangeDetails={onChangeDetails} />
+        )}
+        {page === 2 && data.category === 'lost/found' && (
+          <MoreInfoLost onChangeDetails={onChangeOption} />
         )}
         <button type="button" onClick={() => setPage(prev => prev - 1)}>
           Cancel

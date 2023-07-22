@@ -6,7 +6,7 @@ const AddPetContent = ({ onChangeOption }) => {
         <input
           onChange={onChangeOption}
           type="radio"
-          name="radio"
+          name="category"
           value="your pet"
         />
       </label>
@@ -15,7 +15,7 @@ const AddPetContent = ({ onChangeOption }) => {
         <input
           onChange={onChangeOption}
           type="radio"
-          name="radio"
+          name="category"
           value="sell"
         />
       </label>
@@ -24,7 +24,7 @@ const AddPetContent = ({ onChangeOption }) => {
         <input
           onChange={onChangeOption}
           type="radio"
-          name="radio"
+          name="category"
           value="lost/found"
         />
       </label>
@@ -33,7 +33,7 @@ const AddPetContent = ({ onChangeOption }) => {
         <input
           onChange={onChangeOption}
           type="radio"
-          name="radio"
+          name="category"
           value="in good hands"
         />
       </label>
