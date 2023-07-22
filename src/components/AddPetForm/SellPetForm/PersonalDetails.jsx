@@ -1,6 +1,15 @@
-const PersDetails = ({ onChangeDetails }) => {
+const PersonalDetails = ({ onChangeDetails }) => {
   return (
     <>
+      <label>
+        Title of add
+        <input
+          onChange={onChangeDetails}
+          type="text"
+          name="title"
+          placeholder="Type title of add"
+        />
+      </label>
       <label>
         Pet’s name
         <input
@@ -14,7 +23,7 @@ const PersDetails = ({ onChangeDetails }) => {
         Date of birth
         <input
           onChange={onChangeDetails}
-          type="text"
+          type="date"
           name="date"
           placeholder="Type date of birth"
         />
@@ -32,4 +41,4 @@ const PersDetails = ({ onChangeDetails }) => {
   );
 };
 
-export default PersDetails;
+export default PersonalDetails;
