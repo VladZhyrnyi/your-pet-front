@@ -8,6 +8,7 @@ import {
   Div,
 } from './NoticesCategoriesNav.styled';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+import { ButtonAddPet } from 'components/Buttons';
 
 const NoticesCategoriesNav = () => {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
@@ -53,14 +54,15 @@ const NoticesCategoriesNav = () => {
               <SpriteIcon icon="filters-2" color="#54ADFF"></SpriteIcon>
             </ButtonFilter>
             <Div>
-              <ButtonFilter
+              {/* <ButtonFilter
                 background="linear-gradient(315deg, #419ef1, #9bd0ff)"
                 color="#FEF9F9"
                 width="80px"
               >
                 Add Pet
                 <SpriteIcon icon="plus" color="#FEF9F9"></SpriteIcon>
-              </ButtonFilter>
+              </ButtonFilter> */}
+              <ButtonAddPet></ButtonAddPet>
             </Div>
           </>
         )}
