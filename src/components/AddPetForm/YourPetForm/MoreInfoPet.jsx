@@ -1,4 +1,4 @@
-const MoreInfoPet = ({ onChangeDetails }) => {
+const MoreInfo = ({ onChangeDetails }) => {
   return (
     <>
       <label>
@@ -17,4 +17,4 @@ const MoreInfoPet = ({ onChangeDetails }) => {
   );
 };
 
-export default MoreInfoPet;
+export default MoreInfo;

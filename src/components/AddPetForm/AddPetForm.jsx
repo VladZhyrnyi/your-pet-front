@@ -1,5 +1,17 @@
 import AddPetContent from './AddPetContent';
-import { Container } from './AddPerForm.styled';
+import {
+  Container,
+  OptionItemCurrent,
+  OptionItem,
+  OptionLine,
+  OptionLineCurrent,
+  OptionList,
+  Title,
+  ButtonNext,
+  ButtonCancel,
+  ButtonContainer,
+  Form,
+} from './AddPerForm.styled';
 import { useState } from 'react';
 import PersDetails from './YourPetForm/PersDetails';
 import PersonalDetails from './SellPetForm/PersonalDetails';
@@ -7,9 +19,10 @@ import MoreInfo from './SellPetForm/MoreInfo';
 import MoreInfoPet from './YourPetForm/MoreInfoPet';
 import PersDetailsLost from './LostOrFound/PersDetails';
 import MoreInfoLost from './LostOrFound/MoreInfo';
+import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 
 const obj = {
-  category: '',
+  category: 'your pet',
   title: '',
   name: '',
   date: '',
@@ -21,87 +34,56 @@ const obj = {
   comments: '',
 };
 
+const title = ['Add pet', 'Add pet for sale', 'Add lost pet'];
+
 const AddPetForm = () => {
   const [page, setPage] = useState(0);
   const [data, setData] = useState(obj);
-  const [petTitle, setPetTitle] = useState('Add pet');
 
   const onChangeOption = ({ target: { name, value } }) => {
-    name === 'category' &&
+    const key = Object.keys(obj).find(item => item === name);
+    name === key &&
       setData(prev => ({
         ...prev,
-        category: value,
-      }));
-
-    name === 'sex' &&
-      setData(prev => ({
-        ...prev,
-        sex: value,
+        [key]: value,
       }));
   };
 
-  const onChangeDetails = ({ target: { name, value, file } }) => {
-    name === 'name' &&
+  const onChangeDetails = ({ target: { name, value, files } }) => {
+    const key = Object.keys(obj).find(item => item === name);
+    name === key &&
       setData(prev => ({
         ...prev,
-        name: value,
-      }));
-    name === 'date' &&
-      setData(prev => ({
-        ...prev,
-        date: value,
-      }));
-    name === 'type' &&
-      setData(prev => ({
-        ...prev,
-        type: value,
-      }));
-    name === 'title' &&
-      setData(prev => ({
-        ...prev,
-        title: value,
+        [key]: value,
       }));
     name === 'file' &&
       setData(prev => ({
         ...prev,
-        file: value,
-      }));
-    name === 'location' &&
-      setData(prev => ({
-        ...prev,
-        location: value,
-      }));
-    name === 'price' &&
-      setData(prev => ({
-        ...prev,
-        price: value,
-      }));
-    name === 'comments' &&
-      setData(prev => ({
-        ...prev,
-        comments: value,
+        file: files[0].name,
       }));
   };
 
   return (
     <Container>
-      <h1>{petTitle}</h1>
-      <ul>
-        <li>
+      <Title>{title[0]}</Title>
+      <OptionList>
+        <OptionItemCurrent>
           Choose option
-          <div></div>
-        </li>
-        <li>
+          <OptionLineCurrent />
+        </OptionItemCurrent>
+        <OptionItem>
           Personal details
-          <div></div>
-        </li>
-        <li>
+          <OptionLine />
+        </OptionItem>
+        <OptionItem>
           More info
-          <div></div>
-        </li>
-      </ul>
-      <form>
-        {page === 0 && <AddPetContent onChangeOption={onChangeOption} />}
+          <OptionLine />
+        </OptionItem>
+      </OptionList>
+      <Form>
+        {page === 0 && (
+          <AddPetContent onChangeOption={onChangeOption} data={data} />
+        )}
         {page === 1 && data.category === 'your pet' && (
           <PersDetails onChangeDetails={onChangeDetails} />
         )}
@@ -123,13 +105,17 @@ const AddPetForm = () => {
         {page === 2 && data.category === 'lost/found' && (
           <MoreInfoLost onChangeDetails={onChangeOption} />
         )}
-        <button type="button" onClick={() => setPage(prev => prev - 1)}>
-          {page === 0 ? 'Cancel' : 'Back'}
-        </button>
-        <button type="button" onClick={() => setPage(prev => prev + 1)}>
-          {page === 2 ? 'Done' : 'Next'}
-        </button>
-      </form>
+        <ButtonContainer>
+          <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
+            {page === 2 ? 'Done' : 'Next'}
+            <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
+          </ButtonNext>
+          <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
+            <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+            {page === 0 ? 'Cancel' : 'Back'}
+          </ButtonCancel>
+        </ButtonContainer>
+      </Form>
     </Container>
   );
 };
