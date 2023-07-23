@@ -1,5 +1,21 @@
 import styled from 'styled-components';
 
+export const Title = styled.h1`
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 24px;
+  padding: 0;
+
+  color: #111;
+  text-align: center;
+  font-family: Manrope700;
+  font-size: 24px;
+
+  @media (min-width: 768px) {
+    font-size: 48px;
+  }
+`;
+
 export const Form = styled.form`
   display: flex;
   justify-content: center;
@@ -16,9 +32,8 @@ export const Input = styled.input`
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 
   color: #888;
-  font-family: Inter;
+  font-family: Inter400;
   font-size: 20px;
-  font-weight: 400;
   letter-spacing: 0.56px;
 
   &:focus {
@@ -27,9 +42,8 @@ export const Input = styled.input`
 
   ::placeholder {
     color: #888;
-    font-family: Inter;
+    font-family: Inter400;
     font-size: 14px;
-    font-weight: 400;
     letter-spacing: 0.56px;
   }
   @media (min-width: 768px) {
@@ -49,11 +63,6 @@ export const Input = styled.input`
 export const InputWrapper = styled.div`
   position: relative;
   display: flex;
-  /* width: 280px; */
-
-  @media (min-width: 768px) {
-    /* width: 608px; */
-  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -72,31 +81,19 @@ export const Button = styled.button`
   border: none;
   background-color: #fff;
 
-  &:hover svg,
-  &:focus svg {
-    /* background-color: #54adff; */
-    /* fill: red; */
-  }
-`;
-
-export const SvgSubmit = styled.svg`
-  width: 24px;
-  height: 24px;
-  fill: #54adff;
-
-  /* transition: background-color 3000ms cubic-bezier(0.4, 0, 0.2, 1); */
-  /* transition: fill 500ms cubic-bezier(0.4, 0, 0.2, 1); */
-  /* transition: transform 1000ms cubic-bezier(0.4, 0, 0.2, 1); */
   transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
+  &:hover svg,
+  &:focus svg {
+    fill: red;
+    color: red;
+  }
+
+  &:hover,
+  &:focus {
+    border: none;
+    fill: red;
+    color: red;
     transform: scale(1.15);
   }
-`;
-
-export const SvgClean = styled.svg`
-background-color: red;
-  width: 24px;
-  height: 24px;
-  fill: #ffc107;
 `;
