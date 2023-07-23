@@ -1,11 +1,5 @@
-import MyDumbComponent from 'components/myDumbComponent';
-
 const MainPage = props => {
-  return (
-    <div>
-      <MyDumbComponent />
-    </div>
-  );
+  return <div>MainPage</div>;
 };
 
 export default MainPage;
