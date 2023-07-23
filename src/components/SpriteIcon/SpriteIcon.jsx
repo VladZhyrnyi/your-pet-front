@@ -8,7 +8,7 @@ const SvgWrapper = styled.svg`
   fill: currentColor; */
 `;
 
-const SpriteIcon = ({ icon, color = 'currentColor', size = "24px" }) => {
+const SpriteIcon = ({ icon, color = 'currentColor', size = '24px' }) => {
   return (
     <SvgWrapper
       width={size}

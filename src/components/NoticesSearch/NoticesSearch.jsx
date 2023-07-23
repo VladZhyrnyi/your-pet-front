@@ -5,10 +5,10 @@ import {
   Form,
   Input,
   InputWrapper,
-  SvgClean,
-  SvgSubmit,
+  Title,
 } from './NoticesSearch.styled';
-import svg from '../../images/symbol-defs.svg';
+import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+// import svg from '../../images/symbol-defs.svg';
 
 export const NoticesSearch = () => {
   const [inputValue, setInputValue] = useState('');
@@ -24,7 +24,6 @@ export const NoticesSearch = () => {
   };
 
   const handleChange = event => {
-    console.log(event.target.value.toLowerCase());
     setInputValue(event.target.value.toLowerCase());
   };
 
@@ -32,11 +31,11 @@ export const NoticesSearch = () => {
     setInputValue('');
   };
 
-  const isSearchText = inputValue.length;
-  console.log(isSearchText);
+  //   const isSearchText = inputValue.length;
 
   return (
     <>
+      <Title>Find your favorite pet</Title>
       <Form onSubmit={handleSubmit}>
         <InputWrapper>
           <Input
@@ -48,19 +47,12 @@ export const NoticesSearch = () => {
           />
           <ButtonWrapper>
             <Button type="submit">
-              <SvgSubmit>
-                <use href={`${svg}#icon-search`}></use>
-              </SvgSubmit>
+              <SpriteIcon icon="search" color="#54adff"></SpriteIcon>
             </Button>
 
             {inputValue.length > 0 && (
               <Button type="button" onClick={handleClean}>
-                {/* <svg width="24" height="24" fill="red">
-                  <use href={`${svg}#icon-cross-small`}></use>
-                </svg> */}
-                <SvgClean>
-                <use href={`${svg}#icon-cross-small`}></use>
-              </SvgClean>
+                <SpriteIcon icon="cross" color="#ffc107"></SpriteIcon>
               </Button>
             )}
           </ButtonWrapper>
