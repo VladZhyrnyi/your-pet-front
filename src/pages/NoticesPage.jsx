@@ -1,10 +1,12 @@
+import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
 
 const NoticesPage = props => {
   return (
     <>
-      <div>NoticesPage</div>
+      {/* <div>NoticesPage</div> */}
       <NoticesSearch />
+      <NoticesCategoriesNav/>
     </>
   );
 };
