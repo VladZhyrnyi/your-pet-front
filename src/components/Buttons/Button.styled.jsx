@@ -62,7 +62,7 @@ export const BtnLmWhiteSmall = styled(BtnLmWhite)`
   font-family: Manrope700, sans-serif;
 `;
 
-export const BtnAddPat = styled.button`
+export const BtnAddPet = styled.button`
   width: 80px;
   height: 80px;
   display: flex;

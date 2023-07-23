@@ -5,7 +5,7 @@ import {
   BtnLmBlue,
   BtnLmWhiteSmall,
   BtnLmBlueSmall,
-  BtnAddPat,
+  BtnAddPet,
   BtnFilter,
   BtnLocation,
   WrapperIcon,
@@ -52,13 +52,13 @@ const ButtonWhiteSmall = ({ prop }) => {
   );
 };
 
-const ButtonAddPad = ({ prop }) => {
+const ButtonAddPet = ({ prop }) => {
   return (
     <>
-      <BtnAddPat onClick={prop}>
+      <BtnAddPet onClick={prop}>
         <SpriteIcon icon="plus" color="#FDF7F2" />
         Add pet
-      </BtnAddPat>
+      </BtnAddPet>
     </>
   );
 };
@@ -93,7 +93,7 @@ export {
   ButtonBlueBig,
   ButtonWhiteSmall,
   ButtonBlueSmall,
-  ButtonAddPad,
+  ButtonAddPet,
   ButtonFilter,
   ButtonLocation,
 };
