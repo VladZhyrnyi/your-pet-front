@@ -52,7 +52,7 @@ export const NameCategory = styled.p`
 
   color: #111;
   text-align: center;
-  font-family: Manrope500;
+  font-family: Manrope500, sans-serif;
   font-size: 14px;
 `;
 

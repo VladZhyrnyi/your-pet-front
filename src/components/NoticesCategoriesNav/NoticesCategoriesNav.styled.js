@@ -42,7 +42,7 @@ export const Button = styled.button`
   background: #cce4fb;
 
   color: #54adff;
-  font-family: Manrope500;
+  font-family: Manrope500, sans-serif;
   font-size: 14px;
   letter-spacing: 0.56px;
 
@@ -89,7 +89,7 @@ export const ButtonFilter = styled.button`
   background: ${({ background }) => background};
 
   color: ${({ color }) => color};
-  font-family: Manrope;
+  font-family: Manrope, sans-serif;
   font-size: 12px;
   font-weight: 600;
 

@@ -8,7 +8,7 @@ export const Title = styled.h1`
 
   color: #111;
   text-align: center;
-  font-family: Manrope700;
+  font-family: Manrope700, sans-serif;
   font-size: 24px;
 
   @media (min-width: 768px) {
@@ -33,7 +33,7 @@ export const Input = styled.input`
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 
   color: #888;
-  font-family: Inter400;
+  font-family: Inter400, sans-serif;
   font-size: 20px;
   letter-spacing: 0.56px;
 
@@ -43,7 +43,7 @@ export const Input = styled.input`
 
   ::placeholder {
     color: #888;
-    font-family: Inter400;
+    font-family: Inter400, sans-serif;
     font-size: 14px;
     letter-spacing: 0.56px;
   }

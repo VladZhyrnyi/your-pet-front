@@ -67,7 +67,7 @@ export const NameCategory = styled.p`
 
   color: #111;
   text-align: center;
-  font-family: Manrope500;
+  font-family: Manrope500, sans-serif;
   font-size: 14px;
 `;
 
@@ -102,7 +102,7 @@ export const TableUnit = styled.td`
   padding-right: 20px;
 
   color: #000;
-  font-family: Manrope600;
+  font-family: Manrope600, sans-serif;
   font-size: 14px;
 
   @media (min-width: 768px) {
@@ -115,7 +115,7 @@ export const TableUnitData = styled.td`
   padding-bottom: 8px;
 
   color: #000;
-  font-family: Manrope500;
+  font-family: Manrope500, sans-serif;
   font-size: 12px;
 
   @media (min-width: 768px) {
@@ -125,7 +125,7 @@ export const TableUnitData = styled.td`
 
 export const Comment = styled.span`
   color: #000;
-  font-family: Manrope600;
+  font-family: Manrope600, sans-serif;
   font-size: 14px;
   letter-spacing: 0.56px;
 
@@ -139,7 +139,7 @@ export const CommentData = styled.p`
   margin: 0 0 12px 0;
 
   color: #000;
-  font-family: Manrope500;
+  font-family: Manrope500, sans-serif;
   font-size: 14px;
   letter-spacing: 0.56px;
 
@@ -189,9 +189,8 @@ export const ButtonDetail = styled.button`
   background: ${({ background }) => background};
 
   color: ${({ color }) => color};
-  font-family: Manrope;
+  font-family: Manrope600, sans-serif;
   font-size: 12px;
-  font-weight: 600;
 
   transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -201,8 +200,7 @@ export const ButtonDetail = styled.button`
   }
 
   @media (min-width: 768px) {
-    font-family: Manrope;
-    font-weight: 700;
+    font-family: Manrope700, sans-serif;
     font-size: 16px;
     border-radius: 40px;
     letter-spacing: 0.64px;

@@ -1,8 +1,7 @@
 import React from 'react';
 import {
-    ButtonDetail,
+  ButtonDetail,
   ButtonDetailWrapper,
-  ButtonFilterWrapper,
   Comment,
   CommentData,
   Img,
@@ -16,7 +15,6 @@ import {
   Title,
 } from './NoticeDetail.styled';
 import img from '../NoticeCategoryItem/Rectangle.jpg';
-import { ButtonFilter } from 'components/NoticesCategoriesNav/NoticesCategoriesNav.styled';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 
 const NoticeDetail = () => {
@@ -28,34 +26,36 @@ const NoticeDetail = () => {
       </ThumbImg>
       <Title>Сute dog looking for a home</Title>
       <Table>
-        <TableRow>
-          <TableUnit>Name:</TableUnit>
-          <TableUnitData>Rich</TableUnitData>
-        </TableRow>
-        <TableRow>
-          <TableUnit>Birthday:</TableUnit>
-          <TableUnitData>21.09.2020</TableUnitData>
-        </TableRow>
-        <TableRow>
-          <TableUnit>Type:</TableUnit>
-          <TableUnitData>Pomeranian</TableUnitData>
-        </TableRow>
-        <TableRow>
-          <TableUnit>Place:</TableUnit>
-          <TableUnitData>Lviv</TableUnitData>
-        </TableRow>
-        <TableRow>
-          <TableUnit>The sex:</TableUnit>
-          <TableUnitData>male</TableUnitData>
-        </TableRow>
-        <TableRow>
-          <TableUnit>Email:</TableUnit>
-          <TableUnitData>user@mail.com</TableUnitData>
-        </TableRow>
-        <TableRow>
-          <TableUnit>Phone:</TableUnit>
-          <TableUnitData>+380971234567</TableUnitData>
-        </TableRow>
+        <tbody>
+          <TableRow>
+            <TableUnit>Name:</TableUnit>
+            <TableUnitData>Rich</TableUnitData>
+          </TableRow>
+          <TableRow>
+            <TableUnit>Birthday:</TableUnit>
+            <TableUnitData>21.09.2020</TableUnitData>
+          </TableRow>
+          <TableRow>
+            <TableUnit>Type:</TableUnit>
+            <TableUnitData>Pomeranian</TableUnitData>
+          </TableRow>
+          <TableRow>
+            <TableUnit>Place:</TableUnit>
+            <TableUnitData>Lviv</TableUnitData>
+          </TableRow>
+          <TableRow>
+            <TableUnit>The sex:</TableUnit>
+            <TableUnitData>male</TableUnitData>
+          </TableRow>
+          <TableRow>
+            <TableUnit>Email:</TableUnit>
+            <TableUnitData>user@mail.com</TableUnitData>
+          </TableRow>
+          <TableRow>
+            <TableUnit>Phone:</TableUnit>
+            <TableUnitData>+380971234567</TableUnitData>
+          </TableRow>
+        </tbody>
       </Table>
       <CommentData>
         <Comment>Comments:</Comment>Rich would be the perfect addition to an
@@ -66,7 +66,7 @@ const NoticeDetail = () => {
         <ButtonDetail
           background={p => p.theme.colors.blue}
           color={p => p.theme.colors.white}
-          width="129px"
+          width="130px"
         >
           Add to
           <SpriteIcon icon="heart" color="#FFFFFF"></SpriteIcon>
