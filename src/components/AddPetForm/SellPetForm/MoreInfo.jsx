@@ -1,69 +1,73 @@
-import './sellPetForm.css';
+import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+import {
+  FormPersonal,
+  SexLabel,
+  SexInput,
+  RadioWrapper,
+  SexWrapper,
+  Label,
+  Input,
+  TextArea,
+} from '../AddPerForm.styled';
 
 const MoreInfo = ({ onChangeDetails, onChangeOption }) => {
   return (
-    <>
-      <label>
-        The sex
-        <div className="wrapper">
-          <div className="option">
-            <input
-              className="input"
-              type="radio"
-              name="sex"
-              value="Female"
-              onChange={onChangeOption}
-            />
-            <div className="btn">
-              <span className="span">Female</span>
-            </div>
-          </div>
-          <div className="option">
-            <input
-              className="input"
-              type="radio"
-              name="sex"
-              value="Male"
-              onChange={onChangeOption}
-            />
-            <div className="btn">
-              <span className="span">Male</span>
-            </div>
-          </div>
-        </div>
-      </label>
-      <label>
-        Load the pet’s image:
-        <input type="file" name="file" placeholder="add pet photo" />
-      </label>
-      <label>
+    <FormPersonal>
+      <p>The sex</p>
+      <RadioWrapper>
+        <SexLabel htmlFor="Female" />
+        <SexWrapper>
+          <SpriteIcon icon="female" color="#F43F5E" size="24px" />
+          Female
+        </SexWrapper>
+        <SexInput
+          id="Female"
+          type="radio"
+          name="sex"
+          value="female"
+          onChange={onChangeOption}
+        />
+        <SexLabel htmlFor="male" />
+        <SexWrapper>
+          <SpriteIcon icon="male" color="#54ADFF" size="24px" />
+          Male
+        </SexWrapper>
+        <SexInput
+          id="male"
+          type="radio"
+          name="sex"
+          value="male"
+          onChange={onChangeOption}
+        />
+      </RadioWrapper>
+      <Label>
         Location
-        <input
+        <Input
           onChange={onChangeDetails}
           type="text"
           name="location"
-          placeholder="Pet location"
+          placeholder="Location pet"
         />
-      </label>
-      <label>
+      </Label>
+      <Label>
         Price
-        <input
+        <Input
           onChange={onChangeDetails}
           type="text"
           name="price"
-          placeholder="Pet price"
+          placeholder="Price of pet"
         />
-      </label>
-      <label>
+      </Label>
+      <Label>
         Comments
-        <textarea
+        <TextArea
           onChange={onChangeDetails}
+          type="text"
           name="comments"
-          placeholder="Something about pet"
-          maxLength="100"
-        ></textarea>
-      </label>
-    </>
+          placeholder="Comments about pet"
+        />
+      </Label>
+    </FormPersonal>
   );
 };
 

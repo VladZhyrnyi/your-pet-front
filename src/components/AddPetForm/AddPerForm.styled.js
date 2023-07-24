@@ -300,3 +300,37 @@ export const TextArea = styled.textarea`
     letter-spacing: 0.56px;
   }
 `;
+
+export const RadioWrapper = styled.div`
+  display: flex;
+  gap: 7px;
+`;
+
+export const SexLabel = styled.label`
+  color: var(--c, #888);
+  /* font-family: Manrope; */
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.64px;
+  cursor: pointer;
+`;
+
+export const SexWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SexInput = styled.input`
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+
+  &:checked + label {
+    color: ${p => p.theme.colors.white};
+    background-color: ${p => p.theme.colors.blue};
+    fill: white !important;
+  }
+`;
