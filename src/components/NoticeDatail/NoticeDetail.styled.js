@@ -98,8 +98,8 @@ export const Table = styled.table`
 export const TableRow = styled.tr``;
 
 export const TableUnit = styled.td`
-  padding-bottom: 8px;
-  padding-right: 20px;
+  padding: 0px 20px 8px 0px;
+  border: none;
 
   color: #000;
   font-family: Manrope600, sans-serif;
@@ -112,7 +112,8 @@ export const TableUnit = styled.td`
 `;
 
 export const TableUnitData = styled.td`
-  padding-bottom: 8px;
+  padding: 0px 0px 8px 0px;
+  border: none;
 
   color: #000;
   font-family: Manrope500, sans-serif;
