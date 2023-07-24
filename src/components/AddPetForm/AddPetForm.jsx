@@ -10,7 +10,8 @@ import {
   ButtonNext,
   ButtonCancel,
   ButtonContainer,
-  Form,
+  OptionItemDone,
+  OptionLineDone,
 } from './AddPerForm.styled';
 import { useState } from 'react';
 import PersDetails from './YourPetForm/PersDetails';
@@ -67,55 +68,84 @@ const AddPetForm = () => {
     <Container>
       <Title>{title[0]}</Title>
       <OptionList>
-        <OptionItemCurrent>
-          Choose option
-          <OptionLineCurrent />
-        </OptionItemCurrent>
-        <OptionItem>
-          Personal details
-          <OptionLine />
-        </OptionItem>
-        <OptionItem>
-          More info
-          <OptionLine />
-        </OptionItem>
-      </OptionList>
-      <Form>
+        {page === 0 ? (
+          <OptionItemCurrent>
+            Choose option
+            <OptionLineCurrent />
+          </OptionItemCurrent>
+        ) : (
+          <OptionItemDone>
+            Choose option
+            <OptionLineDone />
+          </OptionItemDone>
+        )}
         {page === 0 && (
-          <AddPetContent onChangeOption={onChangeOption} data={data} />
+          <OptionItem>
+            Personal details
+            <OptionLine />
+          </OptionItem>
         )}
-        {page === 1 && data.category === 'your pet' && (
-          <PersDetails onChangeDetails={onChangeDetails} />
+        {page === 1 && (
+          <OptionItemCurrent>
+            Personal details
+            <OptionLineCurrent />
+          </OptionItemCurrent>
         )}
-        {page === 1 && data.category === 'sell' && (
-          <PersonalDetails onChangeDetails={onChangeDetails} />
+        {page > 1 && (
+          <OptionItemDone>
+            Personal details
+            <OptionLineDone />
+          </OptionItemDone>
         )}
-        {page === 1 && data.category === 'lost/found' && (
-          <PersDetailsLost onChangeDetails={onChangeDetails} />
+        {page < 2 && (
+          <OptionItem>
+            More info
+            <OptionLine />
+          </OptionItem>
         )}
-        {page === 2 && data.category === 'your pet' && (
-          <MoreInfoPet onChangeDetails={onChangeDetails} />
+        {page === 2 && (
+          <OptionItemCurrent>
+            More info
+            <OptionLineCurrent />
+          </OptionItemCurrent>
         )}
-        {page === 2 && data.category === 'sell' && (
-          <MoreInfo
-            onChangeDetails={onChangeDetails}
-            onChangeOption={onChangeOption}
-          />
-        )}
-        {page === 2 && data.category === 'lost/found' && (
-          <MoreInfoLost onChangeDetails={onChangeOption} />
-        )}
-        <ButtonContainer>
-          <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
-            {page === 2 ? 'Done' : 'Next'}
-            <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
-          </ButtonNext>
-          <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
-            <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
-            {page === 0 ? 'Cancel' : 'Back'}
-          </ButtonCancel>
-        </ButtonContainer>
-      </Form>
+      </OptionList>
+      {/* <Form> */}
+      {page === 0 && (
+        <AddPetContent onChangeOption={onChangeOption} data={data} />
+      )}
+      {page === 1 && data.category === 'your pet' && (
+        <PersDetails onChangeDetails={onChangeDetails} />
+      )}
+      {page === 1 && data.category === 'sell' && (
+        <PersonalDetails onChangeDetails={onChangeDetails} />
+      )}
+      {page === 1 && data.category === 'lost/found' && (
+        <PersDetailsLost onChangeDetails={onChangeDetails} />
+      )}
+      {page === 2 && data.category === 'your pet' && (
+        <MoreInfoPet onChangeDetails={onChangeDetails} />
+      )}
+      {page === 2 && data.category === 'sell' && (
+        <MoreInfo
+          onChangeDetails={onChangeDetails}
+          onChangeOption={onChangeOption}
+        />
+      )}
+      {page === 2 && data.category === 'lost/found' && (
+        <MoreInfoLost onChangeDetails={onChangeOption} />
+      )}
+      <ButtonContainer>
+        <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
+          {page === 2 ? 'Done' : 'Next'}
+          <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
+        </ButtonNext>
+        <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
+          <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+          {page === 0 ? 'Cancel' : 'Back'}
+        </ButtonCancel>
+      </ButtonContainer>
+      {/* </Form> */}
     </Container>
   );
 };

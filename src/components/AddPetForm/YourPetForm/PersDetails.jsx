@@ -1,34 +1,36 @@
+import { FormPersonal, Input, Label } from '../AddPerForm.styled';
+
 const PersDetails = ({ onChangeDetails }) => {
   return (
-    <>
-      <label>
+    <FormPersonal>
+      <Label>
         Pet’s name
-        <input
+        <Input
           onChange={onChangeDetails}
           type="text"
           name="name"
           placeholder="Type name pet"
         />
-      </label>
-      <label>
+      </Label>
+      <Label>
         Date of birth
-        <input
+        <Input
           onChange={onChangeDetails}
           type="text"
           name="date"
           placeholder="Type date of birth"
         />
-      </label>
-      <label>
+      </Label>
+      <Label>
         Type
-        <input
+        <Input
           onChange={onChangeDetails}
           type="text"
           name="type"
           placeholder="Type of pet"
         />
-      </label>
-    </>
+      </Label>
+    </FormPersonal>
   );
 };
 

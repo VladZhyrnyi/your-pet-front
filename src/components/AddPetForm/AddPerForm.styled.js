@@ -38,6 +38,17 @@ export const OptionItemCurrent = styled.li`
   font-style: normal;
   line-height: normal;
 `;
+
+export const OptionItemDone = styled.li`
+  position: relative;
+  width: calc((100% - 28px) / 3);
+  color: ${p => p.theme.colors.green};
+  font-family: Manrope500, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  line-height: normal;
+`;
+
 export const OptionItem = styled.li`
   position: relative;
   width: calc((100% - 28px) / 3);
@@ -57,6 +68,17 @@ export const OptionLineCurrent = styled.div`
   left: 0;
   border-radius: 8px;
 `;
+
+export const OptionLineDone = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background-color: ${p => p.theme.colors.green};
+  bottom: -20px;
+  left: 0;
+  border-radius: 8px;
+`;
+
 export const OptionLine = styled.div`
   position: absolute;
   height: 8px;
@@ -68,11 +90,25 @@ export const OptionLine = styled.div`
   border-radius: 8px;
 `;
 
-export const Form = styled.form`
+export const FormOption = styled.form`
   margin-top: 44px;
   display: flex;
   flex-direction: column;
   gap: 6px;
+`;
+
+export const FormPersonal = styled.form`
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+export const FormYourMore = styled.form`
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 `;
 
 export const ButtonContainer = styled.div`
@@ -123,7 +159,7 @@ export const ButtonCancel = styled.button`
   gap: 12px;
   border-radius: 40px;
   border: none;
-  background: ${p => p.theme.colors.white};
+  background: #fff;
 
   color: ${p => p.theme.colors.blue};
   font-family: Manrope700, sans-serif;
@@ -166,5 +202,101 @@ export const RadioBtn = styled.input`
   &:checked + label {
     color: ${p => p.theme.colors.white};
     background-color: ${p => p.theme.colors.blue};
+  }
+`;
+
+export const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: ${p => p.theme.colors.black};
+  font-family: Manrope500, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+`;
+
+export const Input = styled.input`
+  display: flex;
+  width: 245px;
+  height: 20px;
+  padding: 8px 16px;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 40px;
+  border: 1px solid ${p => p.theme.colors.blue};
+`;
+
+export const FileContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const FileTitle = styled.p`
+  color: ${p => p.theme.colors.black};
+  margin: 0px 14px 0px 0px;
+  font-family: Manrope500, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+`;
+
+export const FileDiv = styled.div`
+  position: relative;
+  border-radius: 20px;
+  display: inline-block;
+  width: 112px;
+  height: 112px;
+  background-color: ${p => p.theme.colors.blueLight};
+  margin: 0 auto;
+
+  & svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+`;
+
+export const FileLabel = styled.label`
+  width: 100%;
+  height: 100%;
+`;
+
+export const FileInput = styled.input`
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+`;
+
+export const TextArea = styled.textarea`
+  display: flex;
+  width: 245px;
+  height: 92px;
+  padding: 8px 16px;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+  resize: none;
+
+  border-radius: 20px;
+  border: 1px solid ${p => p.theme.colors.blue};
+
+  color: #888;
+  font-family: Manrope400, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 21px; /* 21px */
+  letter-spacing: 0.56px;
+
+  &::placeholder {
+    color: #888;
+    font-family: Manrope400, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px; /* 21px */
+    letter-spacing: 0.56px;
   }
 `;
