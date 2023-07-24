@@ -115,7 +115,7 @@ export const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 90px;
+  margin-top: 24px;
 `;
 
 export const ButtonNext = styled.button`

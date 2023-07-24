@@ -130,6 +130,7 @@ const AddPetForm = () => {
         <MoreInfo
           onChangeDetails={onChangeDetails}
           onChangeOption={onChangeOption}
+          data={data}
         />
       )}
       {page === 2 && data.category === 'lost/found' && (
