@@ -16,7 +16,7 @@ const MoreInfo = ({ onChangeDetails }) => {
     <FormYourMore>
       <FileContainer>
         <FileTitle>Load the pet’s image:</FileTitle>
-        <FileLabel for="1">
+        <FileLabel htmlFor="1">
           <FileDiv>
             <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
           </FileDiv>
