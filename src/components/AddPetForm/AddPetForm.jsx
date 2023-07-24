@@ -66,7 +66,10 @@ const AddPetForm = () => {
 
   return (
     <Container>
-      <Title>{title[0]}</Title>
+      {page === 0 && <Title>{title[0]}</Title>}
+      {page > 0 && data.category === 'your pet' && <Title>{title[0]}</Title>}
+      {page >= 1 && data.category === 'sell' && <Title>{title[1]}</Title>}
+      {page >= 1 && data.category === 'lost/found' && <Title>{title[2]}</Title>}
       <OptionList>
         {page === 0 ? (
           <OptionItemCurrent>
@@ -110,7 +113,6 @@ const AddPetForm = () => {
           </OptionItemCurrent>
         )}
       </OptionList>
-      {/* <Form> */}
       {page === 0 && (
         <AddPetContent onChangeOption={onChangeOption} data={data} />
       )}
@@ -133,7 +135,7 @@ const AddPetForm = () => {
         />
       )}
       {page === 2 && data.category === 'lost/found' && (
-        <MoreInfoLost onChangeDetails={onChangeOption} data={data} />
+        <MoreInfoLost onChangeDetails={onChangeDetails} data={data} />
       )}
       <ButtonContainer>
         <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>

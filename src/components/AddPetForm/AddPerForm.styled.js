@@ -227,6 +227,7 @@ export const Input = styled.input`
   flex-shrink: 0;
   border-radius: 40px;
   border: 1px solid ${p => p.theme.colors.blue};
+  outline: none;
 `;
 
 export const FileContainer = styled.div`
@@ -294,6 +295,8 @@ export const TextArea = styled.textarea`
   font-style: normal;
   line-height: 21px; /* 21px */
   letter-spacing: 0.56px;
+
+  outline: none;
 
   &::placeholder {
     color: #888;
