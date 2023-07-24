@@ -115,37 +115,44 @@ const AddPetForm = () => {
         <AddPetContent onChangeOption={onChangeOption} data={data} />
       )}
       {page === 1 && data.category === 'your pet' && (
-        <PersDetails onChangeDetails={onChangeDetails} />
+        <PersDetails onChangeDetails={onChangeDetails} setPage={setPage} />
       )}
       {page === 1 && data.category === 'sell' && (
-        <PersonalDetails onChangeDetails={onChangeDetails} />
+        <PersonalDetails onChangeDetails={onChangeDetails} setPage={setPage} />
       )}
       {page === 1 && data.category === 'lost/found' && (
-        <PersDetailsLost onChangeDetails={onChangeDetails} />
+        <PersDetailsLost onChangeDetails={onChangeDetails} setPage={setPage} />
       )}
       {page === 2 && data.category === 'your pet' && (
-        <MoreInfoPet onChangeDetails={onChangeDetails} />
+        <MoreInfoPet onChangeDetails={onChangeDetails} setPage={setPage} />
       )}
       {page === 2 && data.category === 'sell' && (
         <MoreInfo
           onChangeDetails={onChangeDetails}
           onChangeOption={onChangeOption}
           data={data}
+          setPage={setPage}
         />
       )}
       {page === 2 && data.category === 'lost/found' && (
-        <MoreInfoLost onChangeDetails={onChangeOption} data={data} />
+        <MoreInfoLost
+          onChangeDetails={onChangeOption}
+          data={data}
+          setPage={setPage}
+        />
       )}
-      <ButtonContainer>
-        <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
-          {page === 2 ? 'Done' : 'Next'}
-          <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
-        </ButtonNext>
-        <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
-          <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
-          {page === 0 ? 'Cancel' : 'Back'}
-        </ButtonCancel>
-      </ButtonContainer>
+      {page === 0 && (
+        <ButtonContainer>
+          <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
+            {page === 2 ? 'Done' : 'Next'}
+            <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
+          </ButtonNext>
+          <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
+            <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+            {page === 0 ? 'Cancel' : 'Back'}
+          </ButtonCancel>
+        </ButtonContainer>
+      )}
     </Container>
   );
 };

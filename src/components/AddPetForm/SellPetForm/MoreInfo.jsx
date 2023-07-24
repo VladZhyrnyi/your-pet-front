@@ -1,6 +1,5 @@
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import {
-  FormPersonal,
   Label,
   Input,
   TextArea,
@@ -10,13 +9,16 @@ import {
   RadioLabelSex,
   FileInput,
   FileContainer,
-  FileTitle,
   FileLabelLost,
   FileDiv,
   FormLostMore,
+  FileSellTitle,
+  SecondButtonContainer,
+  ButtonNext,
+  ButtonCancel,
 } from '../AddPerForm.styled';
 
-const MoreInfo = ({ onChangeDetails, onChangeOption, data }) => {
+const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   return (
     <>
       <SexTitle>The sex</SexTitle>
@@ -24,7 +26,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data }) => {
         <SexContainer>
           <RadioBtnSex
             id="female"
-            onChange={onChangeDetails}
+            onChange={onChangeOption}
             type="radio"
             name="sex"
             value="female"
@@ -41,10 +43,9 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data }) => {
               size="24px"
             />
           </RadioLabelSex>
-
           <RadioBtnSex
             id="male"
-            onChange={onChangeDetails}
+            onChange={onChangeOption}
             type="radio"
             name="sex"
             value="male"
@@ -63,17 +64,17 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data }) => {
           </RadioLabelSex>
         </SexContainer>
         <FileContainer>
-          <FileTitle>Load the pet’s image:</FileTitle>
-          <FileLabelLost htmlFor="1">
+          <FileSellTitle>Load the pet’s image:</FileSellTitle>
+          <FileLabelLost htmlFor="avatar">
             <FileDiv>
               <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
             </FileDiv>
           </FileLabelLost>
           <FileInput
-            id="1"
+            id="avatar"
             onChange={onChangeDetails}
             type="file"
-            name="file"
+            name="pet foto"
           />
         </FileContainer>
         <Label>
@@ -104,6 +105,16 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data }) => {
           ></TextArea>
         </Label>
       </FormLostMore>
+      <SecondButtonContainer>
+        <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
+          Done
+          <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
+        </ButtonNext>
+        <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
+          <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+          Back
+        </ButtonCancel>
+      </SecondButtonContainer>
     </>
   );
 };

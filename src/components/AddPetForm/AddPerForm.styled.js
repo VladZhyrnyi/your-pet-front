@@ -115,6 +115,14 @@ export const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 90px;
+`;
+
+export const SecondButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   margin-top: 24px;
 `;
 
@@ -322,6 +330,7 @@ export const SexContainer = styled.div`
 `;
 
 export const RadioLabelSex = styled.label`
+  height: 35px;
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -358,6 +367,16 @@ export const SexTitle = styled.p`
   margin-top: 36px;
   margin-bottom: 8px;
   color: ${p => p.theme.colors.black};
+  font-family: Manrope500, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+`;
+
+export const FileSellTitle = styled.p`
+  width: 81px;
+  color: ${p => p.theme.colors.black};
+  margin-right: 14px;
   font-family: Manrope500, sans-serif;
   font-size: 14px;
   font-style: normal;
