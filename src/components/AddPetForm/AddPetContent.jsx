@@ -1,8 +1,8 @@
-import { RadioBtn, RadioLabel } from './AddPerForm.styled';
+import { FormOption, RadioBtn, RadioLabel } from './AddPerForm.styled';
 
 const AddPetContent = ({ onChangeOption, data }) => {
   return (
-    <>
+    <FormOption>
       <RadioBtn
         id="1"
         onChange={onChangeOption}
@@ -42,7 +42,7 @@ const AddPetContent = ({ onChangeOption, data }) => {
         checked={data.category === 'in good hands'}
       />
       <RadioLabel for="4">In good hands</RadioLabel>
-    </>
+    </FormOption>
   );
 };
 
