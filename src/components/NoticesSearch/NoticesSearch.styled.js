@@ -84,17 +84,9 @@ export const Button = styled.button`
 
   transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover svg,
-  &:focus svg {
-    fill: red;
-    color: red;
-  }
-
   &:hover,
   &:focus {
     border: none;
-    fill: red;
-    color: red;
     transform: scale(1.15);
   }
 `;

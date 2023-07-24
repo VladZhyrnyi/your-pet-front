@@ -86,6 +86,13 @@ export const BtnAddPet = styled.button`
     background-origin: border-box;
     background-repeat: no-repeat;
   }
+
+  @media (max-width: 767px) {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+  }
 `;
 
 export const BtnFilter = styled.button`

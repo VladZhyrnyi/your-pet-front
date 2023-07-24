@@ -45,6 +45,13 @@ export const Button = styled.button`
   font-family: Manrope500;
   font-size: 14px;
   letter-spacing: 0.56px;
+
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 `;
 
 export const ButtonFilterWrapper = styled.div`
@@ -86,7 +93,12 @@ export const ButtonFilter = styled.button`
   font-size: 12px;
   font-weight: 600;
 
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
 
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 
   /* @media (max-width: 767px) {
   background: linear-gradient(315deg, #419ef1, #9bd0ff);
@@ -109,6 +121,4 @@ export const ButtonFilter = styled.button`
 export const Div = styled.div`
   position: absolute;
   bottom: 20px;
-`; 
-  
-    
+`;

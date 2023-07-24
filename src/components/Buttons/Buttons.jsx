@@ -88,6 +88,33 @@ const ButtonLocation = ({ prop, children }) => {
   );
 };
 
+const ButtonAge = ({ prop, children }) => {
+  return (
+    <>
+      <BtnLocation onClick={prop}>
+        <WrapperIcon>
+          <SpriteIcon icon="clock" />
+        </WrapperIcon>
+        <span>1 year</span>
+        {children}
+      </BtnLocation>
+    </>
+  );
+};
+const ButtonSex = ({ prop, children }) => {
+  return (
+    <>
+      <BtnLocation onClick={prop}>
+        <WrapperIcon>
+          <SpriteIcon icon="female" />
+        </WrapperIcon>
+        <span>female</span>
+        {children}
+      </BtnLocation>
+    </>
+  );
+};
+
 export {
   ButtonWhiteBig,
   ButtonBlueBig,
@@ -96,4 +123,6 @@ export {
   ButtonAddPet,
   ButtonFilter,
   ButtonLocation,
+  ButtonAge,
+  ButtonSex,
 };

@@ -38,29 +38,41 @@ const NoticesCategoriesNav = () => {
       <ButtonFilterWrapper>
         {viewportWidth >= 768 && (
           <>
-            <ButtonFilter background="#FEF9F9" color="#54ADFF" width="152px">
+            <ButtonFilter
+              background={p => p.theme.colors.white}
+              color={p => p.theme.colors.blue}
+              width="152px"
+            >
               Filter
               <SpriteIcon icon="filters-2" color="#54ADFF"></SpriteIcon>
             </ButtonFilter>
-            <ButtonFilter background="#54ADFF" color="#FEF9F9" width="129px">
+            <ButtonFilter
+              background={p => p.theme.colors.blue}
+              color={p => p.theme.colors.white}
+              width="129px"
+            >
               Add Pet
-              <SpriteIcon icon="plus-small" color="#FEF9F9"></SpriteIcon>
+              <SpriteIcon icon="plus-small" color="#FFFFFF"></SpriteIcon>
             </ButtonFilter>
           </>
         )}
         {viewportWidth < 768 && (
           <>
-            <ButtonFilter background="#C5DFF6" color="#54ADFF" width="40px">
+            <ButtonFilter
+              background={p => p.theme.colors.blueLight}
+              color={p => p.theme.colors.blue}
+              width="40px"
+            >
               <SpriteIcon icon="filters-2" color="#54ADFF"></SpriteIcon>
             </ButtonFilter>
             <Div>
               {/* <ButtonFilter
                 background="linear-gradient(315deg, #419ef1, #9bd0ff)"
-                color="#FEF9F9"
+                color="#FFFFFF"
                 width="80px"
               >
                 Add Pet
-                <SpriteIcon icon="plus" color="#FEF9F9"></SpriteIcon>
+                <SpriteIcon icon="plus" color="#FFFFFF"></SpriteIcon>
               </ButtonFilter> */}
               <ButtonAddPet></ButtonAddPet>
             </Div>
