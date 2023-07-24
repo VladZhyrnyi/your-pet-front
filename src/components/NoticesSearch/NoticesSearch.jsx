@@ -47,12 +47,12 @@ export const NoticesSearch = () => {
           />
           <ButtonWrapper>
             <Button type="submit">
-              <SpriteIcon icon="search" color="#54adff"></SpriteIcon>
+              <SpriteIcon icon="search" color="#54adff" fill></SpriteIcon>
             </Button>
 
             {inputValue.length > 0 && (
               <Button type="button" onClick={handleClean}>
-                <SpriteIcon icon="cross" color="#ffc107"></SpriteIcon>
+                <SpriteIcon icon="cross" color="#ffc107" ></SpriteIcon>
               </Button>
             )}
           </ButtonWrapper>

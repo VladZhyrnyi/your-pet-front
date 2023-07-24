@@ -8,16 +8,12 @@ const SvgWrapper = styled.svg`
   fill: currentColor; */
 `;
 
-<<<<<<< HEAD
-const SpriteIcon = ({ icon, color = 'currentColor', size = "24px", fill }) => {
-=======
-const SpriteIcon = ({ icon, color = 'currentColor', size = '24px' }) => {
->>>>>>> 68855fb (add sprite komponents to NoticesSearch)
+const SpriteIcon = ({ icon, color = 'currentColor', size = '24px', fill }) => {
   return (
     <SvgWrapper
       width={size}
       height={size}
-      style={{ fill: `${fill? color : 'none'}`, stroke: `${color}` }}
+      style={{ fill: `${fill ? color : 'none'}`, stroke: `${color}` }}
     >
       <use href={`${sprite}#icon-${icon}`} />
     </SvgWrapper>
