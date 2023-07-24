@@ -133,7 +133,7 @@ const AddPetForm = () => {
         />
       )}
       {page === 2 && data.category === 'lost/found' && (
-        <MoreInfoLost onChangeDetails={onChangeOption} />
+        <MoreInfoLost onChangeDetails={onChangeOption} data={data} />
       )}
       <ButtonContainer>
         <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
@@ -145,7 +145,6 @@ const AddPetForm = () => {
           {page === 0 ? 'Cancel' : 'Back'}
         </ButtonCancel>
       </ButtonContainer>
-      {/* </Form> */}
     </Container>
   );
 };

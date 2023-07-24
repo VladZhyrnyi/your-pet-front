@@ -3,7 +3,6 @@ import { styled } from 'styled-components';
 export const Container = styled.div`
   position: relative;
   width: 280px;
-  height: 496px;
   padding: 20px 8px 17px 8px;
   border-radius: 40px;
   margin: 0 auto;
@@ -112,14 +111,15 @@ export const FormYourMore = styled.form`
 `;
 
 export const ButtonContainer = styled.div`
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 90px;
 `;
 
 export const ButtonNext = styled.button`
-  display: flex;
+  display: inline-flex;
   cursor: pointer;
   width: 248px;
   padding: 8px 28px;
@@ -150,7 +150,8 @@ export const ButtonNext = styled.button`
 `;
 
 export const ButtonCancel = styled.button`
-  display: flex;
+  margin: 0;
+  display: inline-flex;
   cursor: pointer;
   width: 248px;
   padding: 8px 28px;
@@ -230,8 +231,8 @@ export const Input = styled.input`
 
 export const FileContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 27px;
 `;
 
 export const FileTitle = styled.p`
@@ -262,6 +263,9 @@ export const FileDiv = styled.div`
 
 export const FileLabel = styled.label`
   width: 100%;
+  height: 100%;
+`;
+export const FileLabelLost = styled.label`
   height: 100%;
 `;
 
@@ -301,29 +305,45 @@ export const TextArea = styled.textarea`
   }
 `;
 
-export const RadioWrapper = styled.div`
+export const FormLostMore = styled.form`
   display: flex;
-  gap: 7px;
+  flex-direction: column;
+  gap: 24px;
+`;
+export const FormLostPers = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 36px;
 `;
 
-export const SexLabel = styled.label`
-  color: var(--c, #888);
-  /* font-family: Manrope; */
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-  letter-spacing: 0.64px;
-  cursor: pointer;
+export const SexContainer = styled.div`
+  display: flex;
 `;
 
-export const SexWrapper = styled.div`
+export const RadioLabelSex = styled.label`
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
-  justify-content: center;
+  gap: 12px;
+  width: fit-content;
+  color: #888;
+  font-family: Manrope500;
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.56px;
+  padding: 8px 16px;
+  border-radius: 40px;
+  border-radius: 40px;
+  cursor: pointer;
+
+  & svg {
+    fill: green;
+  }
 `;
 
-export const SexInput = styled.input`
+export const RadioBtnSex = styled.input`
   width: 1px;
   height: 1px;
   opacity: 0;
@@ -331,6 +351,15 @@ export const SexInput = styled.input`
   &:checked + label {
     color: ${p => p.theme.colors.white};
     background-color: ${p => p.theme.colors.blue};
-    fill: white !important;
   }
+`;
+
+export const SexTitle = styled.p`
+  margin-top: 36px;
+  margin-bottom: 8px;
+  color: ${p => p.theme.colors.black};
+  font-family: Manrope500, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
 `;
