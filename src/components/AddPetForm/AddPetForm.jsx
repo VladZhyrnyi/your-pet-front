@@ -21,6 +21,9 @@ import MoreInfoPet from './YourPetForm/MoreInfoPet';
 import PersDetailsLost from './LostOrFound/PersDetails';
 import MoreInfoLost from './LostOrFound/MoreInfo';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+import PersDetailsHands from './InGoodHands/PersDetails';
+import MoreInfoHands from './InGoodHands/MoreInfo';
+import { useNavigate } from 'react-router-dom';
 
 const obj = {
   category: 'your pet',
@@ -35,11 +38,17 @@ const obj = {
   comments: '',
 };
 
-const title = ['Add pet', 'Add pet for sale', 'Add lost pet'];
+const title = [
+  'Add pet',
+  'Add pet for sale',
+  'Add lost pet',
+  'Add pet in good hands',
+];
 
 const AddPetForm = () => {
   const [page, setPage] = useState(0);
   const [data, setData] = useState(obj);
+  const navigate = useNavigate();
 
   const onChangeOption = ({ target: { name, value } }) => {
     const key = Object.keys(obj).find(item => item === name);
@@ -70,6 +79,9 @@ const AddPetForm = () => {
       {page > 0 && data.category === 'your pet' && <Title>{title[0]}</Title>}
       {page >= 1 && data.category === 'sell' && <Title>{title[1]}</Title>}
       {page >= 1 && data.category === 'lost/found' && <Title>{title[2]}</Title>}
+      {page >= 1 && data.category === 'in good hands' && (
+        <Title>{title[3]}</Title>
+      )}
       <OptionList>
         {page === 0 ? (
           <OptionItemCurrent>
@@ -129,6 +141,9 @@ const AddPetForm = () => {
       {page === 1 && data.category === 'lost/found' && (
         <PersDetailsLost onChangeDetails={onChangeDetails} setPage={setPage} />
       )}
+      {page === 1 && data.category === 'in good hands' && (
+        <PersDetailsHands onChangeDetails={onChangeDetails} setPage={setPage} />
+      )}
       {page === 2 && data.category === 'your pet' && (
         <MoreInfoPet onChangeDetails={onChangeDetails} setPage={setPage} />
       )}
@@ -147,13 +162,20 @@ const AddPetForm = () => {
           setPage={setPage}
         />
       )}
+      {page === 2 && data.category === 'in good hands' && (
+        <MoreInfoHands
+          onChangeDetails={onChangeOption}
+          data={data}
+          setPage={setPage}
+        />
+      )}
       {page === 0 && (
         <ButtonContainer>
           <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
             Next
             <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
           </ButtonNext>
-          <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
+          <ButtonCancel type="button" onClick={() => navigate('/')}>
             <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
             Cancel
           </ButtonCancel>
