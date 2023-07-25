@@ -8,7 +8,7 @@ import {
   Label,
 } from '../AddPerForm.styled';
 
-const PersonalDetails = ({ onChangeDetails, setPage }) => {
+const PersonalDetails = ({ onChangeDetails, setPage, data }) => {
   return (
     <>
       <FormPersonal>
@@ -34,7 +34,7 @@ const PersonalDetails = ({ onChangeDetails, setPage }) => {
           Date of birth
           <Input
             onChange={onChangeDetails}
-            type="date"
+            type="text"
             name="date"
             placeholder="Type date of birth"
           />

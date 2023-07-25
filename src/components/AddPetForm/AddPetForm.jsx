@@ -118,7 +118,11 @@ const AddPetForm = () => {
         <PersDetails onChangeDetails={onChangeDetails} setPage={setPage} />
       )}
       {page === 1 && data.category === 'sell' && (
-        <PersonalDetails onChangeDetails={onChangeDetails} setPage={setPage} />
+        <PersonalDetails
+          onChangeDetails={onChangeDetails}
+          setPage={setPage}
+          data={data}
+        />
       )}
       {page === 1 && data.category === 'lost/found' && (
         <PersDetailsLost onChangeDetails={onChangeDetails} setPage={setPage} />
