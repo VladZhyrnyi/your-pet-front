@@ -1,14 +1,15 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import Logo from './Logo';
-import Navbar from './Navyfgyhbar';
+import Navbar from './Navbar';
 import AuthBar from './AuthBar';
 import MobileMenu from './MobileMenu';
 import MenuBtn from './MenuBtn';
 import useWindowWidth from 'hooks/useWindowWidth';
 
 export const HeaderContainer = styled.div`
+  /* position: relative; */
   display: flex;
   justify-content: space-between;
   align-items: baseline;
