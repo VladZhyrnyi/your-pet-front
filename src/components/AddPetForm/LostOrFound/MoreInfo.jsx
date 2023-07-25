@@ -1,5 +1,7 @@
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import {
+  ButtonCancel,
+  ButtonNext,
   FileContainer,
   FileDiv,
   FileInput,
@@ -10,12 +12,13 @@ import {
   Label,
   RadioBtnSex,
   RadioLabelSex,
+  SecondButtonContainer,
   SexContainer,
   SexTitle,
   TextArea,
 } from '../AddPerForm.styled';
 
-const MoreInfoLost = ({ onChangeDetails, data }) => {
+const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
   return (
     <>
       <SexTitle>The sex</SexTitle>
@@ -96,6 +99,16 @@ const MoreInfoLost = ({ onChangeDetails, data }) => {
           ></TextArea>
         </Label>
       </FormLostMore>
+      <SecondButtonContainer>
+        <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
+          Done
+          <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
+        </ButtonNext>
+        <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
+          <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+          Back
+        </ButtonCancel>
+      </SecondButtonContainer>
     </>
   );
 };

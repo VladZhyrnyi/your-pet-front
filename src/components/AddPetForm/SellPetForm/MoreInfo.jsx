@@ -1,68 +1,120 @@
-import './sellPetForm.css';
+import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+import {
+  Label,
+  Input,
+  TextArea,
+  SexTitle,
+  SexContainer,
+  RadioBtnSex,
+  RadioLabelSex,
+  FileInput,
+  FileContainer,
+  FileLabelLost,
+  FileDiv,
+  FormLostMore,
+  FileSellTitle,
+  SecondButtonContainer,
+  ButtonNext,
+  ButtonCancel,
+} from '../AddPerForm.styled';
 
-const MoreInfo = ({ onChangeDetails, onChangeOption }) => {
+const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   return (
     <>
-      <label>
-        The sex
-        <div className="wrapper">
-          <div className="option">
-            <input
-              className="input"
-              type="radio"
-              name="sex"
-              value="Female"
-              onChange={onChangeOption}
+      <SexTitle>The sex</SexTitle>
+      <FormLostMore>
+        <SexContainer>
+          <RadioBtnSex
+            id="female"
+            onChange={onChangeOption}
+            type="radio"
+            name="sex"
+            value="female"
+          />
+          <RadioLabelSex htmlFor="female">
+            Female
+            <SpriteIcon
+              icon="female"
+              color={
+                (data.sex === 'female' && 'white') ||
+                (data.sex === 'male' && '#888') ||
+                (data.sex === '' && '#F43F5E')
+              }
+              size="24px"
             />
-            <div className="btn">
-              <span className="span">Female</span>
-            </div>
-          </div>
-          <div className="option">
-            <input
-              className="input"
-              type="radio"
-              name="sex"
-              value="Male"
-              onChange={onChangeOption}
+          </RadioLabelSex>
+          <RadioBtnSex
+            id="male"
+            onChange={onChangeOption}
+            type="radio"
+            name="sex"
+            value="male"
+          />
+          <RadioLabelSex htmlFor="male">
+            Male
+            <SpriteIcon
+              icon="male"
+              color={
+                (data.sex === 'male' && 'white') ||
+                (data.sex === 'female' && '#888') ||
+                (data.sex === '' && '#54ADFF')
+              }
+              size="24px"
             />
-            <div className="btn">
-              <span className="span">Male</span>
-            </div>
-          </div>
-        </div>
-      </label>
-      <label>
-        Load the pet’s image:
-        <input type="file" name="file" placeholder="add pet photo" />
-      </label>
-      <label>
-        Location
-        <input
-          onChange={onChangeDetails}
-          type="text"
-          name="location"
-          placeholder="Pet location"
-        />
-      </label>
-      <label>
-        Price
-        <input
-          onChange={onChangeDetails}
-          type="text"
-          name="price"
-          placeholder="Pet price"
-        />
-      </label>
-      <label>
-        Comments
-        <textarea
-          onChange={onChangeDetails}
-          name="comments"
-          placeholder="Something about pet"
-          maxLength="100"
-        ></textarea>
-      </label>
+          </RadioLabelSex>
+        </SexContainer>
+        <FileContainer>
+          <FileSellTitle>Load the pet’s image:</FileSellTitle>
+          <FileLabelLost htmlFor="avatar">
+            <FileDiv>
+              <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
+            </FileDiv>
+          </FileLabelLost>
+          <FileInput
+            id="avatar"
+            onChange={onChangeDetails}
+            type="file"
+            name="pet foto"
+          />
+        </FileContainer>
+        <Label>
+          Location
+          <Input
+            onChange={onChangeDetails}
+            type="text"
+            name="location"
+            placeholder="Your location"
+          />
+        </Label>
+        <Label>
+          Price
+          <Input
+            onChange={onChangeDetails}
+            type="text"
+            name="price"
+            placeholder="Pet price"
+          />
+        </Label>
+        <Label>
+          Comments
+          <TextArea
+            onChange={onChangeDetails}
+            name="comments"
+            rows="5"
+            placeholder="Stay your comment"
+          ></TextArea>
+        </Label>
+      </FormLostMore>
+      <SecondButtonContainer>
+        <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
+          Done
+          <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
+        </ButtonNext>
+        <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
+          <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+          Back
+        </ButtonCancel>
+      </SecondButtonContainer>
     </>
   );
 };
