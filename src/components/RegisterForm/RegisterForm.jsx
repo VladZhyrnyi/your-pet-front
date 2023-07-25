@@ -22,6 +22,7 @@ const RegiserForm = () => {
   const methods = useForm();
   const [passIsValid, setPassIsValid] = useState('');
   const [confPassIsValid, setConfPasIsValid] = useState('');
+  // const [success, setSuccess] = useState(false);
   const [mismatch, setMismatch] = useState(false);
   // ----- State of FIRST password -----
   const [passValues, setPassValues] = useState({
@@ -52,6 +53,8 @@ const RegiserForm = () => {
     } else {
       setPassIsValid('');
     }
+
+    setPassValues({ ...passValues, password: e.target.value });
   };
   /* ----- Set value of the SECOND password input 
    in case of matching with value of the fitst pass input ----- */
