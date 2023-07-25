@@ -13,7 +13,7 @@ import {
   OptionItemDone,
   OptionLineDone,
 } from './AddPerForm.styled';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import PersDetails from './YourPetForm/PersDetails';
 import PersonalDetails from './SellPetForm/PersonalDetails';
 import MoreInfo from './SellPetForm/MoreInfo';
@@ -23,7 +23,7 @@ import MoreInfoLost from './LostOrFound/MoreInfo';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import PersDetailsHands from './InGoodHands/PersDetails';
 import MoreInfoHands from './InGoodHands/MoreInfo';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const obj = {
   category: 'your pet',
@@ -49,6 +49,8 @@ const AddPetForm = () => {
   const [page, setPage] = useState(0);
   const [data, setData] = useState(obj);
   const navigate = useNavigate();
+  const location = useLocation();
+  const backLocation = useRef(location.state?.from ?? '/');
 
   const onChangeOption = ({ target: { name, value } }) => {
     const key = Object.keys(obj).find(item => item === name);
