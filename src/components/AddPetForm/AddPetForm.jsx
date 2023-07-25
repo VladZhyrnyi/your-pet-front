@@ -146,12 +146,12 @@ const AddPetForm = () => {
       {page === 0 && (
         <ButtonContainer>
           <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
-            {page === 2 ? 'Done' : 'Next'}
+            Next
             <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
           </ButtonNext>
           <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
             <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
-            {page === 0 ? 'Cancel' : 'Back'}
+            Cancel
           </ButtonCancel>
         </ButtonContainer>
       )}

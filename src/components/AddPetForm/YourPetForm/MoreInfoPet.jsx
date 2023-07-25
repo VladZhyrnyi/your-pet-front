@@ -14,7 +14,7 @@ const {
   ButtonCancel,
 } = require('../AddPerForm.styled');
 
-const MoreInfo = ({ onChangeDetails, page, setPage }) => {
+const MoreInfo = ({ onChangeDetails, setPage }) => {
   return (
     <>
       <FormYourMore>

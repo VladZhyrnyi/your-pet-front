@@ -153,6 +153,10 @@ export const SecondButtonContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-top: 24px;
+
+  @media (min-width: 768px) {
+    flex-direction: row-reverse;
+  }
 `;
 
 export const ButtonNext = styled.button`
