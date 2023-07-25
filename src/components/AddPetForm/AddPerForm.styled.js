@@ -2,12 +2,17 @@ import { styled } from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
-  width: 280px;
+  width: 264px;
   padding: 20px 8px 17px 8px;
   border-radius: 40px;
   margin: 0 auto;
   background: var(--unnamed, #fff);
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+
+  @media (min-width: 768px) {
+    min-width: 392px;
+    padding: 20px 34px 20px 32px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -17,6 +22,10 @@ export const Title = styled.h1`
   font-size: 20px;
   font-style: normal;
   line-height: normal;
+
+  @media (min-width: 768px) {
+    font-size: 28px;
+  }
 `;
 
 export const OptionList = styled.ul`
@@ -26,6 +35,10 @@ export const OptionList = styled.ul`
   padding: 0;
   gap: 14px;
   margin-top: 24px;
+
+  @media (min-width: 768px) {
+    gap: 16px;
+  }
 `;
 
 export const OptionItemCurrent = styled.li`
@@ -36,6 +49,10 @@ export const OptionItemCurrent = styled.li`
   font-size: 10px;
   font-style: normal;
   line-height: normal;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 export const OptionItemDone = styled.li`
@@ -46,6 +63,10 @@ export const OptionItemDone = styled.li`
   font-size: 10px;
   font-style: normal;
   line-height: normal;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 export const OptionItem = styled.li`
@@ -56,6 +77,10 @@ export const OptionItem = styled.li`
   font-size: 10px;
   font-style: normal;
   line-height: normal;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 export const OptionLineCurrent = styled.div`
@@ -97,7 +122,7 @@ export const FormOption = styled.form`
 `;
 
 export const FormPersonal = styled.form`
-  margin-top: 32px;
+  margin-top: 36px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -116,6 +141,10 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-top: 90px;
+
+  @media (min-width: 768px) {
+    flex-direction: row-reverse;
+  }
 `;
 
 export const ButtonNext = styled.button`
@@ -144,6 +173,10 @@ export const ButtonNext = styled.button`
   }
 
   &:hover svg {
+    transform: scale(1.3);
+    transition: transform ${p => p.theme.transitionTimingFunction};
+  }
+  &:focus svg {
     transform: scale(1.3);
     transition: transform ${p => p.theme.transitionTimingFunction};
   }
@@ -177,6 +210,14 @@ export const ButtonCancel = styled.button`
   &:hover svg {
     transform: translate(-30%);
     transition: transform ${p => p.theme.transitionTimingFunction};
+  }
+  &:focus svg {
+    transform: translate(-30%);
+    transition: transform ${p => p.theme.transitionTimingFunction};
+  }
+
+  @media (min-width: 768px) {
+    max-width: 144px;
   }
 `;
 
@@ -215,6 +256,11 @@ export const Label = styled.label`
   font-size: 14px;
   font-style: normal;
   line-height: normal;
+
+  @media (min-width: 768px) {
+    gap: 8px;
+    font-size: 20px;
+  }
 `;
 
 export const Input = styled.input`
@@ -228,6 +274,24 @@ export const Input = styled.input`
   border-radius: 40px;
   border: 1px solid ${p => p.theme.colors.blue};
   outline: none;
+
+  &::placeholder {
+    color: var(--c, #888);
+    font-family: Manrope400;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 24px;
+    letter-spacing: 0.64px;
+
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    min-width: 360px;
+    height: 30px;
+  }
 `;
 
 export const FileContainer = styled.div`
@@ -243,6 +307,12 @@ export const FileTitle = styled.p`
   font-size: 14px;
   font-style: normal;
   line-height: normal;
+
+  @media (min-width: 768px) {
+    margin: 0px 16px 0px 0px;
+    font-size: 20px;
+    min-width: 114px;
+  }
 `;
 
 export const FileDiv = styled.div`
@@ -259,6 +329,12 @@ export const FileDiv = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  @media (min-width: 768px) {
+    min-width: 182px;
+    min-height: 182px;
+    border-radius: 40px;
   }
 `;
 
@@ -293,18 +369,32 @@ export const TextArea = styled.textarea`
   font-family: Manrope400, sans-serif;
   font-size: 14px;
   font-style: normal;
-  line-height: 21px; /* 21px */
+  line-height: 21px;
   letter-spacing: 0.56px;
 
   outline: none;
+
+  @media (min-width: 768px) {
+    min-width: 359px;
+    max-height: 61px;
+  }
 
   &::placeholder {
     color: #888;
     font-family: Manrope400, sans-serif;
     font-size: 14px;
     font-style: normal;
-    line-height: 21px; /* 21px */
+    line-height: 21px;
     letter-spacing: 0.56px;
+
+    @media (min-width: 768px) {
+      color: var(--c, #888);
+      font-family: Manrope400;
+      font-size: 16px;
+      font-style: normal;
+      line-height: 24px;
+      letter-spacing: 0.64px;
+    }
   }
 `;
 

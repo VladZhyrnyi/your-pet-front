@@ -12,7 +12,6 @@ const AddPetContent = ({ onChangeOption, data }) => {
         checked={data.category === 'your pet'}
       />
       <RadioLabel htmlFor="1">Your pet</RadioLabel>
-
       <RadioBtn
         id="2"
         onChange={onChangeOption}
@@ -22,7 +21,6 @@ const AddPetContent = ({ onChangeOption, data }) => {
         checked={data.category === 'sell'}
       />
       <RadioLabel htmlFor="2">Sell</RadioLabel>
-
       <RadioBtn
         id="3"
         onChange={onChangeOption}
@@ -32,7 +30,6 @@ const AddPetContent = ({ onChangeOption, data }) => {
         checked={data.category === 'lost/found'}
       />
       <RadioLabel htmlFor="3">Lost/Found</RadioLabel>
-
       <RadioBtn
         id="4"
         onChange={onChangeOption}
