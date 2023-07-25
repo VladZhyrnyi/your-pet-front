@@ -19,6 +19,7 @@ const PersonalDetails = ({ onChangeDetails, setPage, data }) => {
             type="text"
             name="title"
             placeholder="Type title of add"
+            value={data.title}
           />
         </Label>
         <Label>
@@ -28,6 +29,7 @@ const PersonalDetails = ({ onChangeDetails, setPage, data }) => {
             type="text"
             name="name"
             placeholder="Type name pet"
+            value={data.name}
           />
         </Label>
         <Label>
@@ -37,6 +39,7 @@ const PersonalDetails = ({ onChangeDetails, setPage, data }) => {
             type="text"
             name="date"
             placeholder="Type date of birth"
+            value={data.date}
           />
         </Label>
         <Label>
@@ -46,6 +49,7 @@ const PersonalDetails = ({ onChangeDetails, setPage, data }) => {
             type="text"
             name="type"
             placeholder="Type of pet"
+            value={data.type}
           />
         </Label>
       </FormPersonal>

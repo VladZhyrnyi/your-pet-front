@@ -34,7 +34,7 @@ const obj = {
   file: '',
   sex: '',
   location: '',
-  price: 0,
+  price: 'Pet price',
   comments: '',
 };
 
@@ -131,7 +131,11 @@ const AddPetForm = () => {
         <AddPetContent onChangeOption={onChangeOption} data={data} />
       )}
       {page === 1 && data.category === 'your pet' && (
-        <PersDetails onChangeDetails={onChangeDetails} setPage={setPage} />
+        <PersDetails
+          onChangeDetails={onChangeDetails}
+          setPage={setPage}
+          data={data}
+        />
       )}
       {page === 1 && data.category === 'sell' && (
         <PersonalDetails
@@ -141,13 +145,25 @@ const AddPetForm = () => {
         />
       )}
       {page === 1 && data.category === 'lost/found' && (
-        <PersDetailsLost onChangeDetails={onChangeDetails} setPage={setPage} />
+        <PersDetailsLost
+          onChangeDetails={onChangeDetails}
+          setPage={setPage}
+          data={data}
+        />
       )}
       {page === 1 && data.category === 'in good hands' && (
-        <PersDetailsHands onChangeDetails={onChangeDetails} setPage={setPage} />
+        <PersDetailsHands
+          onChangeDetails={onChangeDetails}
+          setPage={setPage}
+          data={data}
+        />
       )}
       {page === 2 && data.category === 'your pet' && (
-        <MoreInfoPet onChangeDetails={onChangeDetails} setPage={setPage} />
+        <MoreInfoPet
+          onChangeDetails={onChangeDetails}
+          setPage={setPage}
+          data={data}
+        />
       )}
       {page === 2 && data.category === 'sell' && (
         <MoreInfo

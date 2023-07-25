@@ -8,7 +8,7 @@ import {
   SecondButtonContainer,
 } from '../AddPerForm.styled';
 
-const PersDetails = ({ onChangeDetails, setPage }) => {
+const PersDetails = ({ onChangeDetails, setPage, data }) => {
   return (
     <>
       <FormPersonal>
@@ -19,6 +19,8 @@ const PersDetails = ({ onChangeDetails, setPage }) => {
             type="text"
             name="name"
             placeholder="Type name pet"
+            value={data.name}
+            required
           />
         </Label>
         <Label>
@@ -28,6 +30,8 @@ const PersDetails = ({ onChangeDetails, setPage }) => {
             type="text"
             name="date"
             placeholder="Type date of birth"
+            value={data.date}
+            required
           />
         </Label>
         <Label>
@@ -37,6 +41,8 @@ const PersDetails = ({ onChangeDetails, setPage }) => {
             type="text"
             name="type"
             placeholder="Type of pet"
+            value={data.type}
+            required
           />
         </Label>
       </FormPersonal>

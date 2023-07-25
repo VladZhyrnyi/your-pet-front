@@ -14,7 +14,7 @@ const {
   ButtonCancel,
 } = require('../AddPerForm.styled');
 
-const MoreInfo = ({ onChangeDetails, setPage }) => {
+const MoreInfo = ({ onChangeDetails, setPage, data }) => {
   return (
     <>
       <FormYourMore>
@@ -39,6 +39,7 @@ const MoreInfo = ({ onChangeDetails, setPage }) => {
             placeholder="Stay your comment"
             name="comments"
             rows="5"
+            value={data.comments}
           ></TextArea>
         </Label>
       </FormYourMore>

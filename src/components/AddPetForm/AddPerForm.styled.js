@@ -194,11 +194,11 @@ export const ButtonNext = styled.button`
   }
 `;
 
-export const ButtonCancel = styled.button`
+export const ButtonCancel = styled.a`
   margin: 0;
   display: inline-flex;
   cursor: pointer;
-  width: 248px;
+  width: 192px;
   padding: 8px 28px;
   justify-content: center;
   align-items: center;
@@ -229,7 +229,7 @@ export const ButtonCancel = styled.button`
   }
 
   @media (min-width: 768px) {
-    max-width: 144px;
+    max-width: 88px;
   }
 `;
 

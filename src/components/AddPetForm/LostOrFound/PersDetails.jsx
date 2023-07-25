@@ -8,7 +8,7 @@ import {
   SecondButtonContainer,
 } from '../AddPerForm.styled';
 
-const PersDetailsLost = ({ onChangeDetails, setPage }) => {
+const PersDetailsLost = ({ onChangeDetails, setPage, data }) => {
   return (
     <>
       <FormLostPers>
@@ -19,6 +19,7 @@ const PersDetailsLost = ({ onChangeDetails, setPage }) => {
             type="text"
             name="title"
             placeholder="Title of add"
+            value={data.title}
           />
         </Label>
         <Label>
@@ -28,6 +29,7 @@ const PersDetailsLost = ({ onChangeDetails, setPage }) => {
             type="text"
             name="name"
             placeholder="Type name pet"
+            value={data.name}
           />
         </Label>
         <Label>
@@ -37,6 +39,7 @@ const PersDetailsLost = ({ onChangeDetails, setPage }) => {
             type="text"
             name="date"
             placeholder="Type date of birth"
+            value={data.date}
           />
         </Label>
         <Label>
@@ -46,6 +49,7 @@ const PersDetailsLost = ({ onChangeDetails, setPage }) => {
             type="text"
             name="type"
             placeholder="Type of pet"
+            value={data.type}
           />
         </Label>
       </FormLostPers>
