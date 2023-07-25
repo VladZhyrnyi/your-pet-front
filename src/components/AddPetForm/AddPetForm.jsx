@@ -66,7 +66,10 @@ const AddPetForm = () => {
 
   return (
     <Container>
-      <Title>{title[0]}</Title>
+      {page === 0 && <Title>{title[0]}</Title>}
+      {page > 0 && data.category === 'your pet' && <Title>{title[0]}</Title>}
+      {page >= 1 && data.category === 'sell' && <Title>{title[1]}</Title>}
+      {page >= 1 && data.category === 'lost/found' && <Title>{title[2]}</Title>}
       <OptionList>
         {page === 0 ? (
           <OptionItemCurrent>
@@ -110,7 +113,6 @@ const AddPetForm = () => {
           </OptionItemCurrent>
         )}
       </OptionList>
-      {/* <Form> */}
       {page === 0 && (
         <AddPetContent onChangeOption={onChangeOption} data={data} />
       )}
@@ -148,12 +150,12 @@ const AddPetForm = () => {
       {page === 0 && (
         <ButtonContainer>
           <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
-            {page === 2 ? 'Done' : 'Next'}
+            Next
             <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
           </ButtonNext>
           <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
             <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
-            {page === 0 ? 'Cancel' : 'Back'}
+            Cancel
           </ButtonCancel>
         </ButtonContainer>
       )}

@@ -30,6 +30,7 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
             type="radio"
             name="sex"
             value="female"
+            checked={data.sex === 'female'}
           />
           <RadioLabelSex htmlFor="female">
             Female
@@ -50,6 +51,7 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
             type="radio"
             name="sex"
             value="male"
+            checked={data.sex === 'male'}
           />
           <RadioLabelSex htmlFor="male">
             Male
