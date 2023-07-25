@@ -1,57 +1,47 @@
-import * as React from 'react';
-import { Nav } from './Navigation/Nav';
-import { NavPage } from './NavPage';
+import { useState, useRef } from 'react';
+import styled from 'styled-components';
+
 import Logo from './Logo';
+import Navbar from './Navyfgyhbar';
+import AuthBar from './AuthBar';
+import MobileMenu from './MobileMenu';
+import MenuBtn from './MenuBtn';
+import useWindowWidth from 'hooks/useWindowWidth';
 
-// import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
-import { HeaderContainer } from './Header.styled';
-// import { Modal } from 'components/Modal';
-// import { useState } from 'react';
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 20px;
 
-export const Header = props => {
-  // const { window } = props;
-  // const [mobileOpen, setMobileOpen] = useState(false);
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1280px) {
+  }
+`;
 
-  // const handleDrawerToggle = () => {
-  //   setMobileOpen(prevState => !prevState);
-  // };
+export const Header = () => {
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
 
-  // const container =
-  //   window !== undefined ? () => window().document.body : undefined;
+  const windowWidth = useWindowWidth();
+
+  const isDesktop = windowWidth >= 1280;
+  const isMobile = windowWidth < 768;
 
   return (
     <HeaderContainer>
       <Logo />
-      {/* <div> */}
-         {/* icon{' '} 
-        <SpriteIcon
-          icon="icon-menu-burger"
-          color={p => p.theme.colors.yellow}
-        /> 
-         <Modal>
-          <Button>
-            {' '}
-            <SpriteIcon
-              icon="icon-cross-small"
-              color={p => p.theme.colors.blue}
-            />{' '}
-          </Button>
-          <NavPage />
-
-          <Nav />
-        </Modal>  */}
-      {/* </div> */}
-      {/* <div> */}
-        <NavPage />
-
-        <Nav />
-      {/* </div> */}
+      {isDesktop && <Navbar />}
+      {!isMobile && <AuthBar />}
+      {!isDesktop && (
+        <MenuBtn
+          isOpen={isOpenMenu}
+          onClick={() => setIsOpenMenu(!isOpenMenu)}
+        />
+      )}
+      {isOpenMenu && !isDesktop && <MobileMenu />}
     </HeaderContainer>
   );
 };
-
-// DrawerAppBar.propTypes = {
-//   window: PropTypes.func,
-// };
 
 export default Header;

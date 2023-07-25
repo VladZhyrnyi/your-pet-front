@@ -1,35 +1,12 @@
-import styled from 'styled-components';
-
-export const HeaderContainer = styled.div`
-  //  display: flex;
-  //  justify-content: space-between;
-  width: 280px;
-  height: 28px;
-  padding-top: 20px;
-  padding-left: 20px;
-
-  @media screen and (min-width: 768px) {
-    width: 704px;
-    height: 44px;
-  }
-  @media screen and (min-width: 1280px) {
-    display: flex;
-   justify-content: space-between;
-    width: 1248px;
-    height: 48px;
-    padding-top: 20px;
-    padding-left: 16px;
-  }
-`;
+import { styled } from 'styled-components';
 
 export const Menu = styled.div`
-z-index: 99999;
-`
+  z-index: 99999;
+`;
 
- export const Modal = styled(Menu)`
- z-index: 99999;
- 
- `
+export const Modal = styled(Menu)`
+  z-index: 99999;
+`;
 
 export const Button = styled.button`
   //  position: absolute;
