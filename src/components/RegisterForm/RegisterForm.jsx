@@ -1,14 +1,22 @@
-import { FormProvider, useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { FormProvider, useForm } from 'react-hook-form';
+
+import { registerUser } from 'redux/Auth/operations';
+
 import { Link } from 'react-router-dom';
+
 import Input from 'components/Input/Input';
+
 import PasswordInput from 'components/Input/PasswordInput';
+
 import {
   name_validation,
   email_validation,
   password_validation,
   confirm_password_validation,
 } from 'utils/inputValidations';
+
 import {
   Form,
   FormTitle,
@@ -19,6 +27,8 @@ import {
 } from './RegisterForm.styled';
 
 const RegiserForm = () => {
+  const dispatch = useDispatch();
+
   const methods = useForm();
   const [passIsValid, setPassIsValid] = useState('');
   const [confPassIsValid, setConfPasIsValid] = useState('');
@@ -70,7 +80,7 @@ const RegiserForm = () => {
   };
   const onSubmit = methods.handleSubmit(data => {
     if (passValues.password === confPassValues.password) {
-      console.log(data);
+      dispatch(registerUser(data));
       methods.reset();
       setPassIsValid('');
       setConfPasIsValid('');

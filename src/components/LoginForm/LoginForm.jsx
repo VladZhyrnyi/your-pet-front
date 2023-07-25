@@ -1,5 +1,9 @@
-import { FormProvider, useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+
+import { useDispatch } from 'react-redux';
+import { loginUser } from 'redux/Auth/operations';
+
 import { Link } from 'react-router-dom';
 import Input from 'components/Input/Input';
 import PasswordInput from 'components/Input/PasswordInput';
@@ -11,7 +15,10 @@ import {
   SubmitBtn,
   LinkToRegister,
 } from './LoginForm.styled';
+
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const methods = useForm();
   const [passIsValid, setPassIsValid] = useState('');
   const [passValues, setPassValues] = useState({
@@ -31,7 +38,7 @@ const LoginForm = () => {
   };
   const onSubmit = methods.handleSubmit(data => {
     // if (passValues.password === confPassValues.password) {
-    console.log(data);
+    dispatch(loginUser(data));
     methods.reset();
     setPassIsValid('');
     //   setConfPasIsValid('');

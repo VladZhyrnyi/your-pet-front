@@ -1,9 +1,9 @@
-import RegiserForm from 'components/RegisterForm/RegisterForm';
+import RegisterForm from 'components/RegisterForm/RegisterForm';
+
 const RegisterPage = props => {
   return (
     <>
-      <div>RegisterPage</div>
-      <RegiserForm />
+      <RegisterForm />
     </>
   );
 };
