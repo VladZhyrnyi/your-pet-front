@@ -260,6 +260,7 @@ export const RadioBtn = styled.input`
 `;
 
 export const Label = styled.label`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -276,6 +277,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
+  position: relative;
   display: flex;
   width: 245px;
   height: 20px;
@@ -298,6 +300,10 @@ export const Input = styled.input`
     @media (min-width: 768px) {
       font-size: 16px;
     }
+  }
+
+  &:required {
+    border: 1px solid red;
   }
 
   @media (min-width: 768px) {

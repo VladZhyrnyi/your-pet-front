@@ -20,7 +20,6 @@ const PersDetails = ({ onChangeDetails, setPage, data }) => {
             name="name"
             placeholder="Type name pet"
             value={data.name}
-            required
           />
         </Label>
         <Label>
@@ -31,7 +30,6 @@ const PersDetails = ({ onChangeDetails, setPage, data }) => {
             name="date"
             placeholder="Type date of birth"
             value={data.date}
-            required
           />
         </Label>
         <Label>
@@ -42,12 +40,11 @@ const PersDetails = ({ onChangeDetails, setPage, data }) => {
             name="type"
             placeholder="Type of pet"
             value={data.type}
-            required
           />
         </Label>
       </FormPersonal>
       <SecondButtonContainer>
-        <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
+        <ButtonNext type="submit" onClick={() => setPage(prev => prev + 1)}>
           Next
           <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
         </ButtonNext>

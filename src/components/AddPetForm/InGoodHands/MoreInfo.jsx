@@ -102,7 +102,7 @@ const MoreInfoHands = ({ onChangeDetails, data, setPage }) => {
         </Label>
       </FormLostMore>
       <SecondButtonContainer>
-        <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
+        <ButtonNext type="submit" onClick={() => setPage(prev => prev + 1)}>
           Done
           <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
         </ButtonNext>
