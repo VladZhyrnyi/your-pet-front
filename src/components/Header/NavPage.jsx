@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { NavPageContainer, PageItem, PageList } from './NavPage.styled';
 
-const pageItems = ['News','Find pet','Our friends']
+// const pageItems = ['News','Find pet','Our friends']
 
 
 
