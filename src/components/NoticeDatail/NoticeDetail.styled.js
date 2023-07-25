@@ -24,6 +24,15 @@ export const Notice = styled.div`
   }
 `;
 
+export const WrapperContent = styled.div`
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+`;
+
 export const ThumbImg = styled.div`
   position: relative;
   overflow: hidden;
@@ -40,7 +49,7 @@ export const ThumbImg = styled.div`
   @media (min-width: 768px) {
     width: 262px;
     height: 298px;
-    margin-bottom: 0px;
+    margin: 0px;
   }
 
   @media (min-width: 1280px) {
@@ -52,6 +61,14 @@ export const Img = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`;
+
+export const WrapperCont = styled.div`
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
 `;
 
 export const NameCategory = styled.p`
@@ -83,7 +100,9 @@ export const Title = styled.p`
   margin: 0px 0px 22px 0px;
 
   @media (min-width: 768px) {
-    margin: 0px 0px 20px 0px;
+    margin: 0px;
+    font-size: 28px;
+    letter-spacing: -0.28px;
   }
 `;
 
@@ -91,11 +110,16 @@ export const Table = styled.table`
   margin: 0 0 5px 0;
 
   @media (min-width: 768px) {
-    margin: 0 0 5px 0;
+    margin: 0px;
+    padding: 0px;
   }
 `;
 
-export const TableRow = styled.tr``;
+export const TableRow = styled.tr`
+  &:last-child td {
+    padding: 0px;
+  }
+`;
 
 export const TableUnit = styled.td`
   padding: 0px 20px 8px 0px;
@@ -122,6 +146,14 @@ export const TableUnitData = styled.td`
   @media (min-width: 768px) {
     font-size: 16px;
   }
+`;
+
+export const DataLink = styled.a`
+  color: #ffc107;
+  font-family: Manrope500;
+  font-size: 12px;
+  text-decoration-line: underline;
+  cursor: pointer;
 `;
 
 export const Comment = styled.span`
