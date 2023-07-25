@@ -87,6 +87,7 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
             type="text"
             name="location"
             placeholder="Your location"
+            value={data.location}
           />
         </Label>
         <Label>
@@ -96,6 +97,7 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
             name="comments"
             rows="5"
             placeholder="Stay your comment"
+            value={data.comments}
           ></TextArea>
         </Label>
       </FormLostMore>

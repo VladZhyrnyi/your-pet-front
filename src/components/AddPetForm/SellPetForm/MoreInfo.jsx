@@ -74,7 +74,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
             id="avatar"
             onChange={onChangeDetails}
             type="file"
-            name="pet foto"
+            name="file"
           />
         </FileContainer>
         <Label>
@@ -84,15 +84,17 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
             type="text"
             name="location"
             placeholder="Your location"
+            value={data.location}
           />
         </Label>
         <Label>
           Price
           <Input
             onChange={onChangeDetails}
-            type="text"
+            type="number"
             name="price"
             placeholder="Pet price"
+            value={data.price}
           />
         </Label>
         <Label>
@@ -102,6 +104,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
             name="comments"
             rows="5"
             placeholder="Stay your comment"
+            value={data.comments}
           ></TextArea>
         </Label>
       </FormLostMore>
