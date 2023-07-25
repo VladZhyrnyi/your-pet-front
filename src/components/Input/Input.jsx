@@ -1,10 +1,18 @@
 import { useFormContext } from 'react-hook-form';
 import { findInputError } from 'utils/findInputError';
 import { isFormInvalid } from 'utils/isFormInvalid';
-import { InputField, InputWrapper, InputErrorMessage } from './Input.styled';
-const Input = ({ type, id, name, placeholder, validation, onChange }) => {
+import {
+  InputField,
+  InputWrapper,
+  InputErrorMessage,
+  DeleteValueBtn,
+} from './Input.styled';
+import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+import { theme } from 'theme';
+const Input = ({ type, id, name, placeholder, validation }) => {
   const {
     register,
+    reset,
     formState: { errors },
   } = useFormContext();
   const inputError = findInputError(errors, name);
@@ -18,13 +26,22 @@ const Input = ({ type, id, name, placeholder, validation, onChange }) => {
         name={name}
         placeholder={placeholder}
         {...register(name, validation)}
-        onChange={onChange}
+        style={isInvalid ? { border: `1px solid ${theme.colors.red}` } : {}}
       />
       {isInvalid && (
         <InputError
           message={inputError.error.message}
           key={inputError.error.message}
         />
+      )}
+      {isInvalid && type === 'email' && (
+        <DeleteValueBtn onClick={() => reset({ email: '' })}>
+          <SpriteIcon
+            icon={'cross'}
+            color={`${theme.colors.red}`}
+            size="24px"
+          />
+        </DeleteValueBtn>
       )}
     </InputWrapper>
   );

@@ -36,16 +36,16 @@ export const InputFieldsWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 14px;
-  margin-bottom: 40px;
+  margin-bottom: 110px;
   width: 100%;
   max-width: 458px;
   @media (min-width: 768px) {
     gap: 32px;
-    margin-bottom: 52px;
+    margin-bottom: 60px;
   }
-  @media (min-width: 1280px) {
-    margin-bottom: 40px;
-  }
+  //   @media (min-width: 1280px) {
+  //     margin-bottom: 40px;
+  //   }
 `;
 
 export const PasswordInputWrapper = styled.div`
@@ -91,7 +91,7 @@ export const PasswordInputErrorMessage = styled.p`
   color: #f43f5e;
 `;
 
-export const LinkToLogin = styled.p`
+export const LinkToRegister = styled.p`
   font-family: Manrope400;
   font-size: 12px;
   color: #888888;

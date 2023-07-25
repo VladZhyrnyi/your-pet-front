@@ -2,7 +2,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Input from 'components/Input/Input';
-import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+import PasswordInput from 'components/Input/PasswordInput';
 import {
   name_validation,
   email_validation,
@@ -12,16 +12,16 @@ import {
 import {
   Form,
   FormTitle,
-  PasswordInputWrapper,
-  ShowHidePasswordBtn,
   InputFieldsWrapper,
   SubmitBtn,
   PasswordInputErrorMessage,
+  LinkToLogin,
 } from './RegisterForm.styled';
 
 const RegiserForm = () => {
   const methods = useForm();
-  const [success, setSuccess] = useState(false);
+  const [passIsValid, setPassIsValid] = useState('');
+  const [confPassIsValid, setConfPasIsValid] = useState('');
   const [mismatch, setMismatch] = useState(false);
   // ----- State of FIRST password -----
   const [passValues, setPassValues] = useState({
@@ -46,22 +46,32 @@ const RegiserForm = () => {
   };
   // ----- Set value of the FIRST password input -----
   const onPassInputChange = e => {
-    setPassValues({ ...passValues, password: e.target.value });
+    if (password_validation.validation.pattern.value.test(e.target.value)) {
+      setPassIsValid('valid');
+      setPassValues({ ...passValues, password: e.target.value });
+    } else {
+      setPassIsValid('');
+    }
   };
   /* ----- Set value of the SECOND password input 
    in case of matching with value of the fitst pass input ----- */
   const onConfPassInputChange = e => {
-    e.target.value === passValues.password
-      ? setMismatch(false)
-      : setMismatch(true);
-    e.target.value === passValues.password &&
+    if (e.target.value === passValues.password) {
+      setMismatch(false);
+      setConfPasIsValid('valid');
       setConfPassValues({ ...confPassValues, password: e.target.value });
+    } else {
+      setMismatch(true);
+      setConfPasIsValid('');
+    }
   };
   const onSubmit = methods.handleSubmit(data => {
     if (passValues.password === confPassValues.password) {
       console.log(data);
       methods.reset();
-      setSuccess(true);
+      setPassIsValid('');
+      setConfPasIsValid('');
+      // setSuccess(true);
     }
   });
   return (
@@ -72,45 +82,33 @@ const RegiserForm = () => {
           <Input {...name_validation} />
           <Input {...email_validation} />
           {/* ----- FIRST password input ----- */}
-          <PasswordInputWrapper>
-            <Input
-              {...password_validation}
-              type={passValues.showPassword ? 'text' : 'password'}
-              onChange={onPassInputChange}
-            />
-            <ShowHidePasswordBtn onClick={handleClickShowPassword}>
-              <SpriteIcon
-                icon={passValues.showPassword ? 'eye-open' : 'eye-closed'}
-                color="#54adff"
-                size="24px"
-              />
-            </ShowHidePasswordBtn>
-          </PasswordInputWrapper>
+          <PasswordInput
+            {...password_validation}
+            type={passValues.showPassword ? 'text' : 'password'}
+            onChange={onPassInputChange}
+            onClick={handleClickShowPassword}
+            icon={passValues.showPassword ? 'eye-open' : 'eye-closed'}
+            valid={passIsValid}
+          />
           {/* ----- SECOND password input ----- */}
-          <PasswordInputWrapper>
-            <Input
-              {...confirm_password_validation}
-              type={confPassValues.showPassword ? 'text' : 'password'}
-              onChange={onConfPassInputChange}
-            />
-            <ShowHidePasswordBtn onClick={handleClickShowConfPassword}>
-              <SpriteIcon
-                icon={confPassValues.showPassword ? 'eye-open' : 'eye-closed'}
-                color="#54adff"
-                size="24px"
-              />
-            </ShowHidePasswordBtn>
-            {mismatch && (
-              <PasswordInputErrorMessage>
-                Password mismatch
-              </PasswordInputErrorMessage>
-            )}
-          </PasswordInputWrapper>
+          <PasswordInput
+            {...confirm_password_validation}
+            type={confPassValues.showPassword ? 'text' : 'password'}
+            onChange={onConfPassInputChange}
+            onClick={handleClickShowConfPassword}
+            icon={confPassValues.showPassword ? 'eye-open' : 'eye-closed'}
+            valid={confPassIsValid}
+          />
+          {mismatch && (
+            <PasswordInputErrorMessage>
+              Password mismatch
+            </PasswordInputErrorMessage>
+          )}
         </InputFieldsWrapper>
         <SubmitBtn onClick={onSubmit}>Registration</SubmitBtn>
-        <p>
+        <LinkToLogin>
           Already have an account? <Link to="/login">Login</Link>
-        </p>
+        </LinkToLogin>
       </Form>
     </FormProvider>
   );

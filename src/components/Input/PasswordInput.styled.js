@@ -7,6 +7,7 @@ export const InputField = styled.input`
   width: calc(100% - 16px);
   height: 46px;
   padding: 0 0 0 16px;
+
   &::placeholder {
     font-size: 16px;
     line-hieght: 1.5;
@@ -16,7 +17,6 @@ export const InputField = styled.input`
 `;
 
 export const InputWrapper = styled.div`
-  position: relative;
   width: 100%;
 `;
 
@@ -26,16 +26,37 @@ export const InputErrorMessage = styled.p`
   margin: 4px 0 0 17px;
   color: #f43f5e;
 `;
+export const PasswordInputWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 458px;
+`;
 
-export const DeleteValueBtn = styled.button`
-  position: absolute;
+export const ShowHidePasswordBtn = styled.button`
   height: 48px;
-  top: 0;
-  right: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
   border: none;
   padding: 0;
+`;
+
+export const InputIconsWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 16px;
+  & svg {
+    margin-left: 12px;
+  }
+`;
+
+export const InputSuccessMessage = styled.p`
+  font-family: Manrope400;
+  font-size: 12px;
+  margin: 4px 0 0 17px;
+  color: ${p => p.theme.colors.green};
 `;
