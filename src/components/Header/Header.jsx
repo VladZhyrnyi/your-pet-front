@@ -3,9 +3,9 @@ import { Nav } from './Navigation/Nav';
 import { NavPage } from './NavPage';
 import Logo from './Logo';
 
-import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
-import { Button, HeaderContainer } from './Header.styled';
-import { Modal } from 'components/Modal';
+// import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+// import { Button, HeaderContainer } from './Header.styled';
+// import { Modal } from 'components/Modal';
 // import { useState } from 'react';
 
 export const Header = props => {
