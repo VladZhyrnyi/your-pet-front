@@ -6,7 +6,7 @@ export const Title = styled.h1`
   margin: 40px 0 24px;
   padding: 0;
 
-  color: #111;
+  color: ${p => p.theme.colors.black};
   text-align: center;
   font-family: Manrope700, sans-serif;
   font-size: 24px;
@@ -29,7 +29,7 @@ export const Input = styled.input`
 
   border-radius: 24px;
   border: none;
-  background: #fff;
+  background: ${p => p.theme.colors.white};
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 
   color: #888;
@@ -80,7 +80,7 @@ export const Button = styled.button`
   padding: 0;
   cursor: pointer;
   border: none;
-  background-color: #fff;
+  background-color: ${p => p.theme.colors.white};
 
   transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
 

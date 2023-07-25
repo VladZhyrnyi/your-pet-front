@@ -13,10 +13,6 @@ export const Notice = styled.div`
   border: 1px dashed black;
 
   @media (min-width: 768px) {
-    /* display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-content: center; */
     margin-top: 32px;
     padding-left: 32px;
     padding-right: 31px;
@@ -77,12 +73,12 @@ export const NameCategory = styled.p`
   left: 0px;
 
   border-radius: 0px 16px 16px 0px;
-  background: #cce4fb;
+  background: ${p => p.theme.colors.blueLight};
 
   padding: 11px 17px;
   margin: 0;
 
-  color: #111;
+  color: ${p => p.theme.colors.black};
   text-align: center;
   font-family: Manrope500, sans-serif;
   font-size: 14px;
@@ -92,7 +88,7 @@ export const Title = styled.p`
   width: 231px;
   align-self: flex-start;
 
-  color: #111;
+  color: ${p => p.theme.colors.black};
   font-family: Manrope700, sans-serif;
   font-size: 24px;
   letter-spacing: -0.24px;
@@ -125,7 +121,7 @@ export const TableUnit = styled.td`
   padding: 0px 20px 8px 0px;
   border: none;
 
-  color: #000;
+  color: ${p => p.theme.colors.black};
   font-family: Manrope600, sans-serif;
   font-size: 14px;
 
@@ -139,7 +135,7 @@ export const TableUnitData = styled.td`
   padding: 0px 0px 8px 0px;
   border: none;
 
-  color: #000;
+  color: ${p => p.theme.colors.black};
   font-family: Manrope500, sans-serif;
   font-size: 12px;
 
@@ -149,7 +145,7 @@ export const TableUnitData = styled.td`
 `;
 
 export const DataLink = styled.a`
-  color: #ffc107;
+  color: ${p => p.theme.colors.yellow};
   font-family: Manrope500;
   font-size: 12px;
   text-decoration-line: underline;
@@ -157,7 +153,7 @@ export const DataLink = styled.a`
 `;
 
 export const Comment = styled.span`
-  color: #000;
+  color: ${p => p.theme.colors.black};
   font-family: Manrope600, sans-serif;
   font-size: 14px;
   letter-spacing: 0.56px;
@@ -171,7 +167,7 @@ export const Comment = styled.span`
 export const CommentData = styled.p`
   margin: 0 0 12px 0;
 
-  color: #000;
+  color: ${p => p.theme.colors.black};
   font-family: Manrope500, sans-serif;
   font-size: 14px;
   letter-spacing: 0.56px;
@@ -214,7 +210,7 @@ export const ButtonDetail = styled.button`
   height: 40px;
 
   width: ${({ width }) => width || 'auto'};
-  border: 2px solid #54adff;
+  border: 2px solid ${p => p.theme.colors.blue};
 
   padding: 8px 20px;
 

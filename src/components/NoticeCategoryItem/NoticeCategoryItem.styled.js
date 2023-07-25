@@ -45,12 +45,12 @@ export const NameCategory = styled.p`
   left: 0px;
 
   border-radius: 0px 16px 16px 0px;
-  background: #cce4fb;
+  background: ${p => p.theme.colors.blueLight};
 
   padding: 11px 17px;
   margin: 0;
 
-  color: #111;
+  color: ${p => p.theme.colors.black};
   text-align: center;
   font-family: Manrope500, sans-serif;
   font-size: 14px;
@@ -120,7 +120,7 @@ export const Title = styled.p`
   width: 231px;
   align-self: flex-start;
   margin: 0 0 20px 20px;
-  color: #111;
+  color: ${p => p.theme.colors.black};
   font-family: Manrope700, sans-serif;
   font-size: 24px;
 `;

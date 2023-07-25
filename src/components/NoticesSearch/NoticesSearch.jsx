@@ -8,7 +8,7 @@ import {
   Title,
 } from './NoticesSearch.styled';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
-// import svg from '../../images/symbol-defs.svg';
+import { theme } from 'theme';
 
 export const NoticesSearch = () => {
   const [inputValue, setInputValue] = useState('');
@@ -47,12 +47,19 @@ export const NoticesSearch = () => {
           />
           <ButtonWrapper>
             <Button type="submit">
-              <SpriteIcon icon="search" color="#54adff" fill></SpriteIcon>
+              <SpriteIcon
+                icon="search"
+                color={theme.colors.blue}
+                fill
+              ></SpriteIcon>
             </Button>
 
             {inputValue.length > 0 && (
               <Button type="button" onClick={handleClean}>
-                <SpriteIcon icon="cross" color="#ffc107" ></SpriteIcon>
+                <SpriteIcon
+                  icon="cross"
+                  color={theme.colors.yellow}
+                ></SpriteIcon>
               </Button>
             )}
           </ButtonWrapper>

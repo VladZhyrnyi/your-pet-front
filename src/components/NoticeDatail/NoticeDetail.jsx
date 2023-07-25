@@ -4,6 +4,7 @@ import {
   ButtonDetailWrapper,
   Comment,
   CommentData,
+  DataLink,
   Img,
   NameCategory,
   Notice,
@@ -13,50 +14,61 @@ import {
   TableUnitData,
   ThumbImg,
   Title,
+  WrapperCont,
+  WrapperContent,
 } from './NoticeDetail.styled';
 import img from '../NoticeCategoryItem/Rectangle.jpg';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+import {theme} from "../../theme.js"
 
 const NoticeDetail = () => {
   return (
     <Notice>
-      <ThumbImg>
-        <Img src={img} alt="picture" />
-        <NameCategory>In good hands</NameCategory>
-      </ThumbImg>
-      <Title>Сute dog looking for a home</Title>
-      <Table>
-        <tbody>
-          <TableRow>
-            <TableUnit>Name:</TableUnit>
-            <TableUnitData>Rich</TableUnitData>
-          </TableRow>
-          <TableRow>
-            <TableUnit>Birthday:</TableUnit>
-            <TableUnitData>21.09.2020</TableUnitData>
-          </TableRow>
-          <TableRow>
-            <TableUnit>Type:</TableUnit>
-            <TableUnitData>Pomeranian</TableUnitData>
-          </TableRow>
-          <TableRow>
-            <TableUnit>Place:</TableUnit>
-            <TableUnitData>Lviv</TableUnitData>
-          </TableRow>
-          <TableRow>
-            <TableUnit>The sex:</TableUnit>
-            <TableUnitData>male</TableUnitData>
-          </TableRow>
-          <TableRow>
-            <TableUnit>Email:</TableUnit>
-            <TableUnitData>user@mail.com</TableUnitData>
-          </TableRow>
-          <TableRow>
-            <TableUnit>Phone:</TableUnit>
-            <TableUnitData>+380971234567</TableUnitData>
-          </TableRow>
-        </tbody>
-      </Table>
+      <WrapperContent>
+        <ThumbImg>
+          <Img src={img} alt="picture" />
+          <NameCategory>In good hands</NameCategory>
+        </ThumbImg>
+        <WrapperCont>
+          <Title>Сute dog looking for a home</Title>
+          <Table>
+            <tbody>
+              <TableRow>
+                <TableUnit>Name:</TableUnit>
+                <TableUnitData>Rich</TableUnitData>
+              </TableRow>
+              <TableRow>
+                <TableUnit>Birthday:</TableUnit>
+                <TableUnitData>21.09.2020</TableUnitData>
+              </TableRow>
+              <TableRow>
+                <TableUnit>Type:</TableUnit>
+                <TableUnitData>Pomeranian</TableUnitData>
+              </TableRow>
+              <TableRow>
+                <TableUnit>Place:</TableUnit>
+                <TableUnitData>Lviv</TableUnitData>
+              </TableRow>
+              <TableRow>
+                <TableUnit>The sex:</TableUnit>
+                <TableUnitData>male</TableUnitData>
+              </TableRow>
+              <TableRow>
+                <TableUnit>Email:</TableUnit>
+                <TableUnitData>
+                  <DataLink href="mailto:user@mail.com">user@mail.com</DataLink>
+                </TableUnitData>
+              </TableRow>
+              <TableRow>
+                <TableUnit>Phone:</TableUnit>
+                <TableUnitData>
+                  <DataLink href="tel:+380971234567">+380971234567</DataLink>
+                </TableUnitData>
+              </TableRow>
+            </tbody>
+          </Table>
+        </WrapperCont>
+      </WrapperContent>
       <CommentData>
         <Comment>Comments:</Comment>Rich would be the perfect addition to an
         active family that loves to play and go on walks. I bet he would love
@@ -64,16 +76,16 @@ const NoticeDetail = () => {
       </CommentData>
       <ButtonDetailWrapper>
         <ButtonDetail
-          background={p => p.theme.colors.blue}
-          color={p => p.theme.colors.white}
+          background={theme.colors.blue}
+          color={theme.colors.white}
           width="130px"
         >
           Add to
-          <SpriteIcon icon="heart" color="#FFFFFF"></SpriteIcon>
+          <SpriteIcon icon="heart" color={theme.colors.white}></SpriteIcon>
         </ButtonDetail>
         <ButtonDetail
-          background={p => p.theme.colors.white}
-          color={p => p.theme.colors.blue}
+          background={theme.colors.white}
+          color={theme.colors.blue}
           width="129px"
         >
           Contact

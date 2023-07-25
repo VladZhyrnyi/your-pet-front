@@ -13,8 +13,6 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  /* background-color: #fef9f9; */
-
   @media (min-width: 768px) {
     width: 768px;
     margin-top: 40px;

@@ -9,6 +9,7 @@ import {
 } from './NoticesCategoriesNav.styled';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import { ButtonAddPet } from 'components/Buttons';
+import { theme } from '../../theme.js';
 
 const NoticesCategoriesNav = () => {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
@@ -25,7 +26,7 @@ const NoticesCategoriesNav = () => {
     };
   }, []);
 
-  console.log(viewportWidth);
+  // console.log(viewportWidth);
   return (
     <Container>
       <ButtonWrapper>
@@ -39,41 +40,42 @@ const NoticesCategoriesNav = () => {
         {viewportWidth >= 768 && (
           <>
             <ButtonFilter
-              background={p => p.theme.colors.white}
-              color={p => p.theme.colors.blue}
+              background={theme.colors.white}
+              color={theme.colors.blue}
               width="152px"
             >
               Filter
-              <SpriteIcon icon="filters-2" color="#54ADFF"></SpriteIcon>
+              <SpriteIcon
+                icon="filters-2"
+                color={theme.colors.blue}
+              ></SpriteIcon>
             </ButtonFilter>
             <ButtonFilter
-              background={p => p.theme.colors.blue}
-              color={p => p.theme.colors.white}
+              background={theme.colors.blue}
+              color={theme.colors.white}
               width="129px"
             >
               Add Pet
-              <SpriteIcon icon="plus-small" color="#FFFFFF"></SpriteIcon>
+              <SpriteIcon
+                icon="plus-small"
+                color={theme.colors.white}
+              ></SpriteIcon>
             </ButtonFilter>
           </>
         )}
         {viewportWidth < 768 && (
           <>
             <ButtonFilter
-              background={p => p.theme.colors.blueLight}
-              color={p => p.theme.colors.blue}
+              background={theme.colors.blueLight}
+              color={theme.colors.blue}
               width="40px"
             >
-              <SpriteIcon icon="filters-2" color="#54ADFF"></SpriteIcon>
+              <SpriteIcon
+                icon="filters-2"
+                color={theme.colors.blue}
+              ></SpriteIcon>
             </ButtonFilter>
             <Div>
-              {/* <ButtonFilter
-                background="linear-gradient(315deg, #419ef1, #9bd0ff)"
-                color="#FFFFFF"
-                width="80px"
-              >
-                Add Pet
-                <SpriteIcon icon="plus" color="#FFFFFF"></SpriteIcon>
-              </ButtonFilter> */}
               <ButtonAddPet></ButtonAddPet>
             </Div>
           </>

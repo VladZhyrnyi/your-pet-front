@@ -18,6 +18,7 @@ import {
 } from 'components/Buttons';
 import img from './Rectangle.jpg';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+import { theme } from 'theme';
 
 const NoticeCategoryItem = () => {
   return (
@@ -27,10 +28,14 @@ const NoticeCategoryItem = () => {
           <Img src={img} alt="picture" />
           <NameCategory>In good hands</NameCategory>
           <ButtonHeart
-            background={p => p.theme.colors.blueLight}
-            color={p => p.theme.colors.blue}
+            background={theme.colors.blueLight}
+            color={theme.colors.blue}
           >
-            <SpriteIcon icon="heart" color="#54ADFF" fill></SpriteIcon>
+            <SpriteIcon
+              icon="heart"
+              color={theme.colors.blue}
+              fill
+            ></SpriteIcon>
           </ButtonHeart>
           <WrapperBtn>
             <ButtonLocation />
