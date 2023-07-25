@@ -11,6 +11,7 @@ export const Container = styled.div`
 
   @media (min-width: 768px) {
     min-width: 392px;
+    min-height: 502px;
     padding: 20px 34px 20px 32px;
   }
 `;
@@ -25,6 +26,7 @@ export const Title = styled.h1`
 
   @media (min-width: 768px) {
     font-size: 28px;
+    margin-left: 0;
   }
 `;
 
@@ -126,6 +128,9 @@ export const FormPersonal = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  @media (min-width: 768px) {
+    gap: 24px;
+  }
 `;
 
 export const FormYourMore = styled.form`
@@ -144,6 +149,7 @@ export const ButtonContainer = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: row-reverse;
+    margin-top: 146px;
   }
 `;
 
@@ -156,6 +162,20 @@ export const SecondButtonContainer = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: row-reverse;
+    margin-top: 40px;
+  }
+`;
+
+export const ThirdButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 24px;
+
+  @media (min-width: 768px) {
+    flex-direction: row-reverse;
+    margin-top: 17px;
   }
 `;
 
@@ -277,7 +297,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   display: flex;
-  width: 245px;
+  width: 230px;
   height: 20px;
   padding: 8px 16px;
   align-items: center;
