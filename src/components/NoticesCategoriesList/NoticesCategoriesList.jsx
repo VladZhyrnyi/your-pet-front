@@ -1,2 +1,17 @@
+import React from 'react';
+import { Container } from './NoticesCategoriesList.styled';
+import NoticeCategoryItem from 'components/NoticeCategoryItem/NoticeCategoryItem';
 
-export default NoticesCategoriesList
+const NoticesCategoriesList = () => {
+  return (
+    <Container>
+      <NoticeCategoryItem />
+      <NoticeCategoryItem />
+      <NoticeCategoryItem />
+      <NoticeCategoryItem />
+      <NoticeCategoryItem />
+    </Container>
+  );
+};
+
+export default NoticesCategoriesList;
