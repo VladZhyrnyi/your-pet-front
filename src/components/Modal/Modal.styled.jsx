@@ -16,7 +16,6 @@ export const Content = styled.div`
   min-width: 280px;
   min-height: 287px;
   margin: 0 auto;
-  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +26,6 @@ export const Content = styled.div`
   @media (min-width: 768px) {
     min-width: 608px;
     min-height: 352px;
-    padding: 60px;
     border-radius: 40px;
   }
 `;

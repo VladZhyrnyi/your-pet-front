@@ -4,6 +4,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
   padding: 8px 28px;
   border-radius: 40px;
   cursor: pointer;
@@ -37,7 +38,6 @@ export const BtnLmWhite = styled(Button)`
 
 export const BtnLmBlue = styled(Button)`
   width: 248px;
-  gap: 12px;
   border: transparent;
   color: ${p => p.theme.colors.white};
   background-color: ${p => p.theme.colors.blue};
