@@ -31,14 +31,37 @@ export const name_validation = {
 };
 
 const PersDetails = ({ onChangeDetails, setPage, data }) => {
-  const [err, setErr] = useState(null);
+  const [nameErr, setNameErr] = useState(false);
+  const [dobErr, setDobErr] = useState(false);
+  const [typeErr, setTypeErr] = useState(false);
+  const [formIsInvalid, setFormIsInvalid] = useState(true);
+
   const onSubmit = e => {
     e.preventDefault();
-    setPage(prev => prev + 1);
+    const nameInput = e.currentTarget.elements.name.value;
+    const dobInput = e.currentTarget.elements.date.value;
+    const petTypeInput = e.currentTarget.elements.type.value;
+    nameInput === '' && setNameErr(true);
+    dobInput === '' && setDobErr(true);
+    petTypeInput === '' && setTypeErr(true);
+    formIsInvalid === false && setPage(prev => prev + 1);
   };
+  const onFormChange = e => {
+    const nameInput = e.currentTarget.elements.name.value;
+    const dobInput = e.currentTarget.elements.date.value;
+    const petTypeInput = e.currentTarget.elements.type.value;
+    nameInput !== '' && setNameErr(false);
+    dobInput !== '' && setDobErr(false);
+    petTypeInput !== '' && setTypeErr(false);
+    nameInput !== '' &&
+      dobInput !== '' &&
+      petTypeInput !== '' &&
+      setFormIsInvalid(false);
+  };
+
   return (
     <>
-      <FormPersonal onSubmit={onSubmit}>
+      <FormPersonal onChange={onFormChange} onSubmit={onSubmit}>
         <Label>
           Pet’s name
           <Input
@@ -47,7 +70,9 @@ const PersDetails = ({ onChangeDetails, setPage, data }) => {
             name="name"
             placeholder="Type name pet"
             value={data.name}
+            required={nameErr}
           />
+          {nameErr && <span>Enter a pet's name</span>}
         </Label>
         <Label>
           Date of birth
@@ -57,7 +82,9 @@ const PersDetails = ({ onChangeDetails, setPage, data }) => {
             name="date"
             placeholder="Type date of birth"
             value={data.date}
+            required={dobErr}
           />
+          {dobErr && <span>Enter a date of birth</span>}
         </Label>
         <Label>
           Type
@@ -67,11 +94,12 @@ const PersDetails = ({ onChangeDetails, setPage, data }) => {
             name="type"
             placeholder="Type of pet"
             value={data.type}
+            required={typeErr}
           />
+          {typeErr && <span>Enter a type</span>}
         </Label>
         <SecondButtonContainer>
           <ButtonNext type="submit">
-            {/* () => setPage(prev => prev + 1) */}
             Next
             <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
           </ButtonNext>
