@@ -1,5 +1,3 @@
-import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
-
 import {
   BtnLmWhite,
   BtnLmBlue,
@@ -8,111 +6,32 @@ import {
   BtnAddPet,
   BtnFilter,
   BtnLocation,
-  WrapperIcon,
 } from './Button.styled';
 
-// const ButtonWhiteBig = ({ prop }) => {
-//   return (
-//     <>
-//       <BtnLmWhite onClick={prop}>Learn more</BtnLmWhite>
-//     </>
-//   );
-// };
-
-const ButtonWhiteBig = ({ prop , children}) => {
-  return (
-    <>
-      <BtnLmWhite onClick={prop}>{children}</BtnLmWhite>
-    </>
-  );
+export const ButtonWhiteBig = ({ prop, children }) => {
+  return <BtnLmWhite onClick={prop}>{children}</BtnLmWhite>;
 };
 
-// const ButtonBlueBig = ({ prop }) => {
-//   return (
-//     <>
-//       <BtnLmBlue onClick={prop}>
-//         Learn more
-//         <SpriteIcon icon="pawprint" />
-//       </BtnLmBlue>
-//     </>
-//   );
-// };
-
-const ButtonBlueBig = ({ prop ,children}) => {
-  return (
-    <>
-      <BtnLmBlue onClick={prop}>
-       
-        {children}
-      </BtnLmBlue>
-    </>
-  );
+export const ButtonBlueBig = ({ prop, children }) => {
+  return <BtnLmBlue onClick={prop}>{children}</BtnLmBlue>;
 };
 
-const ButtonBlueSmall = ({ prop }) => {
-  return (
-    <>
-      <BtnLmBlueSmall onClick={prop}>
-        Learn more
-        <SpriteIcon icon="pawprint" />
-      </BtnLmBlueSmall>
-    </>
-  );
+export const ButtonBlueSmall = ({ prop, children }) => {
+  return <BtnLmBlueSmall onClick={prop}>{children}</BtnLmBlueSmall>;
 };
 
-const ButtonWhiteSmall = ({ prop }) => {
-  return (
-    <>
-      <BtnLmWhiteSmall onClick={prop}>
-        Learn more
-        <SpriteIcon icon="pawprint" />
-      </BtnLmWhiteSmall>
-    </>
-  );
+export const ButtonWhiteSmall = ({ prop, children }) => {
+  return <BtnLmWhiteSmall onClick={prop}>{children}</BtnLmWhiteSmall>;
 };
 
-const ButtonAddPet = ({ prop }) => {
-  return (
-    <>
-      <BtnAddPet onClick={prop}>
-        <SpriteIcon icon="plus" color="#FDF7F2" />
-        Add pet
-      </BtnAddPet>
-    </>
-  );
+export const ButtonAddPet = ({ prop, children }) => {
+  return <BtnAddPet onClick={prop}>{children}</BtnAddPet>;
 };
 
-const ButtonFilter = ({ prop }) => {
-  return (
-    <>
-      <BtnFilter onClick={prop}>
-        Filter
-        <SpriteIcon icon="filters" />
-      </BtnFilter>
-    </>
-  );
+export const ButtonFilter = ({ prop, children }) => {
+  return <BtnFilter onClick={prop}>{children}</BtnFilter>;
 };
 
-const ButtonLocation = ({ prop, children }) => {
-  return (
-    <>
-      <BtnLocation onClick={prop}>
-        <WrapperIcon>
-          <SpriteIcon icon="location" />
-        </WrapperIcon>
-        <span>Lviv</span>
-        {children}
-      </BtnLocation>
-    </>
-  );
-};
-
-export {
-  ButtonWhiteBig,
-  ButtonBlueBig,
-  ButtonWhiteSmall,
-  ButtonBlueSmall,
-  ButtonAddPet,
-  ButtonFilter,
-  ButtonLocation,
+export const ButtonLocation = ({ prop, children }) => {
+  return <BtnLocation onClick={prop}>{children}</BtnLocation>;
 };
