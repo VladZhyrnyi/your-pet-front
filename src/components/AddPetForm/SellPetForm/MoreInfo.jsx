@@ -19,11 +19,31 @@ import {
   SecondSexContainer,
   LableWrapper,
 } from '../AddPerForm.styled';
+import { useState } from 'react';
 
 const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
+  const [priceErr, setPriceErr] = useState(false);
+  const [locErr, setLocErr] = useState(false);
+  const [formIsInvalid, setFormIsInvalid] = useState(true);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    const priceInput = e.currentTarget.elements.price.value;
+    const locInput = e.currentTarget.elements.location.value;
+    priceInput === '' && setPriceErr(true);
+    locInput === '' && setLocErr(true);
+    formIsInvalid === false && setPage(prev => prev + 1);
+  };
+  const onFormChange = e => {
+    const priceInput = e.currentTarget.elements.price.value;
+    const locInput = e.currentTarget.elements.location.value;
+    priceInput !== '' && setPriceErr(false);
+    locInput !== '' && setLocErr(false);
+    priceInput !== '' && locInput !== '' && setFormIsInvalid(false);
+  };
   return (
     <>
-      <FormLostMore>
+      <FormLostMore onChange={onFormChange} onSubmit={onSubmit}>
         <SecondSexContainer>
           <SexTitle>The sex</SexTitle>
           <SexContainer>
@@ -93,7 +113,9 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
               name="location"
               placeholder="Your location"
               value={data.location}
+              required={locErr}
             />
+            {locErr && <span>Enter location</span>}
           </Label>
           <Label>
             Price
@@ -103,7 +125,9 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
               name="price"
               placeholder="Pet price"
               value={data.price}
+              required={priceErr}
             />
+            {priceErr && <span>Enter price</span>}
           </Label>
           <Label>
             Comments
@@ -116,17 +140,17 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
             ></TextArea>
           </Label>
         </LableWrapper>
+        <ThirdButtonContainer>
+          <ButtonNext type="submit">
+            Done
+            <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
+          </ButtonNext>
+          <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
+            <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+            Back
+          </ButtonCancel>
+        </ThirdButtonContainer>
       </FormLostMore>
-      <ThirdButtonContainer>
-        <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
-          Done
-          <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
-        </ButtonNext>
-        <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
-          <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
-          Back
-        </ButtonCancel>
-      </ThirdButtonContainer>
     </>
   );
 };
