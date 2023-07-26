@@ -1,5 +1,5 @@
 import AuthBar from './AuthBar';
-import Navbar from './Navyfgyhbar';
+import Navbar from './Navbar';
 
 function MobileMenu() {
   return (
