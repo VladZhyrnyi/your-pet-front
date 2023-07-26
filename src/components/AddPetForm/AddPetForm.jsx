@@ -26,6 +26,7 @@ import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import PersDetailsHands from './InGoodHands/PersDetails';
 import MoreInfoHands from './InGoodHands/MoreInfo';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { set } from 'react-hook-form';
 
 const obj = {
   category: 'your pet',
@@ -155,6 +156,7 @@ const AddPetForm = () => {
         <PersDetails
           onChangeDetails={onChangeDetails}
           setPage={setPage}
+          setData={setData}
           data={data}
         />
       )}
