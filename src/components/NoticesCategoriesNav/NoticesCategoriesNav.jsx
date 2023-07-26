@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Button,
-  ButtonFilter,
   ButtonFilterWrapper,
+  ButtonNoticeFilter,
   ButtonWrapper,
   Container,
   Div,
+  Filter,
+  NoticesLink,
 } from './NoticesCategoriesNav.styled';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import { ButtonAddPet } from 'components/Buttons';
@@ -30,14 +31,14 @@ const NoticesCategoriesNav = () => {
   return (
     <Container>
       <ButtonWrapper>
-        <Button>sell</Button>
-        <Button>lost/found</Button>
-        <Button>in good hands</Button>
-        <Button>favorite ads</Button>
-        <Button>my ads</Button>
+        <NoticesLink to={'/notices/sell1'}>sell</NoticesLink>
+        <NoticesLink to={'/notices/sell2'}>lost/found</NoticesLink>
+        <NoticesLink to={'/notices/sell3'}>in good hands</NoticesLink>
+        <NoticesLink to={'/notices/sell4'}>favorite ads</NoticesLink>
+        <NoticesLink to={'/notices/sell5'}>my ads</NoticesLink>
       </ButtonWrapper>
       <ButtonFilterWrapper>
-        {viewportWidth >= 768 && (
+        {/* {viewportWidth >= 768 && (
           <>
             <ButtonFilter
               background={theme.colors.white}
@@ -62,19 +63,12 @@ const NoticesCategoriesNav = () => {
               ></SpriteIcon>
             </ButtonFilter>
           </>
-        )}
+        )} */}
         {viewportWidth < 768 && (
           <>
-            <ButtonFilter
-              background={theme.colors.blueLight}
-              color={theme.colors.blue}
-              width="40px"
-            >
-              <SpriteIcon
-                icon="filters-2"
-                color={theme.colors.blue}
-              ></SpriteIcon>
-            </ButtonFilter>
+            <ButtonNoticeFilter>
+              <Filter />
+            </ButtonNoticeFilter>
             <Div>
               <ButtonAddPet></ButtonAddPet>
             </Div>

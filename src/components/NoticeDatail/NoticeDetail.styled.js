@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Notice = styled.div`
   box-sizing: border-box;
+  overflow: hidden;
 
   margin-top: 44px;
   padding-left: 12px;

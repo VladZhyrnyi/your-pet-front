@@ -20,7 +20,7 @@ import img from './Rectangle.jpg';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import { theme } from 'theme';
 
-const NoticeCategoryItem = () => {
+const NoticeCategoryItem = ({ showModal }) => {
   return (
     <Container>
       <Card>
@@ -45,7 +45,7 @@ const NoticeCategoryItem = () => {
         </ThumbImg>
         <WrapperContent>
           <Title>Сute dog looking for a home</Title>
-          <ButtonWhiteBig />
+          <ButtonWhiteBig prop={showModal} />
         </WrapperContent>
       </Card>
     </Container>

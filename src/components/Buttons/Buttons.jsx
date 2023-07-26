@@ -11,10 +11,10 @@ import {
   WrapperIcon,
 } from './Button.styled';
 
-const ButtonWhiteBig = ({ prop }) => {
+const ButtonWhiteBig = ({ prop, children }) => {
   return (
     <>
-      <BtnLmWhite onClick={prop}>Learn more</BtnLmWhite>
+      <BtnLmWhite onClick={prop}>{children}</BtnLmWhite>
     </>
   );
 };

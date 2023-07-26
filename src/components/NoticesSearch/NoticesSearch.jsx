@@ -3,12 +3,11 @@ import {
   Button,
   ButtonWrapper,
   Form,
+  IconCross,
+  IconSearch,
   Input,
   InputWrapper,
-  Title,
 } from './NoticesSearch.styled';
-import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
-import { theme } from 'theme';
 
 export const NoticesSearch = () => {
   const [inputValue, setInputValue] = useState('');
@@ -19,7 +18,7 @@ export const NoticesSearch = () => {
     if (inputValue.trim().length === 0) return;
 
     setInputValue('');
-
+    // Согласовать с Викой.
     return console.log('Submit');
   };
 
@@ -35,7 +34,6 @@ export const NoticesSearch = () => {
 
   return (
     <>
-      <Title>Find your favorite pet</Title>
       <Form onSubmit={handleSubmit}>
         <InputWrapper>
           <Input
@@ -47,19 +45,12 @@ export const NoticesSearch = () => {
           />
           <ButtonWrapper>
             <Button type="submit">
-              <SpriteIcon
-                icon="search"
-                color={theme.colors.blue}
-                fill
-              ></SpriteIcon>
+              <IconSearch />
             </Button>
 
             {inputValue.length > 0 && (
               <Button type="button" onClick={handleClean}>
-                <SpriteIcon
-                  icon="cross"
-                  color={theme.colors.yellow}
-                ></SpriteIcon>
+                <IconCross />
               </Button>
             )}
           </ButtonWrapper>
