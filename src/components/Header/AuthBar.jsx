@@ -12,19 +12,24 @@ function AuthBar() {
 
   return (
     <div>
-      {isLoggedIn ? 
-      <>
-        <SpriteIcon icon='user' />
-        <Link to='/user'>{user.name}</Link>
-      </>
-      :
-      <>
-        <Link to="/login">
-          Log IN
-          <SpriteIcon icon="pawprint" />
-        </Link>
-        <Link to="/register">Registration</Link>
-      </>}
+      {user && (
+        <>
+          {isLoggedIn ? (
+            <>
+              <SpriteIcon icon="user" />
+              <Link to="/user">{user.name}</Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                Log IN
+                <SpriteIcon icon="pawprint" />
+              </Link>
+              <Link to="/register">Registration</Link>
+            </>
+          )}
+        </>
+      )}
     </div>
   );
 }
