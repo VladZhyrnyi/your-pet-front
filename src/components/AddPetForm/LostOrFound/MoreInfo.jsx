@@ -12,7 +12,7 @@ import {
   Label,
   RadioBtnSex,
   RadioLabelSex,
-  SecondButtonContainer,
+  ThirdButtonContainer,
   SexContainer,
   SexTitle,
   TextArea,
@@ -101,7 +101,7 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
           ></TextArea>
         </Label>
       </FormLostMore>
-      <SecondButtonContainer>
+      <ThirdButtonContainer>
         <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
           Done
           <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
@@ -110,7 +110,7 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
           <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
           Back
         </ButtonCancel>
-      </SecondButtonContainer>
+      </ThirdButtonContainer>
     </>
   );
 };

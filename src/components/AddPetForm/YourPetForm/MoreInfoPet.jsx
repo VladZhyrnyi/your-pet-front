@@ -9,7 +9,7 @@ const {
   FileTitle,
   Label,
   TextArea,
-  SecondButtonContainer,
+  ThirdButtonContainer,
   ButtonNext,
   ButtonCancel,
 } = require('../AddPerForm.styled');
@@ -43,7 +43,7 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
           ></TextArea>
         </Label>
       </FormYourMore>
-      <SecondButtonContainer>
+      <ThirdButtonContainer>
         <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
           Done
           <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
@@ -52,7 +52,7 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
           <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
           Back
         </ButtonCancel>
-      </SecondButtonContainer>
+      </ThirdButtonContainer>
     </>
   );
 };

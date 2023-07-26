@@ -11,20 +11,39 @@ import {
   WrapperIcon,
 } from './Button.styled';
 
-const ButtonWhiteBig = ({ prop }) => {
+// const ButtonWhiteBig = ({ prop }) => {
+//   return (
+//     <>
+//       <BtnLmWhite onClick={prop}>Learn more</BtnLmWhite>
+//     </>
+//   );
+// };
+
+const ButtonWhiteBig = ({ prop , children}) => {
   return (
     <>
-      <BtnLmWhite onClick={prop}>Learn more</BtnLmWhite>
+      <BtnLmWhite onClick={prop}>{children}</BtnLmWhite>
     </>
   );
 };
 
-const ButtonBlueBig = ({ prop }) => {
+// const ButtonBlueBig = ({ prop }) => {
+//   return (
+//     <>
+//       <BtnLmBlue onClick={prop}>
+//         Learn more
+//         <SpriteIcon icon="pawprint" />
+//       </BtnLmBlue>
+//     </>
+//   );
+// };
+
+const ButtonBlueBig = ({ prop ,children}) => {
   return (
     <>
       <BtnLmBlue onClick={prop}>
-        Learn more
-        <SpriteIcon icon="pawprint" />
+       
+        {children}
       </BtnLmBlue>
     </>
   );

@@ -13,7 +13,7 @@ import {
   FileDiv,
   FormLostMore,
   FileSellTitle,
-  SecondButtonContainer,
+  ThirdButtonContainer,
   ButtonNext,
   ButtonCancel,
 } from '../AddPerForm.styled';
@@ -26,10 +26,11 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
         <SexContainer>
           <RadioBtnSex
             id="female"
-            onChange={onChangeOption}
+            onChange={onChangeDetails}
             type="radio"
             name="sex"
             value="female"
+            checked={data.sex === 'female'}
           />
           <RadioLabelSex htmlFor="female">
             Female
@@ -43,12 +44,14 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
               size="24px"
             />
           </RadioLabelSex>
+
           <RadioBtnSex
             id="male"
-            onChange={onChangeOption}
+            onChange={onChangeDetails}
             type="radio"
             name="sex"
             value="male"
+            checked={data.sex === 'male'}
           />
           <RadioLabelSex htmlFor="male">
             Male
@@ -108,7 +111,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
           ></TextArea>
         </Label>
       </FormLostMore>
-      <SecondButtonContainer>
+      <ThirdButtonContainer>
         <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
           Done
           <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
@@ -117,7 +120,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
           <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
           Back
         </ButtonCancel>
-      </SecondButtonContainer>
+      </ThirdButtonContainer>
     </>
   );
 };
