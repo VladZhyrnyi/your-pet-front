@@ -14,7 +14,7 @@ import {
 const ButtonWhiteBig = ({ prop, children }) => {
   return (
     <>
-      <BtnLmWhite onClick={prop}>{children}</BtnLmWhite>
+      <BtnLmWhite onClick={prop}>Learn more</BtnLmWhite>
     </>
   );
 };

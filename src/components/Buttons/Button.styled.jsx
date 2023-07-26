@@ -90,8 +90,9 @@ export const BtnAddPet = styled.button`
   @media (max-width: 767px) {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 50%;
     z-index: 10;
+    transform: translate(144px);
   }
 `;
 

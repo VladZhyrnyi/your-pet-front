@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { CiFilter } from 'react-icons/ci';
-import { ButtonWhiteBig } from 'components/Buttons';
+import { MdAdd } from 'react-icons/md';
 
-export const Container = styled.div`
+export const ContainerNav = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
@@ -22,9 +22,13 @@ export const Container = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  width: 205px;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 8px;
+
+  width: 205px;
 
   @media (min-width: 768px) and (max-width: 1280px) {
     gap: 12px;
@@ -67,83 +71,109 @@ export const ButtonFilterWrapper = styled.div`
   top: 0;
   right: 0;
 
-  /* display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 8px; */
-
-  width: 40px;
-  height: 40px;
-
-  background-color: red;
-
   @media (min-width: 768px) {
+    position: static;
+    display: flex;
+    align-items: flex-start;
     gap: 12px;
-    width: auto;
   }
   @media (min-width: 1280px) {
     gap: 16px;
   }
 `;
 
-export const ButtonNoticeFilter = styled(ButtonWhiteBig)`
+export const ButtonNoticeFilter = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
   width: 40px;
   height: 40px;
+
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  border-radius: 100%;
+  background-color: ${p => p.theme.colors.blueLight};
+
+  transition: background-color ${p => p.theme.transitionTimingFunction};
+
+  &:hover,
+  &:focus {
+    background-color: ${p => p.theme.colors.blue};
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    padding: 8px 20px;
+
+    width: 152px;
+
+    border: 2px solid ${p => p.theme.colors.blue};
+    border-radius: 40px;
+
+    color: ${p => p.theme.colors.blue};
+    background-color: ${p => p.theme.colors.white};
+
+    font-family: Manrope700, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.64px;
+    transition: color ${p => p.theme.transitionTimingFunction};
+
+    &:hover,
+    &:focus {
+      color: ${p => p.theme.colors.white};
+      border: 2px solid transparent;
+      background-image: ${p => p.theme.linearGradient};
+      background-origin: border-box;
+      background-repeat: no-repeat;
+    }
+
+    &:hover svg,
+    &:focus svg {
+      color: ${p => p.theme.colors.white};
+    }
+  }
 `;
-// export const ButtonNoticeFilter = styled.button`
-//   display: flex;
-//   /* flex-direction: column-reverse; */
-//   align-items: center;
-//   justify-content: center;
-//   gap: 8px;
 
-//   width: 40px;
-//   height: 40px;
+export const ButtonNoticeAdd = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 
-//   /* width: ${({ width }) => width || 'auto'}; */
-//   border: none;
-//   padding: 0;
-//   border-radius: 100%;
-//   background-color: ${p => p.theme.colors.blueLight};
+  width: 137px;
+  padding: 8px 20px;
 
-//   /* color: ${({ color }) => color};
-//   font-family: Manrope, sans-serif;
-//   font-size: 12px;
-//   font-weight: 600; */
+  cursor: pointer;
+  border: none;
+  border-radius: 40px;
+  background-color: ${p => p.theme.colors.blue};
+  color: ${p => p.theme.colors.white};
 
-//   transition: background-color ${p => p.theme.transitionTimingFunction};
+  font-family: Manrope700, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.64px;
+  transition: color ${p => p.theme.transitionTimingFunction};
 
-//   &:hover,
-//   &:focus {
-//     background-color: ${p => p.theme.colors.blue};
-//   }
+  &:hover,
+  &:focus {
+    color: ${p => p.theme.colors.white};
+    background-image: ${p => p.theme.linearGradient};
+  }
+`;
 
-//   &:hover svg,
-//   &:focus svg {
-//     color: ${p => p.theme.colors.white};
-//   }
-
-//   @media (min-width: 768px) {
-//     flex-direction: row;
-//     padding: 8px 16px;
-//     height: 35px;
-
-//     border: 2px solid #54adff;
-
-//     font-size: 16px;
-//     font-weight: 700;
-//     border-radius: 40px;
-//     letter-spacing: 0.56px;
-//   }
-// `;
-
-export const Filter = styled(CiFilter)`
+export const IconFilter = styled(CiFilter)`
   width: 24px;
   height: 24px;
   color: ${p => p.theme.colors.blue};
+
+  transition: color ${p => p.theme.transitionTimingFunction};
 `;
 
-export const Div = styled.div`
-  position: absolute;
-  bottom: 20px;
+export const IconAdd = styled(MdAdd)`
+  width: 24px;
+  height: 24px;
+  color: ${p => p.theme.colors.white};
 `;

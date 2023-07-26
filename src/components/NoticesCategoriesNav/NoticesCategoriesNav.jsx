@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import {
   ButtonFilterWrapper,
+  ButtonNoticeAdd,
   ButtonNoticeFilter,
   ButtonWrapper,
-  Container,
-  Div,
-  Filter,
+  ContainerNav,
+  IconAdd,
+  IconFilter,
   NoticesLink,
 } from './NoticesCategoriesNav.styled';
-import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import { ButtonAddPet } from 'components/Buttons';
-import { theme } from '../../theme.js';
+// import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+// import { theme } from '../../theme.js';
 
 const NoticesCategoriesNav = () => {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
@@ -29,7 +30,7 @@ const NoticesCategoriesNav = () => {
 
   // console.log(viewportWidth);
   return (
-    <Container>
+    <ContainerNav>
       <ButtonWrapper>
         <NoticesLink to={'/notices/sell1'}>sell</NoticesLink>
         <NoticesLink to={'/notices/sell2'}>lost/found</NoticesLink>
@@ -38,44 +39,26 @@ const NoticesCategoriesNav = () => {
         <NoticesLink to={'/notices/sell5'}>my ads</NoticesLink>
       </ButtonWrapper>
       <ButtonFilterWrapper>
-        {/* {viewportWidth >= 768 && (
+        {viewportWidth >= 768 && (
           <>
-            <ButtonFilter
-              background={theme.colors.white}
-              color={theme.colors.blue}
-              width="152px"
-            >
-              Filter
-              <SpriteIcon
-                icon="filters-2"
-                color={theme.colors.blue}
-              ></SpriteIcon>
-            </ButtonFilter>
-            <ButtonFilter
-              background={theme.colors.blue}
-              color={theme.colors.white}
-              width="129px"
-            >
-              Add Pet
-              <SpriteIcon
-                icon="plus-small"
-                color={theme.colors.white}
-              ></SpriteIcon>
-            </ButtonFilter>
+            <ButtonNoticeFilter>
+              Filter <IconFilter />
+            </ButtonNoticeFilter>
+            <ButtonNoticeAdd>
+              Add Pet <IconAdd />
+            </ButtonNoticeAdd>
           </>
-        )} */}
+        )}
         {viewportWidth < 768 && (
           <>
             <ButtonNoticeFilter>
-              <Filter />
+              <IconFilter />
             </ButtonNoticeFilter>
-            <Div>
-              <ButtonAddPet></ButtonAddPet>
-            </Div>
+            <ButtonAddPet></ButtonAddPet>
           </>
         )}
       </ButtonFilterWrapper>
-    </Container>
+    </ContainerNav>
   );
 };
 
