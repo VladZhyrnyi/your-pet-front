@@ -4,21 +4,21 @@ const {
   FormYourMore,
   FileInput,
   FileLabel,
-  FileContainer,
   FileDiv,
-  FileTitle,
   Label,
   TextArea,
   ThirdButtonContainer,
   ButtonNext,
   ButtonCancel,
+  FileTitle,
+  FileContainerYour,
 } = require('../AddPerForm.styled');
 
 const MoreInfo = ({ onChangeDetails, setPage, data }) => {
   return (
     <>
       <FormYourMore>
-        <FileContainer>
+        <FileContainerYour>
           <FileTitle>Load the pet’s image:</FileTitle>
           <FileLabel htmlFor="1">
             <FileDiv>
@@ -31,7 +31,7 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
             type="file"
             name="file"
           />
-        </FileContainer>
+        </FileContainerYour>
         <Label>
           Comments
           <TextArea

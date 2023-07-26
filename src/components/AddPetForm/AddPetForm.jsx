@@ -12,6 +12,8 @@ import {
   ButtonContainer,
   OptionItemDone,
   OptionLineDone,
+  MoreInfoContainer,
+  MoreInfoTitle,
 } from './AddPerForm.styled';
 import { useRef, useState } from 'react';
 import PersDetails from './YourPetForm/PersDetails';
@@ -75,7 +77,151 @@ const AddPetForm = () => {
       }));
   };
 
-  return (
+  return (page === 2 && data.category === 'sell') ||
+    (page === 2 && data.category === 'lost/found') ||
+    (page === 2 && data.category === 'in good hands') ? (
+    <MoreInfoContainer>
+      {page === 0 && <Title>{title[0]}</Title>}
+      {page > 0 && data.category === 'your pet' && <Title>{title[0]}</Title>}
+      {page === 1 && data.category === 'sell' && <Title>{title[1]}</Title>}
+      {page > 1 && data.category === 'sell' && (
+        <MoreInfoTitle>
+          <Title>{title[1]}</Title>
+        </MoreInfoTitle>
+      )}
+      {page === 1 && data.category === 'lost/found' && (
+        <Title>{title[2]}</Title>
+      )}
+      {page > 1 && data.category === 'lost/found' && (
+        <MoreInfoTitle>
+          <Title>{title[2]}</Title>
+        </MoreInfoTitle>
+      )}
+      {page === 1 && data.category === 'in good hands' && (
+        <Title>{title[3]}</Title>
+      )}
+      {page > 1 && data.category === 'in good hands' && (
+        <MoreInfoTitle>
+          <Title>{title[3]}</Title>
+        </MoreInfoTitle>
+      )}
+      <OptionList>
+        {page === 0 ? (
+          <OptionItemCurrent>
+            Choose option
+            <OptionLineCurrent />
+          </OptionItemCurrent>
+        ) : (
+          <OptionItemDone>
+            Choose option
+            <OptionLineDone />
+          </OptionItemDone>
+        )}
+        {page === 0 && (
+          <OptionItem>
+            Personal details
+            <OptionLine />
+          </OptionItem>
+        )}
+        {page === 1 && (
+          <OptionItemCurrent>
+            Personal details
+            <OptionLineCurrent />
+          </OptionItemCurrent>
+        )}
+        {page > 1 && (
+          <OptionItemDone>
+            Personal details
+            <OptionLineDone />
+          </OptionItemDone>
+        )}
+        {page < 2 && (
+          <OptionItem>
+            More info
+            <OptionLine />
+          </OptionItem>
+        )}
+        {page === 2 && (
+          <OptionItemCurrent>
+            More info
+            <OptionLineCurrent />
+          </OptionItemCurrent>
+        )}
+      </OptionList>
+      {page === 0 && (
+        <AddPetContent onChangeOption={onChangeOption} data={data} />
+      )}
+      {page === 1 && data.category === 'your pet' && (
+        <PersDetails
+          onChangeDetails={onChangeDetails}
+          setPage={setPage}
+          data={data}
+        />
+      )}
+      {page === 1 && data.category === 'sell' && (
+        <PersonalDetails
+          onChangeDetails={onChangeDetails}
+          setPage={setPage}
+          data={data}
+        />
+      )}
+      {page === 1 && data.category === 'lost/found' && (
+        <PersDetailsLost
+          onChangeDetails={onChangeDetails}
+          setPage={setPage}
+          data={data}
+        />
+      )}
+      {page === 1 && data.category === 'in good hands' && (
+        <PersDetailsHands
+          onChangeDetails={onChangeDetails}
+          setPage={setPage}
+          data={data}
+        />
+      )}
+      {page === 2 && data.category === 'your pet' && (
+        <MoreInfoPet
+          onChangeDetails={onChangeDetails}
+          setPage={setPage}
+          data={data}
+        />
+      )}
+      {page === 2 && data.category === 'sell' && (
+        <MoreInfo
+          onChangeDetails={onChangeDetails}
+          onChangeOption={onChangeOption}
+          data={data}
+          setPage={setPage}
+        />
+      )}
+      {page === 2 && data.category === 'lost/found' && (
+        <MoreInfoLost
+          onChangeDetails={onChangeOption}
+          data={data}
+          setPage={setPage}
+        />
+      )}
+      {page === 2 && data.category === 'in good hands' && (
+        <MoreInfoHands
+          onChangeDetails={onChangeOption}
+          data={data}
+          setPage={setPage}
+        />
+      )}
+      {page === 0 && (
+        <ButtonContainer>
+          <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
+            Next
+            <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
+          </ButtonNext>
+          <ButtonCancel type="button" onClick={() => navigate('/')}>
+            <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+            Cancel
+          </ButtonCancel>
+        </ButtonContainer>
+      )}
+    </MoreInfoContainer>
+  ) : (
     <Container>
       {page === 0 && <Title>{title[0]}</Title>}
       {page > 0 && data.category === 'your pet' && <Title>{title[0]}</Title>}

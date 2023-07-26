@@ -10,10 +10,35 @@ export const Container = styled.div`
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 
   @media (min-width: 768px) {
-    min-width: 392px;
+    width: 392px;
     min-height: 502px;
     padding: 20px 34px 20px 32px;
   }
+`;
+
+export const SecondSexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MoreInfoContainer = styled.div`
+  position: relative;
+  width: 264px;
+  padding: 20px 8px 17px 8px;
+  border-radius: 40px;
+  margin: 0 auto;
+  background: var(--unnamed, #fff);
+  box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+
+  @media (min-width: 768px) {
+    width: 638px;
+    min-height: 502px;
+    padding: 20px 34px 20px 32px;
+  }
+`;
+
+export const MoreInfoTitle = styled.div`
+  text-align: center;
 `;
 
 export const Title = styled.h1`
@@ -33,13 +58,18 @@ export const Title = styled.h1`
 export const OptionList = styled.ul`
   display: flex;
   list-style: none;
-  margin: 0;
+  width: 264px;
+  margin: 0 auto;
   padding: 0;
   gap: 14px;
   margin-top: 24px;
+  justify-content: space-around;
 
   @media (min-width: 768px) {
     gap: 16px;
+    justify-content: unset;
+    width: 392px;
+    margin: 24px auto;
   }
 `;
 
@@ -54,6 +84,7 @@ export const OptionItemCurrent = styled.li`
 
   @media (min-width: 768px) {
     font-size: 16px;
+    width: 120px;
   }
 `;
 
@@ -68,6 +99,8 @@ export const OptionItemDone = styled.li`
 
   @media (min-width: 768px) {
     font-size: 16px;
+    min-width: 120px;
+    width: calc((100% - 32px) / 3);
   }
 `;
 
@@ -82,6 +115,7 @@ export const OptionItem = styled.li`
 
   @media (min-width: 768px) {
     font-size: 16px;
+    width: 120px;
   }
 `;
 
@@ -93,6 +127,10 @@ export const OptionLineCurrent = styled.div`
   bottom: -20px;
   left: 0;
   border-radius: 8px;
+
+  @media (min-width: 768px) {
+    width: 120px;
+  }
 `;
 
 export const OptionLineDone = styled.div`
@@ -103,6 +141,10 @@ export const OptionLineDone = styled.div`
   bottom: -20px;
   left: 0;
   border-radius: 8px;
+
+  @media (min-width: 768px) {
+    width: 120px;
+  }
 `;
 
 export const OptionLine = styled.div`
@@ -114,6 +156,10 @@ export const OptionLine = styled.div`
   bottom: -20px;
   left: 0;
   border-radius: 8px;
+
+  @media (min-width: 768px) {
+    width: 120px;
+  }
 `;
 
 export const FormOption = styled.form`
@@ -175,7 +221,7 @@ export const ThirdButtonContainer = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: row-reverse;
-    margin-top: 17px;
+    margin-top: px;
   }
 `;
 
@@ -299,7 +345,6 @@ export const Label = styled.label`
 export const Input = styled.input`
   position: relative;
   display: flex;
-  width: 230px;
   height: 20px;
   padding: 8px 16px;
   align-items: center;
@@ -335,7 +380,23 @@ export const Input = styled.input`
 export const FileContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 27px;
+  margin-top: 16px;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+    align-items: unset;
+    margin-top: 38px;
+  }
+`;
+export const FileContainerYour = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+
+  @media (min-width: 768px) {
+    align-items: center;
+    margin-top: 38px;
+  }
 `;
 
 export const FileTitle = styled.p`
@@ -350,6 +411,7 @@ export const FileTitle = styled.p`
     margin: 0px 16px 0px 0px;
     font-size: 20px;
     min-width: 114px;
+    margin-bottom: 8px;
   }
 `;
 
@@ -392,7 +454,6 @@ export const FileInput = styled.input`
 
 export const TextArea = styled.textarea`
   display: flex;
-  width: 245px;
   height: 92px;
   padding: 8px 16px;
   align-items: flex-start;
@@ -435,12 +496,69 @@ export const TextArea = styled.textarea`
     }
   }
 `;
+export const TextAreaLost = styled.textarea`
+  display: flex;
+  height: 92px;
+  padding: 8px 16px;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+  resize: none;
+
+  border-radius: 20px;
+  border: 1px solid ${p => p.theme.colors.blue};
+
+  color: #888;
+  font-family: Manrope400, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 21px;
+  letter-spacing: 0.56px;
+
+  outline: none;
+
+  @media (min-width: 768px) {
+    min-width: 359px;
+    height: 164px;
+  }
+
+  &::placeholder {
+    color: #888;
+    font-family: Manrope400, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px;
+    letter-spacing: 0.56px;
+
+    @media (min-width: 768px) {
+      color: var(--c, #888);
+      font-family: Manrope400;
+      font-size: 16px;
+      font-style: normal;
+      line-height: 24px;
+      letter-spacing: 0.64px;
+    }
+  }
+`;
 
 export const FormLostMore = styled.form`
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  @media (min-width: 768px) {
+    flex-direction: unset;
+    margin-top: 40px;
+  }
 `;
+
+export const LableWrapper = styled.div`
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
 export const FormLostPers = styled.form`
   display: flex;
   flex-direction: column;
@@ -453,7 +571,7 @@ export const SexContainer = styled.div`
 `;
 
 export const RadioLabelSex = styled.label`
-  height: 35px;
+  height: 20px;
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -465,10 +583,15 @@ export const RadioLabelSex = styled.label`
   font-style: normal;
   line-height: normal;
   letter-spacing: 0.56px;
-  padding: 8px 16px;
+  padding: 8px 10px;
   border-radius: 40px;
   border-radius: 40px;
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 
   & svg {
     fill: green;
@@ -494,14 +617,28 @@ export const SexTitle = styled.p`
   font-size: 14px;
   font-style: normal;
   line-height: normal;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    font-size: 20px;
+    line-height: 26.5px;
+  }
 `;
 
 export const FileSellTitle = styled.p`
-  width: 81px;
+  width: 90px;
   color: ${p => p.theme.colors.black};
   margin-right: 14px;
   font-family: Manrope500, sans-serif;
   font-size: 14px;
   font-style: normal;
   line-height: normal;
+
+  @media (min-width: 768px) {
+    width: 200px;
+    margin-bottom: 8px;
+    margin-right: 0px;
+    font-size: 20px;
+    line-height: 26.5px;
+  }
 `;

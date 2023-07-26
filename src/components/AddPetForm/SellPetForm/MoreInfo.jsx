@@ -16,100 +16,106 @@ import {
   ThirdButtonContainer,
   ButtonNext,
   ButtonCancel,
+  SecondSexContainer,
+  LableWrapper,
 } from '../AddPerForm.styled';
 
 const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   return (
     <>
-      <SexTitle>The sex</SexTitle>
       <FormLostMore>
-        <SexContainer>
-          <RadioBtnSex
-            id="female"
-            onChange={onChangeDetails}
-            type="radio"
-            name="sex"
-            value="female"
-            checked={data.sex === 'female'}
-          />
-          <RadioLabelSex htmlFor="female">
-            Female
-            <SpriteIcon
-              icon="female"
-              color={
-                (data.sex === 'female' && 'white') ||
-                (data.sex === 'male' && '#888') ||
-                (data.sex === '' && '#F43F5E')
-              }
-              size="24px"
+        <SecondSexContainer>
+          <SexTitle>The sex</SexTitle>
+          <SexContainer>
+            <RadioBtnSex
+              id="female"
+              onChange={onChangeDetails}
+              type="radio"
+              name="sex"
+              value="female"
+              checked={data.sex === 'female'}
             />
-          </RadioLabelSex>
+            <RadioLabelSex htmlFor="female">
+              Female
+              <SpriteIcon
+                icon="female"
+                color={
+                  (data.sex === 'female' && 'white') ||
+                  (data.sex === 'male' && '#888') ||
+                  (data.sex === '' && '#F43F5E')
+                }
+                size="24px"
+              />
+            </RadioLabelSex>
 
-          <RadioBtnSex
-            id="male"
-            onChange={onChangeDetails}
-            type="radio"
-            name="sex"
-            value="male"
-            checked={data.sex === 'male'}
-          />
-          <RadioLabelSex htmlFor="male">
-            Male
-            <SpriteIcon
-              icon="male"
-              color={
-                (data.sex === 'male' && 'white') ||
-                (data.sex === 'female' && '#888') ||
-                (data.sex === '' && '#54ADFF')
-              }
-              size="24px"
+            <RadioBtnSex
+              id="male"
+              onChange={onChangeDetails}
+              type="radio"
+              name="sex"
+              value="male"
+              checked={data.sex === 'male'}
             />
-          </RadioLabelSex>
-        </SexContainer>
-        <FileContainer>
-          <FileSellTitle>Load the pet’s image:</FileSellTitle>
-          <FileLabelLost htmlFor="avatar">
-            <FileDiv>
-              <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
-            </FileDiv>
-          </FileLabelLost>
-          <FileInput
-            id="avatar"
-            onChange={onChangeDetails}
-            type="file"
-            name="file"
-          />
-        </FileContainer>
-        <Label>
-          Location
-          <Input
-            onChange={onChangeDetails}
-            type="text"
-            name="location"
-            placeholder="Your location"
-            value={data.location}
-          />
-        </Label>
-        <Label>
-          Price
-          <Input
-            onChange={onChangeDetails}
-            type="number"
-            name="price"
-            placeholder="Pet price"
-            value={data.price}
-          />
-        </Label>
-        <Label>
-          Comments
-          <TextArea
-            onChange={onChangeDetails}
-            name="comments"
-            rows="5"
-            placeholder="Stay your comment"
-            value={data.comments}
-          ></TextArea>
-        </Label>
+            <RadioLabelSex htmlFor="male">
+              Male
+              <SpriteIcon
+                icon="male"
+                color={
+                  (data.sex === 'male' && 'white') ||
+                  (data.sex === 'female' && '#888') ||
+                  (data.sex === '' && '#54ADFF')
+                }
+                size="24px"
+              />
+            </RadioLabelSex>
+          </SexContainer>
+          <FileContainer>
+            <FileSellTitle>Load the pet’s image:</FileSellTitle>
+            <FileLabelLost htmlFor="avatar">
+              <FileDiv>
+                <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
+              </FileDiv>
+            </FileLabelLost>
+            <FileInput
+              id="avatar"
+              onChange={onChangeDetails}
+              type="file"
+              name="file"
+            />
+          </FileContainer>
+        </SecondSexContainer>
+        <LableWrapper>
+          <Label>
+            Location
+            <Input
+              onChange={onChangeDetails}
+              type="text"
+              name="location"
+              placeholder="Your location"
+              value={data.location}
+            />
+          </Label>
+          <Label>
+            Price
+            <Input
+              onChange={onChangeDetails}
+              type="number"
+              name="price"
+              placeholder="Pet price"
+              value={data.price}
+            />
+          </Label>
+          <Label>
+            Comments
+            <TextArea
+              onChange={onChangeDetails}
+              name="comments"
+              rows="5"
+              placeholder="Stay your comment"
+              value={data.comments}
+            ></TextArea>
+          </Label>
+        </LableWrapper>
       </FormLostMore>
       <ThirdButtonContainer>
         <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
