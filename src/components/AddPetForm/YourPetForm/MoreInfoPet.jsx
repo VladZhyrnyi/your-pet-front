@@ -34,6 +34,7 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
     e.preventDefault();
     const file = e.currentTarget.elements.file.files[0];
     !file ? setErr(true) : dispatch(AddPet(data));
+    console.log(data);
   };
 
   const onChange = e => {
