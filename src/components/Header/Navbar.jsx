@@ -31,8 +31,7 @@ const NavbarLink = styled(NavLink)`
   }
 
   @media screen and (min-width: 1280px) {
-     font-size: 20px;
-   
+    font-size: 20px;
   }
 
   &.active {
@@ -41,7 +40,7 @@ const NavbarLink = styled(NavLink)`
   }
 `;
 
-function NavBar() {
+const NavBar = () => {
   return (
     <Nav>
       <NavbarLink to="/news">News</NavbarLink>

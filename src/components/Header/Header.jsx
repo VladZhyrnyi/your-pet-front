@@ -12,7 +12,6 @@ import UserBar from './UserBar';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
 
-
 export const HeaderContainer = styled.div`
   /* position: relative; */
   display: flex;
