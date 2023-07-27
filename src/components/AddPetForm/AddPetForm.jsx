@@ -36,7 +36,7 @@ const obj = {
   file: '',
   sex: '',
   location: '',
-  price: 'Pet price',
+  price: 0,
   comments: '',
 };
 

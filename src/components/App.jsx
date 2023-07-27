@@ -55,8 +55,7 @@ const App = () => {
         <Route
           path="/add-pet"
           element={
-            <AddPetPage />
-            // {/* <PrivateRoute redirectTo="/login" component={<AddPetPage />} /> */}
+            <PrivateRoute redirectTo="/login" component={<AddPetPage />} />
           }
         />
         <Route path="/friends" element={<OurFriendsPage />} />
