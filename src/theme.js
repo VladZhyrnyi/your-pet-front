@@ -8,6 +8,9 @@ export const theme = {
     green: '#00C3AD',
     red: '#F43F5E',
     grey: '#888',
+    transparent:'transparent',
+    lightBlue:'#8CC8FD',
+    backgroundColor:'#FEF9F9',
   },
   boxShadow: {
     first: '3px 8px 14px rgba(136, 198, 253, 0.19)',
@@ -15,4 +18,6 @@ export const theme = {
   },
   linearGradient: 'linear-gradient(315deg, #419EF1 0%, #9BD0FF 100%)',
   transitionTimingFunction: '500ms cubic-bezier(0.4, 0, 0.2, 1)',
+
+
 };
