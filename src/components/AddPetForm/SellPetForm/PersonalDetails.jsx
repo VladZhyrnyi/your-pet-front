@@ -74,7 +74,7 @@ const PersonalDetails = ({ onChangeDetails, setPage, data }) => {
           Date of birth
           <Input
             onChange={onChangeDetails}
-            type="text"
+            type="date"
             name="date"
             placeholder="Type date of birth"
             value={data.date}
