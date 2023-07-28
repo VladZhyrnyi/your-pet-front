@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/your-pet-front/static/css/main.b6337146.css",
-    "main.js": "/your-pet-front/static/js/main.37c9b6f8.js",
+    "main.js": "/your-pet-front/static/js/main.3a5b0fdb.js",
     "static/media/collie-tablet@2x.png": "/your-pet-front/static/media/collie-tablet@2x.79951777da169c963a7d.png",
     "static/media/collie@2x.png": "/your-pet-front/static/media/collie@2x.7dc84600622dfd3de76e.png",
     "static/media/Inter-Medium.ttf": "/your-pet-front/static/media/Inter-Medium.6dcbc9bed1ec438907ee.ttf",
@@ -30,15 +30,15 @@
     "static/media/error-cat-tablet.png": "/your-pet-front/static/media/error-cat-tablet.57d779d3ef8ebd0696cd.png",
     "static/media/collie-mob.png": "/your-pet-front/static/media/collie-mob.e614f79bed00eef14f64.png",
     "static/media/error-cat-mob@2x.png": "/your-pet-front/static/media/error-cat-mob@2x.37f93c392720ddf19c3e.png",
-    "static/media/svgSprite.svg": "/your-pet-front/static/media/svgSprite.b1be4780c8551906017811cec11bb5db.svg",
+    "static/media/svgSprite.svg": "/your-pet-front/static/media/svgSprite.cd16ea7b2d4ef7317960ce3efb863ece.svg",
     "static/media/bulldog-mob.png": "/your-pet-front/static/media/bulldog-mob.1e7de78a6772210f7f78.png",
     "static/media/cat-mob.png": "/your-pet-front/static/media/cat-mob.4aa05d5102895a22e784.png",
     "index.html": "/your-pet-front/index.html",
     "main.b6337146.css.map": "/your-pet-front/static/css/main.b6337146.css.map",
-    "main.37c9b6f8.js.map": "/your-pet-front/static/js/main.37c9b6f8.js.map"
+    "main.3a5b0fdb.js.map": "/your-pet-front/static/js/main.3a5b0fdb.js.map"
   },
   "entrypoints": [
     "static/css/main.b6337146.css",
-    "static/js/main.37c9b6f8.js"
+    "static/js/main.3a5b0fdb.js"
   ]
 }
