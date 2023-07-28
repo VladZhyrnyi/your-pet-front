@@ -663,11 +663,13 @@ export const FileSellTitle = styled.p`
   }
 `;
 
-export const PreviewImage = styled.img`
+export const PreviewImage = styled.div`
   border-radius: 20px;
   height: 100%;
   width: 100%;
-  size: cover;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   @media (min-width: 768px) {
     border-radius: 40px;
   }

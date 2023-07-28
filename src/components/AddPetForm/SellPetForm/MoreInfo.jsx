@@ -35,6 +35,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   const [formIsInvalid, setFormIsInvalid] = useState(true);
   const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
+  const [sexErr, setSexErr] = useState(false);
 
   useEffect(() => {
     if (!files) return;
@@ -62,6 +63,8 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     e.preventDefault();
     const priceInput = e.currentTarget.elements.price.value;
     const locInput = e.currentTarget.elements.location.value;
+    const sexInput = e.currentTarget.elements.sex.value;
+    sexInput === '' && setSexErr(true);
     priceInput === '' && setPriceErr(true);
     locInput === '' && setLocErr(true);
     formIsInvalid === false &&
@@ -76,16 +79,20 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
           sex: data.sex,
           location: data.location,
           price: data.price,
-          comments: data.comments,
         })
       );
   };
   const onFormChange = e => {
     const priceInput = e.currentTarget.elements.price.value;
     const locInput = e.currentTarget.elements.location.value;
+    const sexInput = e.currentTarget.elements.sex.value;
+    sexInput !== '' && setSexErr(false);
     priceInput !== '' && setPriceErr(false);
     locInput !== '' && setLocErr(false);
-    priceInput !== '' && locInput !== '' && setFormIsInvalid(false);
+    priceInput !== '' &&
+      locInput !== '' &&
+      sexInput !== '' &&
+      setFormIsInvalid(false);
     if (
       e.currentTarget.elements.file.files &&
       e.currentTarget.elements.file.files.length > 0
@@ -106,6 +113,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
               name="sex"
               value="female"
               checked={data.sex === 'female'}
+              required={sexErr}
             />
             <RadioLabelSex htmlFor="female">
               Female
@@ -127,6 +135,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
               name="sex"
               value="male"
               checked={data.sex === 'male'}
+              required={sexErr}
             />
             <RadioLabelSex htmlFor="male">
               Male

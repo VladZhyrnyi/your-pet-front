@@ -84,7 +84,11 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
           <FileLabel htmlFor="1">
             <FileDiv>
               {previews ? (
-                <PreviewImage alt="pet image" src={previews[0]}></PreviewImage>
+                <PreviewImage
+                  style={{
+                    backgroundImage: `url(${previews[0]})`,
+                  }}
+                ></PreviewImage>
               ) : (
                 <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
               )}
@@ -112,7 +116,10 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
         </Label>
         <ThirdButtonContainer>
           <ButtonNext
-            style={{ backgroundColor: success && 'green' }}
+            style={{
+              backgroundColor: success && '#00C3AD',
+              transition: 'all 500ms linear',
+            }}
             type="submit"
           >
             Done
