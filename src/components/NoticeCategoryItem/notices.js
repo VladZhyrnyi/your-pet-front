@@ -30,7 +30,7 @@ export const notices = [
     name: 'Iriska',
     title: 'This is my lovely pet',
     category: 'sell',
-    date: '14.02.2023',
+    date: '14.02.2008',
     type: 'pitbul',
     file: 'https://upload.wikimedia.org/wikipedia/commons/d/df/Felis-silvestris2.png',
     sex: 'female',

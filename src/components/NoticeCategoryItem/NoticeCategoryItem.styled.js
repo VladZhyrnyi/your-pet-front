@@ -58,9 +58,7 @@ export const NameCategory = styled.p`
   font-size: 14px;
 `;
 
-
 export const ButtonCardWrapper = styled.div`
-
   position: absolute;
   top: 12px;
   right: 12px;
@@ -161,7 +159,7 @@ export const Info = styled.div`
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 2px 8px;
+  padding: 2px 4px;
   border-radius: 16px;
   background-color: ${p => p.theme.colors.blueLight};
 
@@ -177,20 +175,20 @@ export const IconLocation = styled(TiLocationOutline)`
 `;
 
 export const IconClock = styled(GoClock)`
-  width: 24px;
-  height: 24px;
+  width: 21px;
+  height: 21px;
   color: ${p => p.theme.colors.blue};
 `;
 
 export const IconMale = styled(BsGenderMale)`
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   color: ${p => p.theme.colors.blue};
 `;
 
 export const IconFemale = styled(BsGenderFemale)`
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   color: ${p => p.theme.colors.blue};
 `;
 
@@ -210,7 +208,7 @@ export const BtnLearnMore = styled.button`
 
   width: 248px;
   padding: 8px 28px;
-  
+
   border-radius: 40px;
   outline: none;
   border: 2px solid ${p => p.theme.colors.blue};
@@ -231,6 +229,5 @@ export const BtnLearnMore = styled.button`
     background-repeat: no-repeat;
     color: ${p => p.theme.colors.white};
     border: 2px solid transparent;
-
   }
 `;
