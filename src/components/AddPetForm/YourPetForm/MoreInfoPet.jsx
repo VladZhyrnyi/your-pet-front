@@ -118,7 +118,7 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
           <ButtonNext
             style={{
               backgroundColor: success && '#00C3AD',
-              transition: 'all 500ms linear',
+              transition: 'all 500ms cubic-bezier(0.4, 0, 0.2, 1)',
             }}
             type="submit"
           >

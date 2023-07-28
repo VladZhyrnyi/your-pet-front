@@ -181,7 +181,13 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
           </Label>
         </LableWrapper>
         <ThirdButtonContainer>
-          <ButtonNext type="submit">
+          <ButtonNext
+            style={{
+              backgroundColor: success && '#00C3AD',
+              transition: 'all 500ms cubic-bezier(0.4, 0, 0.2, 1)',
+            }}
+            type="submit"
+          >
             Done
             <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
           </ButtonNext>
