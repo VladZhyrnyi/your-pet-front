@@ -27,6 +27,8 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
   const [err, setErr] = useState(false);
   const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
+  const [comErr, setComErr] = useState(false);
+  const [filer, setFile] = useState();
 
   useEffect(() => {
     if (!files) return;
@@ -53,23 +55,18 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
   const onSubmit = e => {
     e.preventDefault();
     const file = e.currentTarget.elements.file.files[0];
-    !file
-      ? setErr(true)
-      : dispatch(
-          AddPet({
-            category: data.category,
-            name: data.name,
-            date: data.date,
-            type: data.type,
-            file: data.file,
-            comments: data.comments,
-          })
-        );
+    const comInput = e.currentTarget.elements.comments.value;
+    comInput === '' && setComErr(true);
+    console.log(filer);
+    !file ? setErr(true) : dispatch(AddPet({ data, filer }));
   };
 
   const onChange = e => {
     const file = e.currentTarget.elements.file.files[0];
+    setFile(file);
+    const comInput = e.currentTarget.elements.comments.value;
     !file && setErr(true);
+    comInput !== '' && setComErr(false);
     if (
       e.currentTarget.elements.file.files &&
       e.currentTarget.elements.file.files.length > 0
@@ -112,7 +109,9 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
             name="comments"
             rows="5"
             value={data.comments}
+            required={comErr}
           ></TextArea>
+          {comErr && <span>Enter commentary</span>}
         </Label>
         <ThirdButtonContainer>
           <ButtonNext
