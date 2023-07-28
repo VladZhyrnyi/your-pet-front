@@ -28,6 +28,8 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
   const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
   const [comErr, setComErr] = useState(false);
+  const [filer, setFile] = useState();
+
   useEffect(() => {
     if (!files) return;
     let tmp = [];
@@ -55,22 +57,13 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
     const file = e.currentTarget.elements.file.files[0];
     const comInput = e.currentTarget.elements.comments.value;
     comInput === '' && setComErr(true);
-    !file
-      ? setErr(true)
-      : dispatch(
-          AddPet({
-            category: data.category,
-            name: data.name,
-            date: data.date,
-            type: data.type,
-            file: data.file,
-            comments: data.comments,
-          })
-        );
+    console.log(filer);
+    !file ? setErr(true) : dispatch(AddPet({ data, filer }));
   };
 
   const onChange = e => {
     const file = e.currentTarget.elements.file.files[0];
+    setFile(file);
     const comInput = e.currentTarget.elements.comments.value;
     !file && setErr(true);
     comInput !== '' && setComErr(false);

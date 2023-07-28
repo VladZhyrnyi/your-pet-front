@@ -76,7 +76,7 @@ const AddPetForm = () => {
     name === 'file' &&
       setData(prev => ({
         ...prev,
-        file: files[0].name,
+        file: files[0],
       }));
     name === 'date' &&
       setData(prev => ({
