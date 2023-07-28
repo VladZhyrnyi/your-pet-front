@@ -34,6 +34,8 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   const [formIsInvalid, setFormIsInvalid] = useState(true);
   const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
+  const [sexErr, setSexErr] = useState(false);
+  const [comErr, setComErr] = useState(false);
 
   useEffect(() => {
     if (!files) return;
@@ -59,7 +61,11 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   const onSubmit = e => {
     e.preventDefault();
     const locInput = e.currentTarget.elements.location.value;
+    const sexInput = e.currentTarget.elements.sex.value;
+    const comInput = e.currentTarget.elements.comments.value;
+    sexInput === '' && setSexErr(true);
     locInput === '' && setLocErr(true);
+    comInput === '' && setComErr(true);
     formIsInvalid === false &&
       dispatch(
         AddPetOther({
@@ -77,8 +83,15 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   };
   const onFormChange = e => {
     const locInput = e.currentTarget.elements.location.value;
+    const sexInput = e.currentTarget.elements.sex.value;
+    const comInput = e.currentTarget.elements.comments.value;
+    sexInput !== '' && setSexErr(false);
     locInput !== '' && setLocErr(false);
-    locInput !== '' && setFormIsInvalid(false);
+    comInput !== '' && setComErr(false);
+    locInput !== '' &&
+      sexInput !== '' &&
+      comInput !== '' &&
+      setFormIsInvalid(false);
     if (
       e.currentTarget.elements.file.files &&
       e.currentTarget.elements.file.files.length > 0
@@ -99,6 +112,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
               name="sex"
               value="female"
               checked={data.sex === 'female'}
+              required={sexErr}
             />
             <RadioLabelSex htmlFor="female">
               Female
@@ -119,6 +133,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
               name="sex"
               value="male"
               checked={data.sex === 'male'}
+              required={sexErr}
             />
             <RadioLabelSex htmlFor="male">
               Male
@@ -177,7 +192,9 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
               rows="5"
               placeholder="Stay your comment"
               value={data.comments}
+              required={comErr}
             ></TextAreaLost>
+            {comErr && <span>Enter commentary</span>}
           </Label>
         </LableWrapper>
         <ThirdButtonContainer>
