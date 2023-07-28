@@ -2,7 +2,6 @@ import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import {
   Label,
   Input,
-  TextArea,
   SexTitle,
   SexContainer,
   RadioBtnSex,
