@@ -139,7 +139,11 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
             <FileLabelLost htmlFor="avatar">
               <FileDiv>
                 {previews ? (
-                  <PreviewImage alt="pet image" src={previews[0]} />
+                  <PreviewImage
+                    style={{
+                      backgroundImage: `url(${previews[0]})`,
+                    }}
+                  ></PreviewImage>
                 ) : (
                   <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
                 )}
