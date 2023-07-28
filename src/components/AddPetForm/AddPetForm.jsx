@@ -26,6 +26,8 @@ import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import PersDetailsHands from './InGoodHands/PersDetails';
 import MoreInfoHands from './InGoodHands/MoreInfo';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectContacts } from 'redux/Content/selectors';
 
 const obj = {
   category: 'my-pet',
@@ -52,6 +54,7 @@ const AddPetForm = () => {
   const [data, setData] = useState(obj);
   const navigate = useNavigate();
   const location = useLocation();
+  const { success } = useSelector(selectContacts);
   const backLocation = useRef(location.state?.from ?? '/');
 
   const onChangeOption = ({ target: { name, value } }) => {

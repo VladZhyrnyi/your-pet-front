@@ -35,6 +35,10 @@ export const MoreInfoContainer = styled.div`
     min-height: 502px;
     padding: 20px 34px 20px 32px;
   }
+
+  @media (min-width: 1280px) {
+    width: 757px;
+  }
 `;
 
 export const MoreInfoTitle = styled.div`
@@ -204,11 +208,9 @@ export const SecondButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 24px;
 
   @media (min-width: 768px) {
     flex-direction: row-reverse;
-    margin-top: 40px;
   }
 `;
 
@@ -222,7 +224,7 @@ export const ThirdButtonContainer = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: row-reverse;
-    margin: 60px auto 0px auto;
+    margin: 36px auto 0px auto;
   }
 `;
 
@@ -613,6 +615,7 @@ export const FormLostMore = styled.form`
     flex-direction: unset;
     flex-wrap: wrap;
     margin-top: 40px;
+    justify-content: center;
   }
 `;
 

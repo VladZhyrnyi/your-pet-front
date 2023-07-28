@@ -62,12 +62,13 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
             date: data.date,
             type: data.type,
             file: data.file,
+            comments: data.comments,
           })
         );
   };
 
   const onChange = e => {
-    const file = e.currentTarget.elements.file.files[0].name;
+    const file = e.currentTarget.elements.file.files[0];
     !file && setErr(true);
     if (
       e.currentTarget.elements.file.files &&
@@ -101,7 +102,6 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
             name="file"
             required={err}
             accept="image/jpg, image/jpeg, image/png"
-            multiple
           />
         </FileContainerYour>
         <Label>
@@ -118,7 +118,7 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
           <ButtonNext
             style={{
               backgroundColor: success && '#00C3AD',
-              transition: 'all 500ms linear',
+              transition: 'all 500ms cubic-bezier(0.4, 0, 0.2, 1)',
             }}
             type="submit"
           >
