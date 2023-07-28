@@ -65,11 +65,14 @@ const RegiserForm = () => {
     if (passValue === confPassValue) {
       dispatch(registerUser(data))
         .then(data => {
-          console.log(data);
+          // console.log(data);
+          // console.log(data.meta.requestStatus);
           methods.reset();
           setPassIsValid('');
           setConfPasIsValid('');
-          setSuccess(true);
+          if (data.meta.requestStatus === 'fulfilled') {
+            setSuccess(true);
+          }
         })
         .catch(err => console.log(err));
     }

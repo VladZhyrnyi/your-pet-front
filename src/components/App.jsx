@@ -25,7 +25,7 @@ const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    // dispatch(refreshUser());
   }, [dispatch]);
   return isRefreshing ? (
     <>Refreshing...</>
@@ -36,12 +36,12 @@ const App = () => {
         <Route path="/main" element={<MainPage />} />
         <Route
           path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/notices/sell"
-              component={<RegisterPage />}
-            />
-          }
+          element={<RegisterPage />}
+          // <RestrictedRoute
+          //   redirectTo="/notices/sell"
+          //   component={<RegisterPage />}
+          // />
+          // }
         />
         <Route
           path="/login"
