@@ -1,5 +1,5 @@
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AddPet } from 'redux/Content/operations';
@@ -17,6 +17,7 @@ const {
   ButtonCancel,
   FileTitle,
   FileContainerYour,
+  PreviewImage,
 } = require('../AddPerForm.styled');
 
 const MoreInfo = ({ onChangeDetails, setPage, data }) => {
@@ -24,6 +25,25 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [err, setErr] = useState(false);
+  const [files, setFiles] = useState();
+  const [previews, setPreviews] = useState();
+
+  useEffect(() => {
+    if (!files) return;
+    let tmp = [];
+    for (let i = 0; i < files.length; i++) {
+      tmp.push(URL.createObjectURL(files[i]));
+    }
+    const objectUrls = tmp;
+    setPreviews(objectUrls);
+
+    // free memory
+    for (let i = 0; i < objectUrls.length; i++) {
+      return () => {
+        URL.revokeObjectURL(objectUrls[i]);
+      };
+    }
+  }, [files]);
 
   success &&
     setTimeout(() => {
@@ -33,13 +53,28 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
   const onSubmit = e => {
     e.preventDefault();
     const file = e.currentTarget.elements.file.files[0];
-    !file ? setErr(true) : dispatch(AddPet(data));
-    console.log(data);
+    !file
+      ? setErr(true)
+      : dispatch(
+          AddPet({
+            category: data.category,
+            name: data.name,
+            date: data.date,
+            type: data.type,
+            file: data.file,
+          })
+        );
   };
 
   const onChange = e => {
     const file = e.currentTarget.elements.file.files[0].name;
     !file && setErr(true);
+    if (
+      e.currentTarget.elements.file.files &&
+      e.currentTarget.elements.file.files.length > 0
+    ) {
+      setFiles(e.currentTarget.elements.file.files);
+    }
   };
   return (
     <>
@@ -48,7 +83,11 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
           <FileTitle>Load the pet’s image:</FileTitle>
           <FileLabel htmlFor="1">
             <FileDiv>
-              <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
+              {previews ? (
+                <PreviewImage alt="pet image" src={previews[0]}></PreviewImage>
+              ) : (
+                <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
+              )}
             </FileDiv>
           </FileLabel>
           <FileInput
@@ -57,6 +96,8 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
             type="file"
             name="file"
             required={err}
+            accept="image/jpg, image/jpeg, image/png"
+            multiple
           />
         </FileContainerYour>
         <Label>

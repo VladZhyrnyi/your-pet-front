@@ -8,8 +8,8 @@ const AddPetContent = ({ onChangeOption, data }) => {
         onChange={onChangeOption}
         type="radio"
         name="category"
-        value="your pet"
-        checked={data.category === 'your pet'}
+        value="my-pet"
+        checked={data.category === 'my-pet'}
       />
       <RadioLabel htmlFor="1">Your pet</RadioLabel>
       <RadioBtn

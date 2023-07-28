@@ -662,3 +662,12 @@ export const FileSellTitle = styled.p`
     line-height: 26.5px;
   }
 `;
+
+export const PreviewImage = styled.img`
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
+  @media (min-width: 768px) {
+    border-radius: 40px;
+  }
+`;
