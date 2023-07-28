@@ -22,7 +22,6 @@ const AuthContainer = styled.div`
 
 function AuthBar({ userBarKey, name }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log('name', name);
   return (
     <AuthContainer>
       {isLoggedIn ? (
