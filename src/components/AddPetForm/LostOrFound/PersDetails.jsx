@@ -78,8 +78,9 @@ const PersDetailsLost = ({ onChangeDetails, setPage, data }) => {
             type="date"
             name="date"
             placeholder="Type date of birth"
-            value={data.date}
             required={dateErr}
+            min="01.01.2000"
+            max="01.08.2023"
           />
           {dateErr && <span>Enter a date of birth</span>}
         </Label>

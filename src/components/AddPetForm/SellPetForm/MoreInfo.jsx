@@ -21,8 +21,15 @@ import {
   PreviewImage,
 } from '../AddPerForm.styled';
 import { useEffect, useState } from 'react';
+import { AddPetOther } from 'redux/Content/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectContacts } from 'redux/Content/selectors';
+import { useNavigate } from 'react-router-dom';
 
 const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
+  const { success } = useSelector(selectContacts);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [priceErr, setPriceErr] = useState(false);
   const [locErr, setLocErr] = useState(false);
   const [formIsInvalid, setFormIsInvalid] = useState(true);
@@ -46,13 +53,32 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     }
   }, [files]);
 
+  success &&
+    setTimeout(() => {
+      navigate('/');
+    }, 2000);
+
   const onSubmit = e => {
     e.preventDefault();
     const priceInput = e.currentTarget.elements.price.value;
     const locInput = e.currentTarget.elements.location.value;
     priceInput === '' && setPriceErr(true);
     locInput === '' && setLocErr(true);
-    formIsInvalid === false && setPage(prev => prev + 1);
+    formIsInvalid === false &&
+      dispatch(
+        AddPetOther({
+          category: data.category,
+          title: data.title,
+          name: data.name,
+          date: data.date,
+          type: data.type,
+          file: data.file,
+          sex: data.sex,
+          location: data.location,
+          price: data.price,
+          comments: data.comments,
+        })
+      );
   };
   const onFormChange = e => {
     const priceInput = e.currentTarget.elements.price.value;

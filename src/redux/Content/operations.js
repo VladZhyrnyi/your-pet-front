@@ -8,3 +8,9 @@ export const AddPet = createAsyncThunk('pets/CreatePet', async pet => {
   console.log(data);
   return data;
 });
+
+export const AddPetOther = createAsyncThunk('pets/AddPetOther', async pet => {
+  const { data } = await axios.post('/api/notices', pet);
+  console.log(data);
+  return data;
+});

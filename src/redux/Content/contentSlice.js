@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AddPet } from './operations';
+import { AddPet, AddPetOther } from './operations';
 
 const contentInitialState = {
   items: [],
@@ -11,12 +11,35 @@ const contentInitialState = {
 // const addPetDone = () => {};
 
 const contentSlice = createSlice({
-  name: 'contacts',
+  name: 'content',
   initialState: contentInitialState,
   extraReducers: builder =>
-    builder.addCase(AddPet.fulfilled, (state, { payload }) => {
-      state.success = true;
-    }),
+    builder
+      .addCase(AddPet.pending, (state, { payload }) => {
+        state.isLoading = true;
+      })
+      .addCase(AddPet.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.success = true;
+        state.items.push(payload);
+      })
+      .addCase(AddPet.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(AddPetOther.pending, (state, { payload }) => {
+        state.isLoading = true;
+      })
+      .addCase(AddPetOther.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.success = true;
+        state.items.push(payload);
+      })
+      .addCase(AddPetOther.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      }),
 });
 
 export const contentReducer = contentSlice.reducer;

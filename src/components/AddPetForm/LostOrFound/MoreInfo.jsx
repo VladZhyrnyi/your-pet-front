@@ -18,12 +18,78 @@ import {
   SecondSexContainer,
   LableWrapper,
   TextAreaLost,
+  PreviewImage,
 } from '../AddPerForm.styled';
+import { AddPetOther } from 'redux/Content/operations';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectContacts } from 'redux/Content/selectors';
 
 const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
+  const { success } = useSelector(selectContacts);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [locErr, setLocErr] = useState(false);
+  const [formIsInvalid, setFormIsInvalid] = useState(true);
+  const [files, setFiles] = useState();
+  const [previews, setPreviews] = useState();
+
+  useEffect(() => {
+    if (!files) return;
+    let tmp = [];
+    for (let i = 0; i < files.length; i++) {
+      tmp.push(URL.createObjectURL(files[i]));
+    }
+    const objectUrls = tmp;
+    setPreviews(objectUrls);
+
+    // free memory
+    for (let i = 0; i < objectUrls.length; i++) {
+      return () => {
+        URL.revokeObjectURL(objectUrls[i]);
+      };
+    }
+  }, [files]);
+
+  success &&
+    setTimeout(() => {
+      navigate('/');
+    }, 2000);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    const locInput = e.currentTarget.elements.location.value;
+    locInput === '' && setLocErr(true);
+    formIsInvalid === false &&
+      dispatch(
+        AddPetOther({
+          category: data.category,
+          title: data.title,
+          name: data.name,
+          date: data.date,
+          type: data.type,
+          file: data.file,
+          sex: data.sex,
+          location: data.location,
+          comments: data.comments,
+        })
+      );
+  };
+  const onFormChange = e => {
+    const locInput = e.currentTarget.elements.location.value;
+    locInput !== '' && setLocErr(false);
+    locInput !== '' && setFormIsInvalid(false);
+    if (
+      e.currentTarget.elements.file.files &&
+      e.currentTarget.elements.file.files.length > 0
+    ) {
+      setFiles(e.currentTarget.elements.file.files);
+    }
+  };
   return (
     <>
-      <FormLostMore>
+      <FormLostMore onChange={onFormChange} onSubmit={onSubmit}>
         <SecondSexContainer>
           <SexTitle>The sex</SexTitle>
           <SexContainer>
@@ -47,7 +113,6 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
                 size="24px"
               />
             </RadioLabelSex>
-
             <RadioBtnSex
               id="male"
               onChange={onChangeDetails}
@@ -70,14 +135,18 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
             </RadioLabelSex>
           </SexContainer>
           <FileContainer>
-            <FileTitle>Add photo</FileTitle>
-            <FileLabelLost htmlFor="1">
+            <FileTitle>Add photo:</FileTitle>
+            <FileLabelLost htmlFor="avatar">
               <FileDiv>
-                <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
+                {previews ? (
+                  <PreviewImage alt="pet image" src={previews[0]} />
+                ) : (
+                  <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
+                )}
               </FileDiv>
             </FileLabelLost>
             <FileInput
-              id="1"
+              id="avatar"
               onChange={onChangeDetails}
               type="file"
               name="file"
@@ -93,7 +162,9 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
               name="location"
               placeholder="Your location"
               value={data.location}
+              required={locErr}
             />
+            {locErr && <span>Enter location</span>}
           </Label>
           <Label>
             Comments
@@ -106,17 +177,17 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
             ></TextAreaLost>
           </Label>
         </LableWrapper>
+        <ThirdButtonContainer>
+          <ButtonNext type="submit">
+            Done
+            <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
+          </ButtonNext>
+          <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
+            <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+            Back
+          </ButtonCancel>
+        </ThirdButtonContainer>
       </FormLostMore>
-      <ThirdButtonContainer>
-        <ButtonNext type="button" onClick={() => setPage(prev => prev + 1)}>
-          Done
-          <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
-        </ButtonNext>
-        <ButtonCancel type="button" onClick={() => setPage(prev => prev - 1)}>
-          <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
-          Back
-        </ButtonCancel>
-      </ThirdButtonContainer>
     </>
   );
 };

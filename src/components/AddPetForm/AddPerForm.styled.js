@@ -667,6 +667,7 @@ export const PreviewImage = styled.img`
   border-radius: 20px;
   height: 100%;
   width: 100%;
+  size: cover;
   @media (min-width: 768px) {
     border-radius: 40px;
   }
