@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const Form = styled.form`
-  margin: 0 auto;
+  margin: 40px auto 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -13,6 +13,7 @@ export const Form = styled.form`
   border-radius: 20px;
   box-shadow: ${p => p.theme.boxShadow.second};
   @media (min-width: 768px) {
+    margin: 80px auto 0;
     width: 608px;
     padding: 60px 75px;
     border-radius: 40px;
@@ -80,6 +81,14 @@ export const SubmitBtn = styled.button`
   color: #ffffff;
   padding: 0;
   margin-bottom: 8px;
+  cursor: pointer;
+  transition: color ${p => p.theme.transitionTimingFunction};
+  &:hover,
+  &:focus {
+    background-image: ${p => p.theme.linearGradient};
+    background-origin: border-box;
+    background-repeat: no-repeat;
+  }
   @media (min-width: 768px) {
     margin-bottom: 16px;
   }

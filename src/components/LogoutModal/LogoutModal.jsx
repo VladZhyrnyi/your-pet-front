@@ -12,7 +12,6 @@ import { logoutUser } from 'redux/Auth/operations';
 export const LogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const onLogoutBtnClick = () => {
-    console.log('qwe');
     dispatch(logoutUser);
     onClose();
   };

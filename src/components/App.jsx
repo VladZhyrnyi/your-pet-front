@@ -25,7 +25,7 @@ const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    // dispatch(refreshUser());
+    dispatch(refreshUser());
   }, [dispatch]);
   return isRefreshing ? (
     <>Refreshing...</>

@@ -7,8 +7,8 @@ import { selectIsError, selectErrorMessage } from 'redux/Auth/selectors';
 import { Link } from 'react-router-dom';
 import Input from 'components/Input/Input';
 import PasswordInput from 'components/Input/PasswordInput';
-import { Modal } from 'components/Modal';
-import { LogoutModal } from 'components/LogoutModal/LogoutModal';
+import { RegisterModal } from 'components/RegisterModal/RegisterModal';
+// import LogoutBtn from 'components/Header/LogoutBtn';
 
 import {
   name_validation,
@@ -61,10 +61,11 @@ const RegiserForm = () => {
       setConfPasIsValid('');
     }
   };
-  const onSubmit = methods.handleSubmit(async data => {
+  const onSubmit = methods.handleSubmit(data => {
     if (passValue === confPassValue) {
       dispatch(registerUser(data))
         .then(data => {
+          console.log(data);
           methods.reset();
           setPassIsValid('');
           setConfPasIsValid('');
@@ -74,9 +75,9 @@ const RegiserForm = () => {
     }
   });
 
-  const [isLogoutModlaOpen, setIsLogoutModalOpen] = useState(false);
   return (
     <>
+      {/* <LogoutBtn /> */}
       <FormProvider {...methods}>
         <Form onSubmit={e => e.preventDefault()}>
           {isError && <h2>{errorMessage}</h2>}
@@ -108,20 +109,7 @@ const RegiserForm = () => {
           </LinkToLogin>
         </Form>
       </FormProvider>
-      <button onClick={() => setIsLogoutModalOpen(true)}>OpenModal</button>
-      {isLogoutModlaOpen && (
-        <LogoutModal onClose={() => setIsLogoutModalOpen(false)} />
-      )}
-      {/* {success && !isError && (
-        <Modal onClose={() => setSuccess(false)}>
-          <p>Your registration is almost done!</p>
-          <br />
-          <p>
-            We sent you verification mail. <br />
-            Please click the link inside it to verify your email.
-          </p>
-        </Modal>
-      )} */}
+      {success && <RegisterModal onClose={() => setSuccess(false)} />}
     </>
   );
 };
