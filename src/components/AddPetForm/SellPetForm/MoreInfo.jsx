@@ -55,7 +55,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
 
   success &&
     setTimeout(() => {
-      navigate('/');
+      navigate('/notices');
     }, 2000);
 
   const onSubmit = e => {

@@ -1,32 +1,33 @@
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import {
-  ButtonCancel,
-  ButtonNext,
-  FileContainer,
-  FileDiv,
-  FileInput,
-  FileLabelLost,
-  FileTitle,
-  FormLostMore,
-  Input,
   Label,
+  Input,
+  TextArea,
+  SexTitle,
+  SexContainer,
   RadioBtnSex,
   RadioLabelSex,
+  FileInput,
+  FileContainer,
+  FileLabelLost,
+  FileDiv,
+  FormLostMore,
   ThirdButtonContainer,
-  SexContainer,
-  SexTitle,
+  ButtonNext,
+  ButtonCancel,
   SecondSexContainer,
   LableWrapper,
-  TextAreaLost,
   PreviewImage,
+  FileTitle,
+  TextAreaLost,
 } from '../AddPerForm.styled';
-import { AddPetOther } from 'redux/Content/operations';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { AddPetOther } from 'redux/Content/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/Content/selectors';
+import { useNavigate } from 'react-router-dom';
 
-const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
+const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   const { success } = useSelector(selectContacts);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
 
   success &&
     setTimeout(() => {
-      navigate('/');
+      navigate('/notices');
     }, 2000);
 
   const onSubmit = e => {
@@ -155,7 +156,7 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
         </SecondSexContainer>
         <LableWrapper>
           <Label>
-            location
+            Location
             <Input
               onChange={onChangeDetails}
               type="text"
@@ -192,4 +193,4 @@ const MoreInfoLost = ({ onChangeDetails, data, setPage }) => {
   );
 };
 
-export default MoreInfoLost;
+export default MoreInfo;

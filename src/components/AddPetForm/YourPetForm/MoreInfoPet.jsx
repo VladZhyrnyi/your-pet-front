@@ -47,7 +47,7 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
 
   success &&
     setTimeout(() => {
-      navigate('/');
+      navigate('/user');
     }, 2000);
 
   const onSubmit = e => {
