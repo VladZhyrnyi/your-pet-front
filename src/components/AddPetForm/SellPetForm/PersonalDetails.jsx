@@ -78,6 +78,8 @@ const PersonalDetails = ({ onChangeDetails, setPage, data }) => {
             name="date"
             placeholder="Type date of birth"
             required={dateErr}
+            min="2000-01-01"
+            max="2023-08-01"
           />
           {dateErr && <span>Enter a date of birth</span>}
         </Label>
