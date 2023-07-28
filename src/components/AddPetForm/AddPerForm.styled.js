@@ -492,6 +492,28 @@ export const TextArea = styled.textarea`
 
   outline: none;
 
+  & + span {
+    display: none;
+    opacity: 0;
+  }
+
+  &:required {
+    border: 1px solid red;
+  }
+  &:required + span {
+    position: absolute;
+    display: unset;
+    color: red;
+    opacity: 1;
+    left: 17px;
+    bottom: -17px;
+    color: var(--red, #f43f5e);
+    font-family: Manrope400;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+  }
+
   @media (min-width: 768px) {
     min-width: 359px;
     max-height: 61px;
@@ -535,6 +557,28 @@ export const TextAreaLost = styled.textarea`
   letter-spacing: 0.56px;
 
   outline: none;
+
+  & + span {
+    display: none;
+    opacity: 0;
+  }
+
+  &:required {
+    border: 1px solid red;
+  }
+  &:required + span {
+    position: absolute;
+    display: unset;
+    color: red;
+    opacity: 1;
+    left: 17px;
+    bottom: -17px;
+    color: var(--red, #f43f5e);
+    font-family: Manrope400;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+  }
 
   @media (min-width: 768px) {
     min-width: 359px;

@@ -36,6 +36,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
   const [sexErr, setSexErr] = useState(false);
+  const [comErr, setComErr] = useState(false);
 
   useEffect(() => {
     if (!files) return;
@@ -46,7 +47,6 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     const objectUrls = tmp;
     setPreviews(objectUrls);
 
-    // free memory
     for (let i = 0; i < objectUrls.length; i++) {
       return () => {
         URL.revokeObjectURL(objectUrls[i]);
@@ -64,9 +64,11 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     const priceInput = e.currentTarget.elements.price.value;
     const locInput = e.currentTarget.elements.location.value;
     const sexInput = e.currentTarget.elements.sex.value;
+    const comInput = e.currentTarget.elements.comments.value;
     sexInput === '' && setSexErr(true);
     priceInput === '' && setPriceErr(true);
     locInput === '' && setLocErr(true);
+    comInput === '' && setComErr(true);
     formIsInvalid === false &&
       dispatch(
         AddPetOther({
@@ -79,6 +81,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
           sex: data.sex,
           location: data.location,
           price: data.price,
+          comments: data.comments,
         })
       );
   };
@@ -86,12 +89,15 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     const priceInput = e.currentTarget.elements.price.value;
     const locInput = e.currentTarget.elements.location.value;
     const sexInput = e.currentTarget.elements.sex.value;
+    const comInput = e.currentTarget.elements.comments.value;
     sexInput !== '' && setSexErr(false);
     priceInput !== '' && setPriceErr(false);
     locInput !== '' && setLocErr(false);
+    comInput !== '' && setComErr(false);
     priceInput !== '' &&
       locInput !== '' &&
       sexInput !== '' &&
+      comInput !== '' &&
       setFormIsInvalid(false);
     if (
       e.currentTarget.elements.file.files &&
@@ -205,7 +211,9 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
               rows="5"
               placeholder="Stay your comment"
               value={data.comments}
+              required={comErr}
             ></TextArea>
+            {comErr && <span>Enter commentary</span>}
           </Label>
         </LableWrapper>
         <ThirdButtonContainer>
