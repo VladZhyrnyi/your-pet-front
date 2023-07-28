@@ -27,7 +27,7 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
   const [err, setErr] = useState(false);
   const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
-
+  const [comErr, setComErr] = useState(false);
   useEffect(() => {
     if (!files) return;
     let tmp = [];
@@ -53,6 +53,8 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
   const onSubmit = e => {
     e.preventDefault();
     const file = e.currentTarget.elements.file.files[0];
+    const comInput = e.currentTarget.elements.comments.value;
+    comInput === '' && setComErr(true);
     !file
       ? setErr(true)
       : dispatch(
@@ -69,7 +71,9 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
 
   const onChange = e => {
     const file = e.currentTarget.elements.file.files[0];
+    const comInput = e.currentTarget.elements.comments.value;
     !file && setErr(true);
+    comInput !== '' && setComErr(false);
     if (
       e.currentTarget.elements.file.files &&
       e.currentTarget.elements.file.files.length > 0
@@ -112,7 +116,9 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
             name="comments"
             rows="5"
             value={data.comments}
+            required={comErr}
           ></TextArea>
+          {comErr && <span>Enter commentary</span>}
         </Label>
         <ThirdButtonContainer>
           <ButtonNext

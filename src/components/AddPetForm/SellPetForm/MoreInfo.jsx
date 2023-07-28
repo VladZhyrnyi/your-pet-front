@@ -35,6 +35,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   const [formIsInvalid, setFormIsInvalid] = useState(true);
   const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
+  const [fileErr, setFileErr] = useState(false);
   const [sexErr, setSexErr] = useState(false);
   const [comErr, setComErr] = useState(false);
 
@@ -65,10 +66,19 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     const locInput = e.currentTarget.elements.location.value;
     const sexInput = e.currentTarget.elements.sex.value;
     const comInput = e.currentTarget.elements.comments.value;
+    const file = e.currentTarget.elements.file.files[0];
     sexInput === '' && setSexErr(true);
     priceInput === '' && setPriceErr(true);
     locInput === '' && setLocErr(true);
     comInput === '' && setComErr(true);
+    !file && setFileErr(true);
+    sexInput === '' &&
+      priceInput === '' &&
+      locInput === '' &&
+      comInput === '' &&
+      !file &&
+      setFormIsInvalid(false);
+
     formIsInvalid === false &&
       dispatch(
         AddPetOther({
@@ -90,14 +100,17 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     const locInput = e.currentTarget.elements.location.value;
     const sexInput = e.currentTarget.elements.sex.value;
     const comInput = e.currentTarget.elements.comments.value;
+    const file = e.currentTarget.elements.file.files[0];
     sexInput !== '' && setSexErr(false);
     priceInput !== '' && setPriceErr(false);
     locInput !== '' && setLocErr(false);
     comInput !== '' && setComErr(false);
+    file && setFileErr(false);
     priceInput !== '' &&
       locInput !== '' &&
       sexInput !== '' &&
       comInput !== '' &&
+      !file &&
       setFormIsInvalid(false);
     if (
       e.currentTarget.elements.file.files &&
@@ -175,6 +188,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
               onChange={onChangeDetails}
               type="file"
               name="file"
+              required={fileErr}
             />
           </FileContainer>
         </SecondSexContainer>
