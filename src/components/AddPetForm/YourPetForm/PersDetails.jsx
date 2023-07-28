@@ -81,7 +81,6 @@ const PersDetails = ({ onChangeDetails, setPage, data }) => {
             type="date"
             name="date"
             placeholder="Type date of birth"
-            value={data.date}
             required={dobErr}
           />
           {dobErr && <span>Enter a date of birth</span>}

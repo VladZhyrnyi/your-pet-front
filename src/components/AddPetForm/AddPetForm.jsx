@@ -28,7 +28,7 @@ import MoreInfoHands from './InGoodHands/MoreInfo';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const obj = {
-  category: 'your pet',
+  category: 'my-pet',
   title: '',
   name: '',
   date: '',
@@ -36,7 +36,7 @@ const obj = {
   file: '',
   sex: '',
   location: '',
-  price: 'Pet price',
+  price: 0,
   comments: '',
 };
 
@@ -75,6 +75,15 @@ const AddPetForm = () => {
         ...prev,
         file: files[0].name,
       }));
+    name === 'date' &&
+      setData(prev => ({
+        ...prev,
+        date: new Date(value).toLocaleDateString({
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        }),
+      }));
   };
 
   return (page === 2 && data.category === 'sell') ||
@@ -82,7 +91,7 @@ const AddPetForm = () => {
     (page === 2 && data.category === 'in good hands') ? (
     <MoreInfoContainer>
       {page === 0 && <Title>{title[0]}</Title>}
-      {page > 0 && data.category === 'your pet' && <Title>{title[0]}</Title>}
+      {page > 0 && data.category === 'my-pet' && <Title>{title[0]}</Title>}
       {page === 1 && data.category === 'sell' && <Title>{title[1]}</Title>}
       {page > 1 && data.category === 'sell' && (
         <MoreInfoTitle>
@@ -151,7 +160,7 @@ const AddPetForm = () => {
       {page === 0 && (
         <AddPetContent onChangeOption={onChangeOption} data={data} />
       )}
-      {page === 1 && data.category === 'your pet' && (
+      {page === 1 && data.category === 'my-pet' && (
         <PersDetails
           onChangeDetails={onChangeDetails}
           setPage={setPage}
@@ -180,7 +189,7 @@ const AddPetForm = () => {
           data={data}
         />
       )}
-      {page === 2 && data.category === 'your pet' && (
+      {page === 2 && data.category === 'my-pet' && (
         <MoreInfoPet
           onChangeDetails={onChangeDetails}
           setPage={setPage}
@@ -225,7 +234,7 @@ const AddPetForm = () => {
   ) : (
     <Container>
       {page === 0 && <Title>{title[0]}</Title>}
-      {page > 0 && data.category === 'your pet' && <Title>{title[0]}</Title>}
+      {page > 0 && data.category === 'my-pet' && <Title>{title[0]}</Title>}
       {page >= 1 && data.category === 'sell' && <Title>{title[1]}</Title>}
       {page >= 1 && data.category === 'lost/found' && <Title>{title[2]}</Title>}
       {page >= 1 && data.category === 'in good hands' && (
@@ -277,7 +286,7 @@ const AddPetForm = () => {
       {page === 0 && (
         <AddPetContent onChangeOption={onChangeOption} data={data} />
       )}
-      {page === 1 && data.category === 'your pet' && (
+      {page === 1 && data.category === 'my-pet' && (
         <PersDetails
           onChangeDetails={onChangeDetails}
           setPage={setPage}
@@ -305,7 +314,7 @@ const AddPetForm = () => {
           data={data}
         />
       )}
-      {page === 2 && data.category === 'your pet' && (
+      {page === 2 && data.category === 'my-pet' && (
         <MoreInfoPet
           onChangeDetails={onChangeDetails}
           setPage={setPage}

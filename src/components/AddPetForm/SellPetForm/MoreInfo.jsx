@@ -18,13 +18,33 @@ import {
   ButtonCancel,
   SecondSexContainer,
   LableWrapper,
+  PreviewImage,
 } from '../AddPerForm.styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   const [priceErr, setPriceErr] = useState(false);
   const [locErr, setLocErr] = useState(false);
   const [formIsInvalid, setFormIsInvalid] = useState(true);
+  const [files, setFiles] = useState();
+  const [previews, setPreviews] = useState();
+
+  useEffect(() => {
+    if (!files) return;
+    let tmp = [];
+    for (let i = 0; i < files.length; i++) {
+      tmp.push(URL.createObjectURL(files[i]));
+    }
+    const objectUrls = tmp;
+    setPreviews(objectUrls);
+
+    // free memory
+    for (let i = 0; i < objectUrls.length; i++) {
+      return () => {
+        URL.revokeObjectURL(objectUrls[i]);
+      };
+    }
+  }, [files]);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -40,6 +60,12 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     priceInput !== '' && setPriceErr(false);
     locInput !== '' && setLocErr(false);
     priceInput !== '' && locInput !== '' && setFormIsInvalid(false);
+    if (
+      e.currentTarget.elements.file.files &&
+      e.currentTarget.elements.file.files.length > 0
+    ) {
+      setFiles(e.currentTarget.elements.file.files);
+    }
   };
   return (
     <>
@@ -93,7 +119,11 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
             <FileSellTitle>Load the pet’s image:</FileSellTitle>
             <FileLabelLost htmlFor="avatar">
               <FileDiv>
-                <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
+                {previews ? (
+                  <PreviewImage alt="pet image" src={previews[0]} />
+                ) : (
+                  <SpriteIcon icon="plus" color="#54ADFF" size="36px" />
+                )}
               </FileDiv>
             </FileLabelLost>
             <FileInput
