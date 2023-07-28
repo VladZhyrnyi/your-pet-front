@@ -1,5 +1,7 @@
 @import-normalize; /* bring in normalize.css styles */
 
+*,*:before, *:after { box-sizing: border-box;}
+
 html, body, div, span,
 h1, h2, h3, h4, h5, h6, p,
 a, address, img, ol, ul, li,
@@ -31,6 +33,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+
 
 body {
   margin: 0;

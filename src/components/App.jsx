@@ -1,8 +1,8 @@
-// import { useEffect } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-// import { refreshUser } from 'redux/Auth/operations';
-// import { selectIsRefreshing } from 'redux/Auth/selectors';
+import { refreshUser } from 'redux/Auth/operations';
+import { selectIsRefreshing } from 'redux/Auth/selectors';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -21,7 +21,15 @@ import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+  return isRefreshing ? (
+    <>Refreshing...</>
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<MainPage />} />
