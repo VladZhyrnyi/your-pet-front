@@ -76,7 +76,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
       !file &&
       setFormIsInvalid(false);
 
-    formIsInvalid === true &&
+    formIsInvalid === false &&
       dispatch(
         AddPetOther({
           category: data.category,
