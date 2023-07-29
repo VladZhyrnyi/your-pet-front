@@ -15,7 +15,7 @@ import {
   MoreInfoContainer,
   MoreInfoTitle,
 } from './AddPerForm.styled';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import PersDetails from './YourPetForm/PersDetails';
 import PersonalDetails from './SellPetForm/PersonalDetails';
 import MoreInfo from './SellPetForm/MoreInfo';
@@ -25,12 +25,6 @@ import MoreInfoLost from './LostOrFound/MoreInfo';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import PersDetailsHands from './InGoodHands/PersDetails';
 import MoreInfoHands from './InGoodHands/MoreInfo';
-import {
-  Link,
-  unstable_HistoryRouter,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/Content/selectors';
 
@@ -57,8 +51,6 @@ const title = [
 const AddPetForm = () => {
   const [page, setPage] = useState(0);
   const [data, setData] = useState(obj);
-  const navigate = useNavigate();
-  const location = useLocation();
   const { success } = useSelector(selectContacts);
 
   const onChangeOption = ({ target: { name, value } }) => {
@@ -68,10 +60,6 @@ const AddPetForm = () => {
         ...prev,
         [key]: value,
       }));
-  };
-
-  const handleBack = () => {
-    window.history.back();
   };
 
   const onChangeDetails = ({ target: { name, value, files } }) => {
@@ -95,6 +83,10 @@ const AddPetForm = () => {
           day: '2-digit',
         }),
       }));
+  };
+
+  const handleBack = () => {
+    window.history.back();
   };
 
   return (page === 2 && data.category === 'sell') ||
@@ -235,12 +227,10 @@ const AddPetForm = () => {
             Next
             <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
           </ButtonNext>
-          <Link>
-            <ButtonCancel type="button">
-              <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
-              Cancel
-            </ButtonCancel>
-          </Link>
+          <ButtonCancel type="button" onClick={handleBack}>
+            <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+            Cancel
+          </ButtonCancel>
         </ButtonContainer>
       )}
     </MoreInfoContainer>
