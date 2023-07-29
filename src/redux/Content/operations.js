@@ -1,17 +1,13 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://your-pet-backend-ni98.onrender.com/';
-
 
 export const getNotices = createAsyncThunk(
   'content/notices',
 
   async (config, thunkAPI) => {
     try {
-      const { data } = await axios.get('api/notices', config);
-
-      console.log('data 🚀  => ', data);
+      const { data } = await axios.get('/notices', config);
 
       return data;
     } catch (error) {
