@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import getNews from 'services/api-news';
 import NewsList from './NewsList';
 import SearchForm from 'components/SearchForm';
-import NotFound from 'components/NotFound';
 // import Loader from 'components/Loader';
+import Pagination from 'components/Pagination';
 import {Title} from './News.styled';
 
 const News = () => {
@@ -19,7 +19,7 @@ const News = () => {
   useEffect(()=> {
     const fetchNews = async (page, perPage, query) => {
       setIsLoading(true);
-      // setError(null);
+      setError(null);
       try {
         const data = await getNews(page, perPage, query);
         setNewsData(data.news);
@@ -27,7 +27,7 @@ const News = () => {
         }
         catch (error) {
           console.log(error);
-          setError('Something went wrong.');
+          setError('Oops! Something went wrong...');
           }
         setIsLoading(false);
     };
@@ -40,7 +40,7 @@ const News = () => {
     setQuery(query);    
   };
 
-  const handleChange = (evt, value) => {setPage(value)};
+  const handleChange = (evt, page) => {setPage(page)};
 
   return (
     <>
@@ -48,8 +48,9 @@ const News = () => {
       <SearchForm onSubmit={handleSubmit} />
       {/* {isLoading && !error && <Loader />} */}
       {error && <p>{error}</p>}
-      {!isLoading && newsData.length === 0 && <NotFound />}
+      {!isLoading && newsData.length === 0 && <h2>Sorry, but we couldn't find any results for your query :(</h2>}
       {!isLoading && newsData && <NewsList news={newsData}/>}
+      {newsData && <Pagination totalPages={totalPages} page={page} onChange={handleChange}/>}
     </>
   );
 };

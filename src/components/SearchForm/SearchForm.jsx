@@ -7,7 +7,7 @@ const SearchForm = ({ onSubmit }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onSubmit(query);
+    onSubmit(query.toLowerCase().trim());
   };
 
   const handleInputChange = (evt) => {
