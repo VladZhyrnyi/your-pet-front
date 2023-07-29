@@ -36,12 +36,10 @@ function UserBar({ name = true }) {
 
   return (
     <>
-      {user && (
-        <UserContainer as={Link} to="/user">
-          <SpriteIcon icon="user" color={theme.colors.yellow} />
-          {name && <Typography>Anna{user.name}</Typography>}
-        </UserContainer>
-      )}
+      <UserContainer as={Link} to="/user">
+        <SpriteIcon icon="user" color={theme.colors.yellow} />
+        {name && <Typography>{user.name}</Typography>}
+      </UserContainer>
     </>
   );
 }
