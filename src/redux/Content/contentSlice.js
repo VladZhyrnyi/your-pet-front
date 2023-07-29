@@ -8,8 +8,6 @@ const contentInitialState = {
   success: false,
 };
 
-// const addPetDone = () => {};
-
 const contentSlice = createSlice({
   name: 'content',
   initialState: contentInitialState,
