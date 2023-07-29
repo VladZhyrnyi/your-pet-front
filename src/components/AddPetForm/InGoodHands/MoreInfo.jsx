@@ -17,8 +17,8 @@ import {
   SecondSexContainer,
   LableWrapper,
   PreviewImage,
-  FileTitle,
   TextAreaLost,
+  FileTitle,
 } from '../AddPerForm.styled';
 import { useEffect, useState } from 'react';
 import { AddPetOther } from 'redux/Content/operations';
@@ -34,9 +34,10 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   const [formIsInvalid, setFormIsInvalid] = useState(true);
   const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
+  const [fileErr, setFileErr] = useState(false);
   const [sexErr, setSexErr] = useState(false);
   const [comErr, setComErr] = useState(false);
-  const [fileErr, setFileErr] = useState();
+  const [filer, setFile] = useState();
 
   useEffect(() => {
     if (!files) return;
@@ -65,11 +66,16 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     const sexInput = e.currentTarget.elements.sex.value;
     const comInput = e.currentTarget.elements.comments.value;
     const file = e.currentTarget.elements.file.files[0];
-
     sexInput === '' && setSexErr(true);
     locInput === '' && setLocErr(true);
     comInput === '' && setComErr(true);
     !file && setFileErr(true);
+    sexInput === '' &&
+      locInput === '' &&
+      comInput === '' &&
+      !file &&
+      setFormIsInvalid(false);
+
     formIsInvalid === false &&
       dispatch(
         AddPetOther({
@@ -78,7 +84,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
           name: data.name,
           date: data.date,
           type: data.type,
-          file: data.file,
+          file: filer,
           sex: data.sex,
           location: data.location,
           comments: data.comments,
@@ -90,13 +96,15 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     const sexInput = e.currentTarget.elements.sex.value;
     const comInput = e.currentTarget.elements.comments.value;
     const file = e.currentTarget.elements.file.files[0];
-    file && setFileErr(false);
+    setFile(file);
     sexInput !== '' && setSexErr(false);
     locInput !== '' && setLocErr(false);
     comInput !== '' && setComErr(false);
+    file && setFileErr(false);
     locInput !== '' &&
       sexInput !== '' &&
       comInput !== '' &&
+      !file &&
       setFormIsInvalid(false);
     if (
       e.currentTarget.elements.file.files &&
@@ -105,6 +113,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
       setFiles(e.currentTarget.elements.file.files);
     }
   };
+
   return (
     <>
       <FormLostMore onChange={onFormChange} onSubmit={onSubmit}>

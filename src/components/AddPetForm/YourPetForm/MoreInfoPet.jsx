@@ -57,7 +57,6 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
     const file = e.currentTarget.elements.file.files[0];
     const comInput = e.currentTarget.elements.comments.value;
     comInput === '' && setComErr(true);
-    console.log(filer);
     !file
       ? setErr(true)
       : dispatch(
@@ -66,7 +65,7 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
             name: data.name,
             date: data.date,
             type: data.type,
-            file: data.file,
+            file: filer,
             comments: data.comments,
           })
         );
@@ -85,6 +84,7 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
       setFiles(e.currentTarget.elements.file.files);
     }
   };
+
   return (
     <>
       <FormYourMore onChange={onChange} onSubmit={onSubmit}>

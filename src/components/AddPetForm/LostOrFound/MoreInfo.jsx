@@ -17,8 +17,8 @@ import {
   SecondSexContainer,
   LableWrapper,
   PreviewImage,
-  FileTitle,
   TextAreaLost,
+  FileTitle,
 } from '../AddPerForm.styled';
 import { useEffect, useState } from 'react';
 import { AddPetOther } from 'redux/Content/operations';
@@ -37,6 +37,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   const [fileErr, setFileErr] = useState(false);
   const [sexErr, setSexErr] = useState(false);
   const [comErr, setComErr] = useState(false);
+  const [filer, setFile] = useState();
 
   useEffect(() => {
     if (!files) return;
@@ -83,7 +84,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
           name: data.name,
           date: data.date,
           type: data.type,
-          file: data.file,
+          file: filer,
           sex: data.sex,
           location: data.location,
           comments: data.comments,
@@ -95,6 +96,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     const sexInput = e.currentTarget.elements.sex.value;
     const comInput = e.currentTarget.elements.comments.value;
     const file = e.currentTarget.elements.file.files[0];
+    setFile(file);
     sexInput !== '' && setSexErr(false);
     locInput !== '' && setLocErr(false);
     comInput !== '' && setComErr(false);
@@ -111,6 +113,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
       setFiles(e.currentTarget.elements.file.files);
     }
   };
+
   return (
     <>
       <FormLostMore onChange={onFormChange} onSubmit={onSubmit}>
