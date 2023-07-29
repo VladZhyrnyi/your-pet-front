@@ -263,7 +263,7 @@ export const ButtonNext = styled.button`
   }
 `;
 
-export const ButtonCancel = styled.a`
+export const ButtonCancel = styled.button`
   margin: 0;
   display: inline-flex;
   cursor: pointer;
