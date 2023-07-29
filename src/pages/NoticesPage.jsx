@@ -1,45 +1,50 @@
-import { useParams, useSearchParams } from 'react-router-dom';
-// import NoticeDetail from 'components/NoticeDatail/NoticeDetail';
-// import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
-import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
-import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
 import { useDispatch } from 'react-redux';
-import { getNotices } from 'redux/Content/operations';
-import Filter from 'components/Filter/Filter';
-import AddPetBtn from 'components/AddPetBtn/AddPetBtn';
+import { useParams } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
 
+import { getNotices } from 'redux/Content/operations';
+
+import NoticesCategoriesList from 'components/NoticesCategoriesList';
+import NoticesCategoriesNav from 'components/NoticesCategoriesNav';
+import NoticesSearch from 'components/NoticesSearch';
+import Title from 'components/Title';
+import { useEffect, useMemo } from 'react';
 
 const NoticesPage = () => {
-  // const width = useWindowWidth();
-  // const isMobile = width < 768;
   const dispatch = useDispatch();
   const { categoryName } = useParams();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleSearchSubmit = () => {
-    const queryObj = {
+  let queryObj = useMemo(() => {
+    return {
       params: {
         category: categoryName,
         query: searchParams.get('query'),
       },
     };
-    console.log(queryObj);
+  }, [categoryName, searchParams]);
 
+  useEffect(() => {
     dispatch(getNotices(queryObj));
+  }, [queryObj, dispatch]);
+
+  console.log('queryObj - ', queryObj);
+
+  const handleSearchSubmit = query => {
+    setSearchParams({ query });
+  };
+
+  const clearSearchQuery = () => {
+    setSearchParams(searchParams.delete('query'));
+
   };
 
   return (
     <>
-      <NoticesSearch onSubmit={handleSearchSubmit} />
-      <div>
-        <NoticesCategoriesNav />
-        <div>
-          <Filter />
-          <AddPetBtn />
-        </div>
-      </div>
-      {/* <NoticesCategoriesList /> */}
-      {/* <NoticeDetail /> */}
+      <Title>Find your favorite pet</Title>
+      <NoticesSearch onSubmit={handleSearchSubmit} onClear={clearSearchQuery} />
+      <NoticesCategoriesNav />
+      <NoticesCategoriesList />
     </>
   );
 };

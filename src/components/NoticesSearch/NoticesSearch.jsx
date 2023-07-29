@@ -1,4 +1,3 @@
-
 import {
   Button,
   ButtonWrapper,
@@ -8,28 +7,31 @@ import {
   Input,
   InputWrapper,
 } from './NoticesSearch.styled';
-import { useSearchParams } from 'react-router-dom';
 
-export const NoticesSearch = ({onSubmit}) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const searchQuery = searchParams.get('query');
+import { useState } from 'react';
+
+export const NoticesSearch = ({ onSubmit, onClear }) => {
+  const [value, setValue] = useState('');
+
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    onSubmit();
+    onSubmit(value);
   };
 
-    const clearSearchQuery = () => {
-      setSearchParams(searchParams.delete('query'));
-    };
+  const clearSearchQuery = () => {
+    setValue('');
+    onClear();
+  };
 
   const handleChange = event => {
     if (event.target.value.trim().length === 0) {
-      clearSearchQuery()
+      clearSearchQuery();
       return;
     }
-    setSearchParams({ query: event.target.value.toLowerCase() });
+
+    setValue(event.target.value.trim());
   };
 
   return (
@@ -41,14 +43,13 @@ export const NoticesSearch = ({onSubmit}) => {
             onChange={handleChange}
             type="text"
             placeholder="Search"
-            value={searchQuery ? searchQuery : ''}
+            value={value}
           />
           <ButtonWrapper>
             <Button type="submit">
               <IconSearch />
             </Button>
-
-            {searchQuery && (
+            {value.length !== 0 && (
               <Button type="button" onClick={clearSearchQuery}>
                 <IconCross />
               </Button>
