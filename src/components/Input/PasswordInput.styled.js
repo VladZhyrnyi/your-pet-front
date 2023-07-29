@@ -48,7 +48,7 @@ export const InputIconsWrapper = styled.div`
   justify-content: center;
   align-items: center;
   top: 0;
-  right: 16px;
+  right: 32px;
   & svg {
     margin-left: 12px;
   }

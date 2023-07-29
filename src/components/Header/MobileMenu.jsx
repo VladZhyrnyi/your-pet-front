@@ -2,6 +2,7 @@
 
 import useWindowWidth from '../../hooks/useWindowWidth';
 import AuthBar from './AuthBar';
+
 import NavBar from './NavBar';
 
 import { styled } from 'styled-components';

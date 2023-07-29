@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Title = styled.h1`
-  margin: 60px auto 20px 5px;
+  margin: 60px auto 20px 0;
   width: 280px;
 
   color: rgba(0, 0, 0, 1);
@@ -13,7 +13,7 @@ export const Title = styled.h1`
   text-align: left;
 
   @media screen and (min-width: 768px) {
-    margin: 80px auto 27px 17px;
+    margin: 80px auto 27px 0;
     width: 588px;
 
     font-size: 68px;
@@ -32,7 +32,7 @@ export const Title = styled.h1`
 export const Wrap = styled.div`
   position: relative;
   margin-left: -15px;
-  margin-left: -15px;
+  ${'' /* margin-right: -15px; */}
   width: 320px;
   height: 387px;
   ${'' /* overflow: hidden; */}
