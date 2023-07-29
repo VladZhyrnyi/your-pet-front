@@ -1,43 +1,34 @@
-// import { ButtonAddPet } from 'components/Buttons';
-import { ButtonFilterWrapper, ButtonNoticeAdd, ButtonNoticeFilter, IconAdd, IconFilter } from 'components/NoticesCategoriesNav/NoticesCategoriesNav.styled';
-import React, { useEffect, useState } from 'react'
+import {
+  ButtonFilterWrapper,
+  ButtonNoticeFilter,
+  IconFilter,
+} from 'components/NoticesCategoriesNav/NoticesCategoriesNav.styled';
+import useWindowWidth from 'hooks/useWindowWidth';
 
 const Filter = () => {
-  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const width = useWindowWidth();
 
-  useEffect(() => {
-    const handleResize = () => {
-      setViewportWidth(window.innerWidth);
-    };
+  const isMobile = width < 768;
 
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
   return (
     <ButtonFilterWrapper>
-      {viewportWidth >= 768 && (
+      {!isMobile && (
         <>
           <ButtonNoticeFilter>
-            Filter <IconFilter />
+            Filter
+            <IconFilter />
           </ButtonNoticeFilter>
-          {/* <ButtonNoticeAdd>
-            Add Pet <IconAdd />
-          </ButtonNoticeAdd> */}
         </>
       )}
-      {viewportWidth < 768 && (
+      {isMobile && (
         <>
           <ButtonNoticeFilter>
             <IconFilter />
           </ButtonNoticeFilter>
-          {/* <ButtonAddPet></ButtonAddPet> */}
         </>
       )}
     </ButtonFilterWrapper>
   );
-}
+};
 
-export default Filter
+export default Filter;

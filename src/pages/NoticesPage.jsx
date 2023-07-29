@@ -1,6 +1,6 @@
 import { useParams, useSearchParams } from 'react-router-dom';
-import NoticeDetail from 'components/NoticeDatail/NoticeDetail';
-import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
+// import NoticeDetail from 'components/NoticeDatail/NoticeDetail';
+// import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
 import { useDispatch } from 'react-redux';
@@ -38,8 +38,8 @@ const NoticesPage = () => {
           <AddPetBtn />
         </div>
       </div>
-      <NoticesCategoriesList />
-      <NoticeDetail />
+      {/* <NoticesCategoriesList /> */}
+      {/* <NoticeDetail /> */}
     </>
   );
 };

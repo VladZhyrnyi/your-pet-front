@@ -2,17 +2,15 @@ import {
   ButtonWrapper,
   NoticesLink,
 } from './NoticesCategoriesNav.styled';
-import { ButtonAddPet } from 'components/Buttons';
+
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
 import { NavLink } from 'react-router-dom';
-// import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 // import { theme } from '../../theme.js';
 
 const NoticesCategoriesNav = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  // console.log(viewportWidth);
   return (
     <ButtonWrapper>
       <NoticesLink as={NavLink} to={'/notices/sell'}>
