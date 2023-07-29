@@ -38,7 +38,7 @@ function UserBar({ name = true }) {
     <>
       <UserContainer as={Link} to="/user">
         <SpriteIcon icon="user" color={theme.colors.yellow} />
-        {name && <Typography>Anna{user.name}</Typography>}
+        {name && <Typography>{user.name}</Typography>}
       </UserContainer>
     </>
   );
