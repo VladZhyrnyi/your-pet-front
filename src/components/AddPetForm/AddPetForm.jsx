@@ -51,7 +51,6 @@ const title = [
 const AddPetForm = () => {
   const [page, setPage] = useState(0);
   const [data, setData] = useState(obj);
-  // const { success } = useSelector(selectContacts);
 
   const onChangeOption = ({ target: { name, value } }) => {
     const key = Object.keys(obj).find(item => item === name);

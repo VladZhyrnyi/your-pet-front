@@ -9,27 +9,6 @@ import {
 } from '../AddPerForm.styled';
 import { useState } from 'react';
 
-export const name_validation = {
-  name: 'name',
-  label: 'Pet s name',
-  type: 'text',
-  placeholder: 'Type name pet',
-  validation: {
-    required: {
-      value: true,
-      message: 'Name is required',
-    },
-    minLength: {
-      value: 2,
-      message: '2 characters min',
-    },
-    maxLength: {
-      value: 16,
-      message: '16 characters max',
-    },
-  },
-};
-
 const PersDetails = ({ onChangeDetails, setPage, data }) => {
   const [nameErr, setNameErr] = useState(false);
   const [dobErr, setDobErr] = useState(false);
