@@ -36,6 +36,7 @@ const NoticesPage = () => {
 
   const clearSearchQuery = () => {
     setSearchParams(searchParams.delete('query'));
+
   };
 
   return (

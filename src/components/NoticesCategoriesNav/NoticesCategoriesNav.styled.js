@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+
 import { NavLink } from 'react-router-dom';
+
 
 export const ContainerNav = styled.div`
   position: relative;
@@ -18,7 +20,9 @@ export const ContainerNav = styled.div`
   }
 `;
 
+
 export const NavLinkWrapper = styled.div`
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,6 +44,7 @@ export const NavLinkWrapper = styled.div`
 `;
 
 export const NoticesLink = styled(NavLink)`
+
   border: none;
   padding: 8px 16px;
   border-radius: 40px;

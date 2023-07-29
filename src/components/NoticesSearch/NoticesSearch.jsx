@@ -7,10 +7,12 @@ import {
   Input,
   InputWrapper,
 } from './NoticesSearch.styled';
+
 import { useState } from 'react';
 
 export const NoticesSearch = ({ onSubmit, onClear }) => {
   const [value, setValue] = useState('');
+
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -47,7 +49,6 @@ export const NoticesSearch = ({ onSubmit, onClear }) => {
             <Button type="submit">
               <IconSearch />
             </Button>
-
             {value.length !== 0 && (
               <Button type="button" onClick={clearSearchQuery}>
                 <IconCross />

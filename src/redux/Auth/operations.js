@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://your-pet-backend-ni98.onrender.com/';
+axios.defaults.baseURL = 'https://your-pet-backend-ni98.onrender.com/api';
 
 const userToken = {
   set: token =>
@@ -13,12 +13,13 @@ export const registerUser = createAsyncThunk(
   'auth/register',
   async (userdata, thunkAPI) => {
     try {
-      const { data } = await axios.post('api/users/register', userdata);
+      const { data } = await axios.post('users/register', userdata);
 
-      userToken.set(data.token);
+      userToken.set(data.user.token);
 
       return data;
     } catch (error) {
+      console.log(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -28,9 +29,9 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async (userdata, thunkAPI) => {
     try {
-      const { data } = await axios.post('api/users/login', userdata);
+      const { data } = await axios.post('users/login', userdata);
 
-      userToken.set(data.token);
+      userToken.set(data.user.token);
 
       return data;
     } catch (error) {
@@ -43,7 +44,7 @@ export const logoutUser = createAsyncThunk(
   'auth/logout',
   async (_, thunkAPI) => {
     try {
-      await axios.post('api/users/logout');
+      await axios.post('users/logout');
 
       userToken.unset();
     } catch (error) {
@@ -64,7 +65,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       userToken.set(persistedToken);
-      const { data } = await axios.get('api/users/current');
+      const { data } = await axios.get('users/current');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

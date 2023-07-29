@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 
 import { useDispatch } from 'react-redux';
 import { loginUser } from 'redux/Auth/operations';
+import { selectIsError, selectErrorMessage } from 'redux/Auth/selectors';
 
 import { Link } from 'react-router-dom';
 import Input from 'components/Input/Input';
@@ -17,47 +19,36 @@ import {
 } from './LoginForm.styled';
 
 const LoginForm = () => {
+  const isError = useSelector(selectIsError);
+  const errorMessage = useSelector(selectErrorMessage);
   const dispatch = useDispatch();
-
   const methods = useForm();
   const [passIsValid, setPassIsValid] = useState('');
-  const [passValues, setPassValues] = useState({
-    password: '',
-    showPassword: false,
-  });
-  const handleClickShowPassword = () => {
-    setPassValues({ ...passValues, showPassword: !passValues.showPassword });
-  };
   const onPassInputChange = e => {
     if (password_validation.validation.pattern.value.test(e.target.value)) {
       setPassIsValid('valid');
-      setPassValues({ ...passValues, password: e.target.value });
     } else {
       setPassIsValid('');
     }
   };
+
   const onSubmit = methods.handleSubmit(data => {
-    // if (passValues.password === confPassValues.password) {
     dispatch(loginUser(data));
     methods.reset();
     setPassIsValid('');
-    //   setConfPasIsValid('');
     // setSuccess(true);
-    // }
   });
   return (
     <FormProvider {...methods}>
       <Form onSubmit={e => e.preventDefault()}>
+        {isError && <h2>{errorMessage}</h2>}
         <FormTitle>Login</FormTitle>
         <InputFieldsWrapper>
           <Input {...email_validation} />
           {/* ----- FIRST password input ----- */}
           <PasswordInput
             {...password_validation}
-            type={passValues.showPassword ? 'text' : 'password'}
             onChange={onPassInputChange}
-            onClick={handleClickShowPassword}
-            icon={passValues.showPassword ? 'eye-open' : 'eye-closed'}
             valid={passIsValid}
           />
         </InputFieldsWrapper>

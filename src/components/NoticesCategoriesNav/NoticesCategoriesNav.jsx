@@ -1,3 +1,4 @@
+
 import { useSelector } from 'react-redux';
 
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
@@ -28,6 +29,7 @@ const NoticesCategoriesNav = () => {
 
       <NoticesFilters />
     </ContainerNav>
+
   );
 };
 

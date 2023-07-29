@@ -7,16 +7,14 @@ import AuthBar from './AuthBar';
 import MobileMenu from './MobileMenu';
 import MenuBtn from './MenuBtn';
 import useWindowWidth from 'hooks/useWindowWidth';
-import UserBar from './UserBar';
 // import LogoutBtn from './LogoutBtn';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/Auth/selectors';
+// import { useSelector } from 'react-redux';
+// import { selectIsLoggedIn } from 'redux/Auth/selectors';
 
 export const HeaderContainer = styled.div`
-  /* position: relative; */
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   height: 64px;
   padding: 20px 0;
   @media screen and (min-width: 768px) {
@@ -37,27 +35,26 @@ const Container = styled.div`
 `;
 
 export const Header = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const windowWidth = useWindowWidth();
 
   const isDesktop = windowWidth >= 1280;
-  // const isTablet = windowWidth >= 768;
   const isMobile = windowWidth < 768;
-  console.log('!isMobile', !isMobile);
+
   return (
     <HeaderContainer>
       <Logo />
 
-      {!isDesktop && isLoggedIn && <UserBar />}
+      {/* {!isDesktop && isLoggedIn && <UserBar />} */}
       {isDesktop && (
         <>
           <Navbar />
         </>
       )}
       <Container>
-        {isDesktop && <AuthBar key="header" name={!isMobile} />}
+        {((isMobile && !isOpenMenu) || !isMobile) && <AuthBar name={!isMobile} />}
         {!isDesktop && (
           <MenuBtn
             isOpen={isOpenMenu}

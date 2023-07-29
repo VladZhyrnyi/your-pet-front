@@ -42,7 +42,7 @@ export const email_validation = {
 export const password_validation = {
   name: 'password',
   label: 'password',
-  type: 'password',
+  // type: 'password',
   id: 'password',
   placeholder: 'Password',
   validation: {
@@ -69,7 +69,7 @@ export const password_validation = {
 export const confirm_password_validation = {
   name: 'confirmPassword',
   label: 'password',
-  type: 'password',
+  // type: 'password',
   id: 'confirmPassword',
   placeholder: 'Confirm password',
   validation: {

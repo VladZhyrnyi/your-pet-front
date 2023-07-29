@@ -2,17 +2,18 @@
 
 import useWindowWidth from '../../hooks/useWindowWidth';
 import AuthBar from './AuthBar';
-// import UserBar from './UserBar';
+
 import NavBar from './NavBar';
 
 import { styled } from 'styled-components';
 // import LogoutBtn from './LogoutBtn';
 import { createPortal } from 'react-dom';
+import { useEffect } from 'react';
 // import MenuBtn from './MenuBtn';
 
 //  import { selectIsLoggedIn } from 'redux/Auth/selectors';
 
-const MobilContainer = styled.div`
+const MobileContainer = styled.div`
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -36,28 +37,26 @@ const MobilContainer = styled.div`
 const mobileMenu = document.getElementById('mobile-menu');
 
 function MobileMenu() {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
   //  const isLoggedIn = useSelector(selectIsLoggedIn);
   const width = useWindowWidth();
   const isMobile = width < 768;
   
 
   return createPortal(
-    <MobilContainer>
-      {isMobile && <AuthBar key='mobile-menu'/> }
-
-      {/* {isLoggedIn ?  */}
-      {/* <AuthBar /> */}
-
-      {/* <UserContainer
-        <UserBar />
-      </UserContainer> */}
-      {/* } */}
+    <MobileContainer>
+      {isMobile && <AuthBar userBarKey='mobile-menu'/> }
       <NavBar />
 
       {/* <LogoutContainer>
         <LogoutBtn />
       </LogoutContainer> */}
-    </MobilContainer>,
+    </MobileContainer>,
     mobileMenu
   );
 }
