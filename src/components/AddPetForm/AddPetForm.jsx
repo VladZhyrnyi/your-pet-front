@@ -25,7 +25,12 @@ import MoreInfoLost from './LostOrFound/MoreInfo';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import PersDetailsHands from './InGoodHands/PersDetails';
 import MoreInfoHands from './InGoodHands/MoreInfo';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {
+  Link,
+  unstable_HistoryRouter,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/Content/selectors';
 
@@ -63,6 +68,10 @@ const AddPetForm = () => {
         ...prev,
         [key]: value,
       }));
+  };
+
+  const handleBack = () => {
+    window.history.back();
   };
 
   const onChangeDetails = ({ target: { name, value, files } }) => {
@@ -353,12 +362,10 @@ const AddPetForm = () => {
             Next
             <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
           </ButtonNext>
-          <Link to={data.category === 'my-pet' ? '/user' : '/notices'}>
-            <ButtonCancel type="button">
-              <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
-              Cancel
-            </ButtonCancel>
-          </Link>
+          <ButtonCancel type="button" onClick={handleBack}>
+            <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+            Cancel
+          </ButtonCancel>
         </ButtonContainer>
       )}
     </Container>
