@@ -58,7 +58,18 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
     const comInput = e.currentTarget.elements.comments.value;
     comInput === '' && setComErr(true);
     console.log(filer);
-    !file ? setErr(true) : dispatch(AddPet({ data, filer }));
+    !file
+      ? setErr(true)
+      : dispatch(
+          AddPet({
+            category: data.category,
+            name: data.name,
+            date: data.date,
+            type: data.type,
+            file: data.file,
+            comments: data.comments,
+          })
+        );
   };
 
   const onChange = e => {

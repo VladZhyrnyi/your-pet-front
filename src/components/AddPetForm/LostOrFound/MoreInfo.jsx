@@ -34,9 +34,9 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   const [formIsInvalid, setFormIsInvalid] = useState(true);
   const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
+  const [fileErr, setFileErr] = useState(false);
   const [sexErr, setSexErr] = useState(false);
   const [comErr, setComErr] = useState(false);
-  const [fileErr, setFileErr] = useState();
 
   useEffect(() => {
     if (!files) return;
@@ -69,6 +69,12 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     locInput === '' && setLocErr(true);
     comInput === '' && setComErr(true);
     !file && setFileErr(true);
+    sexInput === '' &&
+      locInput === '' &&
+      comInput === '' &&
+      !file &&
+      setFormIsInvalid(false);
+
     formIsInvalid === false &&
       dispatch(
         AddPetOther({
@@ -96,6 +102,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     locInput !== '' &&
       sexInput !== '' &&
       comInput !== '' &&
+      !file &&
       setFormIsInvalid(false);
     if (
       e.currentTarget.elements.file.files &&

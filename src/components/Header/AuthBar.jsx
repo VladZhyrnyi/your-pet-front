@@ -1,36 +1,35 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { Link } from 'react-router-dom';
-import SpriteIcon from 'components/SpriteIcon';
+import { styled } from 'styled-components';
 
-import { selectIsLoggedIn, selectUser } from 'redux/Auth/selectors';
+import { selectIsLoggedIn } from 'redux/Auth/selectors';
 
-function AuthBar() {
+import AuthNavigation from './AuthNavigation';
+import UserBar from './UserBar';
+
+// ==============styled================
+
+const AuthContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
+function AuthBar({ userBarKey, name }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const user = useSelector(selectUser);
-
   return (
-    <div>
-      {user && (
-        <>
-          {isLoggedIn ? (
-            <>
-              <SpriteIcon icon="user" />
-              <Link to="/user">{user.name}</Link>
-            </>
-          ) : (
-            <>
-              <Link to="/login">
-                Log IN
-                <SpriteIcon icon="pawprint" />
-              </Link>
-              <Link to="/register">Registration</Link>
-            </>
-          )}
-        </>
+    <AuthContainer>
+      {isLoggedIn ? (
+        <UserBar key={userBarKey} name={name} />
+      ) : (
+        <AuthNavigation />
       )}
-    </div>
+    </AuthContainer>
   );
 }
 

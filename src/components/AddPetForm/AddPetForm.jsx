@@ -35,7 +35,7 @@ const obj = {
   name: '',
   date: '',
   type: '',
-  file: '',
+  file: null,
   sex: '',
   location: '',
   price: 0,
