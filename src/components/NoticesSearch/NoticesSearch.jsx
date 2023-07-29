@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import {
   Button,
   ButtonWrapper,
@@ -8,29 +8,29 @@ import {
   Input,
   InputWrapper,
 } from './NoticesSearch.styled';
+import { useSearchParams } from 'react-router-dom';
 
-export const NoticesSearch = () => {
-  const [inputValue, setInputValue] = useState('');
+export const NoticesSearch = ({onSubmit}) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query');
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    if (inputValue.trim().length === 0) return;
-
-    setInputValue('');
-    // Согласовать с Викой.
-    return console.log('Submit');
+    onSubmit();
   };
+
+    const clearSearchQuery = () => {
+      setSearchParams(searchParams.delete('query'));
+    };
 
   const handleChange = event => {
-    setInputValue(event.target.value.toLowerCase());
+    if (event.target.value.trim().length === 0) {
+      clearSearchQuery()
+      return;
+    }
+    setSearchParams({ query: event.target.value.toLowerCase() });
   };
-
-  const handleClean = () => {
-    setInputValue('');
-  };
-
-  //   const isSearchText = inputValue.length;
 
   return (
     <>
@@ -41,15 +41,15 @@ export const NoticesSearch = () => {
             onChange={handleChange}
             type="text"
             placeholder="Search"
-            value={inputValue}
+            value={searchQuery ? searchQuery : ''}
           />
           <ButtonWrapper>
             <Button type="submit">
               <IconSearch />
             </Button>
 
-            {inputValue.length > 0 && (
-              <Button type="button" onClick={handleClean}>
+            {searchQuery && (
+              <Button type="button" onClick={clearSearchQuery}>
                 <IconCross />
               </Button>
             )}

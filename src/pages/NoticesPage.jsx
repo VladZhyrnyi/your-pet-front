@@ -1,18 +1,43 @@
+import { useParams, useSearchParams } from 'react-router-dom';
 import NoticeDetail from 'components/NoticeDatail/NoticeDetail';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
-import SharedLayout from 'components/SharedLayout';
-import { Suspense } from 'react';
+import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
+import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
+import { useDispatch } from 'react-redux';
+import { getNotices } from 'redux/Content/operations';
+import Filter from 'components/Filter/Filter';
+import AddPetBtn from 'components/AddPetBtn/AddPetBtn';
 
-import { Outlet } from 'react-router';
 
-const NoticesPage = props => {
+const NoticesPage = () => {
+  // const width = useWindowWidth();
+  // const isMobile = width < 768;
+  const dispatch = useDispatch();
+  const { categoryName } = useParams();
+  const [searchParams] = useSearchParams();
+
+  const handleSearchSubmit = () => {
+    const queryObj = {
+      params: {
+        category: categoryName,
+        query: searchParams.get('query'),
+      },
+    };
+    console.log(queryObj);
+
+    dispatch(getNotices(queryObj));
+  };
+
   return (
     <>
-      <SharedLayout>
-        <Suspense fallback={<p>Loading...</p>}>
-          <Outlet />
-        </Suspense>
-      </SharedLayout>
+      <NoticesSearch onSubmit={handleSearchSubmit} />
+      <div>
+        <NoticesCategoriesNav />
+        <div>
+          <Filter />
+          <AddPetBtn />
+        </div>
+      </div>
       <NoticesCategoriesList />
       <NoticeDetail />
     </>

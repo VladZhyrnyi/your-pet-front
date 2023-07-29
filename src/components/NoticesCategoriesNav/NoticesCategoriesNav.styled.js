@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { CiFilter } from 'react-icons/ci';
 import { MdAdd } from 'react-icons/md';
 
@@ -41,7 +41,7 @@ export const ButtonWrapper = styled.div`
   }
 `;
 
-export const NoticesLink = styled(NavLink)`
+export const NoticesLink = styled.button`
   border: none;
   padding: 8px 16px;
   border-radius: 40px;
