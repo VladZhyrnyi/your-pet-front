@@ -2,7 +2,7 @@ import { Modal } from 'components/Modal';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
 import { styled } from 'styled-components';
 
@@ -47,23 +47,24 @@ const AddPetBtn = () => {
   const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  console.log(isLoggedIn)
+  console.log(isLoggedIn);
 
   const handleClick = () => {
-    if(!isLoggedIn) {
-      console.log('here')
-      setShowModal(true)
-      return
-    } 
-    return navigate('/add-pet');
+    if (!isLoggedIn) {
+      console.log('here');
+      setShowModal(true);
+      return;
+    }
   };
 
   return (
     <>
-      <AddPetButton onClick={handleClick}>
-        Add pet
-        <SpriteIcon icon="plus" />
-      </AddPetButton>
+      <Link to="/add-pet">
+        <AddPetButton onClick={handleClick}>
+          Add pet
+          <SpriteIcon icon="plus" />
+        </AddPetButton>
+      </Link>
       {showModal && (
         <Modal closeModal={() => setShowModal(false)}>
           some text

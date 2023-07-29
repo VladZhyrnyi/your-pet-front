@@ -1,13 +1,12 @@
 import { useParams, useSearchParams } from 'react-router-dom';
-import NoticeDetail from 'components/NoticeDatail/NoticeDetail';
-import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
+// import NoticeDetail from 'components/NoticeDatail/NoticeDetail';
+// import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
 import { useDispatch } from 'react-redux';
-import { getNotices } from 'redux/Content/operations';
+// import { getNotices } from 'redux/Content/operations';
 import Filter from 'components/Filter/Filter';
 import AddPetBtn from 'components/AddPetBtn/AddPetBtn';
-
 
 const NoticesPage = () => {
   // const width = useWindowWidth();
@@ -25,7 +24,7 @@ const NoticesPage = () => {
     };
     console.log(queryObj);
 
-    dispatch(getNotices(queryObj));
+    // dispatch(getNotices(queryObj));
   };
 
   return (
@@ -38,8 +37,8 @@ const NoticesPage = () => {
           <AddPetBtn />
         </div>
       </div>
-      <NoticesCategoriesList />
-      <NoticeDetail />
+      {/* <NoticesCategoriesList /> */}
+      {/* <NoticeDetail /> */}
     </>
   );
 };

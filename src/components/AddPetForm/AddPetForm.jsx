@@ -25,7 +25,7 @@ import MoreInfoLost from './LostOrFound/MoreInfo';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import PersDetailsHands from './InGoodHands/PersDetails';
 import MoreInfoHands from './InGoodHands/MoreInfo';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/Content/selectors';
 
@@ -55,7 +55,6 @@ const AddPetForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { success } = useSelector(selectContacts);
-  const backLocation = useRef(location.state?.from ?? '/');
 
   const onChangeOption = ({ target: { name, value } }) => {
     const key = Object.keys(obj).find(item => item === name);
@@ -227,10 +226,12 @@ const AddPetForm = () => {
             Next
             <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
           </ButtonNext>
-          <ButtonCancel type="button" onClick={() => navigate('/')}>
-            <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
-            Cancel
-          </ButtonCancel>
+          <Link>
+            <ButtonCancel type="button">
+              <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+              Cancel
+            </ButtonCancel>
+          </Link>
         </ButtonContainer>
       )}
     </MoreInfoContainer>
@@ -352,10 +353,12 @@ const AddPetForm = () => {
             Next
             <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
           </ButtonNext>
-          <ButtonCancel type="button" onClick={() => navigate('/')}>
-            <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
-            Cancel
-          </ButtonCancel>
+          <Link to={data.category === 'my-pet' ? '/user' : '/notices'}>
+            <ButtonCancel type="button">
+              <SpriteIcon icon="arrow-left" color="#54ADFF" size="24px" />
+              Cancel
+            </ButtonCancel>
+          </Link>
         </ButtonContainer>
       )}
     </Container>

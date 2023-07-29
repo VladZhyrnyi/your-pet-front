@@ -1,4 +1,4 @@
-import AddPetForm from '../components/AddPetForm/AddPetForm';
+import AddPetForm from 'components/AddPetForm/AddPetForm';
 
 const AddPetPage = props => {
   return <AddPetForm />;
