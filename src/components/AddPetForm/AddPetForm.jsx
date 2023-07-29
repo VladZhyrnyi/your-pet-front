@@ -51,7 +51,7 @@ const title = [
 const AddPetForm = () => {
   const [page, setPage] = useState(0);
   const [data, setData] = useState(obj);
-  const { success } = useSelector(selectContacts);
+  // const { success } = useSelector(selectContacts);
 
   const onChangeOption = ({ target: { name, value } }) => {
     const key = Object.keys(obj).find(item => item === name);
@@ -74,15 +74,6 @@ const AddPetForm = () => {
         ...prev,
         file: files[0],
       }));
-    name === 'date' &&
-      setData(prev => ({
-        ...prev,
-        date: new Date(value).toLocaleDateString({
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit',
-        }),
-      }));
   };
 
   const handleBack = () => {
@@ -90,8 +81,8 @@ const AddPetForm = () => {
   };
 
   return (page === 2 && data.category === 'sell') ||
-    (page === 2 && data.category === 'lost/found') ||
-    (page === 2 && data.category === 'in good hands') ? (
+    (page === 2 && data.category === 'lost-found') ||
+    (page === 2 && data.category === 'for-free') ? (
     <MoreInfoContainer>
       {page === 0 && <Title>{title[0]}</Title>}
       {page > 0 && data.category === 'my-pet' && <Title>{title[0]}</Title>}
@@ -101,18 +92,16 @@ const AddPetForm = () => {
           <Title>{title[1]}</Title>
         </MoreInfoTitle>
       )}
-      {page === 1 && data.category === 'lost/found' && (
+      {page === 1 && data.category === 'lost-found' && (
         <Title>{title[2]}</Title>
       )}
-      {page > 1 && data.category === 'lost/found' && (
+      {page > 1 && data.category === 'lost-found' && (
         <MoreInfoTitle>
           <Title>{title[2]}</Title>
         </MoreInfoTitle>
       )}
-      {page === 1 && data.category === 'in good hands' && (
-        <Title>{title[3]}</Title>
-      )}
-      {page > 1 && data.category === 'in good hands' && (
+      {page === 1 && data.category === 'for-free' && <Title>{title[3]}</Title>}
+      {page > 1 && data.category === 'for-free' && (
         <MoreInfoTitle>
           <Title>{title[3]}</Title>
         </MoreInfoTitle>
@@ -178,14 +167,14 @@ const AddPetForm = () => {
           data={data}
         />
       )}
-      {page === 1 && data.category === 'lost/found' && (
+      {page === 1 && data.category === 'lost-found' && (
         <PersDetailsLost
           onChangeDetails={onChangeDetails}
           setPage={setPage}
           data={data}
         />
       )}
-      {page === 1 && data.category === 'in good hands' && (
+      {page === 1 && data.category === 'for-free' && (
         <PersDetailsHands
           onChangeDetails={onChangeDetails}
           setPage={setPage}
@@ -207,14 +196,14 @@ const AddPetForm = () => {
           setPage={setPage}
         />
       )}
-      {page === 2 && data.category === 'lost/found' && (
+      {page === 2 && data.category === 'lost-found' && (
         <MoreInfoLost
           onChangeDetails={onChangeOption}
           data={data}
           setPage={setPage}
         />
       )}
-      {page === 2 && data.category === 'in good hands' && (
+      {page === 2 && data.category === 'for-free' && (
         <MoreInfoHands
           onChangeDetails={onChangeOption}
           data={data}
@@ -239,10 +228,8 @@ const AddPetForm = () => {
       {page === 0 && <Title>{title[0]}</Title>}
       {page > 0 && data.category === 'my-pet' && <Title>{title[0]}</Title>}
       {page >= 1 && data.category === 'sell' && <Title>{title[1]}</Title>}
-      {page >= 1 && data.category === 'lost/found' && <Title>{title[2]}</Title>}
-      {page >= 1 && data.category === 'in good hands' && (
-        <Title>{title[3]}</Title>
-      )}
+      {page >= 1 && data.category === 'lost-found' && <Title>{title[2]}</Title>}
+      {page >= 1 && data.category === 'for-free' && <Title>{title[3]}</Title>}
       <OptionList>
         {page === 0 ? (
           <OptionItemCurrent>
@@ -303,14 +290,14 @@ const AddPetForm = () => {
           data={data}
         />
       )}
-      {page === 1 && data.category === 'lost/found' && (
+      {page === 1 && data.category === 'lost-found' && (
         <PersDetailsLost
           onChangeDetails={onChangeDetails}
           setPage={setPage}
           data={data}
         />
       )}
-      {page === 1 && data.category === 'in good hands' && (
+      {page === 1 && data.category === 'for-free' && (
         <PersDetailsHands
           onChangeDetails={onChangeDetails}
           setPage={setPage}
@@ -332,14 +319,14 @@ const AddPetForm = () => {
           setPage={setPage}
         />
       )}
-      {page === 2 && data.category === 'lost/found' && (
+      {page === 2 && data.category === 'lost-found' && (
         <MoreInfoLost
           onChangeDetails={onChangeOption}
           data={data}
           setPage={setPage}
         />
       )}
-      {page === 2 && data.category === 'in good hands' && (
+      {page === 2 && data.category === 'for-free' && (
         <MoreInfoHands
           onChangeDetails={onChangeOption}
           data={data}

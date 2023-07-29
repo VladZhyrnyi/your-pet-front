@@ -83,7 +83,7 @@ const PersDetails = ({ onChangeDetails, setPage, data }) => {
             placeholder="Type date of birth"
             required={dobErr}
             min="2000-01-01"
-            max="2023-08-01"
+            max={new Date()}
           />
           {dobErr && <span>Enter a date of birth</span>}
         </Label>

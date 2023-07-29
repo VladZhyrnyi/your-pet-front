@@ -26,8 +26,8 @@ const AddPetContent = ({ onChangeOption, data }) => {
         onChange={onChangeOption}
         type="radio"
         name="category"
-        value="lost/found"
-        checked={data.category === 'lost/found'}
+        value="lost-found"
+        checked={data.category === 'lost-found'}
       />
       <RadioLabel htmlFor="3">Lost/Found</RadioLabel>
       <RadioBtn
@@ -35,8 +35,8 @@ const AddPetContent = ({ onChangeOption, data }) => {
         onChange={onChangeOption}
         type="radio"
         name="category"
-        value="in good hands"
-        checked={data.category === 'in good hands'}
+        value="for-free"
+        checked={data.category === 'for-free'}
       />
       <RadioLabel htmlFor="4">In good hands</RadioLabel>
     </FormOption>

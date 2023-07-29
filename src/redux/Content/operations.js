@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://your-pet-backend-ni98.onrender.com/';
-
 export const AddPet = createAsyncThunk('pets/CreatePet', async data => {
   const formData = new FormData();
 
@@ -10,7 +8,7 @@ export const AddPet = createAsyncThunk('pets/CreatePet', async data => {
     formData.append(key, value);
   });
 
-  const { res } = await axios.post('/api/pets', formData, {
+  const { res } = await axios.post('/pets', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
@@ -25,7 +23,7 @@ export const AddPetOther = createAsyncThunk('pets/AddPetOther', async data => {
     formData.append(key, value);
   });
 
-  const { res } = await axios.post('/api/notices', formData, {
+  const { res } = await axios.post('/notices', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
