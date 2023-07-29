@@ -2,7 +2,7 @@ import { Modal } from 'components/Modal';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
 import { styled } from 'styled-components';
 
@@ -44,7 +44,6 @@ const AddPetButton = styled.button`
 
 const AddPetBtn = () => {
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   console.log(isLoggedIn);
