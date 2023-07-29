@@ -9,8 +9,6 @@ import SpriteIcon from 'components/SpriteIcon';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/Auth/selectors';
 
-// ================styled================
-
 const UserContainer = styled.div`
   display: flex;
   align-items: center;
@@ -19,17 +17,14 @@ const UserContainer = styled.div`
 `;
 
 const Typography = styled.p`
-  /* display: none; */
   font-family: Manrope500, sans-serif;
   font-size: 16px;
-
   color: ${p => p.theme.colors.yellow};
 
   @media screen and (min-width: 768px) {
     display: flex;
   }
 `;
-// ===============================================
 
 function UserBar({ name = true }) {
   const user = useSelector(selectUser);
@@ -38,7 +33,7 @@ function UserBar({ name = true }) {
     <>
       <UserContainer as={Link} to="/user">
         <SpriteIcon icon="user" color={theme.colors.yellow} />
-        {name && <Typography>Anna{user.name}</Typography>}
+        {name && <Typography>{user.name}</Typography>}
       </UserContainer>
     </>
   );

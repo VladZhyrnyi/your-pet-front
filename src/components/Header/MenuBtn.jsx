@@ -1,24 +1,23 @@
-import SpriteIcon from 'components/SpriteIcon/SpriteIcon'
-import React from 'react'
-import { styled } from 'styled-components'
-import { theme } from 'theme'
+import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+import React from 'react';
+import { styled } from 'styled-components';
+import { theme } from 'theme';
 
 const MenuButton = styled.button`
   background-color: transparent;
   border: none;
-`
+`;
 
-const MenuBtn = ({isOpen, onClick}) => {
-
+const MenuBtn = ({ isOpen, onClick }) => {
   return (
     <MenuButton onClick={onClick}>
-      {isOpen ? 
-      <SpriteIcon icon='cross-small' color={theme.colors.yellow}/> 
-      :
-       <SpriteIcon icon='menu-burger'/>
-       } 
+      {isOpen ? (
+        <SpriteIcon icon="cross-small" color={theme.colors.yellow} />
+      ) : (
+        <SpriteIcon icon="menu-burger" color={theme.colors.yellow} />
+      )}
     </MenuButton>
-  )
-}
+  );
+};
 
-export default MenuBtn
+export default MenuBtn;

@@ -7,13 +7,11 @@ const ButtonPrimary = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-
   font-family: Manrope700, sans-serif;
   font-size: 16px;
   border: 2px solid ${p => p.theme.colors.yellow};
   color: ${p => p.theme.colors.yellow};
   background-color: ${p => p.theme.colors.white};
-
   padding: 8px 20px;
   gap: 8px;
 `;
@@ -23,8 +21,6 @@ const ButtonSecond = styled(ButtonPrimary)`
   color: ${p => p.theme.colors.white};
   background-color: ${p => p.theme.colors.yellow};
 `;
-
-// ====================================
 
 function AuthNavigation() {
   return (

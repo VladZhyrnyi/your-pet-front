@@ -7,22 +7,19 @@ const Nav = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // margin-top: 160px;
   gap: 20px;
 
   @media screen and (min-width: 768px) {
-    // margin-left: 96px;
     gap: 60px;
   }
 
   @media screen and (min-width: 1280px) {
     flex-direction: row;
-    margin-left: 160px;
     gap: 40px;
   }
 `;
 
-const NavbarLink = styled(NavLink)`
+const NavBarLink = styled(NavLink)`
   font-family: Manrope500;
   font-size: 32px;
 
@@ -43,9 +40,9 @@ const NavbarLink = styled(NavLink)`
 function NavBar() {
   return (
     <Nav>
-      <NavbarLink to="/news">News</NavbarLink>
-      <NavbarLink to="/notices">Find Pet</NavbarLink>
-      <NavbarLink to="/friends">Friends</NavbarLink>
+      <NavBarLink to="/news">News</NavBarLink>
+      <NavBarLink to="/notices">Find Pet</NavBarLink>
+      <NavBarLink to="/friends">Friends</NavBarLink>
     </Nav>
   );
 }
