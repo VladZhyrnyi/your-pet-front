@@ -27,7 +27,7 @@ import { selectContacts } from 'redux/Content/selectors';
 import { useNavigate } from 'react-router-dom';
 
 const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
-  const { success } = useSelector(selectContacts);
+  const { success, isLoading } = useSelector(selectContacts);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [locErr, setLocErr] = useState(false);
@@ -216,10 +216,11 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
         <ThirdButtonContainer>
           <ButtonNext
             style={{
-              backgroundColor: success && '#00C3AD',
-              transition: 'all 500ms cubic-bezier(0.4, 0, 0.2, 1)',
+              backgroundColor: isLoading ? '#a6a6a6' : success && '#00C3AD',
+              transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
             }}
             type="submit"
+            disabled={isLoading}
           >
             Done
             <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
