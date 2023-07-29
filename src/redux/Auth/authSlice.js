@@ -3,7 +3,7 @@ import { registerUser, loginUser, logoutUser, refreshUser } from './operations';
 
 const initialState = {
   user: { name: null, email: null },
-  token: null,
+  token: '',
   isLoggedIn: false,
   isRefreshing: false,
   isError: false,
@@ -20,7 +20,7 @@ export const authSlice = createSlice({
     },
     [registerUser.fulfilled]: (state, { payload }) => {
       state.user = payload.user;
-      state.token = payload.token;
+      state.token = payload.user.token;
       state.isLoggedIn = true;
     },
     [registerUser.rejected](state) {
@@ -34,7 +34,7 @@ export const authSlice = createSlice({
     },
     [loginUser.fulfilled]: (state, { payload }) => {
       state.user = payload.user;
-      state.token = payload.token;
+      state.token = payload.user.token;
       state.isLoggedIn = true;
     },
     [loginUser.rejected](state) {
