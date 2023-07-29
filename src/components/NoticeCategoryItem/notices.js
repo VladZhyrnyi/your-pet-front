@@ -49,6 +49,6 @@ export const notices = [
     location: 'Kyiv',
     price: 1500,
     comments:
-      'Rich would be the perfect addition to an active family that I bet he would love having a doggy playmate too!',
+      'Frik addition addition addition addition addition addition addition addition addition addition addition!',
   },
 ];

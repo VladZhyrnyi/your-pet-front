@@ -144,6 +144,7 @@ export const WrapperInfo = styled.div`
 `;
 
 export const Img = styled.img`
+  height: 100%;
   object-fit: cover;
 `;
 
@@ -164,7 +165,7 @@ export const Info = styled.div`
   background-color: ${p => p.theme.colors.blueLight};
 
   font-family: Manrope600, sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.48px;
 `;
 

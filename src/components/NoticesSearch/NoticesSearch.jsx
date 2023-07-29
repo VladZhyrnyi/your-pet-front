@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import {
   Button,
   ButtonWrapper,
@@ -8,29 +7,30 @@ import {
   Input,
   InputWrapper,
 } from './NoticesSearch.styled';
+import { useState } from 'react';
 
-export const NoticesSearch = () => {
-  const [inputValue, setInputValue] = useState('');
+export const NoticesSearch = ({ onSubmit, onClear }) => {
+  const [value, setValue] = useState('');
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    if (inputValue.trim().length === 0) return;
+    onSubmit(value);
+  };
 
-    setInputValue('');
-    // Согласовать с Викой.
-    return console.log('Submit');
+  const clearSearchQuery = () => {
+    setValue('');
+    onClear();
   };
 
   const handleChange = event => {
-    setInputValue(event.target.value.toLowerCase());
-  };
+    if (event.target.value.trim().length === 0) {
+      clearSearchQuery();
+      return;
+    }
 
-  const handleClean = () => {
-    setInputValue('');
+    setValue(event.target.value.trim());
   };
-
-  //   const isSearchText = inputValue.length;
 
   return (
     <>
@@ -41,15 +41,15 @@ export const NoticesSearch = () => {
             onChange={handleChange}
             type="text"
             placeholder="Search"
-            value={inputValue}
+            value={value}
           />
           <ButtonWrapper>
             <Button type="submit">
               <IconSearch />
             </Button>
 
-            {inputValue.length > 0 && (
-              <Button type="button" onClick={handleClean}>
+            {value.length !== 0 && (
+              <Button type="button" onClick={clearSearchQuery}>
                 <IconCross />
               </Button>
             )}

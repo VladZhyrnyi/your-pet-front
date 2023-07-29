@@ -17,15 +17,25 @@ import {
   WrapperCont,
   WrapperContent,
 } from './NoticeDetail.styled';
-import img from '../NoticeCategoryItem/Rectangle.jpg';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import { theme } from '../../theme.js';
-import { notices } from '../NoticeCategoryItem/notices.js';
 import { users } from '../NoticeCategoryItem/users.js';
 
-const NoticeDetail = () => {
-  const notice = notices[0];
-  // console.log('notice- ', notice.price);
+const NoticeDetail = ({ el }) => {
+  const {
+    date,
+    file,
+    type,
+    category,
+    location,
+    sex,
+    title,
+    price,
+    name,
+    comments,
+  } = el;
+  console.log('el- ', comments);
+  console.log('el- ', comments === undefined);
 
   const user = users[0];
   // console.log('user- ', user);
@@ -34,48 +44,48 @@ const NoticeDetail = () => {
     <Notice>
       <WrapperContent>
         <ThumbImg>
-          <Img src={notice.file} alt={notice.type} />
-          <NameCategory>{notice.category}</NameCategory>
+          <Img src={file} alt={type} />
+          <NameCategory>{category}</NameCategory>
         </ThumbImg>
         <WrapperCont>
-          <Title>{notice.title}</Title>
+          <Title>{title}</Title>
           <Table>
             <tbody>
               <TableRow>
                 <TableUnit>Name:</TableUnit>
-                <TableUnitData>{notice.name}</TableUnitData>
+                <TableUnitData>{name}</TableUnitData>
               </TableRow>
               <TableRow>
                 <TableUnit>Birthday:</TableUnit>
-                <TableUnitData>{notice.date}</TableUnitData>
+                <TableUnitData>{date}</TableUnitData>
               </TableRow>
               <TableRow>
                 <TableUnit>Type:</TableUnit>
-                <TableUnitData>{notice.type}</TableUnitData>
+                <TableUnitData>{type}</TableUnitData>
               </TableRow>
               <TableRow>
                 <TableUnit>Place:</TableUnit>
-                <TableUnitData>{notice.location}</TableUnitData>
+                <TableUnitData>{location}</TableUnitData>
               </TableRow>
               <TableRow>
                 <TableUnit>The sex:</TableUnit>
-                <TableUnitData>{notice.sex}</TableUnitData>
+                <TableUnitData>{sex}</TableUnitData>
               </TableRow>
-              {notice.price !== 0 && (
+              {price !== 0 && (
                 <TableRow>
                   <TableUnit>Price:</TableUnit>
-                  <TableUnitData>{notice.price} UAH</TableUnitData>
+                  <TableUnitData>{price} UAH</TableUnitData>
                 </TableRow>
               )}
               <TableRow>
                 <TableUnit>Email:</TableUnit>
                 <TableUnitData>
                   <DataLink
-                    href={`mailto:${user.email}`}
+                    href={`mailto:${user.contactEmail}`}
                     target="_blank"
                     rel="noreferrer noopener nofollow"
                   >
-                    {user.email}
+                    {user.contactEmail}
                   </DataLink>
                 </TableUnitData>
               </TableRow>
@@ -95,11 +105,17 @@ const NoticeDetail = () => {
           </Table>
         </WrapperCont>
       </WrapperContent>
-      <CommentData>
-        <Comment>Comments:</Comment>Rich would be the perfect addition to an
-        active family that loves to play and go on walks. I bet he would love
-        having a doggy playmate too!
-      </CommentData>
+      {comments === undefined ? (
+        <CommentData>
+          <Comment> No comments</Comment>
+        </CommentData>
+      ) : (
+        <CommentData>
+          <Comment>Comments:</Comment>
+          {comments}
+        </CommentData>
+      )}
+
       <ButtonDetailWrapper>
         <ButtonDetail
           background={theme.colors.blue}

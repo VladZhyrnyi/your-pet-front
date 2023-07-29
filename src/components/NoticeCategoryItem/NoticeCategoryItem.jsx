@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import {
   BtnLearnMore,
   ButtonCardWrapper,
@@ -21,10 +20,7 @@ import {
   WrapperInfo,
 } from './NoticeCategoryItem.styled';
 
-import { notices } from '../NoticeCategoryItem/notices.js';
-import { users } from '../NoticeCategoryItem/users.js';
-
-const data = '27.08.2022';
+// const data = '27.08.2022';
 
 const calcAge = data => {
   const [day, month, year] = data.split('.');
@@ -49,14 +45,8 @@ const calcAge = data => {
   if (formatBdYearsFloor > 1) return `${formatBdYearsFloor} years`;
 };
 
-// const res = calcAge(data);
-// console.log(res);
-
 const NoticeCategoryItem = ({ showModal, el }) => {
-  // const [isFilter, setIsFilter] = useState("sell");
-  console.log(el);
-  const { date, file, type, category, location, sex, title, price, _id } = el;
-  // const notice = notices[0];
+  const { date, file, type, category, location, sex, title } = el;
 
   const isFavorite = false;
   const isMyAds = true;
@@ -105,7 +95,7 @@ const NoticeCategoryItem = ({ showModal, el }) => {
       </ThumbImg>
       <WrapperContent>
         <Title>{title}</Title>
-        <BtnLearnMore onClick={showModal}>Learn more</BtnLearnMore>
+        <BtnLearnMore onClick={() => showModal(el)}>Learn more</BtnLearnMore>
       </WrapperContent>
     </Card>
   );

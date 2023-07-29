@@ -3,18 +3,25 @@ import { NoticeList } from './NoticesCategoriesList.styled';
 import NoticeCategoryItem from 'components/NoticeCategoryItem/NoticeCategoryItem';
 import { Modal } from 'components/Modal';
 import NoticeDetail from 'components/NoticeDatail/NoticeDetail';
-import { notices } from '../NoticeCategoryItem/notices.js';
+import { useSelector } from 'react-redux';
+import { selectContacts } from 'redux/Content/selectors';
 
 const NoticesCategoriesList = () => {
   const [isShowModal, setIsShowModal] = useState(false);
-  const [state, setState] = useState(notices);
+  const [el, setEl] = useState(null);
 
-  const showModal = () => setIsShowModal(true);
+  const { items } = useSelector(selectContacts);
+
+  const showModal = el => {
+    setEl(el);
+    setIsShowModal(true);
+  };
   const closeModal = () => setIsShowModal(false);
+
   return (
     <>
       <NoticeList>
-        {state.map(el => {
+        {items.map(el => {
           return (
             <NoticeCategoryItem key={el._id} el={el} showModal={showModal} />
           );
@@ -23,7 +30,7 @@ const NoticesCategoriesList = () => {
       </NoticeList>
       {isShowModal && (
         <Modal closeModal={closeModal}>
-          <NoticeDetail />
+          <NoticeDetail el={el} />
         </Modal>
       )}
     </>

@@ -1,6 +1,6 @@
 import { TitleNotice } from './Title.styled';
 
-const Title = ({children}) => {
+const Title = ({ children }) => {
   return <TitleNotice>{children}</TitleNotice>;
 };
 
