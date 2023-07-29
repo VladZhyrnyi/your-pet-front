@@ -1,4 +1,5 @@
-// import { useState } from 'react';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useFormContext } from 'react-hook-form';
 import { findInputError } from 'utils/findInputError';
 import { isFormInvalid } from 'utils/isFormInvalid';
@@ -25,6 +26,8 @@ const PasswordInput = ({
   icon,
   valid,
 }) => {
+  const location = useLocation().pathname;
+  // console.log(location);
   const {
     register,
     formState: { errors },
@@ -32,13 +35,19 @@ const PasswordInput = ({
   const inputError = findInputError(errors, name);
   const isInvalid = isFormInvalid(inputError);
 
+  const [showPass, setShowPass] = useState(false);
+  const onShowPassBtnClick = () => {
+    setShowPass(current => !current);
+    console.log('qwe');
+  };
+
   return (
     <PasswordInputWrapper>
       <InputWrapper>
         <InputField
-          type={type}
           id={id}
           name={name}
+          type={showPass ? 'text' : 'password'}
           placeholder={placeholder}
           {...register(name, validation)}
           onChange={onChange}
@@ -50,7 +59,7 @@ const PasswordInput = ({
             key={inputError.error.message}
           />
         )}
-        {valid && name === 'password' && (
+        {valid && name === 'password' && location !== '/login' && (
           <InputSuccessMessage>Password is secure</InputSuccessMessage>
         )}
         {valid && name === 'confirmPassword' && (
@@ -58,14 +67,14 @@ const PasswordInput = ({
         )}
       </InputWrapper>
       <InputIconsWrapper>
-        <ShowHidePasswordBtn onClick={onClick}>
+        <ShowHidePasswordBtn onClick={onShowPassBtnClick}>
           <SpriteIcon
-            icon={icon}
-            color={valid ? '#888888' : `${theme.colors.blue}`}
+            icon={showPass ? 'eye-open' : 'eye-closed'}
+            color={valid && !isInvalid ? '#888888' : `${theme.colors.blue}`}
             size="24px"
           />
         </ShowHidePasswordBtn>
-        {valid && (
+        {valid && !isInvalid && (
           <SpriteIcon
             icon={'check'}
             color={`${theme.colors.green}`}
