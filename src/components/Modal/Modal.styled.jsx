@@ -7,6 +7,7 @@ export const BackDrop = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.499);
+  z-index: 1000;
 `;
 
 export const Content = styled.div`
@@ -16,7 +17,6 @@ export const Content = styled.div`
   min-width: 280px;
   min-height: 287px;
   margin: 0 auto;
-  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +27,6 @@ export const Content = styled.div`
   @media (min-width: 768px) {
     min-width: 608px;
     min-height: 352px;
-    padding: 60px;
     border-radius: 40px;
   }
 `;

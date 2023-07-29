@@ -1,5 +1,7 @@
 @import-normalize; /* bring in normalize.css styles */
 
+*,*:before, *:after { box-sizing: border-box;}
+
 html, body, div, span,
 h1, h2, h3, h4, h5, h6, p,
 a, address, img, ol, ul, li,
@@ -32,8 +34,10 @@ img {
   height: auto;
 }
 
+
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -43,4 +47,3 @@ body {
   background-color: #FEF9F9;
 }
 
-*{box-sizing: border-box;}
