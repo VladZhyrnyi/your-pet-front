@@ -21,7 +21,7 @@ const {
 } = require('../AddPerForm.styled');
 
 const MoreInfo = ({ onChangeDetails, setPage, data }) => {
-  const { success } = useSelector(selectContacts);
+  const { success, isLoading } = useSelector(selectContacts);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [err, setErr] = useState(false);
@@ -127,10 +127,11 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
         <ThirdButtonContainer>
           <ButtonNext
             style={{
-              backgroundColor: success && '#00C3AD',
-              transition: 'all 500ms cubic-bezier(0.4, 0, 0.2, 1)',
+              backgroundColor: isLoading ? '#a6a6a6' : success && '#00C3AD',
+              transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
             }}
             type="submit"
+            disabled={isLoading}
           >
             Done
             <SpriteIcon icon="pawprint" color="#FEF9F9" size="24px" />
