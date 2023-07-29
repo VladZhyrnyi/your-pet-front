@@ -6,6 +6,13 @@ const modalWindow = document.getElementById('modal');
 
 export const Modal = ({ closeModal, children }) => {
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+  
+  useEffect(() => {
     const handlePressESC = e => {
       if (e.code === 'Escape') {
         closeModal();
