@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import Input from 'components/Input/Input';
 import PasswordInput from 'components/Input/PasswordInput';
 import { RegisterModal } from 'components/RegisterModal/RegisterModal';
-// import LogoutBtn from 'components/Header/LogoutBtn';
 
 import {
   name_validation,
@@ -31,8 +30,8 @@ const RegiserForm = () => {
   const errorMessage = useSelector(selectErrorMessage);
   const dispatch = useDispatch();
   const methods = useForm();
-  const [passIsValid, setPassIsValid] = useState('');
-  const [confPassIsValid, setConfPasIsValid] = useState('');
+  const [passIsValid, setPassIsValid] = useState(false);
+  const [confPassIsValid, setConfPasIsValid] = useState(false);
   const [success, setSuccess] = useState(false);
   const [mismatch, setMismatch] = useState(false);
   // ----- State of FIRST password -----
@@ -42,34 +41,34 @@ const RegiserForm = () => {
   // ----- Set value of the FIRST password input -----
   const onPassInputChange = e => {
     if (password_validation.validation.pattern.value.test(e.target.value)) {
-      setPassIsValid('valid');
+      setPassIsValid(true);
       setPassValue(e.target.value);
     } else {
-      setPassIsValid('');
+      setPassIsValid(false);
     }
     setPassValue(e.target.value);
   };
   /* ----- Set value of the SECOND password input 
    in case of matching with value of the fitst pass input ----- */
   const onConfPassInputChange = e => {
+    console.log(confPassIsValid);
     if (e.target.value === passValue) {
       setMismatch(false);
-      setConfPasIsValid('valid');
+      setConfPasIsValid(true);
       setConfPassValue(e.target.value);
     } else {
       setMismatch(true);
-      setConfPasIsValid('');
+      setConfPasIsValid(false);
     }
   };
   const onSubmit = methods.handleSubmit(data => {
+    const { name, email, password } = data;
     if (passValue === confPassValue) {
-      dispatch(registerUser(data))
+      dispatch(registerUser({ name, email, password }))
         .then(data => {
-          // console.log(data);
-          // console.log(data.meta.requestStatus);
           methods.reset();
-          setPassIsValid('');
-          setConfPasIsValid('');
+          setPassIsValid(false);
+          setConfPasIsValid(false);
           if (data.meta.requestStatus === 'fulfilled') {
             setSuccess(true);
           }

@@ -26,7 +26,7 @@ export const authSlice = createSlice({
     [registerUser.rejected](state) {
       state.isLoggedIn = false;
       state.isError = true;
-      state.errorMessage = 'This email address is already in use';
+      state.errorMessage = 'This email address is already in use.';
     },
     [loginUser.pending](state) {
       state.isLoggedIn = false;
@@ -40,7 +40,8 @@ export const authSlice = createSlice({
     [loginUser.rejected](state) {
       state.isLoggedIn = false;
       state.isError = true;
-      state.errorMessage = 'Wrong email or password';
+      state.errorMessage =
+        'Wrong email or password. Make sure that your account is verified.';
     },
     [logoutUser.pending](state) {
       state.isLoggedIn = false;
@@ -54,7 +55,7 @@ export const authSlice = createSlice({
     [logoutUser.rejected](state) {
       state.isLoggedIn = false;
       state.isError = true;
-      state.errorMessage = 'Something went wrong';
+      state.errorMessage = 'Something went wrong.';
     },
     [refreshUser.pending]: state => {
       state.isRefreshing = true;
