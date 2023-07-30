@@ -20,14 +20,14 @@ const MobileMenuContainer = styled.div`
   justify-content: start;
   align-items: center;
   width: 100%;
-  top: 64px;
+  top: 82px;
   padding-top: 16px;
   background-color: ${p => p.theme.colors.backgroundColor};
   bottom: 0;
   gap: 40px;
 
   @media screen and (min-width: 768px) {
-    top: 92px;
+    top: 160px;
   }
 `;
 

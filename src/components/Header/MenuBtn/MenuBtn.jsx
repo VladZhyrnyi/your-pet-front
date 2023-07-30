@@ -12,9 +12,9 @@ const MenuBtn = ({ isOpen, onClick }) => {
   return (
     <MenuButton onClick={onClick}>
       {isOpen ? (
-        <SpriteIcon icon="cross-small" color={theme.colors.yellow} />
+        <SpriteIcon icon="cross" size='24px' color={theme.colors.yellow} />
       ) : (
-        <SpriteIcon icon="menu-burger" color={theme.colors.yellow} />
+        <SpriteIcon icon="menu-burger" size='24px' color={theme.colors.yellow} />
       )}
     </MenuButton>
   );

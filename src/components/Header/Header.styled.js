@@ -4,13 +4,14 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  height: 48px;
   padding: 20px 0;
   @media screen and (min-width: 768px) {
     height: 80px;
     padding: 24px 0;
   }
   @media screen and (min-width: 1280px) {
+    height: 64px;
   }
 `;
 
