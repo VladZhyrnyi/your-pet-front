@@ -8,8 +8,6 @@ import { selectIsLoggedIn } from 'redux/Auth/selectors';
 import AuthNavigation from './AuthNavigation';
 import UserBar from './UserBar';
 
-// ==============styled================
-
 const AuthContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,12 +18,16 @@ const AuthContainer = styled.div`
   }
 `;
 
-function AuthBar({userBarKey, name}) {
+function AuthBar({ userBarKey, name }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-console.log('name', name)
+
   return (
     <AuthContainer>
-      {isLoggedIn ? <UserBar key={userBarKey} name={name}/> : <AuthNavigation />}
+      {isLoggedIn ? (
+        <UserBar key={userBarKey} name={name} />
+      ) : (
+        <AuthNavigation />
+      )}
     </AuthContainer>
   );
 }
