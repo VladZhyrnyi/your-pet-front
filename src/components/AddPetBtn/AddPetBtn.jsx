@@ -1,10 +1,9 @@
-
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
 
-import { Modal } from 'components/Modal';
+import Modal from 'components/Modal';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import Attention from 'components/Attention';
 
