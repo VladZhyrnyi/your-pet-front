@@ -25,8 +25,8 @@ import MoreInfoLost from './LostOrFound/MoreInfo';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import PersDetailsHands from './InGoodHands/PersDetails';
 import MoreInfoHands from './InGoodHands/MoreInfo';
-import { useSelector } from 'react-redux';
-import { selectContacts } from 'redux/Content/selectors';
+// import { useSelector } from 'react-redux';
+// import { selectContacts } from 'redux/Content/selectors';
 
 const obj = {
   category: 'my-pet',
