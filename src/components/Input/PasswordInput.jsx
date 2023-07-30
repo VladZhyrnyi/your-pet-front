@@ -16,18 +16,14 @@ import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import { theme } from 'theme';
 
 const PasswordInput = ({
-  type,
   id,
   name,
   placeholder,
   validation,
   onChange,
-  onClick,
-  icon,
   valid,
 }) => {
   const location = useLocation().pathname;
-  // console.log(location);
   const {
     register,
     formState: { errors },
@@ -38,7 +34,6 @@ const PasswordInput = ({
   const [showPass, setShowPass] = useState(false);
   const onShowPassBtnClick = () => {
     setShowPass(current => !current);
-    console.log('qwe');
   };
 
   return (

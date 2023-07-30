@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AddPet, AddPetOther } from './operations';
+import { AddPet, AddPetOther, getNotices } from './operations';
 
 const contentInitialState = {
   items: [],
@@ -42,6 +42,18 @@ const contentSlice = createSlice({
       .addCase(AddPetOther.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+      })
+      .addCase(getNotices.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getNotices.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(getNotices.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.items = payload;
+        state.error = null;
       }),
 });
 export const { resetSuccess } = contentSlice.actions;
