@@ -59,12 +59,10 @@ const AddPetBtn = () => {
 
   return (
     <>
-      <Link to="/add-pet">
-        <AddPetButton onClick={handleClick}>
-          Add pet
-          <SpriteIcon icon="plus" />
-        </AddPetButton>
-      </Link>
+      <AddPetButton onClick={handleClick}>
+        Add pet
+        <SpriteIcon icon="plus" />
+      </AddPetButton>
       {showModal && (
         <Modal closeModal={() => setShowModal(false)}>
           some text
