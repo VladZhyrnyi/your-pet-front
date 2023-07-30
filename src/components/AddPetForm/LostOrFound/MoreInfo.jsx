@@ -25,6 +25,7 @@ import { AddPetOther } from 'redux/Content/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/Content/selectors';
 import { useNavigate } from 'react-router-dom';
+import { resetSuccess } from 'redux/Content/contentSlice';
 
 const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
   const { success, isLoading } = useSelector(selectContacts);
@@ -55,6 +56,12 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     }
   }, [files]);
 
+  useEffect(() => {
+    return () => {
+      dispatch(resetSuccess());
+    };
+  }, [dispatch]);
+
   success &&
     setTimeout(() => {
       navigate('/notices');
@@ -74,7 +81,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
       locInput === '' &&
       comInput === '' &&
       !file &&
-      setFormIsInvalid(false);
+      setFormIsInvalid(true);
 
     formIsInvalid === false &&
       dispatch(
@@ -104,7 +111,7 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
     locInput !== '' &&
       sexInput !== '' &&
       comInput !== '' &&
-      !file &&
+      file &&
       setFormIsInvalid(false);
     if (
       e.currentTarget.elements.file.files &&

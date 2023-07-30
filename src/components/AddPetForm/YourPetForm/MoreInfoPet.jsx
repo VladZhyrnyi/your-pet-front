@@ -2,6 +2,7 @@ import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { resetSuccess } from 'redux/Content/contentSlice';
 import { AddPet } from 'redux/Content/operations';
 import { selectContacts } from 'redux/Content/selectors';
 
@@ -22,13 +23,13 @@ const {
 
 const MoreInfo = ({ onChangeDetails, setPage, data }) => {
   const { success, isLoading } = useSelector(selectContacts);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [err, setErr] = useState(false);
   const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
   const [comErr, setComErr] = useState(false);
   const [filer, setFile] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!files) return;
@@ -39,7 +40,6 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
     const objectUrls = tmp;
     setPreviews(objectUrls);
 
-    // free memory
     for (let i = 0; i < objectUrls.length; i++) {
       return () => {
         URL.revokeObjectURL(objectUrls[i]);
@@ -47,10 +47,11 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
     }
   }, [files]);
 
-  success &&
-    setTimeout(() => {
-      navigate('/user');
-    }, 2000);
+  useEffect(() => {
+    return () => {
+      dispatch(resetSuccess());
+    };
+  }, [dispatch]);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -84,6 +85,11 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
       setFiles(e.currentTarget.elements.file.files);
     }
   };
+
+  success &&
+    setTimeout(() => {
+      navigate('/user');
+    }, 2000);
 
   return (
     <>

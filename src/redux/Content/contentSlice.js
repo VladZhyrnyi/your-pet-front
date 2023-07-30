@@ -11,6 +11,11 @@ const contentInitialState = {
 const contentSlice = createSlice({
   name: 'content',
   initialState: contentInitialState,
+  reducers: {
+    resetSuccess: state => {
+      state.success = false;
+    },
+  },
   extraReducers: builder =>
     builder
       .addCase(AddPet.pending, (state, { payload }) => {
@@ -51,5 +56,6 @@ const contentSlice = createSlice({
         state.error = null;
       }),
 });
+export const { resetSuccess } = contentSlice.actions;
 
 export const contentReducer = contentSlice.reducer;
