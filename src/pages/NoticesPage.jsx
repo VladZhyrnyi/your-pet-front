@@ -28,8 +28,6 @@ const NoticesPage = () => {
     dispatch(getNotices(queryObj));
   }, [queryObj, dispatch]);
 
-  console.log('queryObj - ', queryObj);
-
   const handleSearchSubmit = query => {
     setSearchParams({ query });
   };
