@@ -3,26 +3,31 @@ import styled from 'styled-components';
 export const BackDrop = styled.div`
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+
   background-color: rgba(0, 0, 0, 0.499);
   z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Content = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: relative;
   min-width: 280px;
   min-height: 287px;
-  margin: 0 auto;
+
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 44px;
+
   border-radius: 20px;
   background-color: ${p => p.theme.colors.white};
-  transform: translate(-50%, -50%);
 
   @media (min-width: 768px) {
     min-width: 608px;
@@ -45,6 +50,7 @@ export const Button = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+  color: ${p => p.theme.colors.blue};
   background-color: transparent;
   transition: background-color ${p => p.theme.transitionTimingFunction};
 
@@ -56,10 +62,6 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     background-color: ${p => p.theme.colors.blue};
-  }
-
-  &:hover svg,
-  &:focus svg {
     color: ${p => p.theme.colors.white};
   }
 `;

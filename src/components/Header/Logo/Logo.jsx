@@ -1,6 +1,6 @@
 import useWindowWidth from 'hooks/useWindowWidth';
-import logoBig from '../../images/logo/logo1.png';
-import logoSmall from '../../images/logo/logo2.png';
+import logoBig from '../../../images/logo/logo1.png';
+import logoSmall from '../../../images/logo/logo2.png';
 
 const { NavLink } = require('react-router-dom');
 

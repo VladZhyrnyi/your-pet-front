@@ -1,1 +1,2 @@
-export { default } from './AddPetBtn.jsx';
+export { default } from './AddPetBtn';
+

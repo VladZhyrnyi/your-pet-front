@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -10,8 +11,8 @@ import Attention from 'components/Attention';
 import { AddPetButton } from './AddPetBtn.styled';
 
 const AddPetBtn = () => {
-  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const handleClick = () => {
