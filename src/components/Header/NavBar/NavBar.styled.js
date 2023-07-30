@@ -1,8 +1,6 @@
-import React from 'react';
 import { styled } from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
-const Nav = styled.div`
+export const Nav = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +17,7 @@ const Nav = styled.div`
   }
 `;
 
-const NavBarLink = styled(NavLink)`
+export const NavBarLink = styled.a`
   font-family: Manrope500;
   font-size: 32px;
 
@@ -36,15 +34,3 @@ const NavBarLink = styled(NavLink)`
     color: ${p => p.theme.colors.yellow};
   }
 `;
-
-function NavBar() {
-  return (
-    <Nav>
-      <NavBarLink to="/news">News</NavBarLink>
-      <NavBarLink to="/notices">Find Pet</NavBarLink>
-      <NavBarLink to="/friends">Friends</NavBarLink>
-    </Nav>
-  );
-}
-
-export default NavBar;

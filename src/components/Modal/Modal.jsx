@@ -6,14 +6,9 @@ import { createPortal } from 'react-dom';
 const modalWindow = document.getElementById('modal');
 
 const Modal = ({ closeModal, children }) => {
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, []);
   
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     const handlePressESC = e => {
       if (e.code === 'Escape') {
         closeModal();
@@ -23,6 +18,7 @@ const Modal = ({ closeModal, children }) => {
     window.addEventListener('keydown', handlePressESC);
 
     return () => {
+      document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handlePressESC);
     };
   }, [closeModal]);
@@ -38,7 +34,7 @@ const Modal = ({ closeModal, children }) => {
       <Content>
         {children}
         <Button onClick={closeModal}>
-          <SpriteIcon icon="cross" color="#54ADFF" />
+          <SpriteIcon icon="cross"/>
         </Button>
       </Content>
     </BackDrop>,

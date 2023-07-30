@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/Auth/selectors';
+
+import AuthNavigation from '../AuthNavigation';
+import UserBar from '../UserBar';
 
 import { styled } from 'styled-components';
 
-import { selectIsLoggedIn } from 'redux/Auth/selectors';
-
-import AuthNavigation from './AuthNavigation';
-import UserBar from './UserBar';
 
 const AuthContainer = styled.div`
   display: flex;
@@ -18,16 +18,12 @@ const AuthContainer = styled.div`
   }
 `;
 
-function AuthBar({ userBarKey, name }) {
+function AuthBar({ name = true }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <AuthContainer>
-      {isLoggedIn ? (
-        <UserBar key={userBarKey} name={name} />
-      ) : (
-        <AuthNavigation />
-      )}
+      {isLoggedIn ? <UserBar name={name} /> : <AuthNavigation />}
     </AuthContainer>
   );
 }

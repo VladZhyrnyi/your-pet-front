@@ -4,17 +4,17 @@ import { useSelector } from 'react-redux';
 
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
 
-import useWindowWidth from '../../hooks/useWindowWidth';
+import useWindowWidth from '../../../hooks/useWindowWidth';
 
-import NavBar from './NavBar';
-import AuthBar from './AuthBar';
-import LogoutBtn from './LogoutBtn';
+import NavBar from '../NavBar';
+import AuthBar from '../AuthBar';
+import LogoutBtn from '../LogoutBtn';
 
 import { styled } from 'styled-components';
 
-
-const MobileContainer = styled.div`
+const MobileMenuContainer = styled.div`
   position: fixed;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -31,7 +31,7 @@ const MobileContainer = styled.div`
   }
 `;
 
-const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuRoot = document.getElementById('mobile-menu');
 
 const MobileMenu = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -47,12 +47,12 @@ const MobileMenu = () => {
   }, []);
 
   return createPortal(
-    <MobileContainer>
+    <MobileMenuContainer>
       {isMobile && <AuthBar userBarKey="mobile-menu" />}
       <NavBar />
       {isMobile && isLoggedIn && <LogoutBtn />}
-    </MobileContainer>,
-    mobileMenu
+    </MobileMenuContainer>,
+    mobileMenuRoot
   );
 };
 

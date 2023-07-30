@@ -1,8 +1,6 @@
-import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
-import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-const ButtonPrimary = styled.button`
+export const ButtonPrimary = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,24 +14,8 @@ const ButtonPrimary = styled.button`
   gap: 8px;
 `;
 
-const ButtonSecond = styled(ButtonPrimary)`
+export const ButtonSecondary = styled(ButtonPrimary)`
   border: 2px solid ${p => p.theme.colors.transparent};
   color: ${p => p.theme.colors.white};
   background-color: ${p => p.theme.colors.yellow};
 `;
-
-function AuthNavigation() {
-  return (
-    <>
-      <ButtonSecond as={Link} to="/login">
-        Log IN
-        <SpriteIcon icon="pawprint" />
-      </ButtonSecond>
-      <ButtonPrimary as={Link} to="/register">
-        Registration
-      </ButtonPrimary>
-    </>
-  );
-}
-
-export default AuthNavigation;
