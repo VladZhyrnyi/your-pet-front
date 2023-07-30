@@ -7,7 +7,6 @@ import UserBar from '../UserBar';
 
 import { styled } from 'styled-components';
 
-
 const AuthContainer = styled.div`
   display: flex;
   flex-direction: column;
