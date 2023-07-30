@@ -15,26 +15,30 @@ const PersDetails = ({ onChangeDetails, setPage, data }) => {
   const [typeErr, setTypeErr] = useState(false);
   const [formIsInvalid, setFormIsInvalid] = useState(true);
 
+  const currentDate = new Date();
+
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // +1, так как в JavaScript месяцы начинаются с 0
+  const day = String(currentDate.getDate()).padStart(2, '0');
+
+  const formattedDate = `${year}-${month}-${day}`;
+
   const onSubmit = e => {
     e.preventDefault();
-    const nameInput = e.currentTarget.elements.name.value;
-    const dobInput = e.currentTarget.elements.date.value;
-    const petTypeInput = e.currentTarget.elements.type.value;
-    nameInput === '' && setNameErr(true);
-    dobInput === '' && setDobErr(true);
-    petTypeInput === '' && setTypeErr(true);
+    const { name, date, type } = e.currentTarget.elements;
+    name.value === '' && setNameErr(true);
+    date.value === '' && setDobErr(true);
+    type.value === '' && setTypeErr(true);
     formIsInvalid === false && setPage(prev => prev + 1);
   };
   const onFormChange = e => {
-    const nameInput = e.currentTarget.elements.name.value;
-    const dobInput = e.currentTarget.elements.date.value;
-    const petTypeInput = e.currentTarget.elements.type.value;
-    nameInput !== '' && setNameErr(false);
-    dobInput !== '' && setDobErr(false);
-    petTypeInput !== '' && setTypeErr(false);
-    nameInput !== '' &&
-      dobInput !== '' &&
-      petTypeInput !== '' &&
+    const { name, date, type } = e.currentTarget.elements;
+    name.value !== '' && setNameErr(false);
+    date.value !== '' && setDobErr(false);
+    type.value !== '' && setTypeErr(false);
+    name.value !== '' &&
+      date.value !== '' &&
+      type.value !== '' &&
       setFormIsInvalid(false);
   };
 
@@ -62,7 +66,7 @@ const PersDetails = ({ onChangeDetails, setPage, data }) => {
             placeholder="Type date of birth"
             required={dobErr}
             min="2000-01-01"
-            max={new Date()}
+            max={formattedDate}
           />
           {dobErr && <span>Enter a date of birth</span>}
         </Label>

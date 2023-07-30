@@ -28,7 +28,7 @@ import { useNavigate } from 'react-router-dom';
 import { resetSuccess } from 'redux/Content/contentSlice';
 
 const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
-  let { success, isLoading } = useSelector(selectContacts);
+  let { success, isLoading, notSuc } = useSelector(selectContacts);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [priceErr, setPriceErr] = useState(false);
@@ -70,21 +70,17 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    const priceInput = e.currentTarget.elements.price.value;
-    const locInput = e.currentTarget.elements.location.value;
-    const sexInput = e.currentTarget.elements.sex.value;
-    const comInput = e.currentTarget.elements.comments.value;
-    const file = e.currentTarget.elements.file.files[0];
-    sexInput === '' && setSexErr(true);
-    priceInput === '' && setPriceErr(true);
-    locInput === '' && setLocErr(true);
-    comInput === '' && setComErr(true);
-    !file && setFileErr(true);
-    sexInput === '' &&
-      priceInput === '' &&
-      locInput === '' &&
-      comInput === '' &&
-      !file &&
+    const { price, sex, location, comments, file } = e.currentTarget.elements;
+    sex.value === '' && setSexErr(true);
+    price.value === '' && setPriceErr(true);
+    location.value === '' && setLocErr(true);
+    comments.value === '' && setComErr(true);
+    !file.files[0] && setFileErr(true);
+    sex.value === '' &&
+      price.value === '' &&
+      location.value === '' &&
+      comments.value === '' &&
+      !file.files[0] &&
       setFormIsInvalid(true);
 
     formIsInvalid === false &&
@@ -104,22 +100,18 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
       );
   };
   const onFormChange = e => {
-    const priceInput = e.currentTarget.elements.price.value;
-    const locInput = e.currentTarget.elements.location.value;
-    const sexInput = e.currentTarget.elements.sex.value;
-    const comInput = e.currentTarget.elements.comments.value;
-    const file = e.currentTarget.elements.file.files[0];
-    setFile(file);
-    sexInput !== '' && setSexErr(false);
-    priceInput !== '' && setPriceErr(false);
-    locInput !== '' && setLocErr(false);
-    comInput !== '' && setComErr(false);
-    file && setFileErr(false);
-    priceInput !== '' &&
-      locInput !== '' &&
-      sexInput !== '' &&
-      comInput !== '' &&
-      file &&
+    const { price, location, sex, comments, file } = e.currentTarget.elements;
+    setFile(file.files[0]);
+    sex.value !== '' && setSexErr(false);
+    price.value !== '' && setPriceErr(false);
+    location.value !== '' && setLocErr(false);
+    comments.value !== '' && setComErr(false);
+    file.files[0] && setFileErr(false);
+    price.value !== '' &&
+      location.value !== '' &&
+      sex.value !== '' &&
+      comments.value !== '' &&
+      file.files[0] &&
       setFormIsInvalid(false);
     if (
       e.currentTarget.elements.file.files &&
@@ -179,6 +171,14 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
           </SexContainer>
           <FileContainer>
             <FileSellTitle>Load the pet’s image:</FileSellTitle>
+            <FileInput
+              id="avatar"
+              onChange={onChangeDetails}
+              type="file"
+              name="file"
+              required={fileErr}
+              accept="image/jpg, image/jpeg, image/png"
+            />
             <FileLabelLost htmlFor="avatar">
               <FileDiv>
                 {previews ? (
@@ -192,13 +192,6 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
                 )}
               </FileDiv>
             </FileLabelLost>
-            <FileInput
-              id="avatar"
-              onChange={onChangeDetails}
-              type="file"
-              name="file"
-              required={fileErr}
-            />
           </FileContainer>
         </SecondSexContainer>
         <LableWrapper>
@@ -242,7 +235,11 @@ const MoreInfo = ({ onChangeDetails, onChangeOption, data, setPage }) => {
         <ThirdButtonContainer>
           <ButtonNext
             style={{
-              backgroundColor: isLoading ? '#a6a6a6' : success && '#00C3AD',
+              backgroundColor: isLoading
+                ? '#a6a6a6'
+                : success
+                ? '#00C3AD'
+                : notSuc && 'red',
               transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
             }}
             type="submit"
