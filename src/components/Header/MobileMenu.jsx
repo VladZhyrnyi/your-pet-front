@@ -8,6 +8,7 @@ import NavBar from './NavBar';
 import { styled } from 'styled-components';
 // import LogoutBtn from './LogoutBtn';
 import { createPortal } from 'react-dom';
+import { useEffect } from 'react';
 // import MenuBtn from './MenuBtn';
 
 //  import { selectIsLoggedIn } from 'redux/Auth/selectors';
@@ -33,6 +34,14 @@ const MobileContainer = styled.div`
 const mobileMenu = document.getElementById('mobile-menu');
 
 function MobileMenu() {
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+  //  const isLoggedIn = useSelector(selectIsLoggedIn);
   const width = useWindowWidth();
   const isMobile = width < 768;
 

@@ -1,5 +1,7 @@
+import News from 'components/News';
+
 const NewsPage = (props) => {
-  return <div>NewsPage</div>;
+  return <News/>;
 };
 
-export default NewsPage
+export default NewsPage;

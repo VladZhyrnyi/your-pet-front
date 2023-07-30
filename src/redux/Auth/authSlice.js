@@ -3,7 +3,7 @@ import { registerUser, loginUser, logoutUser, refreshUser } from './operations';
 
 const initialState = {
   user: { name: null, email: null },
-  token: null,
+  token: '',
   isLoggedIn: false,
   isRefreshing: false,
   isError: false,
@@ -20,13 +20,13 @@ export const authSlice = createSlice({
     },
     [registerUser.fulfilled]: (state, { payload }) => {
       state.user = payload.user;
-      state.token = payload.token;
+      state.token = payload.user.token;
       state.isLoggedIn = true;
     },
     [registerUser.rejected](state) {
       state.isLoggedIn = false;
       state.isError = true;
-      state.errorMessage = 'This email address is already in use';
+      state.errorMessage = 'This email address is already in use.';
     },
     [loginUser.pending](state) {
       state.isLoggedIn = false;
@@ -34,13 +34,14 @@ export const authSlice = createSlice({
     },
     [loginUser.fulfilled]: (state, { payload }) => {
       state.user = payload.user;
-      state.token = payload.token;
+      state.token = payload.user.token;
       state.isLoggedIn = true;
     },
     [loginUser.rejected](state) {
       state.isLoggedIn = false;
       state.isError = true;
-      state.errorMessage = 'Wrong email or password';
+      state.errorMessage =
+        'Wrong email or password. Make sure that your account is verified.';
     },
     [logoutUser.pending](state) {
       state.isLoggedIn = false;
@@ -54,7 +55,7 @@ export const authSlice = createSlice({
     [logoutUser.rejected](state) {
       state.isLoggedIn = false;
       state.isError = true;
-      state.errorMessage = 'Something went wrong';
+      state.errorMessage = 'Something went wrong.';
     },
     [refreshUser.pending]: state => {
       state.isRefreshing = true;
