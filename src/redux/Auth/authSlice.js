@@ -1,13 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser, logoutUser, refreshUser } from './operations';
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+  refreshUser,
+  addFavorite,
+  removeFavorite,
+} from './operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, favorite: [] },
   token: '',
   isLoggedIn: false,
   isRefreshing: false,
   isError: false,
   errorMessage: '',
+
+  isLoading: false,
 };
 
 export const authSlice = createSlice({
@@ -68,6 +77,22 @@ export const authSlice = createSlice({
     [refreshUser.rejected]: state => {
       state.isRefreshing = false;
       state.isLoggedIn = false;
+    },
+    [addFavorite.fulfilled]: (state, { payload }) => {
+      state.user.favorite = payload;
+      state.error = '';
+    },
+    [addFavorite.rejected]: (state, action) => {
+      state.error = action.payload;
+    },
+    [removeFavorite.fulfilled]: (state, { payload }) => {
+      state.user.favorite = state.user.favorite.filter(
+        item => item !== payload
+      );
+      state.error = '';
+    },
+    [removeFavorite.rejected]: (state, action) => {
+      state.error = action.payload;
     },
   },
 });

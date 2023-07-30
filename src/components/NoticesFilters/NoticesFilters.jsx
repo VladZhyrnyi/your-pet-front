@@ -1,15 +1,11 @@
 import useWindowWidth from 'hooks/useWindowWidth';
 
-import { ButtonAddPet } from 'components/Buttons';
-
 import {
-  ButtonNoticeAdd,
   ButtonNoticeFilter,
-  Div,
   FilterWrapper,
-  IconAdd,
   IconFilter,
 } from './NoticesFilters.styled';
+import AddPetBtn from 'components/AddPetBtn/AddPetBtn';
 
 const NoticesFilters = () => {
   const viewportWidth = useWindowWidth();
@@ -18,29 +14,11 @@ const NoticesFilters = () => {
 
   return (
     <FilterWrapper>
-      {!isMobile && (
-        <>
-          <ButtonNoticeFilter>
-            Filter <IconFilter />
-          </ButtonNoticeFilter>
-          <ButtonNoticeAdd>
-            Add Pet <IconAdd />
-          </ButtonNoticeAdd>
-        </>
-      )}
-      {isMobile && (
-        <>
-          <ButtonNoticeFilter>
-            <IconFilter />
-          </ButtonNoticeFilter>
-          <Div>
-            <ButtonAddPet>
-              <IconAdd />
-              Add pet
-            </ButtonAddPet>
-          </Div>
-        </>
-      )}
+      <ButtonNoticeFilter>
+        {!isMobile && 'Filter'}
+        <IconFilter />
+      </ButtonNoticeFilter>
+      <AddPetBtn />
     </FilterWrapper>
   );
 };

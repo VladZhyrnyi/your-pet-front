@@ -33,12 +33,13 @@ const NoticeDetail = ({ el }) => {
     price,
     name,
     comments,
+    owner,
   } = el;
-  console.log('el- ', comments);
-  console.log('el- ', comments === undefined);
+
 
   const user = users[0];
   // console.log('user- ', user);
+  console.log(el);
 
   return (
     <Notice>
