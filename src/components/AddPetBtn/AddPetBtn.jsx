@@ -43,11 +43,11 @@ const AddPetButton = styled.button`
 `;
 
 const AddPetBtn = () => {
-  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  console.log(isLoggedIn)
+  console.log(isLoggedIn);
 
   const handleClick = () => {
     if(!isLoggedIn) {
