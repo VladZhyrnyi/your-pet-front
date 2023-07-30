@@ -36,8 +36,6 @@ const NoticeDetail = ({ el }) => {
   } = el;
 
   const user = users[0];
-  // console.log('user- ', user);
-  console.log(el);
 
   return (
     <Notice>
