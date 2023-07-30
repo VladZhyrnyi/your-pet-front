@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NoticeList } from './NoticesCategoriesList.styled';
 import NoticeCategoryItem from 'components/NoticeCategoryItem/NoticeCategoryItem';
-import { Modal } from 'components/Modal';
+import Modal from 'components/Modal';
 import NoticeDetail from 'components/NoticeDatail/NoticeDetail';
 import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/Content/selectors';

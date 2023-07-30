@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { BackDrop, Button, Content } from './Modal.styled';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import { createPortal } from 'react-dom';
+
 const modalWindow = document.getElementById('modal');
 
-export const Modal = ({ closeModal, children }) => {
+const Modal = ({ closeModal, children }) => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -44,3 +45,5 @@ export const Modal = ({ closeModal, children }) => {
     modalWindow
   );
 };
+
+export default Modal;
