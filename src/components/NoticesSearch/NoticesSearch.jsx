@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   Button,
   ButtonWrapper,
@@ -8,11 +10,8 @@ import {
   InputWrapper,
 } from './NoticesSearch.styled';
 
-import { useState } from 'react';
-
 export const NoticesSearch = ({ onSubmit, onClear }) => {
   const [value, setValue] = useState('');
-
 
   const handleSubmit = event => {
     event.preventDefault();

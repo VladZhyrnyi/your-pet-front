@@ -116,10 +116,4 @@ export const IconAdd = styled(MdAdd)`
   color: ${p => p.theme.colors.white};
 `;
 
-export const Div = styled.div`
-  z-index: 10;
-  position: fixed;
-  bottom: 20px;
-  right: 50%;
-  transform: translate(144px);
-`;
+

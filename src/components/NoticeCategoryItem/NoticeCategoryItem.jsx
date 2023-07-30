@@ -19,39 +19,26 @@ import {
   WrapperContent,
   WrapperInfo,
 } from './NoticeCategoryItem.styled';
-
-// const data = '27.08.2022';
-
-const calcAge = data => {
-  const [day, month, year] = data.split('.');
-  const newDateFormat = new Date(`${year}-${month}-${day}`);
-
-  const newDateMs = newDateFormat.getTime();
-
-  const ageMs = Date.now() - newDateMs;
-
-  const millisecondsInYear = 1000 * 60 * 60 * 24 * 365.25;
-  const millisecondsInMonth = 24 * 60 * 60 * 1000 * 30.44;
-  const formatBdYearsFloor = Math.floor(ageMs / millisecondsInYear);
-  const formatBdMonthFloor = Math.floor(ageMs / millisecondsInMonth);
-
-  if (formatBdYearsFloor < 1) {
-    if (formatBdMonthFloor <= 1) return `${formatBdMonthFloor} m`;
-    if (formatBdMonthFloor > 1) return `${formatBdMonthFloor} m`;
-  }
-
-  if (formatBdYearsFloor === 1) return `${formatBdYearsFloor} year`;
-
-  if (formatBdYearsFloor > 1) return `${formatBdYearsFloor} years`;
-};
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from 'redux/Auth/selectors';
+import { addFavorite, removeFavorite } from 'redux/Auth/operations';
+import { calcAge } from 'utils/calcAge';
 
 const NoticeCategoryItem = ({ showModal, el }) => {
-  const { date, file, type, category, location, sex, title } = el;
+  const { date, file, type, category, location, sex, title, _id, owner } = el;
 
-  const isFavorite = false;
-  const isMyAds = true;
+  const { favorite, _id: id } = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const isMyAds = owner === id;
 
   const agePet = calcAge(date);
+
+  const isFavorite = favorite.includes(_id);
+
+  const handleFavorite = async id => {
+    isFavorite ? dispatch(removeFavorite(id)) : dispatch(addFavorite(id));
+  };
 
   return (
     <Card>
@@ -59,7 +46,7 @@ const NoticeCategoryItem = ({ showModal, el }) => {
         <Img src={file} alt={type} />
         <NameCategory>{category}</NameCategory>
         <ButtonCardWrapper>
-          <ButtonFavorite>
+          <ButtonFavorite onClick={() => handleFavorite(_id)}>
             {isFavorite ? <IconFavorite /> : <IconNotFavorite />}
           </ButtonFavorite>
           {isMyAds && (

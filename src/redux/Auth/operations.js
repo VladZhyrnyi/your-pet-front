@@ -72,3 +72,29 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const addFavorite = createAsyncThunk(
+  'auth/addFavorite',
+
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await axios.patch(`/notices/${id}/favorite`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const removeFavorite = createAsyncThunk(
+  'auth/removeFavorite',
+
+  async (id, thunkAPI) => {
+    try {
+      await axios.patch(`notices/favorite/${id}`);
+      return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
