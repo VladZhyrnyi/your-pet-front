@@ -1,5 +1,5 @@
-import { Modal } from 'components/Modal';
-import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+import Modal from 'components/Modal';
+import SpriteIcon from 'components/SpriteIcon/';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -50,11 +50,11 @@ const AddPetBtn = () => {
   console.log(isLoggedIn);
 
   const handleClick = () => {
-    if (!isLoggedIn) {
-      setShowModal(true);
-      return;
-    }
-    return navigate('/add-pet')
+    if(!isLoggedIn) {
+      setShowModal(true)
+      return
+    } 
+    return navigate('/add-pet');
   };
 
   return (
