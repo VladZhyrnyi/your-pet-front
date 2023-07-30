@@ -22,7 +22,7 @@ const {
 } = require('../AddPerForm.styled');
 
 const MoreInfo = ({ onChangeDetails, setPage, data }) => {
-  const { success, isLoading } = useSelector(selectContacts);
+  const { success, isLoading, notSuc } = useSelector(selectContacts);
   const navigate = useNavigate();
   const [err, setErr] = useState(false);
   const [files, setFiles] = useState();
@@ -55,10 +55,9 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    const file = e.currentTarget.elements.file.files[0];
-    const comInput = e.currentTarget.elements.comments.value;
-    comInput === '' && setComErr(true);
-    !file
+    const { file, comments } = e.currentTarget.elements;
+    comments.value === '' && setComErr(true);
+    !file.files[0] && !comments.value
       ? setErr(true)
       : dispatch(
           AddPet({
@@ -73,11 +72,10 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
   };
 
   const onChange = e => {
-    const file = e.currentTarget.elements.file.files[0];
-    setFile(file);
-    const comInput = e.currentTarget.elements.comments.value;
-    !file && setErr(true);
-    comInput !== '' && setComErr(false);
+    const { file, comments } = e.currentTarget.elements;
+    setFile(file.files[0]);
+    !file.files[0] && setErr(true);
+    comments.value !== '' && setComErr(false);
     if (
       e.currentTarget.elements.file.files &&
       e.currentTarget.elements.file.files.length > 0
@@ -96,6 +94,14 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
       <FormYourMore onChange={onChange} onSubmit={onSubmit}>
         <FileContainerYour>
           <FileTitle>Load the pet’s image:</FileTitle>
+          <FileInput
+            id="1"
+            onChange={onChangeDetails}
+            type="file"
+            name="file"
+            required={err}
+            accept="image/jpg, image/jpeg, image/png"
+          />
           <FileLabel htmlFor="1">
             <FileDiv>
               {previews ? (
@@ -109,14 +115,6 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
               )}
             </FileDiv>
           </FileLabel>
-          <FileInput
-            id="1"
-            onChange={onChangeDetails}
-            type="file"
-            name="file"
-            required={err}
-            accept="image/jpg, image/jpeg, image/png"
-          />
         </FileContainerYour>
         <Label>
           Comments
@@ -133,7 +131,11 @@ const MoreInfo = ({ onChangeDetails, setPage, data }) => {
         <ThirdButtonContainer>
           <ButtonNext
             style={{
-              backgroundColor: isLoading ? '#a6a6a6' : success && '#00C3AD',
+              backgroundColor: isLoading
+                ? '#a6a6a6'
+                : success
+                ? '#00C3AD'
+                : notSuc && 'red',
               transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
             }}
             type="submit"

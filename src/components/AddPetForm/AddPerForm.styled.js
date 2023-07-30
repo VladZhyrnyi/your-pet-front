@@ -471,6 +471,10 @@ export const FileInput = styled.input`
   width: 1px;
   height: 1px;
   opacity: 0;
+
+  &:required + label > div {
+    outline: 1px solid red;
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -673,6 +677,10 @@ export const RadioBtnSex = styled.input`
   &:checked + label {
     color: ${p => p.theme.colors.white};
     background-color: ${p => p.theme.colors.blue};
+  }
+
+  &:required + label {
+    outline: 1px solid red;
   }
 `;
 

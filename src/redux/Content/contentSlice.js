@@ -6,6 +6,7 @@ const contentInitialState = {
   isLoading: false,
   error: null,
   success: false,
+  notSuc: false,
 };
 
 const contentSlice = createSlice({
@@ -14,6 +15,7 @@ const contentSlice = createSlice({
   reducers: {
     resetSuccess: state => {
       state.success = false;
+      state.notSuc = false;
     },
   },
   extraReducers: builder =>
@@ -30,6 +32,7 @@ const contentSlice = createSlice({
       .addCase(AddPet.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+        state.notSuc = true;
       })
       .addCase(AddPetOther.pending, (state, { payload }) => {
         state.isLoading = true;
@@ -42,6 +45,7 @@ const contentSlice = createSlice({
       .addCase(AddPetOther.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+        state.notSuc = true;
       })
       .addCase(getNotices.pending, (state, action) => {
         state.isLoading = true;
@@ -56,6 +60,6 @@ const contentSlice = createSlice({
         state.error = null;
       }),
 });
-export const { resetSuccess } = contentSlice.actions;
 
+export const { resetSuccess } = contentSlice.actions;
 export const contentReducer = contentSlice.reducer;
