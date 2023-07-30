@@ -1,67 +1,65 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/Auth/selectors';
+import useWindowWidth from 'hooks/useWindowWidth';
 
 import Logo from './Logo';
 import Navbar from './NavBar';
 import AuthBar from './AuthBar';
 import MobileMenu from './MobileMenu';
 import MenuBtn from './MenuBtn';
-import useWindowWidth from 'hooks/useWindowWidth';
-// import LogoutBtn from './LogoutBtn';
-// import { useSelector } from 'react-redux';
-// import { selectIsLoggedIn } from 'redux/Auth/selectors';
+import LogoutBtn from './LogoutBtn';
 
-export const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 64px;
-  padding: 20px 0;
-  @media screen and (min-width: 768px) {
-    height: 80px;
-    padding: 24px 0;
-  }
-  @media screen and (min-width: 1280px) {
-  }
-`;
-const Container = styled.div`
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-
-  @media screen and (min-width: 768px) {
-    gap: 22px;
-  }
-`;
+import { HeaderContainer, Container } from './Header.styled';
 
 export const Header = () => {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const windowWidth = useWindowWidth();
 
   const isDesktop = windowWidth >= 1280;
+  const isTablet = windowWidth >= 768 && windowWidth < 1280;
   const isMobile = windowWidth < 768;
 
   return (
     <HeaderContainer>
       <Logo />
 
-      {/* {!isDesktop && isLoggedIn && <UserBar />} */}
-      {isDesktop && (
-        <>
-          <Navbar />
-        </>
-      )}
-      <Container>
-        {((isMobile && !isOpenMenu) || !isMobile) && <AuthBar name={!isMobile} />}
-        {!isDesktop && (
+      {isMobile && (
+        <Container>
+          {isLoggedIn && !isOpenMenu && <AuthBar name={false} />}
           <MenuBtn
             isOpen={isOpenMenu}
             onClick={() => setIsOpenMenu(!isOpenMenu)}
           />
-        )}
-      </Container>
+        </Container>
+      )}
+
+      {isTablet && (
+        <Container>
+          {isOpenMenu ? isLoggedIn ? <LogoutBtn /> : <AuthBar /> : <AuthBar />}
+          <MenuBtn
+            isOpen={isOpenMenu}
+            onClick={() => setIsOpenMenu(!isOpenMenu)}
+          />
+        </Container>
+      )}
+
+      {isDesktop && (
+        <>
+          <Navbar />
+          {!isLoggedIn ? (
+            <AuthBar />
+          ) : (
+            <Container>
+              <LogoutBtn />
+              <AuthBar />
+            </Container>
+          )}
+        </>
+      )}
 
       {isOpenMenu && !isDesktop && <MobileMenu />}
     </HeaderContainer>

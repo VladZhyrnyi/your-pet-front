@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import getNews from 'services/api-news';
 import NewsList from './NewsList';
 import SearchForm from 'components/SearchForm';
-// import Loader from 'components/Loader';
+import Loader from 'components/Loader';
 import Pagination from 'components/Pagination';
 import {Title} from './News.styled';
 
@@ -46,11 +46,11 @@ const News = () => {
     <>
       <Title>News</Title>
       <SearchForm onSubmit={handleSubmit} />
-      {/* {isLoading && !error && <Loader />} */}
+      {isLoading && !error && <Loader />}
       {error && <p>{error}</p>}
       {!isLoading && newsData.length === 0 && <h2>Sorry, but we couldn't find any results for your query :(</h2>}
       {!isLoading && newsData && <NewsList news={newsData}/>}
-      {newsData && <Pagination totalPages={totalPages} page={page} onChange={handleChange}/>}
+      {!isLoading && newsData && <Pagination totalPages={totalPages} page={page} onChange={handleChange}/>}
     </>
   );
 };

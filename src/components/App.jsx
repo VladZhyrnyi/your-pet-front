@@ -53,7 +53,7 @@ const App = () => {
             />
           }
         />
-        <Route path="/notices" element={<Navigate to="/notices/cell" />} />
+        <Route path="/notices" element={<Navigate to="/notices/sell" />} />
         <Route path="/notices/:categoryName" element={<NoticesPage />} />
         <Route
           path="/user"

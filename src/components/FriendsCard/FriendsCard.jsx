@@ -41,7 +41,20 @@ const FriendsCard = ({
         <FriendInfo>
           <FriendInfoTitle>Time:</FriendInfoTitle>
           <FriendTimeWork>
-            {/* {workDays ? console.log(<p>{workDays}</p>) : <p>day and night</p>} */}
+            {/* {workDays ? (workDays.find(workDay => (if (workDay.isOpen === true)else  {workDay.isOpen ? ` ${workDay.from}-${workDay.to}` : 'cllose'}))) : <p>day and night</p>} */}
+
+            {/* {workDays ? (
+              workDays.map(workDay => (
+                <li key={nanoid}>
+                  {workDay.isOpen
+                    ? ` ${workDay.from} - ${workDay.to}`
+                    : 'day and night=1'}
+                </li>
+              ))
+            ) : (
+              <p>day and night</p>
+            )} */}
+
             {workDays ? <p>time work</p> : <p>day and night</p>}
             {workDays && (
               <FriendTimeThumb>
@@ -58,7 +71,11 @@ const FriendsCard = ({
           </FriendTimeWork>
 
           <FriendInfoTitle>Address</FriendInfoTitle>
-          <FriendLink href={addressUrl} rel="nofollow noopener noreferrer">
+          <FriendLink
+            href={addressUrl}
+            rel="nofollow noopener noreferrer"
+            target="_blank"
+          >
             {address ? address : <p>website only</p>}
           </FriendLink>
           <FriendInfoTitle>Email:</FriendInfoTitle>

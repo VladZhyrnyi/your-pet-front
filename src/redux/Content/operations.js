@@ -36,9 +36,7 @@ export const getNotices = createAsyncThunk(
 
   async (config, thunkAPI) => {
     try {
-      const { data } = await axios.get('api/notices', config);
-
-      console.log('data 🚀  => ', data);
+      const { data } = await axios.get('/notices', config);
 
       return data;
     } catch (error) {

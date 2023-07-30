@@ -2,17 +2,13 @@ import { useEffect } from 'react';
 import { BackDrop, Button, Content } from './Modal.styled';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import { createPortal } from 'react-dom';
+
 const modalWindow = document.getElementById('modal');
 
-export const Modal = ({ closeModal, children }) => {
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, []);
+const Modal = ({ closeModal, children }) => {
   
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     const handlePressESC = e => {
       if (e.code === 'Escape') {
         closeModal();
@@ -22,6 +18,7 @@ export const Modal = ({ closeModal, children }) => {
     window.addEventListener('keydown', handlePressESC);
 
     return () => {
+      document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handlePressESC);
     };
   }, [closeModal]);
@@ -37,10 +34,12 @@ export const Modal = ({ closeModal, children }) => {
       <Content>
         {children}
         <Button onClick={closeModal}>
-          <SpriteIcon icon="cross" color="#54ADFF" />
+          <SpriteIcon icon="cross"/>
         </Button>
       </Content>
     </BackDrop>,
     modalWindow
   );
 };
+
+export default Modal;
