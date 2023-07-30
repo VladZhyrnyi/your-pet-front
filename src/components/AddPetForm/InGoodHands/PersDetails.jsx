@@ -16,6 +16,14 @@ const PersDetailsLost = ({ onChangeDetails, setPage, data }) => {
   const [typeErr, setTypeErr] = useState(false);
   const [formIsInvalid, setFormIsInvalid] = useState(true);
 
+  const currentDate = new Date();
+
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // +1, так как в JavaScript месяцы начинаются с 0
+  const day = String(currentDate.getDate()).padStart(2, '0');
+
+  const formattedDate = `${year}-${month}-${day}`;
+
   const onSubmit = e => {
     e.preventDefault();
     const nameInput = e.currentTarget.elements.name.value;
@@ -80,7 +88,7 @@ const PersDetailsLost = ({ onChangeDetails, setPage, data }) => {
             placeholder="Type date of birth"
             required={dateErr}
             min="2000-01-01"
-            max="2023-08-01"
+            max={formattedDate}
           />
           {dateErr && <span>Enter a date of birth</span>}
         </Label>
