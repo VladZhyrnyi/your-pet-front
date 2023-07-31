@@ -4,7 +4,6 @@ import SpriteIcon from 'components/SpriteIcon/';
 
 import { ButtonPrimary, ButtonSecondary } from './AuthNavigation.styled';
 
-
 function AuthNavigation() {
   return (
     <>

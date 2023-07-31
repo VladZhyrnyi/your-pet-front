@@ -12,7 +12,7 @@ const NavBar = () => {
         Find Pet
       </NavBarLink>
       <NavBarLink as={NavLink} to="/friends">
-        Friends
+        Our friends
       </NavBarLink>
     </Nav>
   );
