@@ -2,19 +2,23 @@ import styled from 'styled-components';
 
 export const FriendCard = styled.div`
   width: 280px;
-  min-height: 239px;
+  /* min-height: 239px; */
+  min-height: 306px;
   border-radius: 40px;
   background-color: #ffffff;
   box-shadow: ${p => p.theme.boxShadow.second};
+  flex-direction: column;
 
   @media (min-width: 768px) {
     width: 336px;
-    min-height: 275px;
+    /* min-height: 275px; */
+    min-height: 329px;
   }
   @media (min-width: 1280px) {
     width: calc(33.3333% - 21.3333px);
     max-width: 395px;
-    min-height: 287px;
+    /* min-height: 287px; */
+    min-height: 335px;
   }
 `;
 
