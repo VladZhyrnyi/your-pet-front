@@ -78,7 +78,7 @@ export const PhotoBtn = styled.button`
   line-height: 22px;
   letter-spacing: 0.48px;
 
-  visibility: ${props => (props.visible ? 'hidden' : 'visible')};
+  visibility: ${props => (props.visibility ? 'hidden' : 'visible')};
 
   &:hover,
   &:focus {

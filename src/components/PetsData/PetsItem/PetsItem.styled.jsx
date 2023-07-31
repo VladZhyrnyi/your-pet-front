@@ -22,12 +22,14 @@ export const ItemWrap = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
+    min-height: 212px;
   }
 `;
 
 export const PetImg = styled.img`
   width: 100%;
   height: 240px;
+  object-fit: cover;
 
   background-color: ${p => p.theme.colors.blueLight};
 
@@ -69,7 +71,7 @@ export const RemoveBtn = styled.button`
   }
 `;
 
-export const PetData = styled.div`
+export const PetData = styled.ul`
   margin-top: 20px;
   width: 100%;
 
@@ -79,11 +81,13 @@ export const PetData = styled.div`
   }
 `;
 
-export const PetText = styled.h3`
+export const PetText = styled.li`
   margin-bottom: 12px;
 
   color: ${p => p.theme.colors.black};
+`;
 
+export const Text = styled.h3`
   font-family: Manrope700, sans-serif;
   font-size: 14px;
   letter-spacing: 0.56px;
@@ -94,8 +98,6 @@ export const PetText = styled.h3`
 `;
 
 export const LtlText = styled.span`
-  color: ${p => p.theme.colors.black};
-
   font-family: Manrope400, sans-serif;
   font-size: 14px;
   letter-spacing: 0.56px;
