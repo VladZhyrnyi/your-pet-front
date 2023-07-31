@@ -1,8 +1,18 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getUserData } from 'redux/User/operations';
+
 import PetsData from 'components/PetsData/PetsData';
 import UserData from 'components/UserData/UserData';
 import { UserPageWrap } from 'components/UserData/UserData.styled';
 
-const UserPage = props => {
+const UserPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserData());
+  }, [dispatch]);
+
   return (
     <UserPageWrap>
       <UserData />

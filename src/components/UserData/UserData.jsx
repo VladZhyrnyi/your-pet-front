@@ -6,9 +6,7 @@ import Logout from './Logout';
 const UserData = () => {
   const [isChanging, setIsChanging] = useState(false);
 
-  const hendleChangingStatus = e => {
-    const value = e.target.innerText;
-
+  const hendleChangingStatus = value => {
     if (value === 'Save') {
       setIsChanging(false);
     } else {

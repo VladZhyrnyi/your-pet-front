@@ -28,13 +28,14 @@ export const Img = styled.div`
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 4px;
   height: 123px;
 
   overflow: hidden;
 
   @media screen and (min-width: 768px) {
     height: 308px;
+    gap: 12px;
   }
 
   @media screen and (min-width: 1280px) {
