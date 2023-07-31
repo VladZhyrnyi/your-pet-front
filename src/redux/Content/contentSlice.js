@@ -1,8 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AddPet, AddPetOther, getNotices } from './operations';
+import {
+  AddPet,
+  AddPetOther,
+  getNotices,
+  getNoticesById,
+  removeNotice,
+} from './operations';
 
 const contentInitialState = {
   items: [],
+  currentNotice: null,
   isLoading: false,
   error: null,
   success: false,
@@ -58,7 +65,37 @@ const contentSlice = createSlice({
         state.isLoading = false;
         state.items = payload;
         state.error = null;
+      })
+      .addCase(getNoticesById.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getNoticesById.fulfilled, (state, { payload }) => {
+        state.currentNotice = payload;
+        state.error = '';
+        state.isLoading = false;
+      })
+      .addCase(getNoticesById.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(removeNotice.fulfilled, (state, {payload}) => {
+
+        console.log("payload 🚀  => ", payload)
+
+        const index = state.items.findIndex(item => item._id === payload);
+        state.items.splice(index, 1);
+        state.error = '';
+      })
+      .addCase(removeNotice.rejected, (state, action) => {
+        state.error = action.payload;
       }),
+
+      // .addCase(removePet.fulfilled, (state, { payload }) => {
+      //   const index = state.pets.findIndex(pet => pet._id === payload);
+      //   state.pets.splice(index, 1);
+      //   state.error = false;
+      //   state.isLoading = false;
+      // })
 });
 
 export const { resetSuccess } = contentSlice.actions;

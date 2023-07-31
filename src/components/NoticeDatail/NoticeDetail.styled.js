@@ -211,7 +211,6 @@ export const ButtonDetail = styled.button`
   justify-content: center;
   gap: 8px;
 
-  height: 40px;
   width: 100%;
   border: 2px solid ${p => p.theme.colors.blue};
   padding: 8px 20px;
