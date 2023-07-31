@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
@@ -12,10 +12,16 @@ import MenuBtn from './MenuBtn';
 import LogoutBtn from './LogoutBtn';
 
 import { HeaderContainer, Container } from './Header.styled';
+import { useLocation } from 'react-router-dom';
 
 export const Header = () => {
+  const location = useLocation();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  useEffect(() => {
+    setIsOpenMenu(false);
+  }, [location]);
 
   const windowWidth = useWindowWidth();
 
