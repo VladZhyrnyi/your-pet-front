@@ -4,7 +4,7 @@ export const ListFriends = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  /* justify-content: space-between; */
+  justify-content: center;
   margin-top: 24px;
   margin-bottom: 75px;
 
