@@ -90,6 +90,7 @@ export const authSlice = createSlice({
     [removeFavorite.rejected]: (state, action) => {
       state.error = action.payload;
     },
+  
   },
 });
 
