@@ -24,7 +24,6 @@ import {
   WrapperContent,
 } from './NoticeDetail.styled';
 import { theme } from '../../theme.js';
-import { Link } from 'react-router-dom';
 
 const NoticeDetail = ({ id }) => {
   const [state, setState] = useState(null);

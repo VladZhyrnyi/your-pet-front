@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import {
   ButtonCancel,
   ButtonDetailWrapper,
@@ -11,15 +11,10 @@ import {
   Title,
 } from './DelMessageStyled';
 import { removeNotice } from 'redux/Content/operations';
-import { selectContacts } from 'redux/Content/selectors';
+
 
 const DelMessage = ({ closeModal, id }) => {
   const dispatch = useDispatch();
-
-  // const { items } = useSelector(selectContacts);
-
-  // console.log("items 🚀  => ", items)
-
 
   const deleteNotice = id => {
    dispatch(removeNotice(id));
