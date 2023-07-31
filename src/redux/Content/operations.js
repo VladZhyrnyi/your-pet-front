@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const AddPet = createAsyncThunk('pets/CreatePet', async date => {
+export const AddPet = createAsyncThunk('pets/CreatePet', async info => {
   const formData = new FormData();
 
-  Object.entries(date).forEach(([key, value]) => {
+  Object.entries(info).forEach(([key, value]) => {
     formData.append(key, value);
   });
 
@@ -16,10 +16,10 @@ export const AddPet = createAsyncThunk('pets/CreatePet', async date => {
   return data;
 });
 
-export const AddPetOther = createAsyncThunk('pets/AddPetOther', async date => {
+export const AddPetOther = createAsyncThunk('pets/AddPetOther', async info => {
   const formData = new FormData();
 
-  Object.entries(date).forEach(([key, value]) => {
+  Object.entries(info).forEach(([key, value]) => {
     formData.append(key, value);
   });
 
@@ -72,7 +72,6 @@ export const removeNotice = createAsyncThunk(
   'content/removeNotice',
 
   async (id, thunkAPI) => {
-    console.log('removeNotice - id 🚀  => ', id);
 
     try {
     await axios.delete(`/notices/${id}`);
