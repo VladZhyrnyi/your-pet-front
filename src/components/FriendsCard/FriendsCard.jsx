@@ -27,6 +27,24 @@ const FriendsCard = ({
   addressUrl,
 }) => {
   const daysWeek = ['MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
+
+  const timeWork = () => {
+    let day;
+
+    if (workDays) {
+      for (const workDay of workDays) {
+        const { isOpen, from, to } = workDay;
+
+        if (isOpen) {
+          day = { isOpen, from, to };
+        }
+      }
+    }
+
+    return day;
+  };
+  const time = timeWork();
+
   return (
     <FriendCard>
       <a href={url} rel="nofollow noopener noreferrer">
@@ -41,28 +59,15 @@ const FriendsCard = ({
         <FriendInfo>
           <FriendInfoTitle>Time:</FriendInfoTitle>
           <FriendTimeWork>
-            {/* {workDays ? (workDays.find(workDay => (if (workDay.isOpen === true)else  {workDay.isOpen ? ` ${workDay.from}-${workDay.to}` : 'cllose'}))) : <p>day and night</p>} */}
+            {workDays ? `${time.from}-${time.to}` : <p>day and night</p>}
 
-            {/* {workDays ? (
-              workDays.map(workDay => (
-                <li key={nanoid}>
-                  {workDay.isOpen
-                    ? ` ${workDay.from} - ${workDay.to}`
-                    : 'day and night=1'}
-                </li>
-              ))
-            ) : (
-              <p>day and night</p>
-            )} */}
-
-            {workDays ? <p>time work</p> : <p>day and night</p>}
             {workDays && (
               <FriendTimeThumb>
                 {workDays.map((workDay, index) => (
                   <TimeWork key={nanoid()}>
                     <Days>{daysWeek[index]}</Days>
                     {workDay.isOpen
-                      ? ` ${workDay.from}-${workDay.to}`
+                      ? `${workDay.from}-${workDay.to}`
                       : 'cllose'}
                   </TimeWork>
                 ))}
