@@ -4,7 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { registerUser } from 'redux/Auth/operations';
 import { selectIsError, selectErrorMessage } from 'redux/Auth/selectors';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from 'components/Input/Input';
 import PasswordInput from 'components/Input/PasswordInput';
 import { RegisterModal } from 'components/RegisterModal/RegisterModal';
@@ -29,6 +29,7 @@ const RegiserForm = () => {
   const isError = useSelector(selectIsError);
   const errorMessage = useSelector(selectErrorMessage);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const methods = useForm();
   const [passIsValid, setPassIsValid] = useState(false);
   const [confPassIsValid, setConfPasIsValid] = useState(false);
@@ -51,7 +52,6 @@ const RegiserForm = () => {
   /* ----- Set value of the SECOND password input 
    in case of matching with value of the fitst pass input ----- */
   const onConfPassInputChange = e => {
-    console.log(confPassIsValid);
     if (e.target.value === passValue) {
       setMismatch(false);
       setConfPasIsValid(true);
@@ -76,6 +76,10 @@ const RegiserForm = () => {
         .catch(err => console.log(err));
     }
   });
+
+  const onCloseModal = () => {
+    navigate('/login')
+  }
 
   return (
     <>
@@ -111,7 +115,7 @@ const RegiserForm = () => {
           </LinkToLogin>
         </Form>
       </FormProvider>
-      {success && <RegisterModal onClose={() => setSuccess(false)} />}
+      {success && <RegisterModal onClose={onCloseModal} />}
     </>
   );
 };
