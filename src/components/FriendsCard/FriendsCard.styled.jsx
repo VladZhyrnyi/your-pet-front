@@ -133,7 +133,7 @@ export const TimeWork = styled.li`
 `;
 
 export const Days = styled.p`
-  margin-right: 6px;
+  margin-right: 15px;
 `;
 
 export const FriendLink = styled.a`
