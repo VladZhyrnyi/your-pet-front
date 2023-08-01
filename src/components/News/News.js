@@ -5,7 +5,8 @@ import SearchForm from 'components/SearchForm';
 import Loader from 'components/Loader';
 import Pagination from 'components/Pagination';
 import ScrollUpBtn from 'components/ScrollUpBtn/ScrollUpBtn';
-import {Title, Notice} from './News.styled';
+import { Notice } from './News.styled';
+import PageTitle from 'components/PageTitle/PageTitle';
 
 const News = () => {
   const [newsData, setNewsData] = useState([]);
@@ -45,17 +46,26 @@ const News = () => {
 
   return (
     <>
-      <Title>News</Title>
+      <PageTitle text={'News'} />
       <SearchForm onSubmit={handleSubmit} />
       {isLoading && !error && <Loader />}
       {error && <Notice>{error}</Notice>}
-      {!isLoading && newsData.length === 0 && <Notice>Sorry, but we couldn't find any results for your query :(</Notice>}
-      {!isLoading && newsData && (<>
-        <NewsList news={newsData}/>
-        <Pagination totalPages={totalPages} page={page} onChange={handleChange}/>
-        <ScrollUpBtn/>
-      </>)}
-      
+      {!isLoading && newsData.length === 0 && (
+        <Notice>
+          Sorry, but we couldn't find any results for your query :(
+        </Notice>
+      )}
+      {!isLoading && newsData && (
+        <>
+          <NewsList news={newsData} />
+          <Pagination
+            totalPages={totalPages}
+            page={page}
+            onChange={handleChange}
+          />
+          <ScrollUpBtn />
+        </>
+      )}
     </>
   );
 };
