@@ -4,7 +4,7 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  row-gap: 24px;
+  gap: 36px;
   margin: 0 auto;
   
   font-family: Manrope400, sans-serif;

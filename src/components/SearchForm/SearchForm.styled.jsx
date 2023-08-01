@@ -26,7 +26,7 @@ export const Input = styled.input`
   letter-spacing: 0.56px;
   color: #888888;
   
-  background: #ffffff;
+  background: ${p => p.theme.colors.white};
   box-sizing: border-box;
   box-shadow: ${p => p.theme.boxShadow.first};
   border-radius: 24px;
@@ -75,6 +75,7 @@ export const SearchButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
 
   background-color: transparent;
   border: none;

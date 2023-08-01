@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
+box-sizing: border-box;
   position: relative;
   width: 280px;
   height: 578px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin: 0 auto 24px;
+  margin: 0 auto 14px;
   padding-bottom: 12px;
+  box-sizing: border-box;
   
   font-family: Manrope400, sans-serif;
   font-size: 16px;
@@ -46,7 +48,8 @@ export const ImgWrapper = styled.div`
   width: 100%;
   height: 252px;
   border-radius: 20px;
-  overflow: hidden;  
+  overflow: hidden;
+  background-color: ${p => p.theme.colors.backgroundColor};  
 `;
 export const Img = styled.img`
   width: 100%;

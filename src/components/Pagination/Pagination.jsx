@@ -19,7 +19,7 @@ const PaginationComponent = ({totalPages, page, onChange}) => {
           sx={{
             display: 'flex',
             width: '280px',
-            margin: '16px auto',
+            margin: '26px auto',
             justifyContent: 'center',
             backgroundColor: 'transparent',
           }}
@@ -60,7 +60,7 @@ const PaginationComponent = ({totalPages, page, onChange}) => {
           sx={{
             display: 'flex',
             width: '400px',
-            margin: '16px auto',
+            margin: '46px auto',
             justifyContent: 'center',
             backgroundColor: 'transparent',
             '&.MuiPagination-ul': {

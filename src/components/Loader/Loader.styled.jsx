@@ -89,26 +89,26 @@ export const Paw1 = styled.div`
   display: inline-block;
   rotate: 45deg;
   color: ${p => p.theme.colors.blue};
-  animation: ${bounce1} 6s linear infinite;
+  animation: ${bounce1} 3s linear infinite;
   @media screen and (min-width: 768px) {
     width: 60px;
     height: 60px;
   } 
 `  
 export const Paw2 = styled(Paw1)`
-  animation: ${bounce3} 6s linear infinite;  
+  animation: ${bounce3} 3s linear infinite;  
 ` 
 export const Paw3 = styled(Paw1)`
-  animation: ${bounce5} 6s linear infinite;
+  animation: ${bounce5} 3s linear infinite;
 `
 export const Paw4 = styled(Paw1)`
   rotate: 90deg;
   color: ${p => p.theme.colors.yellow};
-  animation: ${bounce2} 6s linear infinite;
+  animation: ${bounce2} 3s linear infinite;
 `  
 export const Paw5 = styled(Paw4)`
-animation: ${bounce4} 6s linear infinite;
+animation: ${bounce4} 3s linear infinite;
 ` 
 export const Paw6 = styled(Paw4)`
-animation: ${bounce6} 6s linear infinite;
+animation: ${bounce6} 3s linear infinite;
 `
