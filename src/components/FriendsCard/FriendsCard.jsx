@@ -47,7 +47,7 @@ const FriendsCard = ({
 
   return (
     <FriendCard>
-      <a href={url} rel="nofollow noopener noreferrer">
+      <a href={url} rel="nofollow noopener noreferrer" target="_blank">
         <FriendName>{title}</FriendName>
       </a>
 
