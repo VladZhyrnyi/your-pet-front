@@ -42,6 +42,10 @@ export const ButtonNoticeFilter = styled.button`
     background-color: ${p => p.theme.colors.blue};
   }
 
+  &:hover svg {
+    color: ${p => p.theme.colors.white};
+  }
+
   @media (min-width: 768px) {
     flex-direction: row;
     padding: 8px 20px;
@@ -59,8 +63,7 @@ export const ButtonNoticeFilter = styled.button`
     letter-spacing: 0.64px;
     transition: color ${p => p.theme.transitionTimingFunction};
 
-    &:hover,
-    &:focus {
+    &:hover {
       color: ${p => p.theme.colors.white};
       border: 2px solid transparent;
       background-image: ${p => p.theme.linearGradient};
@@ -68,8 +71,7 @@ export const ButtonNoticeFilter = styled.button`
       background-repeat: no-repeat;
     }
 
-    &:hover svg,
-    &:focus svg {
+    &:hover svg {
       color: ${p => p.theme.colors.white};
     }
   }
