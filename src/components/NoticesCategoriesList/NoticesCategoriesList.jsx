@@ -19,10 +19,9 @@ const NoticesCategoriesList = ({ categoryName }) => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [el, setEl] = useState(null);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const searchText = searchParams.get('query');
-  console.log(searchText);
 
   const [collection, setCollection] = useState([]);
 
