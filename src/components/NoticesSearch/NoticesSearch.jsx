@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   Button,
@@ -9,9 +9,16 @@ import {
   Input,
   InputWrapper,
 } from './NoticesSearch.styled';
+import { useLocation } from 'react-router-dom';
 
 export const NoticesSearch = ({ onSubmit, onClear }) => {
+  const location = useLocation();
   const [value, setValue] = useState('');
+
+  useEffect(() => {
+    setValue('')
+  }, [location])
+
 
   const handleSubmit = event => {
     event.preventDefault();
