@@ -10,7 +10,7 @@ const Logo = () => {
   const isMobile = windowWidth < 768;
 
   return (
-    <NavLink to="/notices">
+    <NavLink to="/main">
       {isMobile ? (
         <img src={logoSmall} alt="LOGO"></img>
       ) : (

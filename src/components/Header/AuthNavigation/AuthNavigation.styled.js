@@ -28,7 +28,10 @@ export const ButtonSecondary = styled(ButtonPrimary)`
   border: 2px solid ${p => p.theme.colors.transparent};
   color: ${p => p.theme.colors.white};
   background-color: ${p => p.theme.colors.yellow};
-  width: 165px;
+
+  @media screen and (max-width: 767) {
+    width: 165px;
+  }
 
   &:hover,
   &:focus {
