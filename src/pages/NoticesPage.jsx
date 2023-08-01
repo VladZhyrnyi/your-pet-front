@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import { getNotices } from 'redux/Content/operations';
 
@@ -9,11 +9,18 @@ import NoticesCategoriesNav from 'components/NoticesCategoriesNav';
 import NoticesSearch from 'components/NoticesSearch';
 import Title from 'components/Title';
 import { useEffect, useMemo } from 'react';
+import { selectIsLoggedIn } from 'redux/Auth/selectors';
 
 const NoticesPage = () => {
   const dispatch = useDispatch();
+
   const { categoryName } = useParams();
+
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const navigate = useNavigate();
+
+  const isLoggedIn = useSelector(selectIsLoggedIn)
 
   let queryObj = useMemo(() => {
     return {
@@ -25,8 +32,13 @@ const NoticesPage = () => {
   }, [categoryName, searchParams]);
 
   useEffect(() => {
+
+    if (!isLoggedIn && (categoryName === "favorite" || categoryName === "own")) {
+      navigate('/notices/sell')
+    }
+
     dispatch(getNotices(queryObj));
-  }, [queryObj, dispatch]);
+  }, [queryObj, dispatch, isLoggedIn, categoryName, navigate]);
 
   const handleSearchSubmit = query => {
     setSearchParams({ query });
@@ -41,7 +53,7 @@ const NoticesPage = () => {
       <Title>Find your favorite pet</Title>
       <NoticesSearch onSubmit={handleSearchSubmit} onClear={clearSearchQuery} />
       <NoticesCategoriesNav />
-      <NoticesCategoriesList />
+      <NoticesCategoriesList categoryName={categoryName}/>
     </>
   );
 };

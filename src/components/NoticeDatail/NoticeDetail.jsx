@@ -2,15 +2,21 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/Content/selectors';
 
-import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import { getNoticesById } from 'redux/Content/operations';
+import { addFavorite, removeFavorite } from 'redux/Auth/operations';
+import { selectIsLoggedIn, selectUser } from 'redux/Auth/selectors';
+
+import Modal from 'components/Modal/Modal';
+import Attention from 'components/Attention/Attention';
 
 import {
-  ButtonDetail,
+  Btn,
   ButtonDetailWrapper,
   Comment,
   CommentData,
   DataLink,
+  IconFavor,
+  IconNotFav,
   Img,
   NameCategory,
   Notice,
@@ -23,12 +29,20 @@ import {
   WrapperCont,
   WrapperContent,
 } from './NoticeDetail.styled';
-import { theme } from '../../theme.js';
+import {
+  ButtonCancel,
+  ButtonYes,
+} from 'components/DelMessage/DelMessageStyled';
+
 
 const NoticeDetail = ({ id }) => {
   const [state, setState] = useState(null);
+  const [isAttention, setIsAttention] = useState(false);
 
   const { currentNotice } = useSelector(selectContacts);
+
+  const { favorite } = useSelector(selectUser);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const dispatch = useDispatch();
 
@@ -42,6 +56,17 @@ const NoticeDetail = ({ id }) => {
     }
     setState(currentNotice);
   }, [currentNotice]);
+
+  const isFavorite = favorite.includes(id);
+
+  const handleFavorite = async id => {
+    if (isLoggedIn) {
+      setIsAttention(false);
+      isFavorite ? dispatch(removeFavorite(id)) : dispatch(addFavorite(id));
+      return;
+    }
+    setIsAttention(true);
+  };
 
   return (
     <>
@@ -133,28 +158,33 @@ const NoticeDetail = ({ id }) => {
           )}
 
           <ButtonDetailWrapper>
-            <ButtonDetail
-              background={theme.colors.blue}
-              color={theme.colors.white}
-              width="130px"
-            >
-              Add to
-              <SpriteIcon icon="heart" color={theme.colors.white}></SpriteIcon>
-            </ButtonDetail>
-            <ButtonDetail
-              as="a"
+            {isFavorite ? (
+              <ButtonYes onClick={() => handleFavorite(id)}>
+                Add to
+                <IconFavor />
+              </ButtonYes>
+            ) : (
+              <ButtonYes onClick={() => handleFavorite(id)}>
+                Add to
+                <IconNotFav />
+              </ButtonYes>
+            )}
+
+            <ButtonCancel
+              as={Btn}
               href={`mailto:${currentNotice.notice.owner.contactEmail}`}
               target="_blank"
               rel="noreferrer noopener nofollow"
-              background={theme.colors.white}
-              color={theme.colors.blue}
-              width="129px"
-              
             >
               Contact
-            </ButtonDetail>
+            </ButtonCancel>
           </ButtonDetailWrapper>
         </Notice>
+      )}
+      {isAttention && (
+        <Modal closeModal={() => setIsAttention(false)}>
+          <Attention />
+        </Modal>
       )}
     </>
   );

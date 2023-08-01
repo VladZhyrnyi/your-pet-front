@@ -7,7 +7,6 @@ import { GoClock } from 'react-icons/go';
 
 export const Card = styled.div`
   width: 280px;
-  /* border: 1px dashed black; */
   padding-bottom: 24px;
 
   border-radius: 0px 0px 40px 40px;
@@ -15,11 +14,19 @@ export const Card = styled.div`
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 
   @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 336px;
   }
 
   @media (min-width: 1280px) {
     width: 288px;
+  }
+`;
+
+export const Div = styled.div`
+  @media (min-width: 768px) {
   }
 `;
 
@@ -69,10 +76,6 @@ export const ButtonCardWrapper = styled.div`
 `;
 
 export const ButtonCard = styled.button`
-  /* position: absolute;
-  top: 12px;
-  right: 12px; */
-
   width: 40px;
   height: 40px;
 
@@ -88,15 +91,13 @@ export const ButtonCard = styled.button`
   transition: color ${p => p.theme.transitionTimingFunction};
   transition: background-color ${p => p.theme.transitionTimingFunction};
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: ${p => p.theme.colors.blue};
   }
 `;
 
 export const ButtonFavorite = styled(ButtonCard)`
-  &:hover svg,
-  &:focus svg {
+  &:hover svg {
     color: ${p => p.theme.colors.blueLight};
   }
 `;
@@ -114,8 +115,7 @@ export const IconFavorite = styled(AiFillHeart)`
 `;
 
 export const ButtonTrash = styled(ButtonCard)`
-  &:hover svg,
-  &:focus svg {
+  &:hover svg {
     color: ${p => p.theme.colors.blueLight};
   }
 `;
@@ -144,6 +144,7 @@ export const WrapperInfo = styled.div`
 `;
 
 export const Img = styled.img`
+  width: 100%;
   height: 100%;
   object-fit: cover;
 `;
