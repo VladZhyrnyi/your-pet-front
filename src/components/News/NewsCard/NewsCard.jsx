@@ -1,4 +1,6 @@
 import formatDate from 'utils/formatDate';
+import pawPlug from '../../../images/pawPlug.png';
+
 import {
   CardWrapper,
   ImgWrapper,
@@ -10,7 +12,7 @@ import {
   Date,
   NewsLink } from './NewsCard.styled';
 
-const NewsCard = ({article: {imgUrl, title, text, date, url}}) => {
+const NewsCard = ({article: {imgUrl=pawPlug, title, text, date, url}}) => {
   
   return (
     <CardWrapper>
