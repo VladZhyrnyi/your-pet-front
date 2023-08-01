@@ -13,7 +13,7 @@ import {
 import { removeNotice } from 'redux/Content/operations';
 
 
-const DelMessage = ({ closeModal, id }) => {
+const DelMessage = ({ closeModal, id, title }) => {
   const dispatch = useDispatch();
 
   const deleteNotice = id => {
@@ -28,7 +28,7 @@ const DelMessage = ({ closeModal, id }) => {
       <Div>
         <Message>
           Are you sure you want to delete
-          <Span> “Cute dog looking for a home”? </Span>
+          <Span> "{title}"?</Span>
         </Message>
         <Message>You can`t undo this action.</Message>
       </Div>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 export const Notice = styled.div`
-
   margin-top: 44px;
 
   padding: 0 12px 16px 12px;
@@ -17,7 +17,6 @@ export const Notice = styled.div`
 `;
 
 export const WrapperContent = styled.div`
-
   margin-bottom: 12px;
 
   @media (min-width: 768px) {
@@ -154,7 +153,6 @@ export const DataLink = styled.a`
   @media (min-width: 768px) {
     font-size: 16px;
   }
-
 `;
 
 export const Comment = styled.span`
@@ -190,7 +188,6 @@ export const ButtonDetailWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column-reverse;
-  align-items: center;
   gap: 8px;
 
   @media (min-width: 768px) {
@@ -203,38 +200,21 @@ export const ButtonDetailWrapper = styled.div`
   }
 `;
 
-export const ButtonDetail = styled.button`
-  display: flex;
-  flex-direction: row;
-
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  width: 100%;
-  border: 2px solid ${p => p.theme.colors.blue};
-  padding: 8px 20px;
-  outline: none;
-
-  border-radius: 40px;
-  background: ${({ background }) => background};
-
-  color: ${({ color }) => color};
-  font-family: Manrope600, sans-serif;
-  font-size: 12px;
-
-  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-  }
-
+export const Btn = styled.a`
   @media (min-width: 768px) {
-    width: ${({ width }) => width || 'auto'};
-    font-family: Manrope700, sans-serif;
-    font-size: 16px;
-    border-radius: 40px;
-    letter-spacing: 0.64px;
+    min-width: 90px;
   }
+`;
+
+export const IconFavor = styled(AiOutlineHeart)`
+  width: 24px;
+  height: 24px;
+  color: ${p => p.theme.colors.white};
+`;
+
+export const IconNotFav = styled(AiFillHeart)`
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: ${p => p.theme.colors.white};
 `;

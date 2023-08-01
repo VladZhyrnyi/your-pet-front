@@ -8,21 +8,22 @@ export const Form = styled.form`
 
   padding-top: 24px;
 
+ 
+
   @media (min-width: 768px) {
     padding-top: 40px;
   }
 `;
 
 export const Input = styled.input`
-  width: 280px;
   padding: 14px 78px 14px 20px;
 
   border-radius: 24px;
   border: none;
-  background: ${p => p.theme.colors.white};
+  background-color: ${p => p.theme.colors.white};
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 
-  color: #888;
+  color: ${p => p.theme.colors.grey};
   font-family: Inter400, sans-serif;
   font-size: 14px;
   letter-spacing: 0.56px;
@@ -32,7 +33,7 @@ export const Input = styled.input`
   }
 
   ::placeholder {
-    color: #888;
+    color: ${p => p.theme.colors.grey};
     font-family: Inter400, sans-serif;
     font-size: 14px;
     letter-spacing: 0.56px;

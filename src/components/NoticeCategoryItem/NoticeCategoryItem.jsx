@@ -1,9 +1,20 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoggedIn, selectUser } from 'redux/Auth/selectors';
+
+import { addFavorite, removeFavorite } from 'redux/Auth/operations';
+import { calcAge } from 'utils/calcAge';
+
+import Modal from 'components/Modal/Modal';
+import DelMessage from 'components/DelMessage';
+
 import {
   BtnLearnMore,
   ButtonCardWrapper,
   ButtonFavorite,
   ButtonTrash,
   Card,
+  Div,
   IconClock,
   IconFavorite,
   IconFemale,
@@ -19,20 +30,17 @@ import {
   WrapperContent,
   WrapperInfo,
 } from './NoticeCategoryItem.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from 'redux/Auth/selectors';
-import { addFavorite, removeFavorite } from 'redux/Auth/operations';
-import { calcAge } from 'utils/calcAge';
-import Modal from 'components/Modal/Modal';
-import DelMessage from 'components/DelMessage/DelMessage';
-import { useState } from 'react';
+import Attention from 'components/Attention';
 
 const NoticeCategoryItem = ({ showModal, el }) => {
   const { date, file, type, category, location, sex, title, _id, owner } = el;
 
   const [isShowModal, setIsShowModal] = useState(false);
+  const [isAttention, setIsAttention] = useState(false);
 
   const { favorite, _id: id } = useSelector(selectUser);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   const dispatch = useDispatch();
 
   const isMyAds = owner === id;
@@ -40,66 +48,87 @@ const NoticeCategoryItem = ({ showModal, el }) => {
   const isFavorite = favorite.includes(_id);
 
   const handleFavorite = async id => {
-    isFavorite ? dispatch(removeFavorite(id)) : dispatch(addFavorite(id));
+    if (isLoggedIn) {
+      setIsAttention(false);
+      isFavorite ? dispatch(removeFavorite(id)) : dispatch(addFavorite(id));
+      return;
+    }
+    setIsAttention(true);
   };
 
   const showMessage = () => setIsShowModal(true);
-  const closeModal = () => setIsShowModal(false);
+
+  const closeModal = () => {
+    setIsAttention(false);
+    setIsShowModal(false);
+  };
 
   return (
     <>
       <Card>
-        <ThumbImg>
-          <Img src={file} alt={type} />
-          {category === 'for-free' ? (
-            <NameCategory>in good hands</NameCategory>
-          ) : (
-            <NameCategory>{category}</NameCategory>
-          )}
+        <Div>
 
-          <ButtonCardWrapper>
-            <ButtonFavorite onClick={() => handleFavorite(_id)}>
-              {isFavorite ? <IconFavorite /> : <IconNotFavorite />}
-            </ButtonFavorite>
-            {isMyAds && (
-              <ButtonTrash onClick={() => showMessage()}>
-                <IconTrash />
-              </ButtonTrash>
+          <ThumbImg>
+            <Img src={file} alt={type} />
+            {category === 'for-free' ? (
+              <NameCategory>in good hands</NameCategory>
+            ) : (
+              <NameCategory>{category}</NameCategory>
             )}
-          </ButtonCardWrapper>
 
-          <WrapperInfo>
-            <Info>
-              <IconLocation />
-              {location.length > 4 ? location.slice(0, 5) + '...' : location}
-            </Info>
-            <Info>
-              <IconClock />
-              {agePet}
-            </Info>
-
-            <Info>
-              {sex === 'male' ? (
-                <>
-                  <IconMale /> {sex}
-                </>
-              ) : (
-                <>
-                  <IconFemale />
-                  {sex}
-                </>
+            <ButtonCardWrapper>
+              <ButtonFavorite onClick={() => handleFavorite(_id)}>
+                {isFavorite ? <IconFavorite /> : <IconNotFavorite />}
+              </ButtonFavorite>
+              {isMyAds && (
+                <ButtonTrash onClick={() => showMessage()}>
+                  <IconTrash />
+                </ButtonTrash>
               )}
-            </Info>
-          </WrapperInfo>
-        </ThumbImg>
-        <WrapperContent>
+            </ButtonCardWrapper>
+
+            <WrapperInfo>
+              <Info>
+                <IconLocation />
+                {location.length > 4 ? location.slice(0, 5) + '...' : location}
+              </Info>
+              <Info>
+                <IconClock />
+                {agePet}
+              </Info>
+
+              <Info>
+                {sex === 'male' ? (
+                  <>
+                    <IconMale /> {sex}
+                  </>
+                ) : (
+                  <>
+                    <IconFemale />
+                    {sex}
+                  </>
+                )}
+              </Info>
+            </WrapperInfo>
+          </ThumbImg>
+
           <Title>{title}</Title>
+
+        </Div>
+
+        <WrapperContent>
           <BtnLearnMore onClick={() => showModal(el)}>Learn more</BtnLearnMore>
         </WrapperContent>
       </Card>
+
       {isShowModal && (
         <Modal closeModal={closeModal}>
-          <DelMessage closeModal={closeModal} id={_id} />
+          <DelMessage closeModal={closeModal} id={_id} title={title} />
+        </Modal>
+      )}
+      {isAttention && (
+        <Modal closeModal={closeModal}>
+          <Attention />
         </Modal>
       )}
     </>

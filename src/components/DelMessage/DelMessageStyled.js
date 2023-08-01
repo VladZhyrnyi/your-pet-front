@@ -88,7 +88,7 @@ export const ButtonDetailWrapper = styled.div`
 export const ButtonCancel = styled.button`
   display: flex;
 
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 8px;
 
@@ -106,8 +106,7 @@ export const ButtonCancel = styled.button`
 
   transition: color ${p => p.theme.transitionTimingFunction};
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-image: ${p => p.theme.linearGradient};
     background-origin: border-box;
     background-repeat: no-repeat;
@@ -116,7 +115,7 @@ export const ButtonCancel = styled.button`
   }
 
   @media (min-width: 768px) {
-    width: 129px;
+    min-width: 129px;
   }
 `;
 export const ButtonYes = styled(ButtonCancel)`
@@ -128,16 +127,14 @@ export const ButtonYes = styled(ButtonCancel)`
 
   transition: color ${p => p.theme.transitionTimingFunction};
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-image: none;
     background-color: ${p => p.theme.colors.white};
     color: ${p => p.theme.colors.blue};
     border: 2px solid ${p => p.theme.colors.blue};
   }
 
-  &:hover svg,
-  &:focus svg {
+  &:hover svg {
     color: ${p => p.theme.colors.blue};
   }
 `;

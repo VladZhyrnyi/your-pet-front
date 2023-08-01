@@ -90,12 +90,6 @@ const contentSlice = createSlice({
         state.error = action.payload;
       }),
 
-      // .addCase(removePet.fulfilled, (state, { payload }) => {
-      //   const index = state.pets.findIndex(pet => pet._id === payload);
-      //   state.pets.splice(index, 1);
-      //   state.error = false;
-      //   state.isLoading = false;
-      // })
 });
 
 export const { resetSuccess } = contentSlice.actions;
