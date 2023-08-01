@@ -27,6 +27,7 @@ const MobileMenuContainer = styled.div`
   gap: 40px;
 
   @media screen and (min-width: 768px) {
+    margin-top: 68px;
     top: 128px;
   }
 `;
