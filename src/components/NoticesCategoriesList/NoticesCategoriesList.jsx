@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/Content/selectors';
 import NoticeDetail from 'components/NoticeDatail/NoticeDetail';
 import Loader from 'components/Loader/Loader';
-import { selectIsLoggedIn, selectUser } from 'redux/Auth/selectors';
+import { selectUser } from 'redux/Auth/selectors';
 import { noticesFilter } from 'utils/noticesFilter';
 
 const NoticesCategoriesList = ({ categoryName }) => {
