@@ -20,7 +20,7 @@ const MobileMenuContainer = styled.div`
   justify-content: start;
   align-items: center;
   width: 100%;
-  top: 82px;
+  top: 64px;
   padding-top: 16px;
   background-color: ${p => p.theme.colors.backgroundColor};
   bottom: 0;

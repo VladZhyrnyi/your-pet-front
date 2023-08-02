@@ -1,16 +1,17 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const HeaderContainer = styled.div`
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 48px;
-  padding: 20px 0;
   @media screen and (min-width: 768px) {
-    padding: 24px 0;
+    margin-top: 24px;
   }
   @media screen and (min-width: 1280px) {
     height: 64px;
+    margin-top: 20px;
   }
 `;
 
