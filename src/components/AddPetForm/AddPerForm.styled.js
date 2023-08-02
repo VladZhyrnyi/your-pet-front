@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 
 export const Container = styled.div`
+  box-sizing: content-box;
   position: relative;
   width: 264px;
   padding: 20px 8px 17px 8px;
@@ -17,11 +18,13 @@ export const Container = styled.div`
 `;
 
 export const SecondSexContainer = styled.div`
+  box-sizing: content-box;
   display: flex;
   flex-direction: column;
 `;
 
 export const MoreInfoContainer = styled.div`
+  box-sizing: content-box;
   position: relative;
   width: 264px;
   padding: 20px 8px 17px 8px;
@@ -42,10 +45,12 @@ export const MoreInfoContainer = styled.div`
 `;
 
 export const MoreInfoTitle = styled.div`
+  box-sizing: content-box;
   text-align: center;
 `;
 
 export const Title = styled.h1`
+  box-sizing: content-box;
   font-family: Manrope500, sans-serif;
   margin: 0;
   margin-left: 12px;
@@ -60,6 +65,7 @@ export const Title = styled.h1`
 `;
 
 export const OptionList = styled.ul`
+  box-sizing: content-box;
   display: flex;
   list-style: none;
   width: 264px;
@@ -78,6 +84,7 @@ export const OptionList = styled.ul`
 `;
 
 export const OptionItemCurrent = styled.li`
+  box-sizing: content-box;
   position: relative;
   width: calc((100% - 28px) / 3);
   color: ${p => p.theme.colors.blue};
@@ -93,6 +100,7 @@ export const OptionItemCurrent = styled.li`
 `;
 
 export const OptionItemDone = styled.li`
+  box-sizing: content-box;
   position: relative;
   width: calc((100% - 28px) / 3);
   color: ${p => p.theme.colors.green};
@@ -109,6 +117,7 @@ export const OptionItemDone = styled.li`
 `;
 
 export const OptionItem = styled.li`
+  box-sizing: content-box;
   position: relative;
   width: calc((100% - 28px) / 3);
   color: #888888;
@@ -124,6 +133,7 @@ export const OptionItem = styled.li`
 `;
 
 export const OptionLineCurrent = styled.div`
+  box-sizing: content-box;
   position: absolute;
   width: 100%;
   height: 8px;
@@ -138,6 +148,7 @@ export const OptionLineCurrent = styled.div`
 `;
 
 export const OptionLineDone = styled.div`
+  box-sizing: content-box;
   position: absolute;
   width: 100%;
   height: 8px;
@@ -152,6 +163,7 @@ export const OptionLineDone = styled.div`
 `;
 
 export const OptionLine = styled.div`
+  box-sizing: content-box;
   position: absolute;
   height: 8px;
   width: 100%;
@@ -167,6 +179,7 @@ export const OptionLine = styled.div`
 `;
 
 export const FormOption = styled.form`
+  box-sizing: content-box;
   margin-top: 44px;
   display: flex;
   flex-direction: column;
@@ -174,6 +187,7 @@ export const FormOption = styled.form`
 `;
 
 export const FormPersonal = styled.form`
+  box-sizing: content-box;
   margin-top: 36px;
   display: flex;
   flex-direction: column;
@@ -184,6 +198,7 @@ export const FormPersonal = styled.form`
 `;
 
 export const FormYourMore = styled.form`
+  box-sizing: content-box;
   margin-top: 32px;
   display: flex;
   flex-direction: column;
@@ -191,6 +206,7 @@ export const FormYourMore = styled.form`
 `;
 
 export const ButtonContainer = styled.div`
+  box-sizing: content-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,6 +220,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const SecondButtonContainer = styled.div`
+  box-sizing: content-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -215,6 +232,7 @@ export const SecondButtonContainer = styled.div`
 `;
 
 export const ThirdButtonContainer = styled.div`
+  box-sizing: content-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -229,6 +247,7 @@ export const ThirdButtonContainer = styled.div`
 `;
 
 export const ButtonNext = styled.button`
+  /* box-sizing: content-box; */
   display: inline-flex;
   cursor: pointer;
   width: 248px;
@@ -264,6 +283,7 @@ export const ButtonNext = styled.button`
 `;
 
 export const ButtonCancel = styled.a`
+  box-sizing: content-box;
   margin: 0;
   display: inline-flex;
   cursor: pointer;
@@ -303,6 +323,7 @@ export const ButtonCancel = styled.a`
 `;
 
 export const RadioLabel = styled.label`
+  box-sizing: content-box;
   background-color: ${p => p.theme.colors.blueLight};
   width: fit-content;
   color: ${p => p.theme.colors.blue};
@@ -318,6 +339,7 @@ export const RadioLabel = styled.label`
 `;
 
 export const RadioBtn = styled.input`
+  box-sizing: content-box;
   width: 1px;
   height: 1px;
   opacity: 0;
@@ -329,6 +351,7 @@ export const RadioBtn = styled.input`
 `;
 
 export const Label = styled.label`
+  box-sizing: content-box;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -346,6 +369,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
+  box-sizing: content-box;
   position: relative;
   display: flex;
   height: 20px;
@@ -399,6 +423,7 @@ export const Input = styled.input`
 `;
 
 export const FileContainer = styled.div`
+  box-sizing: content-box;
   display: flex;
   align-items: center;
   margin-top: 16px;
@@ -410,6 +435,7 @@ export const FileContainer = styled.div`
   }
 `;
 export const FileContainerYour = styled.div`
+  box-sizing: content-box;
   display: flex;
   align-items: center;
   margin-top: 16px;
@@ -421,6 +447,7 @@ export const FileContainerYour = styled.div`
 `;
 
 export const FileTitle = styled.p`
+  box-sizing: content-box;
   color: ${p => p.theme.colors.black};
   margin: 0px 14px 0px 0px;
   font-family: Manrope500, sans-serif;
@@ -437,6 +464,7 @@ export const FileTitle = styled.p`
 `;
 
 export const FileDiv = styled.div`
+  box-sizing: content-box;
   position: relative;
   border-radius: 20px;
   display: inline-block;
@@ -460,14 +488,17 @@ export const FileDiv = styled.div`
 `;
 
 export const FileLabel = styled.label`
+  box-sizing: content-box;
   width: 100%;
   height: 100%;
 `;
 export const FileLabelLost = styled.label`
+  box-sizing: content-box;
   height: 100%;
 `;
 
 export const FileInput = styled.input`
+  box-sizing: content-box;
   width: 1px;
   height: 1px;
   opacity: 0;
@@ -478,6 +509,7 @@ export const FileInput = styled.input`
 `;
 
 export const TextArea = styled.textarea`
+  box-sizing: content-box;
   display: flex;
   height: 92px;
   padding: 8px 16px;
@@ -544,6 +576,7 @@ export const TextArea = styled.textarea`
   }
 `;
 export const TextAreaLost = styled.textarea`
+  box-sizing: content-box;
   display: flex;
   height: 92px;
   padding: 8px 16px;
@@ -611,6 +644,7 @@ export const TextAreaLost = styled.textarea`
 `;
 
 export const FormLostMore = styled.form`
+  box-sizing: content-box;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -624,6 +658,7 @@ export const FormLostMore = styled.form`
 `;
 
 export const LableWrapper = styled.div`
+  box-sizing: content-box;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -631,6 +666,7 @@ export const LableWrapper = styled.div`
 `;
 
 export const FormLostPers = styled.form`
+  box-sizing: content-box;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -638,10 +674,12 @@ export const FormLostPers = styled.form`
 `;
 
 export const SexContainer = styled.div`
+  box-sizing: content-box;
   display: flex;
 `;
 
 export const RadioLabelSex = styled.label`
+  box-sizing: content-box;
   height: 20px;
   display: flex;
   flex-direction: row-reverse;
@@ -670,6 +708,7 @@ export const RadioLabelSex = styled.label`
 `;
 
 export const RadioBtnSex = styled.input`
+  box-sizing: content-box;
   width: 1px;
   height: 1px;
   opacity: 0;
@@ -685,6 +724,7 @@ export const RadioBtnSex = styled.input`
 `;
 
 export const SexTitle = styled.p`
+  box-sizing: content-box;
   margin-top: 36px;
   margin-bottom: 8px;
   color: ${p => p.theme.colors.black};
@@ -701,6 +741,7 @@ export const SexTitle = styled.p`
 `;
 
 export const FileSellTitle = styled.p`
+  box-sizing: content-box;
   width: 90px;
   color: ${p => p.theme.colors.black};
   margin-right: 14px;
@@ -719,6 +760,7 @@ export const FileSellTitle = styled.p`
 `;
 
 export const PreviewImage = styled.div`
+  box-sizing: content-box;
   border-radius: 20px;
   height: 100%;
   width: 100%;
