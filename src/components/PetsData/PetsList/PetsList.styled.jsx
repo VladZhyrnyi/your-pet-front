@@ -5,6 +5,5 @@ export const PetList = styled.ul`
   flex-direction: column;
   gap: 20px;
   align-items: center;
-  margin-top: 24px;
   margin-bottom: 137px;
 `;

@@ -17,7 +17,7 @@ export const HeadWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 40px auto 0 auto;
+  margin: 40px auto 24px auto;
   width: 100%;
 `;
 

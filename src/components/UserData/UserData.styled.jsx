@@ -8,11 +8,11 @@ export const UserPageWrap = styled.h1`
 `;
 
 export const Title = styled.h1`
-  margin: 40px auto 18px auto;
+  margin: 40px auto 24px auto;
 
   color: ${p => p.theme.colors.black};
 
-  font-family: Manrope500, sans-serif;
+  font-family: Manrope500;
   font-size: 20px;
   line-height: normal;
   letter-spacing: 0.8px;
@@ -36,11 +36,13 @@ export const Wrap = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 704px;
+    height: 268px;
     padding: 20px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 395px;
+    height: 520px;
     padding: 20px 24px 20px 16px;
   }
 `;
