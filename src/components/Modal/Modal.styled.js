@@ -20,6 +20,8 @@ export const Content = styled.div`
   min-width: 280px;
   min-height: 287px;
 
+  margin-top: 30px;
+
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -15,10 +15,10 @@ const News = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-    
+
   const perPage = 6;
 
-  useEffect(()=> {
+  useEffect(() => {
     const fetchNews = async (page, perPage, query) => {
       setIsLoading(true);
       setError(null);
@@ -26,23 +26,24 @@ const News = () => {
         const data = await getNews(page, perPage, query);
         setNewsData(data.news);
         setTotalPages(data.totalPages);
-        }
-        catch (error) {
-          console.log(error);
-          setError('Oops! Something went wrong...');
-          }
-        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setError('Oops! Something went wrong...');
+      }
+      setIsLoading(false);
     };
     fetchNews(page, perPage, query);
   }, [page, perPage, query]);
 
-  const handleSubmit = (query) => {    
+  const handleSubmit = query => {
     query.toLowerCase().trim();
     setPage(1);
-    setQuery(query);    
+    setQuery(query);
   };
 
-  const handleChange = (evt, page) => {setPage(page)};
+  const handleChange = (evt, page) => {
+    setPage(page);
+  };
 
   return (
     <>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://your-pet-backend-ni98.onrender.com/api';
+// axios.defaults.baseURL = 'https://your-pet-backend-ni98.onrender.com/api';
 
 export const getUserData = createAsyncThunk(
   'user/getUserData',

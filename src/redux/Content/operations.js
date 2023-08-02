@@ -38,16 +38,14 @@ export const getNotices = createAsyncThunk(
   async (config, thunkAPI) => {
     try {
       if (config.params.category === 'favorite') {
-        const { data } = await axios.get('/notices/favorite');
+        const { data } = await axios.get('/notices/favorite', config);
         return data;
       }
       if (config.params.category === 'own') {
-        const { data } = await axios.get('/notices/user');
+        const { data } = await axios.get('/notices/user', config);
         return data;
       }
-
       const { data } = await axios.get('/notices', config);
-
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -72,9 +70,8 @@ export const removeNotice = createAsyncThunk(
   'content/removeNotice',
 
   async (id, thunkAPI) => {
-
     try {
-    await axios.delete(`/notices/${id}`);
+      await axios.delete(`/notices/${id}`);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
