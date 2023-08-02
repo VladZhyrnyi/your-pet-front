@@ -32,7 +32,10 @@ import {
 } from './NoticeCategoryItem.styled';
 import Attention from 'components/Attention';
 
+import defaultPhoto from '../../images/defaultPhoto.png'
+
 const NoticeCategoryItem = ({ showModal, el }) => {
+
   const { date, file, type, category, location, sex, title, _id, owner } = el;
 
   const [isShowModal, setIsShowModal] = useState(false);
@@ -69,7 +72,7 @@ const NoticeCategoryItem = ({ showModal, el }) => {
         <Div>
 
           <ThumbImg>
-            <Img src={file} alt={type} />
+            <Img src={file ? file : defaultPhoto} alt={type} />
             {category === 'for-free' ? (
               <NameCategory>in good hands</NameCategory>
             ) : (

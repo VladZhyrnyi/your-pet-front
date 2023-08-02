@@ -42,7 +42,7 @@ const NoticesCategoriesList = ({ categoryName }) => {
 
   return (
     <>
-      {collection.length === 0 && !isLoading && (
+      {items.length === 0 && !isLoading && (
         <>
           <NoResults>
             By search request "<Span>{searchText}</Span>" nothing found.
@@ -50,9 +50,9 @@ const NoticesCategoriesList = ({ categoryName }) => {
         </>
       )}
 
-      {!isLoading && collection.length > 0 && (
+      {!isLoading && items.length > 0 && (
         <NoticeList>
-          {collection.map(el => {
+          {items.map(el => {
             return (
               <NoticeCategoryItem key={el._id} el={el} showModal={showModal} />
             );
