@@ -16,7 +16,7 @@ import { selectContacts } from 'redux/Content/selectors';
 const NoticesPage = () => {
   const [page, setPage] = useState(1);
 
-  // useS
+  const [currentCategory, setCurrentCategory] = useState('');
 
   const dispatch = useDispatch();
 
@@ -30,6 +30,13 @@ const NoticesPage = () => {
   const { totalPages } = useSelector(selectContacts);
 
   const perPage = 12;
+
+  useEffect(() => {
+    if (currentCategory !== categoryName) {
+      setPage(1);
+      setCurrentCategory(categoryName);
+    }
+  }, [categoryName, currentCategory]);
 
   const handleChange = (evt, page) => {
     setPage(page);
@@ -47,7 +54,6 @@ const NoticesPage = () => {
   }, [categoryName, page, searchParams]);
 
   useEffect(() => {
-
     if (
       !isLoggedIn &&
       (categoryName === 'favorite' || categoryName === 'own')

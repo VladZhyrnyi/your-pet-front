@@ -34,6 +34,7 @@ import {
   ButtonYes,
 } from 'components/DelMessage/DelMessageStyled';
 
+import defaultPhoto from '../../images/defaultPhoto.png'
 
 const NoticeDetail = ({ id }) => {
   const [state, setState] = useState(null);
@@ -42,6 +43,7 @@ const NoticeDetail = ({ id }) => {
   const { currentNotice } = useSelector(selectContacts);
 
   const { favorite } = useSelector(selectUser);
+
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const dispatch = useDispatch();
@@ -75,7 +77,7 @@ const NoticeDetail = ({ id }) => {
           <WrapperContent>
             <ThumbImg>
               <Img
-                src={currentNotice.notice.file}
+                src={currentNotice.notice?.file ? currentNotice.notice.file : defaultPhoto}
                 alt={currentNotice.notice.type}
               />
               {currentNotice.notice.category === 'for-free' ? (
@@ -122,11 +124,17 @@ const NoticeDetail = ({ id }) => {
                     <TableUnit>Email:</TableUnit>
                     <TableUnitData>
                       <DataLink
-                        href={`mailto:${currentNotice.notice.owner.contactEmail}`}
+                        href={
+                          currentNotice.notice?.owner?.contactEmail
+                            ? `mailto:${currentNotice.notice.owner.contactEmail}`
+                            : '*'
+                        }
                         target="_blank"
                         rel="noreferrer noopener nofollow"
                       >
-                        {currentNotice.notice.owner.contactEmail}
+                        {currentNotice.notice.owner.contactEmail
+                          ? `mailto:${currentNotice.notice.owner.contactEmail}`
+                          : 'email@email.com'}
                       </DataLink>
                     </TableUnitData>
                   </TableRow>
@@ -134,11 +142,11 @@ const NoticeDetail = ({ id }) => {
                     <TableUnit>Phone:</TableUnit>
                     <TableUnitData>
                       <DataLink
-                        href={`tel:${currentNotice.phone}`}
+                        href={`tel:${currentNotice.notice.owner.phone}`}
                         target="_blank"
                         rel="noreferrer noopener nofollow"
                       >
-                        {currentNotice.phone}
+                        {currentNotice.notice.owner.phone}
                       </DataLink>
                     </TableUnitData>
                   </TableRow>
