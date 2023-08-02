@@ -32,10 +32,10 @@ import {
 } from './NoticeCategoryItem.styled';
 import Attention from 'components/Attention';
 
-import defaultPhoto from '../../images/defaultPhoto.png'
+import defaultPhoto from '../../images/defaultPhoto.png';
+import { getNotices } from 'redux/Content/operations';
 
 const NoticeCategoryItem = ({ showModal, el }) => {
-
   const { date, file, type, category, location, sex, title, _id, owner } = el;
 
   const [isShowModal, setIsShowModal] = useState(false);
@@ -53,7 +53,13 @@ const NoticeCategoryItem = ({ showModal, el }) => {
   const handleFavorite = async id => {
     if (isLoggedIn) {
       setIsAttention(false);
-      isFavorite ? dispatch(removeFavorite(id)) : dispatch(addFavorite(id));
+      if (isFavorite) {
+        await dispatch(removeFavorite(id));
+        dispatch(getNotices({ params: { category: 'favorite' } }));
+      } else {
+        dispatch(addFavorite(id));
+      }
+
       return;
     }
     setIsAttention(true);
@@ -70,7 +76,6 @@ const NoticeCategoryItem = ({ showModal, el }) => {
     <>
       <Card>
         <Div>
-
           <ThumbImg>
             <Img src={file ? file : defaultPhoto} alt={type} />
             {category === 'for-free' ? (
@@ -116,7 +121,6 @@ const NoticeCategoryItem = ({ showModal, el }) => {
           </ThumbImg>
 
           <Title>{title}</Title>
-
         </Div>
 
         <WrapperContent>

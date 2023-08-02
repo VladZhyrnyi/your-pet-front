@@ -66,7 +66,7 @@ const NoticesPage = () => {
       <PageTitle text={'Find your favorite pet'} />
       <SearchForm onSubmit={handleSearchSubmit} onClear={clearSearchQuery} />
       <NoticesCategoriesNav />
-      <NoticesCategoriesList categoryName={categoryName} />
+      <NoticesCategoriesList />
       <PaginationComponent
         totalPages={totalPages}
         page={+(searchParams.get('page')) || 1}
