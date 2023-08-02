@@ -4,10 +4,11 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import { getNotices } from 'redux/Content/operations';
 
-import NoticesCategoriesList from 'components/NoticesCategoriesList';
-import NoticesCategoriesNav from 'components/NoticesCategoriesNav';
 import { useEffect, useMemo, useState } from 'react';
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
+import { useLocation } from 'react-router-dom';
+import NoticesCategoriesList from 'components/NoticesCategoriesList';
+import NoticesCategoriesNav from 'components/NoticesCategoriesNav';
 import SearchForm from 'components/SearchForm/SearchForm';
 import PageTitle from 'components/PageTitle/PageTitle';
 import PaginationComponent from 'components/Pagination/Pagination';
@@ -15,6 +16,8 @@ import { selectContacts } from 'redux/Content/selectors';
 
 const NoticesPage = () => {
   const [page, setPage] = useState(1);
+
+  const location = useLocation();
 
   const [currentCategory, setCurrentCategory] = useState('');
 
@@ -32,11 +35,8 @@ const NoticesPage = () => {
   const perPage = 12;
 
   useEffect(() => {
-    if (currentCategory !== categoryName) {
-      setPage(1);
-      setCurrentCategory(categoryName);
-    }
-  }, [categoryName, currentCategory]);
+    setPage(1);
+  }, [location]);
 
   const handleChange = (evt, page) => {
     setPage(page);
@@ -66,7 +66,6 @@ const NoticesPage = () => {
 
   const handleSearchSubmit = query => {
     setSearchParams({ query });
-    setPage(1);
   };
 
   const clearSearchQuery = () => {
