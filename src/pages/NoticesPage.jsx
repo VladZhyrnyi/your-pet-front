@@ -6,35 +6,53 @@ import { getNotices } from 'redux/Content/operations';
 
 import NoticesCategoriesList from 'components/NoticesCategoriesList';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
 import SearchForm from 'components/SearchForm/SearchForm';
 import PageTitle from 'components/PageTitle/PageTitle';
+import PaginationComponent from 'components/Pagination/Pagination';
+import { selectContacts } from 'redux/Content/selectors';
 
 const NoticesPage = () => {
+  const [page, setPage] = useState(1);
+
+  // useS
+
   const dispatch = useDispatch();
 
   const { categoryName } = useParams();
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   const navigate = useNavigate();
 
-  const isLoggedIn = useSelector(selectIsLoggedIn)
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  const { totalPages } = useSelector(selectContacts);
+
+  const perPage = 12;
+
+  const handleChange = (evt, page) => {
+    setPage(page);
+  };
 
   let queryObj = useMemo(() => {
     return {
       params: {
         category: categoryName,
         query: searchParams.get('query'),
+        page,
+        perPage,
       },
     };
-  }, [categoryName, searchParams]);
+  }, [categoryName, page, searchParams]);
 
   useEffect(() => {
 
-    if (!isLoggedIn && (categoryName === "favorite" || categoryName === "own")) {
-      navigate('/notices/sell')
+    if (
+      !isLoggedIn &&
+      (categoryName === 'favorite' || categoryName === 'own')
+    ) {
+      navigate('/notices/sell');
     }
 
     dispatch(getNotices(queryObj));
@@ -42,6 +60,7 @@ const NoticesPage = () => {
 
   const handleSearchSubmit = query => {
     setSearchParams({ query });
+    setPage(1);
   };
 
   const clearSearchQuery = () => {
@@ -50,10 +69,15 @@ const NoticesPage = () => {
 
   return (
     <>
-      <PageTitle text={'Find your favorite pet'}/>
+      <PageTitle text={'Find your favorite pet'} />
       <SearchForm onSubmit={handleSearchSubmit} onClear={clearSearchQuery} />
       <NoticesCategoriesNav />
-      <NoticesCategoriesList categoryName={categoryName}/>
+      <NoticesCategoriesList categoryName={categoryName} />
+      <PaginationComponent
+        totalPages={totalPages}
+        page={page}
+        onChange={handleChange}
+      />
     </>
   );
 };

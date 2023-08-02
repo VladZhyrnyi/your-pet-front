@@ -9,6 +9,7 @@ import {
 
 const contentInitialState = {
   items: [],
+  totalPages: 0,
   currentNotice: null,
   isLoading: false,
   error: null,
@@ -63,7 +64,8 @@ const contentSlice = createSlice({
       })
       .addCase(getNotices.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.items = payload;
+        state.items = payload.notices;
+        state.totalPages = payload.totalPages;
         state.error = null;
       })
       .addCase(getNoticesById.pending, state => {
@@ -79,9 +81,6 @@ const contentSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(removeNotice.fulfilled, (state, {payload}) => {
-
-        console.log("payload 🚀  => ", payload)
-
         const index = state.items.findIndex(item => item._id === payload);
         state.items.splice(index, 1);
         state.error = '';

@@ -18,12 +18,10 @@ import { useSearchParams } from 'react-router-dom';
 const NoticesCategoriesList = ({ categoryName }) => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [el, setEl] = useState(null);
+  const [collection, setCollection] = useState([]);
 
   const [searchParams] = useSearchParams();
-
   const searchText = searchParams.get('query');
-
-  const [collection, setCollection] = useState([]);
 
   const { items, isLoading } = useSelector(selectContacts);
   const { favorite } = useSelector(selectUser);
