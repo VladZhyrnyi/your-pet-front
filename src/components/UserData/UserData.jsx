@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import UserForm from './UserForm/UserForm';
 import { Title, Wrap } from './UserData.styled';
-import Logout from './Logout';
 
 const UserData = () => {
   const [isChanging, setIsChanging] = useState(false);
 
   const hendleChangingStatus = value => {
-    if (value === 'Save') {
+    if (value === 'Save' || value === 'Close') {
       setIsChanging(false);
     } else {
       setIsChanging(true);
@@ -23,7 +22,6 @@ const UserData = () => {
         ) : (
           <UserForm changeStatus={hendleChangingStatus} permis />
         )}
-        {!isChanging && <Logout />}
       </Wrap>
     </div>
   );

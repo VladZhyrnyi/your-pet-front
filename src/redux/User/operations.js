@@ -42,3 +42,25 @@ export const removePet = createAsyncThunk(
     }
   }
 );
+
+export const updateAvatar = createAsyncThunk(
+  'user/updateAvatar',
+
+  async (img, thunkAPI) => {
+    const formData = new FormData();
+
+    formData.append('avatar', img);
+
+    try {
+      const { data } = await axios.patch('/users/avatars', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

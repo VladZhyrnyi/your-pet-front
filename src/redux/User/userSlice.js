@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUserData, removePet, updateUser } from './operations';
+import { getUserData, removePet, updateAvatar, updateUser } from './operations';
 
 const initialState = {
   user: {
@@ -56,7 +56,15 @@ export const userSlice = createSlice({
         state.error = false;
         state.isLoading = false;
       })
-      .addCase(removePet.rejected, handleRejected);
+      .addCase(removePet.rejected, handleRejected)
+
+      .addCase(updateAvatar.pending, handlePending)
+      .addCase(updateAvatar.fulfilled, (state, { payload }) => {
+        state.user = { ...state.user, ...payload };
+        state.error = false;
+        state.isLoading = false;
+      })
+      .addCase(updateAvatar.rejected, handleRejected);
   },
 });
 
