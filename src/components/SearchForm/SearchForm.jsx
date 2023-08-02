@@ -1,17 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
-import { Form, Input, ButtonWrapper, SearchButton, CloseButton } from './SearchForm.styled';
-
+import {
+  Form,
+  Input,
+  ButtonWrapper,
+  SearchButton,
+  CloseButton,
+} from './SearchForm.styled';
+import { useLocation } from 'react-router-dom';
 
 const SearchForm = ({ onSubmit, onClear }) => {
+  const location = useLocation();
+
   const [query, setQuery] = useState('');
 
-  const handleSubmit = (evt) => {
+  useEffect(() => {
+    setQuery('');
+  }, [location]);
+
+  const handleSubmit = evt => {
     evt.preventDefault();
     onSubmit(query.toLowerCase().trim());
   };
 
-  const handleInputChange = (evt) => {
+  const handleInputChange = evt => {
     setQuery(evt.target.value);
   };
 
@@ -31,12 +43,12 @@ const SearchForm = ({ onSubmit, onClear }) => {
       />
       <ButtonWrapper>
         <SearchButton type="submit">
-          <SpriteIcon icon="search"/>
+          <SpriteIcon icon="search" />
         </SearchButton>
 
         {query && (
           <CloseButton type="button" onClick={handleClearClick}>
-            <SpriteIcon icon="cross"/>
+            <SpriteIcon icon="cross" />
           </CloseButton>
         )}
       </ButtonWrapper>

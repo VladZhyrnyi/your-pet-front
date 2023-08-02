@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import {
   LoaderWrapper,
   NoResults,
   NoticeList,
-  Span,
 } from './NoticesCategoriesList.styled';
 import NoticeCategoryItem from 'components/NoticeCategoryItem';
 import Modal from 'components/Modal';
@@ -11,28 +11,24 @@ import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/Content/selectors';
 import NoticeDetail from 'components/NoticeDatail/NoticeDetail';
 import Loader from 'components/Loader/Loader';
-import { selectUser } from 'redux/Auth/selectors';
-import { noticesFilter } from 'utils/noticesFilter';
-import { useSearchParams } from 'react-router-dom';
 
-const NoticesCategoriesList = ({ categoryName }) => {
+const NOT_FOUND_MESSAGES = {
+  favorite: "You haven't favorite notices yet.",
+  'for-free': 'No notices in this category.',
+  own: 'No notices in this category.',
+  sell: 'All pets are sold',
+  'lost-found': 'Yoohoo ;) All pets in good hands!',
+};
+
+const NoticesCategoriesList = () => {
+  const { categoryName } = useParams();
   const [isShowModal, setIsShowModal] = useState(false);
   const [el, setEl] = useState(null);
-  const [collection, setCollection] = useState([]);
 
   const [searchParams] = useSearchParams();
   const searchText = searchParams.get('query');
 
   const { items, isLoading } = useSelector(selectContacts);
-  const { favorite } = useSelector(selectUser);
-
-  useEffect(() => {
-    if (categoryName === 'favorite') {
-      setCollection(noticesFilter(items, favorite));
-      return;
-    }
-    setCollection(items);
-  }, [categoryName, favorite, items]);
 
   const showModal = el => {
     setEl(el);
@@ -44,9 +40,7 @@ const NoticesCategoriesList = ({ categoryName }) => {
     <>
       {items.length === 0 && !isLoading && (
         <>
-          <NoResults>
-            By search request "<Span>{searchText}</Span>" nothing found.
-          </NoResults>
+          <NoResults>{searchText?`Nothing found by query: "${searchText}"` : NOT_FOUND_MESSAGES[categoryName]}</NoResults>
         </>
       )}
 

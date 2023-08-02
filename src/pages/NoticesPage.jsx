@@ -4,9 +4,8 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import { getNotices } from 'redux/Content/operations';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo} from 'react';
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
-import { useLocation } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav';
 import SearchForm from 'components/SearchForm/SearchForm';
@@ -15,15 +14,11 @@ import PaginationComponent from 'components/Pagination/Pagination';
 import { selectContacts } from 'redux/Content/selectors';
 
 const NoticesPage = () => {
-  const [page, setPage] = useState(1);
-
-  const location = useLocation();
-
-  const [currentCategory, setCurrentCategory] = useState('');
 
   const dispatch = useDispatch();
 
   const { categoryName } = useParams();
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const navigate = useNavigate();
@@ -34,35 +29,29 @@ const NoticesPage = () => {
 
   const perPage = 12;
 
-  useEffect(() => {
-    setPage(1);
-  }, [location]);
-
-  const handleChange = (evt, page) => {
-    setPage(page);
-  };
-
   let queryObj = useMemo(() => {
     return {
       params: {
         category: categoryName,
         query: searchParams.get('query'),
-        page,
+        page: searchParams.get('page'),
         perPage,
       },
     };
-  }, [categoryName, page, searchParams]);
+  }, [categoryName, searchParams]);
 
   useEffect(() => {
-    if (
-      !isLoggedIn &&
-      (categoryName === 'favorite' || categoryName === 'own')
-    ) {
-      navigate('/notices/sell');
-    }
-
     dispatch(getNotices(queryObj));
-  }, [queryObj, dispatch, isLoggedIn, categoryName, navigate]);
+  }, [queryObj, dispatch]);
+
+  const handleChange = (evt, page) => {
+    setSearchParams({page})
+  };
+
+  if (!isLoggedIn && (categoryName === 'favorite' || categoryName === 'own')) {
+    navigate('/notices/sell');
+    return;
+  }
 
   const handleSearchSubmit = query => {
     setSearchParams({ query });
@@ -80,7 +69,7 @@ const NoticesPage = () => {
       <NoticesCategoriesList categoryName={categoryName} />
       <PaginationComponent
         totalPages={totalPages}
-        page={page}
+        page={+(searchParams.get('page')) || 1}
         onChange={handleChange}
       />
     </>

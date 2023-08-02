@@ -25,6 +25,7 @@ const MobileMenuContainer = styled.div`
   background-color: ${p => p.theme.colors.backgroundColor};
   bottom: 0;
   gap: 40px;
+  z-index: 15;
 
   @media screen and (min-width: 768px) {
     margin-top: 68px;
