@@ -60,8 +60,7 @@ export const RemoveBtn = styled.button`
   border-radius: 50%;
   cursor: pointer;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: ${p => p.theme.colors.yellow};
   }
 

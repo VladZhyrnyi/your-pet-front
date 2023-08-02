@@ -51,8 +51,7 @@ export const userSlice = createSlice({
 
       .addCase(removePet.pending, handlePending)
       .addCase(removePet.fulfilled, (state, { payload }) => {
-        const index = state.pets.findIndex(pet => pet._id === payload);
-        state.pets.splice(index, 1);
+        state.pets = state.pets.filter(pet => pet._id !== payload);
         state.error = false;
         state.isLoading = false;
       })

@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'https://your-pet-backend-ni98.onrender.com/api';
-
 export const getUserData = createAsyncThunk(
   'user/getUserData',
   async (_, thunkAPI) => {
@@ -29,20 +27,6 @@ export const updateUser = createAsyncThunk(
   }
 );
 
-export const removePet = createAsyncThunk(
-  'pets/removePet',
-
-  async (id, thunkAPI) => {
-    try {
-      const { message } = await axios.delete(`/pets/${id}`);
-
-      return message;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const updateAvatar = createAsyncThunk(
   'user/updateAvatar',
 
@@ -59,6 +43,20 @@ export const updateAvatar = createAsyncThunk(
       });
 
       return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const removePet = createAsyncThunk(
+  'pets/removePet',
+
+  async (id, thunkAPI) => {
+    try {
+      await axios.delete(`/pets/${id}`);
+
+      return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
