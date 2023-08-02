@@ -133,7 +133,7 @@ const NoticeDetail = ({ id }) => {
                         rel="noreferrer noopener nofollow"
                       >
                         {currentNotice.notice.owner.contactEmail
-                          ? `mailto:${currentNotice.notice.owner.contactEmail}`
+                          ? `${currentNotice.notice.owner.contactEmail}`
                           : 'email@email.com'}
                       </DataLink>
                     </TableUnitData>
