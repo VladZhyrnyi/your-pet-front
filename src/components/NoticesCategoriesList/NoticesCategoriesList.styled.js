@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const NoticeList = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 32px;
 
   width: 320px;
@@ -14,6 +14,8 @@ export const NoticeList = styled.div`
   margin-right: auto;
 
   @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 768px;
     margin-top: 40px;
   }
