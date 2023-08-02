@@ -1,5 +1,47 @@
 import styled from 'styled-components';
 
+import bg_mobile from '../../images/mainpage/bg_mobile.png';
+import bg_mobile2x from '../../images/mainpage/bg_mobile2x.png';
+import bg_tablet from '../../images/mainpage/bg_tablet.png';
+import bg_tablet2x from '../../images/mainpage/bg_tablet2x.png';
+import bg_desktop from '../../images/mainpage/bg_desktop.png';
+import bg_desktop2x from '../../images/mainpage/bg_desktop2x.png';
+
+export const MainWrap =styled.section`
+  background-color: ${p => p.theme.colors.backgroundColor};
+  background-image: url(${bg_mobile});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 -44px;
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url(${bg_mobile2x});
+  };
+
+  @media screen and (min-width: 768px) {
+    background-image: url(${bg_tablet});
+    background-position: 0 -68px;
+    
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${bg_tablet2x});      
+    };
+  };
+
+  @media screen and (min-width: 1280px) {
+    background-image: url(${bg_desktop});
+    background-position: 0 -88px;
+            
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${bg_desktop2x});
+    }
+  }
+`
 export const Title = styled.h1`
   margin: 60px auto 20px 0;
   width: 280px;

@@ -12,7 +12,7 @@ export const List = styled.ul`
   line-height: normal;
   color: ${p => p.theme.colors.black};
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     flex-direction: row;      
     gap: 32px;
     justify-content: center;

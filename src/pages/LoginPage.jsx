@@ -1,4 +1,8 @@
 import LoginForm from 'components/LoginForm/LoginForm';
+
+import Modal from 'components/Modal/Modal';
+import { MainWrap } from 'components/Main/Main.styled';
+
 import { SuccessModal } from 'components/SuccessModal/SuccessModal';
 
 import { useSearchParams } from 'react-router-dom';
@@ -8,14 +12,14 @@ const LoginPage = () => {
   const isVerifiedModalshown = Boolean(searchParams.get('verified'));
 
   return (
-    <div>
+    <MainWrap>
       <LoginForm />
       {isVerifiedModalshown && (
         <SuccessModal
           onClose={() => setSearchParams(searchParams.delete('verified'))}
         />
       )}
-    </div>
+    </MainWrap>
   );
 };
 
