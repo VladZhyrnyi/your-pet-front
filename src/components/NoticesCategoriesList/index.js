@@ -1,1 +1,1 @@
-export { default } from './NoticesCategoriesList.jsx';
+export { default } from './NoticesCategoriesList';

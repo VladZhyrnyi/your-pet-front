@@ -86,9 +86,6 @@ export const authSlice = createSlice({
         item => item !== payload
       );
       state.error = '';
-      // не работатет корректно
-      // const index = state.user.favorite.findIndex(item => item._id === payload);
-      // state.user.favorite = state.user.favorite.splice(index, 1);
     },
     [removeFavorite.rejected]: (state, action) => {
       state.error = action.payload;
