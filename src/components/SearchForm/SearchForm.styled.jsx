@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Form = styled.form`
   position: relative;
   width: 280px;
+  margin-top: 40px;
   margin-bottom: 44px;
   margin-right: auto;
   margin-left: auto;
@@ -47,7 +48,7 @@ export const Input = styled.input`
     font-size: 20px;
     letter-spacing: 0.8px;
 
-    &:: placeholder {
+    &::placeholder {
     font-size: 20px;
   };
     &:hover,

@@ -4,10 +4,10 @@ import friends from '../friends.json';
 
 const OurFriendsPage = props => {
   return (
-    <div>
+    <>
       <PageTitle text="Our friends" />
       <FriendsList friends={friends} />
-    </div>
+    </>
   );
 };
 

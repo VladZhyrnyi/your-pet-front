@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { NoticeList } from './NoticesCategoriesList.styled';
+import {
+  LoaderWrapper,
+  NoResults,
+  NoticeList,
+  Span,
+} from './NoticesCategoriesList.styled';
 import NoticeCategoryItem from 'components/NoticeCategoryItem';
 import Modal from 'components/Modal';
 import { useSelector } from 'react-redux';
@@ -8,10 +13,15 @@ import NoticeDetail from 'components/NoticeDatail/NoticeDetail';
 import Loader from 'components/Loader/Loader';
 import { selectUser } from 'redux/Auth/selectors';
 import { noticesFilter } from 'utils/noticesFilter';
+import { useSearchParams } from 'react-router-dom';
 
 const NoticesCategoriesList = ({ categoryName }) => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [el, setEl] = useState(null);
+
+  const [searchParams] = useSearchParams();
+
+  const searchText = searchParams.get('query');
 
   const [collection, setCollection] = useState([]);
 
@@ -34,7 +44,15 @@ const NoticesCategoriesList = ({ categoryName }) => {
 
   return (
     <>
-      {!isLoading && (
+      {collection.length === 0 && !isLoading && (
+        <>
+          <NoResults>
+            By search request "<Span>{searchText}</Span>" nothing found.
+          </NoResults>
+        </>
+      )}
+
+      {!isLoading && collection.length > 0 && (
         <NoticeList>
           {collection.map(el => {
             return (
@@ -44,7 +62,11 @@ const NoticesCategoriesList = ({ categoryName }) => {
         </NoticeList>
       )}
 
-      {isLoading && <Loader />}
+      {isLoading && (
+        <LoaderWrapper>
+          <Loader />
+        </LoaderWrapper>
+      )}
 
       {isShowModal && (
         <Modal closeModal={closeModal}>

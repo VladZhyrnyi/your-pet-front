@@ -7,7 +7,6 @@ export const HeaderContainer = styled.div`
   height: 48px;
   padding: 20px 0;
   @media screen and (min-width: 768px) {
-    height: 80px;
     padding: 24px 0;
   }
   @media screen and (min-width: 1280px) {

@@ -6,10 +6,10 @@ import { getNotices } from 'redux/Content/operations';
 
 import NoticesCategoriesList from 'components/NoticesCategoriesList';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav';
-import NoticesSearch from 'components/NoticesSearch';
-import Title from 'components/Title';
 import { useEffect, useMemo } from 'react';
 import { selectIsLoggedIn } from 'redux/Auth/selectors';
+import SearchForm from 'components/SearchForm/SearchForm';
+import PageTitle from 'components/PageTitle/PageTitle';
 
 const NoticesPage = () => {
   const dispatch = useDispatch();
@@ -50,8 +50,8 @@ const NoticesPage = () => {
 
   return (
     <>
-      <Title>Find your favorite pet</Title>
-      <NoticesSearch onSubmit={handleSearchSubmit} onClear={clearSearchQuery} />
+      <PageTitle text={'Find your favorite pet'}/>
+      <SearchForm onSubmit={handleSearchSubmit} onClear={clearSearchQuery} />
       <NoticesCategoriesNav />
       <NoticesCategoriesList categoryName={categoryName}/>
     </>

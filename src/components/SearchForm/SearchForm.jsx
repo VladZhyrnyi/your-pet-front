@@ -2,7 +2,8 @@ import { useState } from 'react';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import { Form, Input, ButtonWrapper, SearchButton, CloseButton } from './SearchForm.styled';
 
-const SearchForm = ({ onSubmit }) => {
+
+const SearchForm = ({ onSubmit, onClear }) => {
   const [query, setQuery] = useState('');
 
   const handleSubmit = (evt) => {
@@ -16,7 +17,8 @@ const SearchForm = ({ onSubmit }) => {
 
   const handleClearClick = () => {
     setQuery('');
-    onSubmit('')
+
+    onClear ? onClear() : onSubmit('');
   };
 
   return (
@@ -25,7 +27,7 @@ const SearchForm = ({ onSubmit }) => {
         type="text"
         placeholder="Search"
         value={query}
-        onChange={evt=> handleInputChange(evt)}
+        onChange={handleInputChange}
       />
       <ButtonWrapper>
         <SearchButton type="submit">

@@ -1,13 +1,7 @@
-// import PropTypes from 'prop-types';
-
-import { FriendsTitle } from './PageTitle.styled';
+import { Title } from './PageTitle.styled';
 
 const PageTitle = ({ text }) => {
-  return <FriendsTitle>{text}</FriendsTitle>;
+  return <Title>{text}</Title>;
 };
-
-// PageTitle.propTypes = {
-//    text: PropTypes.string.isRequired,
-//   }
 
 export default PageTitle;
