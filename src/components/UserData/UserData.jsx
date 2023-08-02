@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import UserForm from './UserForm/UserForm';
-import { Title, Wrap } from './UserData.styled';
+import { UserDataWrap, Title, Wrap } from './UserData.styled';
 
 const UserData = () => {
   const [isChanging, setIsChanging] = useState(false);
@@ -14,7 +14,7 @@ const UserData = () => {
   };
 
   return (
-    <div>
+    <UserDataWrap>
       <Title>My information:</Title>
       <Wrap>
         {isChanging ? (
@@ -23,7 +23,7 @@ const UserData = () => {
           <UserForm changeStatus={hendleChangingStatus} permis />
         )}
       </Wrap>
-    </div>
+    </UserDataWrap>
   );
 };
 

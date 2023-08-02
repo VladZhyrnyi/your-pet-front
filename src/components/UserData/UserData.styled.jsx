@@ -7,8 +7,20 @@ export const UserPageWrap = styled.h1`
   }
 `;
 
+export const UserDataWrap = styled.div`
+  margin: 40px auto 0 auto;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 60px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-top: 62px;
+  }
+`;
+
 export const Title = styled.h1`
-  margin: 40px auto 24px auto;
+  margin: 0 auto 24px auto;
 
   color: ${p => p.theme.colors.black};
 
@@ -26,7 +38,7 @@ export const Title = styled.h1`
 export const Wrap = styled.div`
   position: relative;
   margin: 0 auto;
-  padding: 20px 8px 20px 8px;
+  padding: 20px 8px 25px 8px;
   width: 280px;
 
   background-color: ${p => p.theme.colors.white};

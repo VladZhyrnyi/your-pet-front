@@ -86,7 +86,7 @@ export const ChangeAvatarWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 16px auto 0 auto;
+  margin: 15px auto 0 auto;
   width: 124px;
   height: 24px;
 `;
@@ -203,6 +203,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   width: 182px;
+  height: 24px;
   padding: 4px 12px;
 
   color: ${p => p.theme.colors.black};
@@ -220,6 +221,7 @@ export const Input = styled.input`
 
   @media screen and (min-width: 768px) {
     width: 255px;
+    height: 30px;
 
     font-size: 16px;
     letter-spacing: 0.64px;
@@ -230,9 +232,12 @@ export const BtnSave = styled.button`
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-  width: 248px;
   padding-top: 6px;
   padding-bottom: 6px;
+
+  width: 248px;
+  height: 31px;
+
   text-align: center;
   align-content: center;
 
@@ -252,5 +257,10 @@ export const BtnSave = styled.button`
     margin-top: 10px;
     margin-right: 0;
     width: 255px;
+    height: 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    height: 34px;
   }
 `;
