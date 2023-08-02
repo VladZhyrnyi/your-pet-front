@@ -15,8 +15,8 @@ export const FriendCard = styled.div`
     min-height: 329px;
   }
   @media (min-width: 1280px) {
-    /* width: calc(33.3333% - 21.3333px); */
-    width: 395px;
+    width: calc(33.3333% - 21.3333px);
+    max-width: 395px;
     /* min-height: 287px; */
     min-height: 335px;
   }
@@ -137,7 +137,7 @@ export const TimeWork = styled.li`
 `;
 
 export const Days = styled.p`
-  margin-right: 15px;
+  margin-right: 6px;
 `;
 
 export const FriendLink = styled.a`
