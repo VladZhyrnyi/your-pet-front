@@ -7,11 +7,13 @@ export const Container = styled.div`
   padding: 20px 8px 17px 8px;
   border-radius: 40px;
   margin: 0 auto;
+  margin-top: 20px;
   background: var(--unnamed, #fff);
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 
   @media (min-width: 768px) {
     width: 392px;
+    margin-top: 40px;
     min-height: 502px;
     padding: 20px 34px 20px 32px;
   }
