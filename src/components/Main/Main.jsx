@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title, Wrap, Dog, CollieDog, Cat } from './Main.styled';
+import { Title, Wrap, Dog, CollieDog, Cat, MainWrap } from './Main.styled';
 
 import collieMob from '../../images/mainpage/collie-mob.png';
 import collieMobX from '../../images/mainpage/collie-mob@2x.png';
@@ -22,7 +22,7 @@ import catX from '../../images/mainpage/cat@2x.png';
 
 const Main = () => {
   return (
-    <div>
+    <MainWrap>
       <Title>Take good care of your small pets</Title>
       <Wrap>
         <ul>
@@ -90,7 +90,7 @@ const Main = () => {
           </li>
         </ul>
       </Wrap>
-    </div>
+    </MainWrap>
   );
 };
 
