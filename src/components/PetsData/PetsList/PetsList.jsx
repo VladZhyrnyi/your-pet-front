@@ -18,7 +18,7 @@ const PetsList = () => {
     <>
       <PetList>
         {petsArr.map(pet => {
-          const { _id, file, name, date, type, title } = pet;
+          const { _id, file, name, date, type, comments } = pet;
           return (
             <PetsItem
               key={_id}
@@ -27,7 +27,7 @@ const PetsList = () => {
               name={name}
               birth={date}
               type={type}
-              comments={title}
+              comments={comments}
             />
           );
         })}
