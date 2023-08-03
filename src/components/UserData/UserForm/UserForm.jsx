@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoadingUser, selectUserData } from 'redux/User/selectors';
-import { updateAvatar, updateUser } from 'redux/User/operations';
+import { updateUser } from 'redux/User/operations';
 import Loader from 'components/Loader/Loader';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import {
@@ -45,6 +45,9 @@ const UserForm = ({ permis, changeStatus }) => {
 
     setFormData({ ...user });
 
+    setImgFile();
+    setPreviewImg();
+
     return;
   }, [user]);
 
@@ -55,6 +58,7 @@ const UserForm = ({ permis, changeStatus }) => {
 
   const handleSubmitForm = e => {
     e.preventDefault();
+    console.log(imgFile);
 
     dispatch(
       updateUser({
@@ -63,6 +67,7 @@ const UserForm = ({ permis, changeStatus }) => {
         phone: formData.phone,
         birthday: formData.birthday,
         city: formData.city,
+        avatar: imgFile,
       })
     );
 
@@ -97,13 +102,9 @@ const UserForm = ({ permis, changeStatus }) => {
 
     setFormData(prev => ({
       ...prev,
-      avatar: previewImg,
+      avatar: imgFile,
     }));
 
-    dispatch(updateAvatar(imgFile));
-
-    setImgFile();
-    setPreviewImg();
     setIsImgChange(false);
   };
 

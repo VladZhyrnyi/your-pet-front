@@ -18,30 +18,19 @@ export const updateUser = createAsyncThunk(
 
   async (user, thunkAPI) => {
     try {
-      const { data } = await axios.patch('/users/update', user);
+      const formData = new FormData();
 
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+      Object.entries(user).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
 
-export const updateAvatar = createAsyncThunk(
-  'user/updateAvatar',
-
-  async (img, thunkAPI) => {
-    const formData = new FormData();
-
-    formData.append('avatar', img);
-
-    try {
-      const { data } = await axios.patch('/users/avatars', formData, {
+      const { data } = await axios.patch('/users/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
 
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
