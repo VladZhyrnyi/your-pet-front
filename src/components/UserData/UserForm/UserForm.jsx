@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoadingUser, selectUserData } from 'redux/User/selectors';
-import { updateUser } from 'redux/User/operations';
+import { selectIsLoadingUser, selectUser } from 'redux/Auth/selectors';
+import { updateUser } from 'redux/Auth/operations';
 import Loader from 'components/Loader/Loader';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import {
@@ -24,7 +24,7 @@ import {
 import Logout from '../Logout/Logout';
 
 const UserForm = ({ permis, changeStatus }) => {
-  const user = useSelector(selectUserData);
+  const user = useSelector(selectUser);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -58,7 +58,6 @@ const UserForm = ({ permis, changeStatus }) => {
 
   const handleSubmitForm = e => {
     e.preventDefault();
-    console.log(imgFile);
 
     dispatch(
       updateUser({

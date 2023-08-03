@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Title, PetList, TmpWrap } from './PetsList.styled';
-import PetsItem from '../PetsItem';
 import { useSelector } from 'react-redux';
-import { selectMyPets } from 'redux/User/selectors';
+import PetsItem from '../PetsItem';
+import { selectMyPets } from 'redux/Auth/selectors';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
+import { Title, PetList, TmpWrap } from './PetsList.styled';
 
 const PetsList = () => {
   const pets = useSelector(selectMyPets);
