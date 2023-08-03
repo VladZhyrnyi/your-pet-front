@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 import {
   Form,
@@ -7,16 +7,11 @@ import {
   SearchButton,
   CloseButton,
 } from './SearchForm.styled';
-import { useLocation } from 'react-router-dom';
+
 
 const SearchForm = ({ onSubmit, onClear }) => {
-  const location = useLocation();
 
   const [query, setQuery] = useState('');
-
-  // useEffect(() => {
-  //   setQuery('');
-  // }, [location]);
 
   const handleSubmit = evt => {
     evt.preventDefault();
