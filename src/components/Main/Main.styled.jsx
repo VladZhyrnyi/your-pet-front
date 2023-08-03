@@ -8,43 +8,46 @@ import bg_desktop from '../../images/mainpage/bg_desktop.png';
 import bg_desktop2x from '../../images/mainpage/bg_desktop2x.png';
 
 export const MainWrap = styled.section`
-  background-color: ${p => p.theme.colors.backgroundColor};
-  background-image: url(${bg_mobile});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 -44px;
+height: 82vh;
+background-color: ${p => p.theme.colors.backgroundColor};
+background-image: url(${bg_mobile});
+background-repeat: no-repeat;
+background-size: 100%;
+background-position: 0 -48px;  
+
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  background-image: url(${bg_mobile2x});    
+}
+
+@media screen and (min-width: 768px) {
+  background-image: url(${bg_tablet});
+  background-position: -16px -68px;
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url(${bg_mobile2x});
+    background-image: url(${bg_tablet2x});
   }
+}
 
-  @media screen and (min-width: 768px) {
-    background-image: url(${bg_tablet});
-    background-position: 0 -68px;
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url(${bg_tablet2x});
-    }
+@media screen and (min-width: 1280px) {
+  height: 702px;
+  background-image: url(${bg_desktop});
+  background-position: -16px -88px;
+  
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url(${bg_desktop2x});
   }
-
-  @media screen and (min-width: 1280px) {
-    background-image: url(${bg_desktop});
-    background-position: 0 -88px;
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url(${bg_desktop2x});
-    }
-  }
+}
 `;
 export const Title = styled.h1`
-  margin: 60px auto 20px 0;
+  margin: 0 auto 20px 0;
   width: 280px;
+  padding-top: 60px;
 
   color: rgba(0, 0, 0, 1);
 
@@ -55,14 +58,15 @@ export const Title = styled.h1`
   text-align: left;
 
   @media screen and (min-width: 768px) {
-    margin: 80px auto 27px 0;
+    margin: 0 auto 27px 0;
     width: 588px;
+    padding-top: 80px;
 
     font-size: 68px;
     line-height: 100px;
   }
   @media screen and (min-width: 1280px) {
-    margin-top: 188px;
+    padding-top: 188px;
 
     width: 501px;
 
