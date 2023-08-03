@@ -6,4 +6,13 @@ export const PetList = styled.ul`
   gap: 20px;
   align-items: center;
   margin-bottom: 137px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 121px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    gap: 24px;
+    margin-bottom: 85px;
+  }
 `;

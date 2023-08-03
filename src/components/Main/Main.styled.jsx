@@ -7,7 +7,7 @@ import bg_tablet2x from '../../images/mainpage/bg_tablet2x.png';
 import bg_desktop from '../../images/mainpage/bg_desktop.png';
 import bg_desktop2x from '../../images/mainpage/bg_desktop2x.png';
 
-export const MainWrap =styled.section`
+export const MainWrap = styled.section`
   background-color: ${p => p.theme.colors.backgroundColor};
   background-image: url(${bg_mobile});
   background-repeat: no-repeat;
@@ -18,30 +18,30 @@ export const MainWrap =styled.section`
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     background-image: url(${bg_mobile2x});
-  };
+  }
 
   @media screen and (min-width: 768px) {
     background-image: url(${bg_tablet});
     background-position: 0 -68px;
-    
+
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(${bg_tablet2x});      
-    };
-  };
+      background-image: url(${bg_tablet2x});
+    }
+  }
 
   @media screen and (min-width: 1280px) {
     background-image: url(${bg_desktop});
     background-position: 0 -88px;
-            
+
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: url(${bg_desktop2x});
     }
   }
-`
+`;
 export const Title = styled.h1`
   margin: 60px auto 20px 0;
   width: 280px;
@@ -74,10 +74,8 @@ export const Title = styled.h1`
 export const Wrap = styled.div`
   position: relative;
   margin-left: -15px;
-  ${'' /* margin-right: -15px; */}
   width: 320px;
   height: 387px;
-  ${'' /* overflow: hidden; */}
 
   @media screen and (min-width: 768px) {
     min-width: 768px;
@@ -94,10 +92,7 @@ export const Wrap = styled.div`
 
 export const Dog = styled.picture`
   position: absolute;
-  ${
-    '' /* bottom: 50px;
-  right: 160px; */
-  }
+
   transform: rotate(44.82deg) translate(29%, 60%);
 
   @media screen and (min-width: 768px) {
@@ -110,10 +105,7 @@ export const Dog = styled.picture`
 
 export const CollieDog = styled.picture`
   position: absolute;
-  ${
-    '' /* bottom: 124px;
-  left: 74px; */
-  }
+
   transform: rotate(45.04deg) translate(16%, -25%);
 
   @media screen and (min-width: 768px) {
@@ -126,10 +118,7 @@ export const CollieDog = styled.picture`
 
 export const Cat = styled.picture`
   position: absolute;
-  ${
-    '' /* bottom: 0px;
-  left: 176px; */
-  }
+
   transform: rotate(163deg) translate(-70%, -159%);
 
   @media screen and (min-width: 768px) {

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const ContainerWrap = styled.div`
+  margin: 40px auto 0 auto;
   width: 280px;
 
   @media screen and (min-width: 768px) {
@@ -9,6 +10,7 @@ export const ContainerWrap = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
+    margin-top: 60px;
     width: 821px;
   }
 `;
@@ -17,7 +19,7 @@ export const HeadWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 40px auto 24px auto;
+  margin: 0px auto 24px auto;
   width: 100%;
 `;
 
