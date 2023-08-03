@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import { NavLink } from 'react-router-dom';
 
-
 export const ContainerNav = styled.div`
   position: relative;
   display: flex;
@@ -20,9 +19,7 @@ export const ContainerNav = styled.div`
   }
 `;
 
-
 export const NavLinkWrapper = styled.div`
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,7 +41,6 @@ export const NavLinkWrapper = styled.div`
 `;
 
 export const NoticesLink = styled(NavLink)`
-
   border: none;
   padding: 8px 16px;
   border-radius: 40px;
@@ -57,8 +53,7 @@ export const NoticesLink = styled(NavLink)`
 
   transition: transform ${p => p.theme.transitionTimingFunction};
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: ${p => p.theme.colors.blue};
     color: ${p => p.theme.colors.white};
   }

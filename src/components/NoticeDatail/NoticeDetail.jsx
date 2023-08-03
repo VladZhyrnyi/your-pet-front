@@ -34,7 +34,7 @@ import {
   ButtonYes,
 } from 'components/DelMessage/DelMessageStyled';
 
-import defaultPhoto from '../../images/defaultPhoto.png'
+import defaultPhoto from '../../images/defaultPhoto.png';
 
 const NoticeDetail = ({ id }) => {
   const [state, setState] = useState(null);
@@ -77,12 +77,22 @@ const NoticeDetail = ({ id }) => {
           <WrapperContent>
             <ThumbImg>
               <Img
-                src={currentNotice.notice?.file ? currentNotice.notice.file : defaultPhoto}
+                src={
+                  currentNotice.notice?.file
+                    ? currentNotice.notice.file
+                    : defaultPhoto
+                }
                 alt={currentNotice.notice.type}
               />
-              {currentNotice.notice.category === 'for-free' ? (
+              {currentNotice.notice.category === 'for-free' && (
                 <NameCategory>in good hands</NameCategory>
-              ) : (
+              )}
+
+              {currentNotice.notice.category === 'lost-found' && (
+                <NameCategory>lost/found</NameCategory>
+              )}
+
+              {currentNotice.notice.category === 'sell' && (
                 <NameCategory>{currentNotice.notice.category}</NameCategory>
               )}
             </ThumbImg>
@@ -168,7 +178,7 @@ const NoticeDetail = ({ id }) => {
           <ButtonDetailWrapper>
             {isFavorite ? (
               <ButtonYes onClick={() => handleFavorite(id)}>
-                Add to
+                Remove from
                 <IconFavor />
               </ButtonYes>
             ) : (

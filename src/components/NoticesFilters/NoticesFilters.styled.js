@@ -37,8 +37,7 @@ export const ButtonNoticeFilter = styled.button`
 
   transition: background-color ${p => p.theme.transitionTimingFunction};
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: ${p => p.theme.colors.blue};
   }
 
@@ -98,8 +97,7 @@ export const ButtonNoticeAdd = styled.button`
   letter-spacing: 0.64px;
   transition: color ${p => p.theme.transitionTimingFunction};
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: ${p => p.theme.colors.white};
     background-image: ${p => p.theme.linearGradient};
   }

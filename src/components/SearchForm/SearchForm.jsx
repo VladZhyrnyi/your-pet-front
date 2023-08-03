@@ -10,7 +10,6 @@ import {
 
 const SearchForm = ({ onSubmit, onClear }) => {
 
-
   const [query, setQuery] = useState('');
 
   const handleSubmit = evt => {
