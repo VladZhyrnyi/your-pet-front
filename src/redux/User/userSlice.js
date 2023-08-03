@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUserData, removePet, updateAvatar, updateUser } from './operations';
+import { getUserData, removePet, updateUser } from './operations';
 
-const initialState = {
+const userInitialState = {
   user: {
     _id: null,
     name: '',
@@ -29,7 +29,17 @@ const handleRejected = (state, { payload }) => {
 
 export const userSlice = createSlice({
   name: 'user',
-  initialState,
+  initialState: userInitialState,
+
+  reducers: {
+    resetUserState(state, action) {
+      state.user = userInitialState.user;
+      state.pets = userInitialState.pets;
+      state.isLoading = userInitialState.isLoading;
+      state.error = userInitialState.error;
+    },
+  },
+
   extraReducers: builder => {
     builder
       .addCase(getUserData.pending, handlePending)
@@ -55,16 +65,9 @@ export const userSlice = createSlice({
         state.error = false;
         state.isLoading = false;
       })
-      .addCase(removePet.rejected, handleRejected)
-
-      .addCase(updateAvatar.pending, handlePending)
-      .addCase(updateAvatar.fulfilled, (state, { payload }) => {
-        state.user = { ...state.user, ...payload };
-        state.error = false;
-        state.isLoading = false;
-      })
-      .addCase(updateAvatar.rejected, handleRejected);
+      .addCase(removePet.rejected, handleRejected);
   },
 });
 
+export const { resetUserState } = userSlice.actions;
 export const userReducer = userSlice.reducer;
