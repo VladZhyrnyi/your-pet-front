@@ -96,6 +96,7 @@ export const ButtonCancel = styled.button`
   padding: 8px 20px;
   outline: none;
 
+  cursor: pointer;
   border-radius: 40px;
   background-color: ${p => p.theme.colors.white};
 
@@ -124,6 +125,7 @@ export const ButtonYes = styled(ButtonCancel)`
   background-repeat: no-repeat;
   color: ${p => p.theme.colors.white};
   border: 2px solid transparent;
+  cursor: pointer;
 
   transition: color ${p => p.theme.transitionTimingFunction};
 

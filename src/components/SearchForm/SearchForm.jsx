@@ -14,9 +14,9 @@ const SearchForm = ({ onSubmit, onClear }) => {
 
   const [query, setQuery] = useState('');
 
-  useEffect(() => {
-    setQuery('');
-  }, [location]);
+  // useEffect(() => {
+  //   setQuery('');
+  // }, [location]);
 
   const handleSubmit = evt => {
     evt.preventDefault();

@@ -1,23 +1,23 @@
 import useWindowWidth from 'hooks/useWindowWidth';
 
 import {
-  ButtonNoticeFilter,
+  // ButtonNoticeFilter,
   FilterWrapper,
-  IconFilter,
+  // IconFilter,
 } from './NoticesFilters.styled';
 import AddPetBtn from 'components/AddPetBtn/AddPetBtn';
 
 const NoticesFilters = () => {
   const viewportWidth = useWindowWidth();
 
-  const isMobile = viewportWidth < 768;
+  // const isMobile = viewportWidth < 768;
 
   return (
     <FilterWrapper>
-      <ButtonNoticeFilter>
+      {/* <ButtonNoticeFilter>
         {!isMobile && 'Filter'}
         <IconFilter />
-      </ButtonNoticeFilter>
+      </ButtonNoticeFilter> */}
       <AddPetBtn />
     </FilterWrapper>
   );

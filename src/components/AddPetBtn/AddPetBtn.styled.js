@@ -7,20 +7,34 @@ export const AddPetButton = styled.button`
   width: 80px;
   height: 80px;
 
-  border: 1px solid transparent;
-  border-radius: 40px;
-
-  color: ${p => p.theme.colors.white};
-  background-color: ${p => p.theme.colors.blue};
-
-  font-family: Manrope600;
-  font-size: 12px;
-
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   gap: 4px;
+
+  border: 1px solid transparent;
+  border-radius: 40px;
+  border: 2px solid transparent;
+  cursor: pointer;
+
+  background-image: ${p => p.theme.linearGradient};
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  color: ${p => p.theme.colors.white};
+  font-family: Manrope600;
+  font-size: 12px;
+
+  &:hover {
+    background-image: none;
+    background-color: ${p => p.theme.colors.white};
+    color: ${p => p.theme.colors.blue};
+    border: 2px solid ${p => p.theme.colors.blue};
+  }
+
+  &:hover svg {
+    color: ${p => p.theme.colors.blue};
+  }
 
   @media screen and (min-width: 768px) {
     position: static;

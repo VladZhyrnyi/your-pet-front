@@ -52,6 +52,8 @@ export const NameCategory = styled.p`
   top: 16px;
   left: 0px;
 
+  width: 126px;
+
   border-radius: 0px 16px 16px 0px;
 
   background-color: ${p => p.theme.colors.blueLight};
@@ -87,6 +89,7 @@ export const ButtonCard = styled.button`
   padding: 0;
   border-radius: 100%;
   background-color: ${p => p.theme.colors.blueLight};
+  cursor: pointer;
 
   transition: color ${p => p.theme.transitionTimingFunction};
   transition: background-color ${p => p.theme.transitionTimingFunction};

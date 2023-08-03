@@ -20,14 +20,14 @@ export const Input = styled.input`
   width: 100%;
   height: 44px;
   padding: 14px 20px;
-  
+
   font-family: Inter400;
   font-size: 14px;
   line-height: normal;
   letter-spacing: 0.56px;
-  color: #888888;
-  
-  background: ${p => p.theme.colors.white};
+  color: ${p => p.theme.colors.grey};
+
+  background-color: ${p => p.theme.colors.white};
   box-sizing: border-box;
   box-shadow: ${p => p.theme.boxShadow.first};
   border-radius: 24px;
@@ -40,7 +40,7 @@ export const Input = styled.input`
     font-size: 14px;
     line-height: normal;
     letter-spacing: 0.56px;
-    color: #888888;
+    color: ${p => p.theme.colors.grey};
   }
   @media screen and (min-width: 768px) {
     padding: 10px 20px;
@@ -49,13 +49,12 @@ export const Input = styled.input`
     letter-spacing: 0.8px;
 
     &::placeholder {
-    font-size: 20px;
-  };
-    &:hover,
-    &:focus {
+      font-size: 20px;
+    }
+    &:hover {
       box-shadow: ${p => p.theme.boxShadow.second};
+    }
   }
-}
 `;
 
 export const ButtonWrapper = styled.div`
@@ -78,13 +77,13 @@ export const SearchButton = styled.button`
   align-items: center;
   padding: 0;
 
+  cursor: pointer;
   background-color: transparent;
   border: none;
   transition: transform ${p => p.theme.transitionTimingFunction};
   color: ${p => p.theme.colors.blue};
 
-  &:hover,
-  &:focus {
+  &:hover {
     border: none;
     transform: scale(1.3);
   }
