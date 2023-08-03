@@ -20,6 +20,7 @@ export const Nav = styled.div`
 export const NavBarLink = styled.a`
   font-family: Manrope500;
   font-size: 32px;
+  transition: transform  250ms linear;
 
   @media screen and (min-width: 768px) {
     font-size: 48px;
@@ -27,6 +28,12 @@ export const NavBarLink = styled.a`
 
   @media screen and (min-width: 1280px) {
     font-size: 20px;
+  }
+
+  &:hover,
+  &:focus {
+    color: ${p => p.theme.colors.yellow};
+    transform: scale(1.1);
   }
 
   &.active {
