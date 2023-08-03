@@ -99,6 +99,8 @@ export const InputAvatar = styled.input`
   height: 100%;
   opacity: 0;
 
+  cursor: pointer;
+
   &:hover + label > button {
     color: ${p => p.theme.colors.yellow};
   }
@@ -252,6 +254,11 @@ export const BtnSave = styled.button`
   font-size: 14px;
   line-height: normal;
   letter-spacing: 0.56px;
+
+  &:hover,
+  &:focus {
+    background-image: ${p => p.theme.linearGradient};
+  }
 
   @media screen and (min-width: 768px) {
     margin-top: 10px;

@@ -15,6 +15,13 @@ import Modal from 'components/Modal/Modal';
 const PetsItem = ({ id, img, name, birth, type, comments }) => {
   const [isShowModal, setIsShowModal] = useState(false);
 
+  const dateObject = new Date(birth);
+  const day = dateObject.getDate().toString().padStart(2, '0');
+  const month = (dateObject.getMonth() + 1).toString().padStart(2, '0');
+  const year = dateObject.getFullYear().toString();
+
+  const formattedDate = `${day}.${month}.${year}`;
+
   const closeModal = () => {
     setIsShowModal(false);
   };
@@ -35,7 +42,7 @@ const PetsItem = ({ id, img, name, birth, type, comments }) => {
           </PetText>
           <PetText key={`${id}birth`}>
             <Text>
-              Date of birth: <LtlText>{birth}</LtlText>
+              Date of birth: <LtlText>{formattedDate}</LtlText>
             </Text>
           </PetText>
           <PetText key={`${id}type`}>

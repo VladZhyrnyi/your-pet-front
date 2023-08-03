@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { PetList } from './PetsList.styled';
+import { Title, PetList, TmpWrap } from './PetsList.styled';
 import PetsItem from '../PetsItem';
 import { useSelector } from 'react-redux';
 import { selectMyPets } from 'redux/User/selectors';
+import SpriteIcon from 'components/SpriteIcon/SpriteIcon';
 
 const PetsList = () => {
   const pets = useSelector(selectMyPets);
@@ -17,20 +18,29 @@ const PetsList = () => {
   return (
     <>
       <PetList>
-        {petsArr.map(pet => {
-          const { _id, file, name, date, type, comments } = pet;
-          return (
-            <PetsItem
-              key={_id}
-              id={_id}
-              img={file}
-              name={name}
-              birth={date}
-              type={type}
-              comments={comments}
-            />
-          );
-        })}
+        {petsArr.length > 0 ? (
+          petsArr.map(pet => {
+            const { _id, file, name, date, type, comments } = pet;
+            return (
+              <PetsItem
+                key={_id}
+                id={_id}
+                img={file}
+                name={name}
+                birth={date}
+                type={type}
+                comments={comments}
+              />
+            );
+          })
+        ) : (
+          <>
+            <Title>Add your pets here</Title>
+            <TmpWrap>
+              <SpriteIcon icon="pawprint" color="#54ADFF" size="96px" fill />
+            </TmpWrap>
+          </>
+        )}
       </PetList>
     </>
   );
