@@ -22,6 +22,7 @@ export const ButtonPrimary = styled.button`
     color: ${p => p.theme.colors.white};
     border: 2px solid ${p => p.theme.colors.transparent};
     background-color: ${p => p.theme.colors.yellow};
+    cursor: pointer;
     transform: scale(1.1);
   }
 `;

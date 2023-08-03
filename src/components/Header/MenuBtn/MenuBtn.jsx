@@ -11,7 +11,7 @@ const MenuButton = styled.button`
   
   &:hover,
   &:focus {
-    
+    cursor: pointer;
     transform: scale(1.3);
   }
 `;

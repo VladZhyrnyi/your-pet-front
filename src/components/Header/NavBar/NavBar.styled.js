@@ -33,6 +33,7 @@ export const NavBarLink = styled.a`
   &:hover,
   &:focus {
     color: ${p => p.theme.colors.yellow};
+    cursor: pointer;
     transform: scale(1.1);
   }
 
