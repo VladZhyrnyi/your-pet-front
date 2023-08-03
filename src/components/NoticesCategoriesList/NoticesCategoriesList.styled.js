@@ -6,8 +6,6 @@ export const NoticeList = styled.div`
   justify-content: center;
   gap: 32px;
 
-  width: 320px;
-
   margin-top: 24px;
 
   margin-left: auto;
@@ -16,7 +14,6 @@ export const NoticeList = styled.div`
   @media (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
-    width: 768px;
     margin-top: 40px;
   }
 
