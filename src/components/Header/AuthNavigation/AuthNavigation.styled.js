@@ -12,6 +12,7 @@ export const ButtonPrimary = styled.button`
   background-color: ${p => p.theme.colors.white};
   padding: 8px 20px;
   gap: 8px;
+  transition: transform  250ms linear;
 
   @media screen and (min-width: 768px) {
     width: 142px;
@@ -21,6 +22,8 @@ export const ButtonPrimary = styled.button`
     color: ${p => p.theme.colors.white};
     border: 2px solid ${p => p.theme.colors.transparent};
     background-color: ${p => p.theme.colors.yellow};
+    cursor: pointer;
+    transform: scale(1.1);
   }
 `;
 

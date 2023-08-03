@@ -48,7 +48,7 @@ const App = () => {
           path="/login"
           element={
             <RestrictedRoute
-              redirectTo="/notices/sell"
+              redirectTo="/user"
               component={<LoginPage />}
             />
           }

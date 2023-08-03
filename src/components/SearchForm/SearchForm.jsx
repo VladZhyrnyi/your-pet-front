@@ -8,7 +8,6 @@ import {
   CloseButton,
 } from './SearchForm.styled';
 
-
 const SearchForm = ({ onSubmit, onClear }) => {
 
   const [query, setQuery] = useState('');

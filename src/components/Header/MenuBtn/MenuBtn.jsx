@@ -6,6 +6,14 @@ import { theme } from 'theme';
 const MenuButton = styled.button`
   background-color: transparent;
   border: none;
+  transition: transform  250ms linear;
+
+  
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    transform: scale(1.3);
+  }
 `;
 
 const MenuBtn = ({ isOpen, onClick }) => {
