@@ -9,27 +9,36 @@ import {
   NavLinkWrapper,
   NoticesLink,
 } from './NoticesCategoriesNav.styled';
+import { useSearchParams } from 'react-router-dom';
 
 const NoticesCategoriesNav = () => {
+  const [searchParams] = useSearchParams();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  const queryParams = searchParams.get('query')? `?query=${searchParams.get('query')}` : '';
 
   return (
     <ContainerNav>
       <NavLinkWrapper>
-        <NoticesLink to={'/notices/sell'}>sell</NoticesLink>
-        <NoticesLink to={'/notices/lost-found'}>lost/found</NoticesLink>
-        <NoticesLink to={'/notices/for-free'}>in good hands</NoticesLink>
+        <NoticesLink to={`/notices/sell${queryParams}`}>sell</NoticesLink>
+        <NoticesLink to={`/notices/lost-found${queryParams}`}>
+          lost/found
+        </NoticesLink>
+        <NoticesLink to={`/notices/for-free${queryParams}`}>
+          in good hands
+        </NoticesLink>
         {isLoggedIn && (
           <>
-            <NoticesLink to={'/notices/favorite'}>favorite ads</NoticesLink>
-            <NoticesLink to={'/notices/own'}>my ads</NoticesLink>
+            <NoticesLink to={`/notices/favorite${queryParams}`}>
+              favorite ads
+            </NoticesLink>
+            <NoticesLink to={`/notices/own${queryParams}`}>my ads</NoticesLink>
           </>
         )}
       </NavLinkWrapper>
 
       <NoticesFilters />
     </ContainerNav>
-
   );
 };
 
