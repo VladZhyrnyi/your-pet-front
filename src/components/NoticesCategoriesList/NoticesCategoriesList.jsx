@@ -40,15 +40,23 @@ const NoticesCategoriesList = () => {
     <>
       {items.length === 0 && !isLoading && (
         <>
-          <NoResults>{searchText?`Nothing found by query: "${searchText}"` : NOT_FOUND_MESSAGES[categoryName]}</NoResults>
+          <NoResults>
+            {searchText
+              ? `Nothing found by query: "${searchText}"`
+              : NOT_FOUND_MESSAGES[categoryName]}
+          </NoResults>
         </>
       )}
 
       {!isLoading && items.length > 0 && (
         <NoticeList>
-          {items.map(el => {
+          {items.map(item => {
             return (
-              <NoticeCategoryItem key={el._id} el={el} showModal={showModal} />
+              <NoticeCategoryItem
+                key={item._id}
+                el={item}
+                showModal={showModal}
+              />
             );
           })}
         </NoticeList>

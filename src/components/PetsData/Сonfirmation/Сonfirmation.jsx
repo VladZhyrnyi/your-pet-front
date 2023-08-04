@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-
+import { removePet } from 'redux/Auth/operations';
 import {
   ButtonCancel,
   ButtonDetailWrapper,
@@ -12,7 +12,6 @@ import {
   Span,
   Title,
 } from './Сonfirmation.styled';
-import { removePet } from 'redux/User/operations';
 
 const Сonfirmation = ({ closeModal, id, name }) => {
   const dispatch = useDispatch();

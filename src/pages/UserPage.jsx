@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getUserData } from 'redux/User/operations';
+import { getUserData } from 'redux/Auth/operations';
 
 import PetsData from 'components/PetsData/PetsData';
 import UserData from 'components/UserData/UserData';
