@@ -35,7 +35,11 @@ import Attention from 'components/Attention';
 import defaultPhoto from '../../images/defaultPhoto.png';
 import { getNotices } from 'redux/Content/operations';
 
-const CATEGORY_NAMES = {"sell": "sell", "lost-found": "lost/found", "for-free": "in good hands"}
+const CATEGORY_NAMES = {
+  sell: 'sell',
+  'lost-found': 'lost/found',
+  'for-free': 'in good hands',
+};
 
 const NoticeCategoryItem = ({ showModal, el }) => {
   const { date, file, type, category, location, sex, title, _id, owner } = el;
@@ -80,8 +84,8 @@ const NoticeCategoryItem = ({ showModal, el }) => {
         <Div>
           <ThumbImg>
             <Img src={file ? file : defaultPhoto} alt={type} />
-             
-              <NameCategory>{CATEGORY_NAMES[category]}</NameCategory>
+
+            <NameCategory>{CATEGORY_NAMES[category]}</NameCategory>
 
             <ButtonCardWrapper>
               <ButtonFavorite onClick={() => handleFavorite(_id)}>
@@ -95,10 +99,14 @@ const NoticeCategoryItem = ({ showModal, el }) => {
             </ButtonCardWrapper>
 
             <WrapperInfo>
-              <Info>
-                <IconLocation />
-                {location.length > 4 ? location.slice(0, 5) + '...' : location}
-              </Info>
+              {location && (
+                <Info>
+                  <IconLocation />
+                  {location.length > 4
+                    ? location.slice(0, 5) + '...'
+                    : location}
+                </Info>
+              )}
               <Info>
                 <IconClock />
                 {agePet}
