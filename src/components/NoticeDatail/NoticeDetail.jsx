@@ -122,7 +122,7 @@ const NoticeDetail = ({ id }) => {
                     <TableUnit>The sex:</TableUnit>
                     <TableUnitData>{currentNotice.notice.sex}</TableUnitData>
                   </TableRow>
-                  {currentNotice.notice.price !== 0 && (
+                  {currentNotice.notice.category === 'sell' && (
                     <TableRow>
                       <TableUnit>Price:</TableUnit>
                       <TableUnitData>
