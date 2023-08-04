@@ -54,7 +54,9 @@ const RegiserForm = () => {
   const onConfPassInputChange = e => {
     if (e.target.value === passValue) {
       setMismatch(false);
-      setConfPasIsValid(true);
+      if (password_validation.validation.pattern.value.test(e.target.value)) {
+        setConfPasIsValid(true);
+      }
       setConfPassValue(e.target.value);
     } else {
       setMismatch(true);
@@ -78,12 +80,11 @@ const RegiserForm = () => {
   });
 
   const onCloseModal = () => {
-    navigate('/login')
-  }
+    navigate('/login');
+  };
 
   return (
     <>
-      {/* <LogoutBtn /> */}
       <FormProvider {...methods}>
         <Form onSubmit={e => e.preventDefault()}>
           {isError && <h2>{errorMessage}</h2>}

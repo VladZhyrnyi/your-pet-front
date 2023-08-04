@@ -48,7 +48,7 @@ const PasswordInput = ({
           onChange={onChange}
           style={valid ? { border: `1px solid ${theme.colors.green}` } : {}}
         />
-        {isInvalid && (
+        {isInvalid && !valid && (
           <InputError
             message={inputError.error.message}
             key={inputError.error.message}
