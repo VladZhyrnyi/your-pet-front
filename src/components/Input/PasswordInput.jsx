@@ -48,7 +48,7 @@ const PasswordInput = ({
           onChange={onChange}
           style={valid ? { border: `1px solid ${theme.colors.green}` } : {}}
         />
-        {isInvalid && !valid && (
+        {!valid && isInvalid && (
           <InputError
             message={inputError.error.message}
             key={inputError.error.message}
@@ -65,11 +65,11 @@ const PasswordInput = ({
         <ShowHidePasswordBtn onClick={onShowPassBtnClick}>
           <SpriteIcon
             icon={showPass ? 'eye-open' : 'eye-closed'}
-            color={valid && !isInvalid ? '#888888' : `${theme.colors.blue}`}
+            color={valid ? '#888888' : `${theme.colors.blue}`}
             size="24px"
           />
         </ShowHidePasswordBtn>
-        {valid && !isInvalid && (
+        {valid && (
           <SpriteIcon
             icon={'check'}
             color={`${theme.colors.green}`}
