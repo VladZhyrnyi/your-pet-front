@@ -13,6 +13,18 @@ export const Card = styled.div`
 
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 
+  transition: box-shadow ${p => p.theme.transitionTimingFunction};
+  
+
+  &:hover {
+    box-shadow: ${p => p.theme.boxShadow.second};
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+    cursor: zoom-in;
+  }
+
   @media (min-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -150,6 +162,7 @@ export const Img = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform ${p => p.theme.transitionTimingFunction};
 `;
 
 export const WrapperContent = styled.div`
@@ -227,8 +240,7 @@ export const BtnLearnMore = styled.button`
 
   transition: color ${p => p.theme.transitionTimingFunction};
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-image: ${p => p.theme.linearGradient};
     background-origin: border-box;
     background-repeat: no-repeat;

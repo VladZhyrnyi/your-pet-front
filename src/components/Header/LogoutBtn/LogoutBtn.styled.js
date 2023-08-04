@@ -18,19 +18,23 @@ export const ButtonLogout = styled.button`
   font-size: 16px;
 
   border-radius: 20px;
-  border: none;
+  border: transparent;
+  outline: none;
   color: ${p => p.theme.colors.white};
   background-color: ${p => p.theme.colors.blue};
 
+  transition: transform ${p => p.theme.transitionTimingFunction};
+  
   @media screen and (min-width: 768px) {
     position: static;
   }
 
   &:hover,
   &:focus {
-    background: ${p => p.theme.linearGradient};
-    border: none;
+    background-image: ${p => p.theme.linearGradient};
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    border: transparent;
+    transform: scale(1.1);
   }
 `;
-
-
