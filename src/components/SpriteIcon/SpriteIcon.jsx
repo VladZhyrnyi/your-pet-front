@@ -6,6 +6,7 @@ const SvgWrapper = styled.svg`
   stroke-width: 0;
   /* stroke: currentColor;
   fill: currentColor; */
+  cursor: pointer;
 `;
 
 const SpriteIcon = ({ icon, color = 'currentColor', size = '24px', fill }) => {

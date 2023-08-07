@@ -74,6 +74,8 @@ export const ButtonNoticeFilter = styled.button`
       color: ${p => p.theme.colors.white};
     }
   }
+  // ==========
+  z-index: 11;
 `;
 
 export const ButtonNoticeAdd = styled.button`
@@ -117,4 +119,11 @@ export const IconAdd = styled(MdAdd)`
   color: ${p => p.theme.colors.white};
 `;
 
-
+// ==========================
+export const FilterBox = styled.div`
+  display: flex;
+  position: relative;
+  /* overflow: hidden; */
+  flex-direction: column;
+  width: 152px;
+`;
