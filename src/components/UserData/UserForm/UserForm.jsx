@@ -58,17 +58,28 @@ const UserForm = ({ permis, changeStatus }) => {
 
   const handleSubmitForm = e => {
     e.preventDefault();
-
-    dispatch(
-      updateUser({
-        name: formData.name,
-        contactEmail: formData.contactEmail,
-        phone: formData.phone,
-        birthday: formData.birthday,
-        city: formData.city,
-        avatar: imgFile,
-      })
-    );
+    if (!imgFile) {
+      dispatch(
+        updateUser({
+          name: formData.name,
+          contactEmail: formData.contactEmail,
+          phone: formData.phone,
+          birthday: formData.birthday,
+          city: formData.city,
+        })
+      );
+    } else {
+      dispatch(
+        updateUser({
+          name: formData.name,
+          contactEmail: formData.contactEmail,
+          phone: formData.phone,
+          birthday: formData.birthday,
+          city: formData.city,
+          avatar: imgFile,
+        })
+      );
+    }
 
     changeStatus('Save');
 
