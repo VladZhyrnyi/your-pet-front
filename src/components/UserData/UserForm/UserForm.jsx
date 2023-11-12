@@ -32,7 +32,7 @@ const UserForm = ({ permis, changeStatus }) => {
     phone: '',
     birthday: '',
     city: '',
-    avatar: '',
+    avatar: null,
   });
   const [previewImg, setPreviewImg] = useState();
   const [imgFile, setImgFile] = useState();
@@ -76,12 +76,14 @@ const UserForm = ({ permis, changeStatus }) => {
           phone: formData.phone,
           birthday: formData.birthday,
           city: formData.city,
-          avatar: imgFile,
+          avatar: formData.avatar,
         })
       );
     }
 
     changeStatus('Save');
+    setIsImgChange(false);
+    setImgFile();
 
     return;
   };
